@@ -1,0 +1,65 @@
+/* pages/homeView/homeView.wxss */
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f6f6f6;
+}
+.list-view {
+  width: 100%;
+  height: calc(100vh - 64px);
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.right-view {
+  float: right;
+  margin: 10px 0;
+  padding: 13px 20px;
+  background-color: #0BBB09;
+  color: #fff;
+  border-radius: 24px;
+  border-top-right-radius: 2px;
+  max-width: calc(96vw - 120px);
+  font-size: 14px;
+  line-height: 22px;
+  overflow:hidden; word-wrap:break-word;
+  text-align: justify;
+}
+
+.left-view {
+  float: left;
+  margin: 10px 0;
+  padding: 13px 20px;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 24px;
+  border-top-left-radius: 2px;
+  max-width: calc(96vw - 120px);
+  font-size: 14px;
+  line-height: 22px;
+  overflow:hidden; 
+  word-wrap:break-word;
+  text-align: justify;
+}
+.content {
+  width: 100%;
+  height: 64px;
+  background-color: #ccc;
+}
+.input {
+  float: left;
+  height: 34px;
+  width: calc(100vw - 20px);
+  margin: 5px 0px 5px 10px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  border-radius: 5px; 
+  background-color: #ffffff;
+}
