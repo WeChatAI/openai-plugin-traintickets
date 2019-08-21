@@ -21,8 +21,6 @@ function auth({ appid }) {
     success: res => {
       console.log(res.data);
       wx.setStorageSync("authtoken", res.data.authtoken);
-
-      send({ query: "你好" });
     },
     fail: error => {
       console.log(error);
@@ -44,7 +42,7 @@ function request(opt) {
   });
 }
 
-function send({ query }) {
+function send({ query, success }) {
   request({
     url: "/miniprogram/openai/chatbot",
     method: "post",
@@ -52,7 +50,9 @@ function send({ query }) {
       query
     },
     success: function(res) {
-      console.log("chat result : ", res);
+      if (success) {
+        success(res.data);
+      }
     }
   });
 }
@@ -60,5 +60,6 @@ function send({ query }) {
 module.exports = {
   getData: getData,
   setData: setData,
-  auth: auth
+  auth: auth,
+  send: send
 };
