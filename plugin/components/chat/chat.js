@@ -57,18 +57,27 @@ Component({
                 answer_type: 'voice',
                 docs: res.msg
               }
-           }
-           let newData = {
-             type: 0,
-             text: res.answer
-           }
-           list.push(newData)
-           this.setData({
-             list: list,
-             value: ''
-           }, () => {
-             that.scrollToNew()
-           })
+             list.push(newData)
+             this.setData({
+               list: list,
+               value: ''
+             }, () => {
+               that.scrollToNew()
+             })
+           } else {
+              newData = {
+                type: 0,
+                answer_type: 'text',
+                text: res.answer
+              }
+              list.push(newData)
+              this.setData({
+                list: list,
+                value: ''
+              }, () => {
+                that.scrollToNew()
+              })
+           }  
          }
        });
      }

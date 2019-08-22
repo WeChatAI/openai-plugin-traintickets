@@ -2,11 +2,11 @@
   <scroll-view class="list-view" enable-back-to-top scroll-into-view="translate-{{toView}}"  scroll-y>
     <view class="list-item" wx:for="{{list}}" wx:key="item">
       <view class="right-view" wx:if="{{item.type}}">{{item.text}}</view>
-      <view class="left-view" wx:else>
-        <view wx:if="{{ answer_type == 'text'}}">
+      <view wx:else>
+        <view class="left-view" wx:if="{{ item.answer_type == 'text'}}">
           {{item.text}}
         </view>
-        <voiceCard wx:if="{{ answer_type == 'voice' }}" musicData="{{ item.docs }}"></voiceCard>
+        <voiceCard wx:if="{{ item.answer_type == 'voice' }}" musicData="{{ item.docs }}"></voiceCard>
       </view>
       <view style="clear: both"></view>
     </view>
