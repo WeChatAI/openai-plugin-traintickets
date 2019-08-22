@@ -7,7 +7,7 @@ Component({
   data: {
     list: [],
     value: '',
-    toView: '' 
+    toView: ''
   },
   attached: function() {
     // 可以在这里发起网络请求获取插件的数据
@@ -31,13 +31,15 @@ Component({
      let that = this
      let list = this.data.list
      let newData = {
-       type: 1,
+       type: '1',
        text: e.detail.value
      }
      list.push(newData)
      this.setData({
        list: list,
        value: ''
+     }, () => {
+       that.scrollToNew()
      })
      const authtoken = wx.getStorageSync("authtoken") || "";
      if (!authtoken) {
@@ -47,10 +49,15 @@ Component({
          query: e.detail.value,
          success: res => {
            console.log("reeee", res);
-           var ans_node_name = res.ans_node_name
            var answer_type = res.answer_type
-           console.log(ans_node_name)
-           console.log(answer_type)
+           var newData = {}
+           if (answer_type === 'music') {
+              newData = {
+                type: 0,
+                answer_type: 'voice',
+                docs: res.msg
+              }
+           }
            let newData = {
              type: 0,
              text: res.answer
@@ -59,8 +66,9 @@ Component({
            this.setData({
              list: list,
              value: ''
+           }, () => {
+             that.scrollToNew()
            })
-           that.scrollToNew()
          }
        });
      }

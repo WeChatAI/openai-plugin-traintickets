@@ -15,7 +15,7 @@
     <slider class='music-slider' block-size="12" value="{{percent}}" backgroundColor="#F8F8F8" activeColor="#57BD6A" bindchange="sliderChange" />
     <view class='music-slider-time'>{{currentTime}}/{{duration}}</view>
 
-    <swiper class='swiper-music-view' circular indicator-dots current="{{nowMusicCurrent}}" indicator-color="#e7e7e7" indicator-active-color="#898989" bindchange="musicCurrentChange">
+    <!-- <swiper class='swiper-music-view' circular indicator-dots current="{{nowMusicCurrent}}" indicator-color="#e7e7e7" indicator-active-color="#898989" bindchange="musicCurrentChange">
       <block wx:for-items="{{swiperMusicAry}}" wx:key="swiperItem">
         <swiper-item>
           <view class="music-list-view" wx:for-items="{{musicData}}" wx:for-item="musicItem" wx:key="musicItem" wx:if="{{(nowMusicCurrent*4-1)<index && index<(nowMusicCurrent+1)*4}}">
@@ -33,6 +33,6 @@
           </view>
         </swiper-item>
       </block>
-    </swiper>
+    </swiper> -->
   </view>
 </view>

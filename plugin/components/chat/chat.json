@@ -1,6 +1,6 @@
 {
   "component": true,
-  // "usingComponents": {
-  //   "voiceCard": "/voiceCard/voiceCard"
-  // }
+  "usingComponents": {
+    "voiceCard": "/voiceCard/voiceCard"
+  }
 }
