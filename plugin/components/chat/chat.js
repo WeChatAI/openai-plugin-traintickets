@@ -1,5 +1,8 @@
 var data = require("../../api/data.js");
 
+const backgroundAudioManager = wx.getBackgroundAudioManager()
+
+
 Component({
   data: {
     list: [],
@@ -44,6 +47,10 @@ Component({
          query: e.detail.value,
          success: res => {
            console.log("reeee", res);
+           var ans_node_name = res.ans_node_name
+           var answer_type = res.answer_type
+           console.log(ans_node_name)
+           console.log(answer_type)
            let newData = {
              type: 0,
              text: res.answer
