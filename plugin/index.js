@@ -4,4 +4,4 @@ module.exports = {
   getData: data.getData,
   setData: data.setData,
   init: data.auth
-};
+}

@@ -8,5 +8,8 @@
       "provider": "wx8c631f7e9f2465e1"
     }
   },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "sitemapLocation": "sitemap.json"
 }
