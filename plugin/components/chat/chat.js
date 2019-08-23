@@ -28,6 +28,7 @@ Component({
   },
  methods: {
    confirm: function (e) {
+
      let that = this
      let list = this.data.list
      let newData = {

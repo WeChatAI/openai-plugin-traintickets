@@ -2,7 +2,7 @@
   <view class='music-container'>
     <view class='music-play-view'>
       <view class='music-pic-view'>
-        <image class='music-singerImg' src='{{musicData[chooseId].album_pic}}'></image>
+        <image class='music-singerImg' src='{{musicData[chooseId].pic_url}}'></image>
       </view>
       <view class='music-play-contentView'>
         <view class='music-songName'>{{musicData[chooseId].song_name}}</view>

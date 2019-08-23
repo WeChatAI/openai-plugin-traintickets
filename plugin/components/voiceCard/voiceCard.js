@@ -1,3 +1,7 @@
+var app = require("../../api/music.js");
+
+const backgroundAudioManager = wx.getBackgroundAudioManager()
+
 Component({
   properties: {
     voiceData: Object,
@@ -18,23 +22,13 @@ Component({
     ready: function () {
       var musicData = this.properties.musicData
       var swiperMusicAry = []
-      // app.globalData.voiceData = musicData[0]
-      // app.play((isPlaying) => {
-      //   this.setData({
-      //     isPlaying: isPlaying
-      //   })
-      // })
-      // this.getBackgroundAudio()
-
-      for (var i = 0; i < musicData.length; i++) {
-        if (i % 4 == 0) {
-          swiperMusicAry.push(true)
-        }
-      }
-      this.setData({
-        // 更新属性和数据的方法\更新页面数据的方法
-        swiperMusicAry: swiperMusicAry
+      app.data.voiceData = musicData[0]
+      app.play((isPlaying) => {
+        this.setData({
+          isPlaying: isPlaying
+        })
       })
+      this.getBackgroundAudio()
     },
   },
   methods: {
@@ -68,7 +62,7 @@ Component({
             percent: 0,
             nowMusicCurrent: nowMusicCurrent
           }, () => {
-            app.globalData.voiceData = that.data.musicData[that.data.chooseId]
+            app.data.voiceData = that.data.musicData[that.data.chooseId]
             app.play((isPlaying) => {
               that.setData({
                 isPlaying: true
@@ -114,7 +108,7 @@ Component({
         })
       } else {
         //播放
-        app.globalData.voiceData = musicData[index]
+        app.data.voiceData = musicData[index]
         app.play((isPlaying) => {
           that.setData({
             isPlaying: true,
@@ -139,6 +133,20 @@ Component({
         })
       }
       this.getBackgroundAudio()
+    },
+    sliderChange: function(e) {
+      // this.setData({
+      //   sliderchange: true
+      // })
+      // app.data.playTime = e.detail.value
+      // app.seek(() => {
+      //   setTimeout(() => {
+      //     this.setData({
+      //       percent: e.detail.value,
+      //       sliderchange: false
+      //     })
+      //   }, 1000)
+      // })
     }
   }
 })

@@ -23,5 +23,6 @@
 	"projectname": "openai",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"libVersion": "2.8.0",
 	"condition": {}
 }
