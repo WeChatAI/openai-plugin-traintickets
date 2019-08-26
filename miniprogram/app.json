@@ -6,6 +6,10 @@
     "myPlugin": {
       "version": "dev",
       "provider": "wx8c631f7e9f2465e1"
+    },
+    "WechatSI": {
+      "version": "0.0.7",
+      "provider": "wx069ba97219f66d99"
     }
   },
   "requiredBackgroundModes": [

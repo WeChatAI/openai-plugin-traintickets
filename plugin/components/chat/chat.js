@@ -2,14 +2,20 @@ var data = require("../../api/data.js");
 
 const backgroundAudioManager = wx.getBackgroundAudioManager()
 
+var plugin = requirePlugin("WechatSI")
+let manager = plugin.getRecordRecognitionManager()
 
 Component({
   data: {
     list: [],
     value: '',
-    toView: ''
+    toView: '',
+    isInput: true,
+    status: false,
+    statusWord: '按住说话'
   },
   attached: function() {
+    this.initRecord()
     // 可以在这里发起网络请求获取插件的数据
 
     // console.log("here am im");
@@ -41,33 +47,87 @@ Component({
        value: ''
      }, () => {
        that.scrollToNew()
+       that.getData(e.detail.value)
      })
+   },
+   scrollToNew: function () {
+     this.setData({
+       toView: "fake"
+     })
+   },
+   start: function (e) {
+     manager.start({ duration: 60000, lang: "zh_CN" })
+     this.setData({
+       status: true,
+       statusWord: '松开结束'
+     })
+   },
+   end: function (e) {
+     manager.stop()
+     this.setData({
+       status: false,
+       statusWord: '按住说话'
+     })
+   },
+   initRecord: function () {
+     var that = this
+     manager.onStart = (res) => {
+       console.log('onStart')
+     }
+     manager.onStop = (res) => {
+       console.log(res.result)
+       let list = this.data.list
+       let newData = {
+         type: '1',
+         text: res.result
+       }
+       list.push(newData)
+       this.setData({
+         list: list,
+         value: ''
+       }, () => {
+         console.log(that.data.list)
+         that.getData(res.result)
+         that.scrollToNew()
+       })
+     }
+     manager.onRecognize = (res) => {
+       console.log(res.result)
+     }
+     // 识别错误事件
+     manager.onError = (res) => {
+       console.log('onError')
+       console.log(res)
+     }
+   },
+   getData: function (val) {
      const authtoken = wx.getStorageSync("authtoken") || "";
      if (!authtoken) {
        data.auth();
      } else {
        data.send({
-         query: e.detail.value,
+         query: val,
          success: res => {
            console.log("reeee", res);
+           var list = this.data.list
+           var that = this
            var answer_type = res.answer_type
            var newData = {}
            if (answer_type === 'music') {
-              newData = {
-                type: 0,
-                answer_type: 'voice',
-                docs: res.msg
-              }
+             newData = {
+               type: 0,
+               answer_type: 'voice',
+               docs: res.msg
+             }
              list.push(newData)
              this.setData({
                list: list,
                value: ''
              }, () => {
-               that.scrollToNew()
              })
            } else if (answer_type === 'news') {
              let msgData = {
-               ans_node_name : res.msg[0].ans_node_name,
+               ans_node_name: res.msg[0].ans_node_name,
                articles: res.msg[0].articles
              }
              newData = {
@@ -81,30 +141,34 @@ Component({
                value: ''
              }, () => {
                console.log(that.data.list)
-               that.scrollToNew()
              })
            } else {
-              newData = {
-                type: 0,
-                answer_type: 'text',
-                text: res.answer
-              }
-              list.push(newData)
-              this.setData({
-                list: list,
-                value: ''
-              }, () => {
-                that.scrollToNew()
-              })
-           }  
+             newData = {
+               type: 0,
+               answer_type: 'text',
+               text: res.answer
+             }
+             list.push(newData)
+             this.setData({
+               list: list,
+               value: ''
+             }, () => {
+             })
+           }
+           that.scrollToNew()
          }
        });
      }
    },
-   scrollToNew: function () {
+   voiceTap: function () {
      this.setData({
-       toView: "fake"
+       isInput: false
      })
    },
+   wordTap: function () {
+     this.setData({
+       isInput: true
+     })
+   }
  } 
 });
