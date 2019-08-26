@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "voiceCard": "../voiceCard/voiceCard"
+    "voiceCard": "../voiceCard/voiceCard",
+    "newsCard": "../newsCard/newsCard"
   }
 }

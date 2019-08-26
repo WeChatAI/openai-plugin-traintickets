@@ -65,6 +65,24 @@ Component({
              }, () => {
                that.scrollToNew()
              })
+           } else if (answer_type === 'news') {
+             let msgData = {
+               ans_node_name : res.msg[0].ans_node_name,
+               articles: res.msg[0].articles
+             }
+             newData = {
+               type: 0,
+               answer_type: 'news',
+               newsData: msgData
+             }
+             list.push(newData)
+             this.setData({
+               list: list,
+               value: ''
+             }, () => {
+               console.log(that.data.list)
+               that.scrollToNew()
+             })
            } else {
               newData = {
                 type: 0,

@@ -7,6 +7,7 @@
           {{item.text}}
         </view>
         <voiceCard wx:if="{{ item.answer_type == 'voice' }}" musicData="{{ item.docs }}"></voiceCard>
+        <newsCard wx:if="{{ item.answer_type == 'news' }}" newsData="{{item.newsData}}"></newsCard>
       </view>
       <view style="clear: both"></view>
     </view>
