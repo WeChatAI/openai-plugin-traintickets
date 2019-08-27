@@ -1,9 +1,4 @@
 /* pages/homeView/homeView.wxss */
-::-webkit-scrollbar{
-width: 0;
-height: 0;
-color: transparent;
-}
 
 .container {
   width: 100vw;
@@ -12,11 +7,16 @@ color: transparent;
 }
 .list-view {
   width: 100%;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 84px);
   padding: 0 20px;
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
 .right-view {
   float: right;
   margin: 10px 0;
@@ -49,17 +49,36 @@ color: transparent;
 }
 .content {
   width: 100%;
-  height: 64px;
-  background-color: #ccc;
+  height: 84px;
+  background-color: #eeeeee;
 }
 .input {
   float: left;
-  height: 34px;
-  width: calc(100vw - 20px);
-  margin: 5px 0px 5px 10px;
+  height: 44px;
+  width: calc(100vw - 68px);
+  margin: 7px 0px 7px 0px;
   padding-left: 10px;
   box-sizing: border-box;
   font-size: 15px;
   border-radius: 5px; 
   background-color: #ffffff;
+}
+.microphoneT {
+  float: left;
+  width: 44px;
+  height: 44px;
+  padding: 7px;
+}
+.holdDownSay {
+  float: left;
+  height: 44px;
+  width: calc(100vw - 64px);
+  margin: 5px 0px 5px 0px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  border-radius: 5px; 
+  background-color: #ffffff;
+  text-align: center;
+  line-height: 44px;
 }
