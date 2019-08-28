@@ -1,7 +1,4 @@
-var app = require("../../api/music.js");
-
-const backgroundAudioManager = wx.getBackgroundAudioManager()
-
+const app = require("../../api/music.js");
 Component({
   properties: {
     voiceData: Object,
@@ -20,15 +17,26 @@ Component({
 
   lifetimes: {
     ready: function () {
+      console.log(this.properties.musicData)
       var musicData = this.properties.musicData
       var swiperMusicAry = []
       app.data.voiceData = musicData[0]
       app.play((isPlaying) => {
         this.setData({
-          isPlaying: isPlaying
+          isPlaying: true
         })
       })
       this.getBackgroundAudio()
+
+      for (var i = 0; i < musicData.length; i++) {
+        if (i % 4 == 0) {
+          swiperMusicAry.push(true)
+        }
+      }
+      this.setData({
+        // 更新属性和数据的方法\更新页面数据的方法
+        swiperMusicAry: swiperMusicAry
+      })
     },
   },
   methods: {
@@ -96,15 +104,16 @@ Component({
       })
     },
     playItemSong: function (e) {
-      console.log(e.currentTarget.dataset.id)
       var that = this
       var musicData = this.data.musicData
       var index = e.currentTarget.dataset.id
       var chooseId = this.data.chooseId
       if (chooseId == index && this.data.isPlaying) {
         //暂停
-        that.setData({
-          isPlaying: false
+        app.pause((isPlaying) => {
+          this.setData({
+            isPlaying: false
+          })
         })
       } else {
         //播放
@@ -133,20 +142,6 @@ Component({
         })
       }
       this.getBackgroundAudio()
-    },
-    sliderChange: function(e) {
-      // this.setData({
-      //   sliderchange: true
-      // })
-      // app.data.playTime = e.detail.value
-      // app.seek(() => {
-      //   setTimeout(() => {
-      //     this.setData({
-      //       percent: e.detail.value,
-      //       sliderchange: false
-      //     })
-      //   }, 1000)
-      // })
     }
   }
 })

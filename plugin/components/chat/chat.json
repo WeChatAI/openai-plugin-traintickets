@@ -2,6 +2,8 @@
   "component": true,
   "usingComponents": {
     "voiceCard": "../voiceCard/voiceCard",
-    "newsCard": "../newsCard/newsCard"
+    "newsCard": "../newsCard/newsCard",
+    "swiperContent": "../swiperContent/swiperContent",
+    "weatherCard": "../weatherCard/weatherCard"
   }
 }

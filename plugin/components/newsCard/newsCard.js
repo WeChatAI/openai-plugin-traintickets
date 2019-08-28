@@ -8,7 +8,7 @@ Component({
   data: {
     newsData: [],
     picWidth: 0,
-    picHeight: 0,
+    picHeight: 200,
     newsPubtime: 0, //发布时间
     playTime: '00:00',
     endTime: '00:00',
@@ -20,14 +20,14 @@ Component({
   lifetimes: {
     ready: function () {
       var that = this
-      var newsData = this.properties.newsData
-      newsData.articles.forEach(function (v, i) {
-        newsData.articles[i].pubtime = that.getDateDiff(newsData.articles[i].pubtime)
-        that.setData({
-          // 更新属性和数据的方法\更新页面数据的方法
-          newsData: newsData
-        })
-      })
+      // var newsData = this.properties.newsData
+      // newsData.docs.forEach(function (v, i) {
+      //   newsData.docs[i].pubtime = that.getDateDiff(newsData.docs[i].pubtime)
+      //   that.setData({
+      //     // 更新属性和数据的方法\更新页面数据的方法
+      //     newsData: newsData
+      //   })
+      // })
       that.playNews()
     },
   },
@@ -66,14 +66,15 @@ Component({
     },
     playNews: function () {
       var that = this
-      var newsData = that.data.newsData
+      var newsData = that.properties.newsData
       var newsIndex = that.data.newsIndex
+      console.log(newsData)
       app.data.voiceData = {
-        song_name: newsData.articles[newsIndex].title,
+        name: newsData.docs[newsIndex].title,
         album_name: '',
-        singer_name: '',
-        singer_pic: newsData.articles[newsIndex].shortcut,
-        song_play_url: newsData.articles[newsIndex].voice_summary
+        author: '',
+        album_pic_url: newsData.docs[newsIndex].shortcut,
+        url: newsData.docs[newsIndex].voice_summary
       }
       app.play((isPlaying) => {
         this.setData({
@@ -91,7 +92,7 @@ Component({
           playprogress: Math.floor(currentTime * 100 / duration)
         })
       }, () => {
-        if (that.data.newsIndex < that.data.newsData.articles.length - 1) {
+        if (that.data.newsIndex < that.data.newsData.docs.length - 1) {
           that.setData({
             newsIndex: ++that.data.newsIndex,
             playTime: '00:00',
@@ -165,6 +166,16 @@ Component({
         result = '刚刚';
       }
       return result;
-    }
+    },
+    // 查看更多
+    gotoWebView: function (e) {
+      var newsData = this.data.newsData.docs
+      var newsIndex = this.data.newsIndex
+      console.log(newsData[newsIndex].docid)
+      // wx.navigateTo({
+      //   url: '../webView/webView?url=https://new.qq.com/rain/a/' + newsData[newsIndex].docid,
+      // })
+      this.triggerEvent('gotoWebView', 'https://new.qq.com/rain/a/' + newsData[newsIndex].docid)
+    },
   }
 })
