@@ -217,6 +217,7 @@ Component({
    },
    // 启动语音
    inputVoiceStart: function () {
+     var that = this
      this.pauseVoice()
      let listData = this.data.listData
      var newData = {
@@ -227,6 +228,8 @@ Component({
      this.setData({
        listData: listData,
        recording: true
+     }, () => {
+       that.scrollToNew()
      })
      manager.start({ 'log': 'showmedetail' })
     //  if (!this.data.onStart && !this.data.isStartOk) {
@@ -323,7 +326,8 @@ Component({
          that.scrollToNew()
        } else {
          that.setData({
-           listData: [],
+           listData: this.data.listData,
+           recording: false,
            onStart: false
          })
        }
