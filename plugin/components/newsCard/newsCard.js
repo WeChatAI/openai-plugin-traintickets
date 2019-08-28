@@ -173,7 +173,7 @@ Component({
       var newsIndex = this.data.newsIndex
       console.log(newsData[newsIndex].docid)
       // wx.navigateTo({
-      //   url: '../webView/webView?url=https://new.qq.com/rain/a/' + newsData[newsIndex].docid,
+      //   url: '../pages/webView/webView?url=https://new.qq.com/rain/a/' + newsData[newsIndex].docid,
       // })
       this.triggerEvent('gotoWebView', 'https://new.qq.com/rain/a/' + newsData[newsIndex].docid)
     },

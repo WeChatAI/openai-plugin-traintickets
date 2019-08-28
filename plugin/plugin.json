@@ -3,7 +3,7 @@
     "chat": "components/chat/chat"
   },
   "pages": {
-    "chat-page": "pages/chat-page"
+    "chat-page": "pages/chat-page/chat-page"
   },
   "main": "index.js"
 }
