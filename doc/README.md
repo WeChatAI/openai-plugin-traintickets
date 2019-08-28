@@ -22,7 +22,7 @@
     "pages/index/index"
   ],
   "plugins": {
-    "myPlugin": {
+    "chatbot": {
       "version": "1.0",
       "provider": "wx8c631f7e9f2465e1"
     }
@@ -45,7 +45,7 @@
 
 ```js
 
-var plugin = requirePlugin("myPlugin");
+var plugin = requirePlugin("chatbot");
 
 App({
   onLaunch: function() {
@@ -165,7 +165,7 @@ plugin.send({
 
 ```js
 
-var plugin = requirePlugin("myPlugin");
+var plugin = requirePlugin("chatbot");
 
 App({
   onLaunch: function() {
@@ -181,28 +181,15 @@ App({
 ```
 
 
-### 3.2 在组件内进行配置
+### 3.2 在小程序页面内配置导航链接
 
-在页面的配置json内进行配置，比如 `pages/index/index.json`
-
-
-```
-{
-  "usingComponents": {
-    "chat": "plugin://myPlugin/chat"
-  }
-}
-```
-
-
-### 3.3. 使用组件
 
 在页面中直接使用组件标签，比如 `pages/index/index.wxml`
 
 
 ```html
-<view>
-    <chat />
-</view>
+<navigator id="nav" url="plugin://chatbot/chat-page">
+    我要对话
+</navigator>
 
 ```
