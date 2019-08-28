@@ -1,1 +1,7 @@
-<chat bind:gotoComWebView="gotoPagesWebView"/>
+<!-- <chat bind:gotoComWebView="gotoPagesWebView"/> -->
+
+
+
+<navigator id="nav" url="plugin://myPlugin/chat-page">
+  Go to Plugin page
+</navigator>
