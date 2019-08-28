@@ -1,7 +1,23 @@
-#nav {
+/* #nav {
   text-align: center;
   background: #eeeeee;
   margin: 1em;
   padding: 1em;
   border-radius: 5px;
+} */
+.openAssistant {
+  margin-top: 50px;
+  width: 100ww;
+  text-align: center;
+}
+.radius {
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #eeeeee;
+}
+.words {
+  line-height: 50px;
+  margin-top: 20px;
 }
