@@ -1,13 +1,13 @@
 <view class="container">
   <!-- <view class="answer">{{newsData.ans_node_name}}</view> -->
   <view style='clear: both;'></view>
-  <swiper indicator-dots disabled class="scroll-wrap" style="width: {{picWidth}}px;height: {{picHeight + 200}}px" vertical='true' duration="100" bindanimationfinish='changeNewsData' current='{{newsIndex}}'>
+  <swiper indicator-dots disabled class="scroll-wrap" style="width: {{picWidth}}px;height: {{picHeight + 200}}px"  duration="100" bindanimationfinish='changeNewsData' current='{{newsIndex}}'>
     <block class="newsView" wx:for="{{newsData.docs}}" wx:key='item' style="width: {{picWidth}}px;height: {{picHeight + 160}}px">
       <swiper-item>
         <view class="news-header" style="width: {{picWidth}}px;height: {{picHeight}}px;position: relative;">
           <image class="newsImg" src="{{item.shortcut}}" bindload="setPicSize" style="width: {{picWidth}}px;height: {{picHeight}}px">
           </image>
-          <!-- <image class="play-btn" src="{{isPlaying?'pause.png':'start.png'}}" style="position: absolute; left: {{picWidth/2-13.5}}px; top: {{picHeight/2-17.5}}px; width: 27px; height: 35px;" bindtap="playControl"></image> -->
+          <image class="play-btn" src="{{isPlaying?'pause.png':'start.png'}}" style="position: absolute; left: {{picWidth/2-13.5}}px; top: {{picHeight/2-17.5}}px; width: 27px; height: 35px;" bindtap="playControl"></image>
           <view class="news-sliderBg">
           
           </view>

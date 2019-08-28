@@ -202,18 +202,18 @@ Component({
    },
    // 返回首页
    showGuideView: function () {
-     this.pauseVoice()
-     this.setData({
-       isShowGuideView: true,
-       isShowSwiperView: false
-     })
-     this.animation
-       .translate(0, 0)
-       .scale(1)
-       .step()
-     this.setData({
-       animation: this.animation.export(),
-     })
+    //  this.pauseVoice()
+    //  this.setData({
+    //    isShowGuideView: true,
+    //    isShowSwiperView: false
+    //  })
+    //  this.animation
+    //    .translate(0, 0)
+    //    .scale(1)
+    //    .step()
+    //  this.setData({
+    //    animation: this.animation.export(),
+    //  })
    },
    // 启动语音
    inputVoiceStart: function () {
