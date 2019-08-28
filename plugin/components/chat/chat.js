@@ -218,7 +218,14 @@ Component({
    // 启动语音
    inputVoiceStart: function () {
      this.pauseVoice()
+     let listData = this.data.listData
+     var newData = {
+       content: '',
+       data_type: 1
+     }
+     listData.push(newData)
      this.setData({
+       listData: listData,
        recording: true
      })
      manager.start({ 'log': 'showmedetail' })
@@ -250,6 +257,8 @@ Component({
    },
    // 停止语音
    inputVoiceEnd: function () {
+     let listData = this.data.listData
+     listData.splice(listData.length -1, 1)
      manager.stop()
     //  if (!this.data.recording) {
     //    console.log('record has finished')
@@ -296,7 +305,7 @@ Component({
            content: text,
            data_type: 1
          }
-
+          // listData[listData.length -1] = newData
          listData.push(newData)
          that.setData({
            isShowGuideView: false,
@@ -320,23 +329,23 @@ Component({
        }
      }
      manager.onRecognize = (res) => {
-       var text = res.result
-       if (text != '') {
-         text = text.substr(0, text.length - 1)
-         text = text.replace(/，/g, '')
-         let listData = this.data.listData
-         var newData = {
-           content: text,
-           data_type: 1
-         }
+      //  var text = res.result
+      //  if (text != '') {
+      //    text = text.substr(0, text.length - 1)
+      //    text = text.replace(/，/g, '')
+      //    let listData = this.data.listData
+      //    var newData = {
+      //      content: text,
+      //      data_type: 1
+      //    }
 
-         listData[0] = newData
-         this.setData({
-           recordText: text,
-           listData: listData,
-           recording: true
-         })
-       }
+      //    listData[0] = newData
+      //    this.setData({
+      //      recordText: text,
+      //      listData: listData,
+      //      recording: true
+      //    })
+      //  }
      }
 
      // 识别错误事件
