@@ -193,3 +193,25 @@ App({
 </navigator>
 
 ```
+
+或
+
+```html
+<view class="openAssistant" bindtap="bindtapOpen">
+  <view class="radius"></view>
+ <view class="words">打开语义助手</view>
+</view>
+```
+
+然后在`pages/index/index.js` 内实现 `bindtapOpen`
+
+```js
+ bindtapOpen:function (e) {
+    wx:wx.navigateTo({
+      url: 'plugin://myPlugin/chat-page',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  }
+```
