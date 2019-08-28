@@ -2,11 +2,11 @@
   <view class='music-container'>
     <view class='music-play-view'>
       <view class='music-pic-view'>
-        <image class='music-singerImg' src='{{musicData[chooseId].pic_url}}'></image>
+        <image class='music-singerImg' src='{{musicData[chooseId].album_pic_url}}'></image>
       </view>
       <view class='music-play-contentView'>
-        <view class='music-songName'>{{musicData[chooseId].song_name}}</view>
-        <view class='music-singerName'>{{musicData[chooseId].singer_name}}</view>
+        <view class='music-songName'>{{musicData[chooseId].name}}</view>
+        <view class='music-singerName'>{{musicData[chooseId].author}}</view>
       </view>
       <view class='music-play-btn' bindtap='playSong'>
         <image class='music-playBtnImg' src="{{isPlaying?'musicpause.png':'musicplay.png'}}"></image>
@@ -15,7 +15,7 @@
     <slider class='music-slider' block-size="12" value="{{percent}}" backgroundColor="#F8F8F8" activeColor="#57BD6A" bindchange="sliderChange" />
     <view class='music-slider-time'>{{currentTime}}/{{duration}}</view>
 
-    <!-- <swiper class='swiper-music-view' circular indicator-dots current="{{nowMusicCurrent}}" indicator-color="#e7e7e7" indicator-active-color="#898989" bindchange="musicCurrentChange">
+    <swiper class='swiper-music-view' circular indicator-dots current="{{nowMusicCurrent}}" indicator-color="#e7e7e7" indicator-active-color="#898989" bindchange="musicCurrentChange">
       <block wx:for-items="{{swiperMusicAry}}" wx:key="swiperItem">
         <swiper-item>
           <view class="music-list-view" wx:for-items="{{musicData}}" wx:for-item="musicItem" wx:key="musicItem" wx:if="{{(nowMusicCurrent*4-1)<index && index<(nowMusicCurrent+1)*4}}">
@@ -24,8 +24,8 @@
                 <image class='music-playImg' src='playImg.png' wx:if="{{chooseId == index}}"></image>
                 <view class="music-number" wx:if="{{chooseId != index}}">0{{index+1}}</view>
               </view>
-              <view class="{{chooseId == index?'music-item-songNameSele':'music-item-songName'}}">{{musicItem.song_name}}</view>
-              <view class='music-item-singerName'>{{musicItem.singer_name}}</view>
+              <view class="{{chooseId == index?'music-item-songNameSele':'music-item-songName'}}">{{musicItem.name}}</view>
+              <view class='music-item-singerName'>{{musicItem.author}}</view>
               <view class='music-item-playBtn' bindtap='playItemSong' data-id='{{index}}'>
                 <image class='music-item-playBtnImg' src="{{chooseId == index&&isPlaying?'musicItempause.png':'musicItemplay.png'}}"></image>
               </view>
@@ -33,6 +33,6 @@
           </view>
         </swiper-item>
       </block>
-    </swiper> -->
+    </swiper>
   </view>
 </view>

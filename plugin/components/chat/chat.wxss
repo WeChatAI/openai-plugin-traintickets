@@ -1,23 +1,28 @@
-/* pages/homeView/homeView.wxss */
-
 .container {
-  width: 100vw;
-  height: 100vh;
   background-color: #f6f6f6;
+  height: 100vh;
 }
-.list-view {
-  width: 100%;
-  height: calc(100vh - 84px);
+.scroll-wrap{
+  height: calc(100vh - 185px);
+  width: 100vw;
+  overflow: hidden;
+}
+.unit-view{
   padding: 0 20px;
+  width: 100%;
   box-sizing: border-box;
 }
-
-::-webkit-scrollbar{
-width: 0;
-height: 0;
-color: transparent;
+.recordingView{
+  float: right;
+  margin: 10px 0;
+  padding: 16px 20px;
+  background-color: #0BBB09;
+  width: 41px;
+  height: 16px;
+  border-radius: 24px;
+  border-top-right-radius: 2px;
 }
-.right-view {
+.rightView{
   float: right;
   margin: 10px 0;
   padding: 13px 20px;
@@ -26,59 +31,173 @@ color: transparent;
   border-radius: 24px;
   border-top-right-radius: 2px;
   max-width: calc(96vw - 120px);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 22px;
   overflow:hidden; word-wrap:break-word;
   text-align: justify;
 }
-
-.left-view {
+.leftView{
   float: left;
   margin: 10px 0;
   padding: 13px 20px;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #fff;
+  color: #000;
   border-radius: 24px;
   border-top-left-radius: 2px;
   max-width: calc(96vw - 120px);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 22px;
-  overflow:hidden; 
-  word-wrap:break-word;
+  overflow:hidden; word-wrap:break-word;
   text-align: justify;
+  box-shadow:0px 2px 4px rgba(212,212,212,0.5);
 }
-.content {
+.text::after{
   width: 100%;
-  height: 84px;
-  background-color: #eeeeee;
+  display: inline-block;
+  content: '';
 }
-.input {
-  float: left;
-  height: 44px;
-  width: calc(100vw - 68px);
-  margin: 7px 0px 7px 0px;
-  padding-left: 10px;
-  box-sizing: border-box;
+/* --------------------------------底部按钮-------------------------------- */
+.bottom-operate-view {
+  width: 100%;
+  height: 145px;
+  background-color: #f6f6f6;
+}
+.list-btn {
+  position: absolute;
+  left: calc(25vw - 40px);
+  bottom: 51px;
+  width: 40px;
+  height: 40px;
+  border-radius:50%;
+  background-color: #f6f6f6
+}
+.voice-btn {
+  position: absolute;
+  left: calc(50vw - 41px);
+  bottom: 30px;
+  width: 82px;
+  height: 82px;
+  border-radius:50%;
+  background-color: #46C844;
+}
+.input-btn {
+  position: absolute;
+  right: calc(25vw - 40px);
+  bottom: 51px;
+  width: 40px;
+  height: 40px;
+  border-radius:50%;
+  background-color: #f6f6f6
+}
+.list-btn-inputView {
+  position: absolute;
+  left: 30px;
+  bottom: 51px;
+  width: 40px;
+  height: 40px;
+  border-radius:50%;
+  background-color: #f6f6f6
+}
+.input-btn-inputView {
+  position: absolute;
+  right: 75px;
+  left: 75px;
+  bottom: 51px;
+  height: 40px;
+  background-color: #fff;
+  box-shadow:0px 8px 32px 3px rgba(212,212,212,0.19);
+  border-radius:40px;
+}
+.voice-btn-inputView {
+  position: absolute;
+  right: 30px;
+  bottom: 51px;
+  width: 40px;
+  height: 40px;
+  border-radius:50%;
+  background-color: #f6f6f6;
+}
+.voice-img {
+  margin-top: 20px;
+  margin-left: 26px;
+  width: 30px;
+  height: 42px;
+}
+.list-img {
+  width: 40px;
+  height: 40px;
+}
+.input-img {
+  width: 40px;
+  height: 40px;
+}
+.voice-img2 {
+  width: 40px;
+  height: 40px;
+}
+.input-view {
+  padding: 5px 10px;
   font-size: 15px;
-  border-radius: 5px; 
-  background-color: #ffffff;
+  height: 30px;
 }
-.microphoneT {
-  float: left;
-  width: 44px;
-  height: 44px;
-  padding: 7px;
+
+.cardView{
+  width: 100%;
 }
-.holdDownSay {
-  float: left;
-  height: 44px;
-  width: calc(100vw - 64px);
-  margin: 5px 0px 5px 0px;
-  padding-left: 10px;
+.swiperContentView {
+  height: 40px;
+}
+
+.swiperContent{
+  height: 40px;
+  position: absolute;
+  left: 15px;
+  bottom: 145px;
+  animation: lineAnimation 1s linear
+}
+
+@keyframes lineAnimation {
+  from
+    {transform: translate(100vw, 0)}
+  to
+    {transform: translate(0, 0)}
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+/* //浮动录音按钮 */
+.recordView{
+  position: absolute;
+  bottom: 50px;
+  right: 15px;
+}
+.recordImg{
+  float: right;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 100%;
+}
+.recordText{
+  float: right;
+  margin-right: 5px;
+  max-width: calc(100% - 45px);
+  line-height: 20px;
+  font-size:14px;
+  font-family:PingFangSC;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  padding: 10px 20px;
   box-sizing: border-box;
-  font-size: 15px;
-  border-radius: 5px; 
-  background-color: #ffffff;
-  text-align: center;
-  line-height: 44px;
+  background-color: #fff;
+  border-radius: 40px;
+  display: -webkit-box ;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3; 
 }

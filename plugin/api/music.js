@@ -10,17 +10,14 @@ var data = {
 
 //播放
 function play (callback) {
-  console.log(this.data)
-  console.log(backgroundAudioManager.src)
-  console.log(this.data.voiceData.music_url)
-  if (backgroundAudioManager.src == this.data.voiceData.music_url) {
+  if (backgroundAudioManager.src == this.data.voiceData.url) {
     backgroundAudioManager.play()
   } else {
-    backgroundAudioManager.title = this.data.voiceData.song_name
+    backgroundAudioManager.title = this.data.voiceData.name
     backgroundAudioManager.epname = this.data.voiceData.album_name
-    backgroundAudioManager.singer = this.data.voiceData.singer_name
-    backgroundAudioManager.coverImgUrl = this.data.voiceData.pic_url
-    backgroundAudioManager.src = this.data.voiceData.music_url
+    backgroundAudioManager.singer = this.data.voiceData.author
+    backgroundAudioManager.coverImgUrl = this.data.voiceData.album_pic_url
+    backgroundAudioManager.src = this.data.voiceData.url
   }
   backgroundAudioManager.onPlay(() => {
     this.data.isPlaying = true
