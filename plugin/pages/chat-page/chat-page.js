@@ -190,7 +190,9 @@ Component({
            }
            if (this.properties.common) {
              console.log(this.properties.common)
-             this.triggerEvent('queryCallback', { query: val, data: res })
+             setTimeout(() => {
+               this.triggerEvent('queryCallback', { query: val, data: res })
+             }, 1000)
            }
          }
        });
@@ -210,7 +212,8 @@ Component({
    },
    // 返回首页
    showGuideView: function () {
-    //  this.pauseVoice()
+     this.pauseVoice()
+     this.triggerEvent('backHome')
     //  this.setData({
     //    isShowGuideView: true,
     //    isShowSwiperView: false

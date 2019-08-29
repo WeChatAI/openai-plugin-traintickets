@@ -1,1 +1,0 @@
-<chat-page common="true" bind:queryCallback="getQueryCallback" />

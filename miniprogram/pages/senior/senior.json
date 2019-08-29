@@ -1,5 +1,0 @@
-{
-  "usingComponents": {
-    "chat-page": "plugin://myPlugin/chat-page"
-  }
-}

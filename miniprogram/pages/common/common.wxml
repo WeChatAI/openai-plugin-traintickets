@@ -1,0 +1,1 @@
+<chat-page common="{{common}}" bind:queryCallback="getQueryCallback" bind:backHome = "goBackHome" />
