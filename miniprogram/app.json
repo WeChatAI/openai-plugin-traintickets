@@ -1,6 +1,9 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/newsPage/newsPage",
+    "pages/ordinary/ordinary",
+    "pages/senior/senior"
   ],
   "plugins": {
     "myPlugin": {

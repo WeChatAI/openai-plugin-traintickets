@@ -1,10 +1,14 @@
-<!-- <chat-page bind:gotoComWebView="gotoPagesWebView"/> -->
-
-<!-- <navigator id="nav" class="navigator" url="plugin://myPlugin/chat-page">
-  打开语音助手
-</navigator> -->
-
-<view class="openAssistant" bindtap="bindtapOpen">
-  <view class="radius"></view>
- <view class="words">打开语义助手</view>
+<view class="openAssistant" >
+  <view class="ordinary" bindtap="bindtapOpenOrdinary">
+    <view class="radius">
+      <image src="../../images/logo.png" class="logo"></image> 
+    </view>
+    <view class="words" style="text-align: center;">普通语音助手</view>
+  </view>
+  <view class="senior" bindtap="bindtapOpenSenior">
+    <view class="radius">
+      <image src="../../images/logo.png" class="logo"></image> 
+    </view>
+    <view class="words" style="text-align: center;">高级语音助手</view>
+  </view>
 </view>

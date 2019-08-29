@@ -95,13 +95,21 @@ Component({
         if (that.data.newsIndex < that.data.newsData.docs.length - 1) {
           that.setData({
             newsIndex: ++that.data.newsIndex,
-            playTime: '00:00',
-            endTime: '00:00',
+            playTime: '0:00',
+            endTime: '0:00',
           })
           that.playNews()
         }
         console.log(that.data.newsIndex)
-      })
+        }, () => {
+          setTimeout(function () {
+            that.setData({
+              isPlaying: false,
+              playTime: '0:00',
+              endTime: '0:00',
+            })
+          }, 400)
+        })
     },
     _formatTime: function (interval) {
       interval = interval | 0

@@ -33,7 +33,7 @@ function pause (callback) {
     typeof callback == 'function' && callback(this.data.isPlaying)
   })
 }
-function getBackgroundAudio (callback, callback2) {
+function getBackgroundAudio (callback, callback2, callback3) {
   backgroundAudioManager.onTimeUpdate(() => {
     const currentTime = backgroundAudioManager.currentTime
     const duration = backgroundAudioManager.duration
@@ -54,6 +54,10 @@ function getBackgroundAudio (callback, callback2) {
     //播放面板点击上一曲事件
     this.bindTapNext()
     typeof callback2 == 'function' && callback2()
+  })
+  backgroundAudioManager.onStop(() => {
+    //背景音频停止事件
+    typeof callback2 == 'function' && callback3()
   })
 }
 //跳转到指定位置
