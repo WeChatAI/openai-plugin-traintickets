@@ -180,38 +180,37 @@ App({
 
 ```
 
+### 3.2 在组件内进行配置
 
-### 3.2 在小程序页面内配置导航链接
+在页面的配置json内进行配置，比如 `pages/index/index.json`
 
-
-在页面中直接使用组件标签，比如 `pages/index/index.wxml`
-
-
-```html
-<navigator id="nav" url="plugin://chatbot/chat-page">
-    我要对话
-</navigator>
 
 ```
-
-或
-
-```html
-<view class="openAssistant" bindtap="bindtapOpen">
-  <view class="radius"></view>
- <view class="words">打开语义助手</view>
-</view>
-```
-
-然后在`pages/index/index.js` 内实现 `bindtapOpen`
-
-```js
- bindtapOpen:function (e) {
-    wx:wx.navigateTo({
-      url: 'plugin://myPlugin/chat-page',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
+{
+  "usingComponents": {
+    "chat": "plugin://chatbot/chat"
   }
+}
+```
+
+
+### 3.3. 使用组件: 一般用法
+
+
+```html
+<view>
+    <chat />
+</view>
+
+```
+
+
+### 3.4 使用组件：高级用法
+
+
+```html
+<view>
+    <chat bind/>
+</view>
+
 ```
