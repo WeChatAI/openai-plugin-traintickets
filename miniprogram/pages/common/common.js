@@ -4,14 +4,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    listData: [],
+    common: false
+  },
+
+  getQueryCallback: function (e) {
+    var listData = this.data.listData
+    listData.push(e.detail)
+    if (listData.length === 10) {
+      wx.navigateTo({
+        url: '../newsPage/newsPage',
+      })
+    }
+  },
+  goBackHome: function () {
+    wx.navigateBack({
+      delta: 1
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    console.log(options)
+    const common = this.data.common
+    if (options.data === 'senior') {
+      this.setData({
+        common: true
+      })
+    } else {
+      this.setData({
+        common: false
+      })
+    }
   },
 
   /**

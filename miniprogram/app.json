@@ -2,8 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/newsPage/newsPage",
-    "pages/ordinary/ordinary",
-    "pages/senior/senior"
+    "pages/common/common"
   ],
   "plugins": {
     "myPlugin": {

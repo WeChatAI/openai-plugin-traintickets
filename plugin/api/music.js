@@ -57,7 +57,7 @@ function getBackgroundAudio (callback, callback2, callback3) {
   })
   backgroundAudioManager.onStop(() => {
     //背景音频停止事件
-    typeof callback2 == 'function' && callback3()
+    typeof callback3 == 'function' && callback3()
   })
 }
 //跳转到指定位置

@@ -5,7 +5,7 @@ Page({
   onLoad: function() {},
   bindtapOpenSenior:function (e) {
     wx.navigateTo({
-      url: '../senior/senior',
+      url: '../common/common?data=senior',
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
@@ -13,7 +13,7 @@ Page({
   },
   bindtapOpenOrdinary: function (e) {
     wx.navigateTo({
-      url: '../ordinary/ordinary',
+      url: '../common/common?data=ordinary',
       success: function (res) { },
       fail: function (res) { },
       complete: function (res) { },
