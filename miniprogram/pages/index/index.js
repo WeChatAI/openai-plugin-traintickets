@@ -1,16 +1,22 @@
 Page({
-  onLoad: function() {},
-  gotoPagesWebView: function (e) {
-    wx.navigateTo({
-        url: '../webView/webView?url=' + e.detail,
-      })
+  data: {
+    listData: []
   },
-  bindtapOpen:function (e) {
-    wx:wx.navigateTo({
-      url: 'plugin://myPlugin/chat-page',
+  onLoad: function() {},
+  bindtapOpenSenior:function (e) {
+    wx.navigateTo({
+      url: '../senior/senior',
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
     })
-  }
+  },
+  bindtapOpenOrdinary: function (e) {
+    wx.navigateTo({
+      url: '../ordinary/ordinary',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
 });

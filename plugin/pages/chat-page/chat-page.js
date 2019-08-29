@@ -6,6 +6,9 @@ var plugin = requirePlugin("WechatSI")
 let manager = plugin.getRecordRecognitionManager()
 
 Component({
+  properties: {
+    common: Boolean
+  },  
   data: {
     listData: [],
     value: '',
@@ -70,6 +73,7 @@ Component({
          query: val,
          success: res => {
            console.log("reeee", res);
+           
            var listData = this.data.listData
            var that = this
            var answer_type = res.answer_type
@@ -183,6 +187,10 @@ Component({
              }, () => {
                that.scrollToNew()
              })
+           }
+           if (this.properties.common) {
+             console.log(this.properties.common)
+             this.triggerEvent('queryCallback', { query: val, data: res })
            }
          }
        });

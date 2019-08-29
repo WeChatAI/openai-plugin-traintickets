@@ -16,7 +16,7 @@ Component({
   },
 
   lifetimes: {
-    ready: function () {
+    ready: function() {
       console.log(this.properties.musicData)
       var musicData = this.properties.musicData
       var swiperMusicAry = []
@@ -41,7 +41,7 @@ Component({
   },
   methods: {
     //获取背景资源
-    getBackgroundAudio: function () {
+    getBackgroundAudio: function() {
       app.getBackgroundAudio((currentTime, duration) => {
         if (!this.data.sliderchange) {
           this.setData({
@@ -54,7 +54,7 @@ Component({
         var that = this
         if (that.data.chooseId < that.data.musicData.length - 1) {
           var chooseId = ++that.data.chooseId
-          var nowMusicCurrent = parseInt(that.data.chooseId / 4) 
+          var nowMusicCurrent = parseInt(that.data.chooseId / 4)
           // if (that.data.chooseId / 4 < 1) {
           //   nowMusicCurrent = 0
           // } else if (that.data.chooseId / 4 >= 1 && that.data.chooseId / 4 < 2){
@@ -79,9 +79,17 @@ Component({
             that.getBackgroundAudio()
           })
         }
+      }, () => {
+        var that = this
+        setTimeout(function() {
+          that.setData({
+            isPlaying: false,
+            currentTime: '0:00'
+          })
+        }, 400)
       })
     },
-    _formatTime: function (interval) {
+    _formatTime: function(interval) {
       interval = interval | 0
       const minute = interval / 60 | 0
       const second = this._pad(interval % 60)
@@ -97,13 +105,13 @@ Component({
       return num
     },
     //事件响应函数
-    musicCurrentChange: function (e) {
+    musicCurrentChange: function(e) {
       var that = this
       that.setData({
         nowMusicCurrent: e.detail.current
       })
     },
-    playItemSong: function (e) {
+    playItemSong: function(e) {
       var that = this
       var musicData = this.data.musicData
       var index = e.currentTarget.dataset.id
@@ -127,7 +135,7 @@ Component({
         that.getBackgroundAudio()
       }
     },
-    playSong: function () {
+    playSong: function() {
       if (this.data.isPlaying) {
         app.pause((isPlaying) => {
           this.setData({
