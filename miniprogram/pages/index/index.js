@@ -1,6 +1,5 @@
 Page({
   data: {
-    listData: []
   },
   onLoad: function() {},
   bindtapOpenSenior:function (e) {

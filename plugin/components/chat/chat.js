@@ -70,6 +70,7 @@ Component({
          query: val,
          success: res => {
            console.log("reeee", res);
+           
            var listData = this.data.listData
            var that = this
            var answer_type = res.answer_type
@@ -184,6 +185,9 @@ Component({
                that.scrollToNew()
              })
            }
+           setTimeout(() => {
+             this.triggerEvent('queryCallback', { query: val, data: res })
+           }, 1000)
          }
        });
      }
@@ -202,7 +206,8 @@ Component({
    },
    // 返回首页
    showGuideView: function () {
-    //  this.pauseVoice()
+     this.pauseVoice()
+     this.triggerEvent('backHome')
     //  this.setData({
     //    isShowGuideView: true,
     //    isShowSwiperView: false

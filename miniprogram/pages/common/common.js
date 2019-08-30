@@ -5,7 +5,7 @@ Page({
    */
   data: {
     listData: [],
-    common: false
+    simple: false
   },
 
   getQueryCallback: function (e) {
@@ -28,14 +28,14 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    const common = this.data.common
+    const simple = this.data.simple
     if (options.data === 'senior') {
       this.setData({
-        common: true
+        simple: true
       })
     } else {
       this.setData({
-        common: false
+        simple: false
       })
     }
   },

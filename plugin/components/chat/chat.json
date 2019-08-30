@@ -1,9 +1,9 @@
 {
   "component": true,
   "usingComponents": {
-    "voiceCard": "../voiceCard/voiceCard",
-    "newsCard": "../newsCard/newsCard",
-    "swiperContent": "../swiperContent/swiperContent",
-    "weatherCard": "../weatherCard/weatherCard"
+    "voiceCard": "../../components/voiceCard/voiceCard",
+    "newsCard": "../../components/newsCard/newsCard",
+    "swiperContent": "../../components/swiperContent/swiperContent",
+    "weatherCard": "../../components/weatherCard/weatherCard"
   }
 }
