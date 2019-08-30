@@ -1,1 +1,6 @@
-<chat-page common="{{common}}" bind:queryCallback="getQueryCallback" bind:backHome = "goBackHome" />
+<view wx:if="{{ simple }}">
+  <chat  bind:queryCallback="getQueryCallback"  bind:backHome = "goBackHome"/>
+</view>
+<view wx:else>
+  <chat bind:backHome = "goBackHome"/>
+</view>
