@@ -6,7 +6,7 @@ App({
   onLaunch: function() {
     console.log(plugin, "+++");
     plugin.init({
-      appid: "PWj9xdSdGU3PPnqUUrTf7uGgQ9Jvn7",
+      appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja",
       success: () => {
         plugin.send({
           query: "你好",
