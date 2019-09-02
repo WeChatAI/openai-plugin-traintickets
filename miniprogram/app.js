@@ -7,7 +7,6 @@ App({
     console.log(plugin, "+++");
     plugin.init({
       appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja",
-      guideList: ["你好"],
       success: () => {
         plugin.send({
           query: "你好",
