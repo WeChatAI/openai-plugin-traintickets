@@ -291,4 +291,4 @@ options 说明:
 appid|string||微信对话开发平台申请的插件id
 success|function||初始化成功的回调
 fail|function||初始化失败的回调
-guideList|Array||初始化失败的回调
+guideList|Array|[ "北京天气怎么样", "上海今天有雨吗", "中午吃啥呢", "你知道如何排解压力吗", "法国国土面积是多少", "世界最高峰" ] | 自定义提示语
