@@ -1,0 +1,29 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  padding:0 10px;
+  box-sizing: border-box;
+}
+.example {
+  margin-top: 10px;
+}
+.example_info { 
+  margin-top: 10px;
+}
+.example_para{
+  margin-bottom: 15px;
+}
+.sendInput {
+  width: calc(100-20px);
+  height: 30px;
+  margin: 30px 0px;
+  border-radius: 10px;
+  background-color: #f6f6f6;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.answer {
+  padding-left: 10px;
+  box-sizing: border-box;
+}

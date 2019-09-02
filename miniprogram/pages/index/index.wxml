@@ -1,14 +1,12 @@
 <view class="openAssistant" >
   <view class="ordinary" bindtap="bindtapOpenOrdinary">
-    <view class="radius">
-      <image src="../../images/logo.png" class="logo"></image> 
-    </view>
-    <view class="words" style="text-align: center;">普通语音助手</view>
+    <view class="words" >无UI语音助手</view>
+    <view class="info">无UI，调用Api即可使用</view>
+    <view class="go">进入</view>
   </view>
   <view class="senior" bindtap="bindtapOpenSenior">
-    <view class="radius">
-      <image src="../../images/logo.png" class="logo"></image> 
-    </view>
-    <view class="words" style="text-align: center;">高级语音助手</view>
+    <view class="words" >有UI语音助手</view>
+    <view class="info">有UI，直接使用标记组件，无需接口调用</view>
+    <view class="go">进入</view>
   </view>
 </view>

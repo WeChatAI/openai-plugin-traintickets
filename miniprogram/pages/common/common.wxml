@@ -1,6 +1,13 @@
-<view wx:if="{{ simple }}">
-  <chat  bind:queryCallback="getQueryCallback"  bind:backHome = "goBackHome"/>
-</view>
-<view wx:else>
-  <chat bind:backHome = "goBackHome"/>
+<view class="container">
+  <view class="example">
+    <view class="example_title">例如:</view>
+    <view class="example_info">
+      <view class="example_para">北京的天气</view>
+      <view >北京今天晴，温度17到34度，当前温度33度，空气质量良，有些热了，记得多喝水。</view>
+    </view>
+  </view>
+  <view>
+    <input class="sendInput" value="{{question}}" bindconfirm="send" bindfocus="focus"></input>
+    <view class="answer">{{answer}}</view>
+  </view>
 </view>

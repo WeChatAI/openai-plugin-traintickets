@@ -1,22 +1,36 @@
 .openAssistant {
-  margin-top: 50px;
-  width: 100ww;
-  text-align: center;
-}
-.radius {
-  margin: auto;
-  width: 80px;
-  height: 80px;
+  margin: 50px 0;
+  width: 100vw;
+  height: calc(100vh - 100px);
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.ordinary {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.logo {
-  display: block;
-  width: 80px;
-  height: 80px;
-}
 .words {
-  line-height: 50px;
-  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.info {
+  font-size: 12px;
+  margin: 10px 0 20px 0;
+}
+.senior {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.go {
+  font-size: 12px;
+  text-align: center;
+  width: 80px;
+  line-height: 30px;
+  background-color: #f6f6f6;
+  border-radius: 15px;
 }

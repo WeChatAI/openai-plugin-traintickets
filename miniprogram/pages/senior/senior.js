@@ -1,35 +1,24 @@
-var plugin = requirePlugin("myPlugin");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    answer: '',
-    question: ''
+    listData: []
   },
-  send:function(e) {
-    console.log(e.detail.value)
-    plugin.send({
-      query: e.detail.value,
-      success: (res) => {
-        this.setData({
-          answer: res.answer
-        })
-      }
-    })
+  getQueryCallback: function (e) {
+    console.log(e.detail)
   },
-  focus:function (e) {
-    this.setData({
-      answer: '',
-      question: ''
+  goBackHome: function () {
+    wx.navigateBack({
+      delta: 1
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    
   },
 
   /**
