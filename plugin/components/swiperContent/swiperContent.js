@@ -1,17 +1,12 @@
+var data = require("../../api/data.js");
+
 Component({
   properties: {
     // guideType: String
   },
   data: {
     guideIndex: -1,
-    guideList: [
-      "北京天气怎么样",
-      "上海今天有雨吗",
-      "中午吃啥呢",
-      "你知道如何排解压力吗",
-      "法国国土面积是多少",
-      "世界最高峰"
-    ],
+    guideList: data.getData().guideList,
     noContinuousClick: false //禁止连续点击
   },
 

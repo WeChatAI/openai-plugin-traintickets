@@ -1,21 +1,20 @@
 Page({
-  data: {
-  },
+  data: {},
   onLoad: function() {},
-  bindtapOpenSenior:function (e) {
+  bindtapOpenSenior: function(e) {
     wx.navigateTo({
-      url: '../common/common?data=senior',
+      url: "../common/common?data=senior",
       success: function(res) {},
       fail: function(res) {},
-      complete: function(res) {},
-    })
+      complete: function(res) {}
+    });
   },
-  bindtapOpenOrdinary: function (e) {
+  bindtapOpenOrdinary: function(e) {
     wx.navigateTo({
-      url: '../common/common?data=ordinary',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
+      url: "../common/common?data=ordinary",
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {}
+    });
+  }
 });

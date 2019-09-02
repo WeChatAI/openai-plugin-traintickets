@@ -1,17 +1,30 @@
-var data = "init data";
+var data = {
+  guideList: [
+    "北京天气怎么样",
+    "上海今天有雨吗",
+    "中午吃啥呢",
+    "你知道如何排解压力吗",
+    "法国国土面积是多少",
+    "世界最高峰"
+  ]
+};
 
 function getData() {
   return data;
 }
 
-function setData(value) {
-  data = value;
+function setData(key, value) {
+  data[key] = value;
 }
 
 const domain = "https://openai.weixin.qq.com";
 // const domain = "http://localhost:13563";
 
-function auth({ appid, success, fail }) {
+function auth({ appid, success, fail, guideList }) {
+  if (guideList) {
+    setData("guideList", guideList);
+  }
+
   wx.request({
     url: domain + "/auth/miniprogram/plugin/openai",
     method: "post",
@@ -19,14 +32,12 @@ function auth({ appid, success, fail }) {
       appid
     },
     success: res => {
-      console.log(res.data);
       wx.setStorageSync("authtoken", res.data.authtoken);
       if (success) {
         success.call(null);
       }
     },
     fail: error => {
-      console.log(error);
       if (fail) {
         fail.call(null, error);
       }

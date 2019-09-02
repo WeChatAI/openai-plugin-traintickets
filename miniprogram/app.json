@@ -14,8 +14,6 @@
       "provider": "wx069ba97219f66d99"
     }
   },
-  "requiredBackgroundModes": [
-    "audio"
-  ],
+  "requiredBackgroundModes": ["audio"],
   "sitemapLocation": "sitemap.json"
 }
