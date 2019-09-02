@@ -2,8 +2,8 @@ var data = require("../../api/data.js");
 var music = require("../../api/music.js");
 var util = require("../../api/util.js");
 
-var plugin = requirePlugin("WechatSI");
-let manager = plugin.getRecordRecognitionManager();
+//var plugin = requirePlugin("WechatSI");
+let manager = {};
 
 Component({
   data: {
@@ -320,6 +320,10 @@ Component({
     // 启动语音初始化
     initRecord: function() {
       var that = this;
+
+      var plugin = requirePlugin("WechatSI");
+      manager = plugin.getRecordRecognitionManager();
+
       manager.onStart = res => {
         console.log("onStart");
 
