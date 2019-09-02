@@ -1,0 +1,1 @@
+<chat bind:queryCallback="getQueryCallback" bind:backHome = "goBackHome"/>

@@ -1,6 +1,5 @@
-<view wx:if="{{ simple }}">
-  <chat  bind:queryCallback="getQueryCallback"  bind:backHome = "goBackHome"/>
+<view class="container">
+  <input class="sendInput" value="{{question}}" bindconfirm="send" bindfocus="focus"></input>
+  <view class="answer" >{{answer}}</view>
 </view>
-<view wx:else>
-  <chat bind:backHome = "goBackHome"/>
-</view>
+
