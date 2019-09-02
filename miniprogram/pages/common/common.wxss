@@ -4,7 +4,15 @@
   padding:0 10px;
   box-sizing: border-box;
 }
-
+.example {
+  margin-top: 10px;
+}
+.example_info { 
+  margin-top: 10px;
+}
+.example_para{
+  margin-bottom: 15px;
+}
 .sendInput {
   width: calc(100-20px);
   height: 30px;
