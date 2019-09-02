@@ -221,7 +221,7 @@ App({
 ```
 
 
-### 3.3. 使用组件: 一般用法
+### 3.3. 使用组件
 
 
 ```html
@@ -241,7 +241,7 @@ App({
 ```
 
 
-### 3.4 使用组件：高级用法
+#### 3.3.1. 每次返回结构后，触发`queryCallback`
 
 
 ```html
@@ -269,3 +269,26 @@ App({
     })
   }
 ```
+
+
+### 4.1 初始化配置项
+
+```
+    plugin.init({
+      ...options
+      appid: "PWj9xdSdGU3PPnqUUrTf7uGgQ9Jvn7",
+      success: () => {},
+      fail: error => {}
+      guideList: ["您好"]
+    });
+```
+
+
+options 说明:
+
+字段|类型|默认值|描述
+--|--|--|--
+appid|string||微信对话开发平台申请的插件id
+success|function||初始化成功的回调
+fail|function||初始化失败的回调
+guideList|Array||初始化失败的回调
