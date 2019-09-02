@@ -10,6 +10,11 @@ Component({
     noContinuousClick: false //禁止连续点击
   },
 
+  attached: function() {
+    this.setData({
+      guideList: data.getData().guideList
+    });
+  },
   lifetimes: {
     ready: function() {
       this.setData({
