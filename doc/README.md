@@ -34,6 +34,33 @@
 }
 ```
 
+> 当使用有UI版本时，需要额外使用WechatSI组件, 只使用接口不使用UI时，使用上面的配置就可以了
+
+```
+{
+  "pages": [
+    "pages/index/index",
+    "pages/newsPage/newsPage",
+    "pages/common/common"
+  ],
+  "plugins": {
+    "myPlugin": {
+      "version": "dev",
+      "provider": "wx8c631f7e9f2465e1"
+    },
+    "WechatSI": {
+      "version": "0.3.1",
+      "provider": "wx069ba97219f66d99"
+    }
+  },
+  "requiredBackgroundModes": ["audio"],
+  "sitemapLocation": "sitemap.json"
+}
+
+```
+
+
+
 
 ## 2. 无UI, 直接调用插件接口
 
@@ -199,7 +226,7 @@ App({
 
 ```html
 <view>
-    <chat bind:backHome = "goBackHome" />
+    <chat bind:backHome="goBackHome" />
 </view>
 
 ```
@@ -219,7 +246,7 @@ App({
 
 ```html
 <view>
-    <chat bind:queryCallback="getQueryCallback" bind:backHome = "goBackHome" />
+    <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" />
 </view>
 
 ```

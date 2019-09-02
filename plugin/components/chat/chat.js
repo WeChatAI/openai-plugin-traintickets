@@ -321,8 +321,12 @@ Component({
     initRecord: function() {
       var that = this;
 
-      var plugin = requirePlugin("WechatSI");
-      manager = plugin.getRecordRecognitionManager();
+      try {
+        var plugin = requirePlugin("WechatSI");
+        manager = plugin.getRecordRecognitionManager();
+      } catch (e) {
+        return e;
+      }
 
       manager.onStart = res => {
         console.log("onStart");
