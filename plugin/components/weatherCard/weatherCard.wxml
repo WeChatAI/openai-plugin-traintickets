@@ -25,7 +25,7 @@
       <view class='other-time'>{{item.week}}</view>
       <view class='other-weather-txt'>晴</view>
       <view class='other-icon'>
-        <image class='other-weather-icon' src='../../images/weather/{{item.picture}}.png'></image>
+        <image class='other-weather-icon' src='https://openai.weixin.qq.com/mmspraiweb_node/dist/static/weather/{{item.picture}}.png'></image>
       </view>
       <view class='other-temperature'>17° / 35°</view>
     </view>
