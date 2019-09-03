@@ -9,7 +9,7 @@
     </view>
     <view class='midd-view'>
       <view class='weather-icon'>
-        <image class='weather-iconImg' src="../../images/weather/{{weatherImg}}.png"></image>
+        <image class='weather-iconImg' src="https://openai.weixin.qq.com/mmspraiweb_node/dist/static/weather/{{weatherImg}}.png"></image>
       </view>
       
       <view class='weather-txt'>{{weatherName}}</view>
