@@ -444,9 +444,6 @@ Component({
           that.getData(newData.content);
         }
       );
-    },
-    gotoComWebView: function(e) {
-      this.triggerEvent("gotoComWebView", e.detail);
     }
   }
 });

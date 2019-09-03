@@ -2,7 +2,5 @@
   "publicComponents": {
     "chat": "components/chat/chat"
   },
-  "pages": {
-  },
   "main": "index.js"
 }

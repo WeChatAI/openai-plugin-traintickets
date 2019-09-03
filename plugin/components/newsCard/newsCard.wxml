@@ -9,7 +9,7 @@
           </image>
           <image class="play-btn" src="{{isPlaying?'pause.png':'start.png'}}" style="position: absolute; left: {{picWidth/2-13.5}}px; top: {{picHeight/2-17.5}}px; width: 27px; height: 35px;" bindtap="playControl"></image>
           <view class="news-sliderBg">
-          
+
           </view>
           <!-- <progress class='news-slider' percent="{{playprogress}}" stroke-width="4" backgroundColor="rgba(0,0,0, 0.1)" activeColor="#0BBB09"/> -->
           <!-- <view class='news-Time'>{{playTime}}/{{endTime}}</view> -->
@@ -23,7 +23,6 @@
       </swiper-item>
     </block>
   </swiper>
-  <!-- <view class="newsWeb-btn" bindtap="gotoWebView">查看原文</view> -->
   <!-- <view class="newsFrom-btn" bindtap="toOtherApp">
     <image class="news-logo" src="newsLogo.png"></image>
     <view class="news-name">海豚智音小程序</view>

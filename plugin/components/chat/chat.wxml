@@ -18,7 +18,7 @@
         <changeBgPicCard class="cardView" wx:if="{{item.cardType == 'changeBgImg'}}" bind:changBgPic="changPageBgPic"></changeBgPicCard>
         <weatherCard class="cardView" wx:if="{{item.cardType == 'weather'}}" weatherDis="{{item}}"></weatherCard>
         <livingExpensesCard class="cardView" wx:if="{{item.cardType == 'expenses'}}"></livingExpensesCard>
-        <newsCard  class="cardView newsCard" wx:if="{{item.cardType == 'news'}}" newsData="{{item}}" bind:gotoWebView="gotoComWebView"></newsCard>
+        <newsCard  class="cardView newsCard" wx:if="{{item.cardType == 'news'}}" newsData="{{item}}"></newsCard>
         <voiceCard class="voiceCard" wx:if="{{item.cardType == 'voice'}}" voiceData="{{item}}" musicData="{{item.docs}}"></voiceCard>
         <!-- <voiceNewCard class="cardView" wx:if="{{item.cardType == 'voice'}}" voiceData="{{item}}" musicData="{{item.docs}}"></voiceNewCard> -->
         <view style='clear: both;'></view>
