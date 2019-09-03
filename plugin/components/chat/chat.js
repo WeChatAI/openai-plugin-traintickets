@@ -437,7 +437,7 @@ Component({
           listData: listData
         },
         () => {
-          that.scrollToNew()
+          that.scrollToNew();
           this.setData({
             isShowSwiperView: true
           });

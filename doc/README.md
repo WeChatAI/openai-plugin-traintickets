@@ -14,7 +14,10 @@
 
 ## 1.插件配置
 
-在小程序 `app.json` 中 配置, 小程序插件id是 `wx8c631f7e9f2465e1`, 当前稳定版本是1.0
+
+> 请在 [微信对话开放平台](https://openai.weixin.qq.com) 上获得插件所需appid
+
+在小程序 `app.json` 中 配置, 小程序插件id是 `wx8c631f7e9f2465e1`, 当前稳定版本是1.0.1
 
 ```js
 {
@@ -23,7 +26,7 @@
   ],
   "plugins": {
     "chatbot": {
-      "version": "1.0",
+      "version": "1.0.1",
       "provider": "wx8c631f7e9f2465e1"
     }
   },
@@ -65,8 +68,11 @@
 ## 2. 无UI, 直接调用插件接口
 
 
-请在 openai.weixin.qq.com 上获得插件所需appid
 
+> 代码中所示appid：`P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja` 为示例账户，正式产品内使用请到
+> [微信对话开放平台](https://openai.weixin.qq.com) 申请账户，然后到
+> [设置-服务接入](https://openai.weixin.qq.com/) 查看对应的小程序ID
+> ![a](./appid.png)
 
 ### 2.1 组件初始化
 
@@ -78,9 +84,9 @@ App({
   onLaunch: function() {
     console.log(plugin, "+++");
     plugin.init({
-      appid: "PWj9xdSdGU3PPnqUUrTf7uGgQ9Jvn7",
-      success: () => {},
-      fail: error => {}
+        appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja", //小程序示例账户，仅供学习和参考
+        success: () => {},
+        fail: error => {}
     });
   }
 });
@@ -184,7 +190,11 @@ plugin.send({
 ## 3.有UI，直接使用标记组件，无需接口调用
 
 
-请在 openai.weixin.qq.com 上获得插件所需appid
+> 代码中所示appid：`P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja` 为示例账户，正式产品内使用请到
+> [微信对话开放平台](https://openai.weixin.qq.com) 申请账户，然后到
+> [设置-服务接入](https://openai.weixin.qq.com/) 查看对应的小程序ID
+> ![a](./appid.png)
+
 
 
 ### 3.1 组件初始化
@@ -198,7 +208,7 @@ App({
   onLaunch: function() {
     console.log(plugin, "+++");
     plugin.init({
-      appid: "PWj9xdSdGU3PPnqUUrTf7uGgQ9Jvn7",
+      appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja", //小程序示例账户，仅供学习和参考
       success: () => {},
       fail: error => {}
     });
