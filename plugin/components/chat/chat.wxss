@@ -1,9 +1,9 @@
 .container {
   background-color: #f6f6f6;
-  height: 100vh;
+  height: 100%;
 }
 .scroll-wrap{
-  height: calc(100vh - 185px);
+  height: calc(100% - 185px);
   width: 100vw;
   overflow: hidden;
 }
@@ -58,6 +58,8 @@
 }
 /* --------------------------------底部按钮-------------------------------- */
 .bottom-operate-view {
+  position: absolute;
+  bottom: 0;
   width: 100%;
   height: 145px;
   background-color: #f6f6f6;
@@ -146,13 +148,13 @@
 }
 .swiperContentView {
   height: 40px;
+  position: absolute;
+  left: 15px;
+  bottom: 145px;
 }
 
 .swiperContent{
   height: 40px;
-  position: absolute;
-  left: 15px;
-  bottom: 145px;
   animation: lineAnimation 1s linear
 }
 

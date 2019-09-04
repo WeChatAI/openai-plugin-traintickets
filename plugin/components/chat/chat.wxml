@@ -2,7 +2,7 @@
 <view class="container">
   <!-- <statusBar style="width: 100%;height: {{statusBarHeight*2 + 20}}px;"></statusBar> -->
   <!-- <guideNewView wx:if="{{isShowGuideView}}" bind:chooseGuide="choosePageGuide" animation="{{animation}}" weatherData="{{kweatherData}}" newsData="{{knewsData}}" voiceData="{{kvoiceData}}"></guideNewView> -->
-  <scroll-view class="scroll-wrap" scroll-y scroll-into-view="translate-{{toView}}">
+  <scroll-view class="scroll-wrap"  scroll-y scroll-into-view="translate-{{toView}}">
     <view class="unit-view" wx:for="{{listData}}" wx:key="item">
       <view wx:if="{{item.data_type}}">
         <image class="recordingView" src="../../images/recording.gif" wx:if="{{recording && item.content == ''}}"></image>

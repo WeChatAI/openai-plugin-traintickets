@@ -1,1 +1,14 @@
-<chat bind:queryCallback="getQueryCallback" bind:backHome = "goBackHome"/>
+<!-- 自定义导航 -->
+<!-- <view style="height: 100vh;overflow: hidden;">
+  <view class='nav-wrap' style='height: {{200}}px;'>
+    <view class='nav-title' style='line-height: {{100}}px;'>小微Demo</view>
+  </view>
+  <view style="height: calc(100vh - 200px)">
+    <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" />
+  </view>
+</view> -->
+
+<!-- 系统默认导航 -->
+<view style="height: 100vh">
+ <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" />
+</view>
