@@ -1,6 +1,6 @@
 .guideScroll {
   width: calc(100vw - 30px);
-  height: 40px;
+  height: 80px;
   white-space: nowrap;
 }
 

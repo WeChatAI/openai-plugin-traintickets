@@ -14,7 +14,8 @@ Component({
     onStart: false, //是否启动录音
     inputing: false, //值为true时表示正在输入
     recordText: "嗯，你说..", //录音文字
-    isShowSwiperView: true
+    isShowSwiperView: true,
+    controlSwiper: true
   },
   attached: function() {
     this.initRecord();
@@ -220,6 +221,9 @@ Component({
             setTimeout(() => {
               this.triggerEvent("queryCallback", { query: val, data: res });
             }, 1000);
+            this.setData({
+              controlSwiper: true
+            })
           }
         });
       }
@@ -302,7 +306,7 @@ Component({
     inputVoiceEnd: function() {
       let listData = this.data.listData;
       listData.splice(listData.length - 1, 1);
-      manager.stop();
+      // manager.stop();
       //  if (!this.data.recording) {
       //    console.log('record has finished')
       //    return
@@ -384,7 +388,8 @@ Component({
         }
       };
       manager.onRecognize = res => {
-        //  var text = res.result
+         var text = res.result
+         console.log( '---------------------------------------' + text)
         //  if (text != '') {
         //    text = text.substr(0, text.length - 1)
         //    text = text.replace(/，/g, '')
@@ -439,7 +444,8 @@ Component({
         () => {
           that.scrollToNew();
           this.setData({
-            isShowSwiperView: true
+            isShowSwiperView: true,
+            controlSwiper: false
           });
           that.getData(newData.content);
         }
