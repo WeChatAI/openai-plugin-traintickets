@@ -2,6 +2,7 @@ var data = require("../../api/data.js");
 
 Component({
   properties: {
+    controlSwiper: Boolean
     // guideType: String
   },
   data: {
@@ -25,24 +26,15 @@ Component({
   methods: {
     //事件响应函数
     chooseGuide: function(e) {
-      if (!this.data.noContinuousClick) {
-        this.setData(
-          {
-            noContinuousClick: true,
+      if (this.properties.controlSwiper) {
+        this.setData({
             guideIndex: e.currentTarget.dataset.id
           },
           () => {
             var that = this;
-            setTimeout(function() {
-              that.setData({
-                guideIndex: -1
-              });
-            }, 100);
-            setTimeout(function() {
-              that.setData({
-                noContinuousClick: false
-              });
-            }, 2000);
+            that.setData({
+              guideIndex: -1
+            })
           }
         );
         this.triggerEvent("chooseGuide", e.currentTarget.dataset.content);
