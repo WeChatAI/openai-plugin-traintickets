@@ -264,13 +264,7 @@ App({
 ```js
   // getQueryCallback回调 返回query与结果
   getQueryCallback: function (e) {
-    var listData = this.data.listData
-    listData.push(e.detail)
-    if (listData.length === 10) {
-      wx.navigateTo({
-        url: '../newsPage/newsPage',
-      })
-    }
+    console.log(e.detail);
   },
   // goBackHome回调 返回上一级页面
   goBackHome: function () {
