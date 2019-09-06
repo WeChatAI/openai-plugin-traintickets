@@ -17,7 +17,7 @@
 
 > 请在 [微信对话开放平台](https://openai.weixin.qq.com) 上获得插件所需appid
 
-在小程序 `app.json` 中 配置, 小程序插件id是 `wx8c631f7e9f2465e1`, 当前稳定版本是1.0.1
+在小程序 `app.json` 中 配置, 小程序插件id是 `wx8c631f7e9f2465e1`, 当前稳定版本是1.0.4
 
 ```js
 {
@@ -26,7 +26,7 @@
   ],
   "plugins": {
     "chatbot": {
-      "version": "1.0.1",
+      "version": "1.0.4",
       "provider": "wx8c631f7e9f2465e1"
     }
   },
