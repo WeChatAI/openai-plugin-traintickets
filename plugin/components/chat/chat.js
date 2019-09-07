@@ -227,7 +227,7 @@ Component({
               controlSwiper: true
             });
 
-            if (answer_type === "text") {
+            if (answer_type === "text" && !/{[^}]*}/.test(res.answer)) {
               plugin.textToSpeech({
                 lang: "zh_CN",
                 tts: true,
