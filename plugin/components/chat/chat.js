@@ -1,9 +1,11 @@
 var data = require("../../api/data.js");
 var music = require("../../api/music.js");
 var util = require("../../api/util.js");
+const backgroundAudioManager = wx.getBackgroundAudioManager();
 
 //var plugin = requirePlugin("WechatSI");
 let manager = {};
+let plugin;
 
 Component({
   data: {
@@ -223,7 +225,25 @@ Component({
             }, 1000);
             this.setData({
               controlSwiper: true
-            })
+            });
+
+            if (answer_type === "text") {
+              plugin.textToSpeech({
+                lang: "zh_CN",
+                tts: true,
+                content: res.answer,
+                success: function(res) {
+                  console.log("succ tts", res.filename);
+                  wx.playBackgroundAudio({
+                    dataUrl: res.filename,
+                    title: res.answer
+                  });
+                },
+                fail: function(res) {
+                  console.log("fail tts", res);
+                }
+              });
+            }
           }
         });
       }
@@ -326,7 +346,7 @@ Component({
       var that = this;
 
       try {
-        var plugin = requirePlugin("WechatSI");
+        plugin = requirePlugin("WechatSI");
         manager = plugin.getRecordRecognitionManager();
       } catch (e) {
         return e;
@@ -388,8 +408,8 @@ Component({
         }
       };
       manager.onRecognize = res => {
-         var text = res.result
-         console.log( '---------------------------------------' + text)
+        var text = res.result;
+        console.log("---------------------------------------" + text);
         //  if (text != '') {
         //    text = text.substr(0, text.length - 1)
         //    text = text.replace(/，/g, '')
