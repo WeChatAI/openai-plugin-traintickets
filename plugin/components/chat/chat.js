@@ -2,6 +2,7 @@ var data = require("../../api/data.js");
 var music = require("../../api/music.js");
 var util = require("../../api/util.js");
 const backgroundAudioManager = wx.getBackgroundAudioManager();
+var app = require("../../api/music.js");
 
 //var plugin = requirePlugin("WechatSI");
 let manager = {};
@@ -237,11 +238,17 @@ Component({
                 tts: true,
                 content: res.answer,
                 success: function(res) {
-                  console.log("succ tts", res.filename);
+                  // console.log("succ tts", res.filename);
+
+                  app.data.voiceData = {};
+                  app.play(() => {});
                   wx.playBackgroundAudio({
                     dataUrl: res.filename,
                     title: res.answer
                   });
+
+                  // backgroundAudioManager.src = res.filename;
+                  // backgroundAudioManager.play();
                 },
                 fail: function(res) {
                   console.log("fail tts", res);
@@ -330,7 +337,7 @@ Component({
     inputVoiceEnd: function() {
       let listData = this.data.listData;
       listData.splice(listData.length - 1, 1);
-      // manager.stop();
+      manager.stop();
       //  if (!this.data.recording) {
       //    console.log('record has finished')
       //    return
