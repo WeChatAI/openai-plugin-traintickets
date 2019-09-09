@@ -235,7 +235,8 @@ App({
 
 
 ```html
-<view>
+<!-- chat组件外部必须指定容器, 并设置容器高度, 如果全屏展示, 设置高度为100vh, 如果是自定义导航栏, 设置高度为(100vh - 导航栏的高度)即可. -->
+<view style="height: 100vh">
     <chat bind:backHome="goBackHome" />
 </view>
 
@@ -255,7 +256,7 @@ App({
 
 
 ```html
-<view>
+<view style="height: 100vh">
     <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" />
 </view>
 

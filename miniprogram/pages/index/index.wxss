@@ -1,36 +1,108 @@
-.openAssistant {
-  margin: 50px 0;
+.container {
   width: 100vw;
-  height: calc(100vh - 100px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  height: 100vh;
+  padding: 0px 79px;
+  box-sizing:border-box;
 }
-.ordinary {
+.top {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  padding-top: 14vh;
+  box-sizing: border-box;
+  width: 100%;
+}
+.bottom {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
-.words {
-  font-size: 14px;
-  font-weight: 600;
+.empty {
+  width: 100%;
+  height: 0.5px;
+  opacity: 0.3;
+  background-color: #979797;
+  margin: 7.5vh 0; 
 }
-.info {
-  font-size: 12px;
-  margin: 10px 0 20px 0;
-}
-.senior {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.go {
-  font-size: 12px;
-  text-align: center;
+.homeLogo {
   width: 80px;
-  line-height: 30px;
-  background-color: #f6f6f6;
-  border-radius: 15px;
+  height: 80px;
+  display: block;
+}
+.title {
+  font-size: 18px;
+  color: #303133;
+  font-family:HYQiHei;
+  font-weight:600;
+  margin: 9px 0 5px;
+}
+.plugin {
+  font-size: 18px;
+  color: #606266;
+  font-family:HYQiHei;
+  font-weight:normal;
+}
+.bottom_UI {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.UI {
+  font-size:14px;
+  font-family:HYQiHei;
+  font-weight:600;
+  color:rgba(48,49,51,1);
+}
+.UI_info {
+  font-size:12px;
+  font-family:HYQiHei;
+  font-weight:normal;
+  color:rgba(96,98,102,1);
+  margin: 5px 0 18px;
+}
+.UI_go {
+  width:159px;
+  height:33px;
+  text-align: center;
+  line-height: 33px;
+  background:rgba(7,192,95,1);
+  border-radius:33px;
+  font-size:14px;
+  font-family:HYQiHei;
+  font-weight:normal;
+  color:rgba(255,255,255,1);
+}
+
+.bottom_noUI {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.noUI {
+  font-size:14px;
+  font-family:HYQiHei;
+  font-weight:600;
+  color:rgba(48,49,51,1);
+}
+.noUI_info {
+  font-size:12px;
+  font-family:HYQiHei;
+  font-weight:normal;
+  color:rgba(96,98,102,1);
+  margin: 5px 0 18px;
+}
+.noUI_go {
+  width:159px;
+  height:33px;
+  text-align: center;
+  line-height: 33px;
+  background:rgba(7,192,95,1);
+  border-radius:33px;
+  font-size:14px;
+  font-family:HYQiHei;
+  font-weight:normal;
+  color:rgba(255,255,255,1);
 }
