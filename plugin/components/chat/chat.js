@@ -2,7 +2,6 @@ var data = require("../../api/data.js");
 var music = require("../../api/music.js");
 var util = require("../../api/util.js");
 const backgroundAudioManager = wx.getBackgroundAudioManager();
-var app = require("../../api/music.js");
 
 //var plugin = requirePlugin("WechatSI");
 let manager = {};
@@ -237,18 +236,24 @@ Component({
                 lang: "zh_CN",
                 tts: true,
                 content: res.answer,
-                success: function(res) {
+                success: res => {
                   // console.log("succ tts", res.filename);
+                  // wx.playBackgroundAudio({
+                  //   dataUrl: res.filename,
+                  //   title: res.answer
+                  // });
 
-                  app.data.voiceData = {};
-                  app.play(() => {});
-                  wx.playBackgroundAudio({
-                    dataUrl: res.filename,
-                    title: res.answer
-                  });
+                  music.pause();
+                  music.getBackgroundAudio(
+                    () => {},
+                    () => {
+                      console.log("onEnded");
+                    }
+                  );
 
-                  // backgroundAudioManager.src = res.filename;
-                  // backgroundAudioManager.play();
+                  backgroundAudioManager.src = res.filename;
+                  backgroundAudioManager.title = "voic";
+                  backgroundAudioManager.play(() => {});
                 },
                 fail: function(res) {
                   console.log("fail tts", res);
