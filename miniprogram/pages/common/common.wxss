@@ -1,29 +1,64 @@
+/* pages/noui/noui.wxss */
 .container {
-  width: 100vw;
   height: 100vh;
-  padding:0 10px;
+  width: 100vw;
+}
+.top {
+  min-height: 27vh;
+  width: 100vw;
+  padding: 16px 13px 0;
+  box-sizing: border-box; 
+}
+.bottom {
+  padding: 11px 13px 0;
+  box-sizing: border-box; 
+  height: 73vh;
+  background-color:rgba(248,248,248,1);
+}
+.input {
+  padding-left: 5px;
   box-sizing: border-box;
+  width: calc(100vw - 26px);
+  height: 33px;
+  background:rgba(246,246,246,1);
+  border-radius:4px;
+  margin: auto;
+}
+.input-placeholder {
+  font-size:14px;
+  font-family:HYQiHei;
+  font-weight:normal;
+  color:rgba(192,196,204,1);
+}
+.content {
+  margin: 10px 0;
 }
 .example {
-  margin-top: 10px;
+  font-size:14px;
+  font-family:HYQiHei;
+  font-weight:normal;
+  color:rgba(96,98,102,1);
 }
-.example_info { 
-  margin-top: 10px;
+.query {
+  margin: 10px 0 5px;
 }
-.example_para{
-  margin-bottom: 15px;
-}
-.sendInput {
-  width: calc(100-20px);
-  height: 30px;
-  margin: 30px 0px;
-  border-radius: 10px;
-  background-color: #f6f6f6;
-  padding-left: 10px;
-  box-sizing: border-box;
-}
-
 .answer {
-  padding-left: 10px;
-  box-sizing: border-box;
+  margin-left: 25px;
+}
+.title {
+  font-size:22px;
+  font-family:HYQiHei;
+  font-weight:600;
+  color:rgba(48,49,51,1);
+}
+.rectangle {
+  width: 5px;
+  height: 5px;
+  display: block;
+  margin-right: 10px;
+}
+.bottom_exam {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
