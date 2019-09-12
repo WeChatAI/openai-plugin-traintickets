@@ -220,9 +220,8 @@ Component({
                 }
               );
             }
-            setTimeout(() => {
-              this.triggerEvent("queryCallback", { query: val, data: res });
-            }, 1000);
+            // 回调, 返回的数据
+            this.triggerEvent("queryCallback", { query: val, data: res });
             this.setData({
               controlSwiper: true
             });
