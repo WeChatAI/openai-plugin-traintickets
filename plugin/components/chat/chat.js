@@ -1,9 +1,11 @@
 var data = require("../../api/data.js");
 var music = require("../../api/music.js");
 var util = require("../../api/util.js");
+const backgroundAudioManager = wx.getBackgroundAudioManager();
 
 //var plugin = requirePlugin("WechatSI");
 let manager = {};
+let plugin;
 
 Component({
   data: {
@@ -202,22 +204,6 @@ Component({
                   );
                 }
               }
-            } else if (/{\"image":{/.test(res.answer)) {
-              newData = {
-                cardType: "image",
-                data: JSON.parse(res.answer).image
-              };
-
-              listData.push(newData);
-              this.setData(
-                {
-                  listData: listData,
-                  value: ""
-                },
-                () => {
-                  that.scrollToNew();
-                }
-              );
             } else {
               newData = {
                 msg_type: "text",
@@ -234,12 +220,45 @@ Component({
                 }
               );
             }
-            setTimeout(() => {
-              this.triggerEvent("queryCallback", { query: val, data: res });
-            }, 1000);
+            // 回调, 返回的数据
+            this.triggerEvent("queryCallback", { query: val, data: res });
             this.setData({
               controlSwiper: true
             });
+
+            if (
+              data.getData().textToSpeech &&
+              answer_type === "text" &&
+              !/{[^}]*}/.test(res.answer)
+            ) {
+              plugin.textToSpeech({
+                lang: "zh_CN",
+                tts: true,
+                content: res.answer,
+                success: res => {
+                  // console.log("succ tts", res.filename);
+                  // wx.playBackgroundAudio({
+                  //   dataUrl: res.filename,
+                  //   title: res.answer
+                  // });
+
+                  music.pause();
+                  music.getBackgroundAudio(
+                    () => {},
+                    () => {
+                      console.log("onEnded");
+                    }
+                  );
+
+                  backgroundAudioManager.src = res.filename;
+                  backgroundAudioManager.title = "voic";
+                  backgroundAudioManager.play(() => {});
+                },
+                fail: function(res) {
+                  console.log("fail tts", res);
+                }
+              });
+            }
           }
         });
       }
@@ -322,7 +341,7 @@ Component({
     inputVoiceEnd: function() {
       let listData = this.data.listData;
       listData.splice(listData.length - 1, 1);
-      // manager.stop();
+      manager.stop();
       //  if (!this.data.recording) {
       //    console.log('record has finished')
       //    return
@@ -342,7 +361,7 @@ Component({
       var that = this;
 
       try {
-        var plugin = requirePlugin("WechatSI");
+        plugin = requirePlugin("WechatSI");
         manager = plugin.getRecordRecognitionManager();
       } catch (e) {
         return e;

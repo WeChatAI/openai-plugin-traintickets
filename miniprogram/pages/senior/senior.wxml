@@ -1,9 +1,9 @@
 <!-- 自定义导航 -->
 <!-- <view style="height: 100vh;overflow: hidden;">
-  <view class='nav-wrap' style='height: {{200}}px;'>
-    <view class='nav-title' style='line-height: {{100}}px;'>小微Demo</view>
+  <view class='nav-wrap' style='height: 100px;'>
+    <view class='nav-title' style='line-height: 100px'>自定义导航</view>
   </view>
-  <view style="height: calc(100vh - 200px)">
+  <view style="height: calc(100vh - 100px)">
     <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" />
   </view>
 </view> -->

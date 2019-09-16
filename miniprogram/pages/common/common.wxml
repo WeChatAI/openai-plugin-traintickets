@@ -1,4 +1,4 @@
-<view class="container">
+<!-- <view class="container">
   <view class="example">
     <view class="example_title">例如:</view>
     <view class="example_info">
@@ -9,5 +9,21 @@
   <view>
     <input class="sendInput" value="{{question}}" bindconfirm="send" bindfocus="focus"></input>
     <view class="answer">{{answer}}</view>
+  </view>
+</view> -->
+
+<view class="container">
+  <view class="top">
+    <input class="input" value="{{question}}" bindconfirm="send" bindfocus="focus" placeholder="请您在此输入文字"></input>
+    <view class="content">{{answer}}</view>
+  </view>
+  <view class="bottom">
+    <view class="bottom_exam">
+      <image src="../../images/rectangle.png" class="rectangle"></image>
+      <view class="title">例如</view>
+    </view>
+    <view class="example query">Q：北京的天气</view>
+    <view class="example">A：北京今天晴，温度17到34度，当前温度33度，</view>
+    <view class="example answer">空气质量良，有些热了，记得多喝水</view>
   </view>
 </view>

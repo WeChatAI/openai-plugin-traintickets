@@ -17,7 +17,7 @@
 
 > 请在 [微信对话开放平台](https://openai.weixin.qq.com) 上获得插件所需appid
 
-在小程序 `app.json` 中 配置, 小程序插件id是 `wx8c631f7e9f2465e1`, 当前稳定版本是1.0.1
+在小程序 `app.json` 中 配置, 小程序插件id是 `wx8c631f7e9f2465e1`, 当前稳定版本是1.0.4
 
 ```js
 {
@@ -26,7 +26,7 @@
   ],
   "plugins": {
     "chatbot": {
-      "version": "1.0.1",
+      "version": "1.0.4",
       "provider": "wx8c631f7e9f2465e1"
     }
   },
@@ -234,8 +234,10 @@ App({
 ### 3.3. 使用组件
 
 
+> chat组件外部必须指定容器, 并设置容器高度, 如果全屏展示, 设置高度为100vh, 如果是自定义导航栏, 设置高度为(100vh - 导航栏的高度)即可.
+
 ```html
-<view>
+<view style="height: 100vh">
     <chat bind:backHome="goBackHome" />
 </view>
 
@@ -254,8 +256,10 @@ App({
 #### 3.3.1. 每次返回结构后，触发`queryCallback`
 
 
+> chat组件外部必须指定容器, 并设置容器高度, 如果全屏展示, 设置高度为100vh, 如果是自定义导航栏, 设置高度为(100vh - 导航栏的高度)即可.
+
 ```html
-<view>
+<view style="height: 100vh">
     <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" />
 </view>
 
@@ -282,8 +286,9 @@ App({
       ...options
       appid: "PWj9xdSdGU3PPnqUUrTf7uGgQ9Jvn7",
       success: () => {},
-      fail: error => {}
-      guideList: ["您好"]
+      fail: error => {},
+      guideList: ["您好"],
+      textToSpeech: true //默认为ture打开状态
     });
 ```
 
@@ -296,6 +301,7 @@ appid|string||微信对话开发平台申请的插件id
 success|function||初始化成功的回调
 fail|function||初始化失败的回调
 guideList|Array|[ "北京天气怎么样", "上海今天有雨吗", "中午吃啥呢", "你知道如何排解压力吗", "法国国土面积是多少", "世界最高峰" ] | 自定义提示语
+textToSpeech|Array|true|在有UI模式下，将文本回答朗读出来
 
 
 

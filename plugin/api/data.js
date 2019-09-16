@@ -6,7 +6,8 @@ var data = {
     "你知道如何排解压力吗",
     "法国国土面积是多少",
     "世界最高峰"
-  ]
+  ],
+  textToSpeech: true
 };
 
 function getData() {
@@ -20,9 +21,12 @@ function setData(key, value) {
 const domain = "https://openai.weixin.qq.com";
 // const domain = "http://localhost:13563";
 
-function auth({ appid, success, fail, guideList }) {
+function auth({ appid, success, fail, guideList, textToSpeech }) {
   if (guideList) {
     setData("guideList", guideList);
+  }
+  if (typeof textToSpeech !== "undefined") {
+    setData("textToSpeech", textToSpeech);
   }
 
   wx.request({

@@ -1,12 +1,20 @@
-<view class="openAssistant" >
-  <view class="ordinary" bindtap="bindtapOpenOrdinary">
-    <view class="words" >无UI语音助手</view>
-    <view class="info">无UI，调用Api即可使用</view>
-    <view class="go">进入</view>
+<view class="container">
+  <view class="top">
+    <image src="../../images/homeLogo.png" class="homeLogo"></image>
+    <view class="title">微信对话开放平台</view>
+    <view class="plugin">小程序</view>
   </view>
-  <view class="senior" bindtap="bindtapOpenSenior">
-    <view class="words" >有UI语音助手</view>
-    <view class="info">有UI，直接使用标记组件，无需接口调用</view>
-    <view class="go">进入</view>
+  <view class="empty"></view>
+  <view class="bottom">
+    <view class="bottom_UI">
+      <view class="UI">有UI语音助手</view>
+      <view class="UI_info">有UI，直接使用标记组件，无需接口调用</view>
+      <view class="UI_go" bindtap="bindtapOpenSenior">进入</view>
+    </view>
+    <view class="bottom_noUI">
+      <view class="noUI">无UI语音助手</view>
+      <view class="noUI_info">无UI，调用Api即可使用</view>
+      <view class="noUI_go" bindtap="bindtapOpenOrdinary">进入</view>
+    </view>
   </view>
 </view>

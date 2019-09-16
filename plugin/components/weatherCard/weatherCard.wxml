@@ -1,7 +1,7 @@
 <view class='container'>
   <view class="answer">{{weatherDis.answer}}</view>
   <view style='clear: both;'></view>
-  <view class="weather-view">
+  <!-- <view class="weather-view">
     <view class='top-view'>
     <view class='left-view'>
       <view class='nowTp-txt'>{{nowtp}}</view>
@@ -11,7 +11,7 @@
       <view class='weather-icon'>
         <image class='weather-iconImg' src="https://openai.weixin.qq.com/mmspraiweb_node/dist/static/weather/{{weatherImg}}.png"></image>
       </view>
-      
+
       <view class='weather-txt'>{{weatherName}}</view>
     </view>
     <view class='right-view'>
@@ -30,5 +30,5 @@
       <view class='other-temperature'>17° / 35°</view>
     </view>
   </view>
-  </view>
+  </view> -->
 </view>
