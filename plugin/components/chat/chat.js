@@ -202,6 +202,22 @@ Component({
                   );
                 }
               }
+            } else if (/{\"image":{/.test(res.answer)) {
+              newData = {
+                cardType: "image",
+                data: JSON.parse(res.answer).image
+              };
+
+              listData.push(newData);
+              this.setData(
+                {
+                  listData: listData,
+                  value: ""
+                },
+                () => {
+                  that.scrollToNew();
+                }
+              );
             } else {
               newData = {
                 msg_type: "text",
@@ -223,7 +239,7 @@ Component({
             }, 1000);
             this.setData({
               controlSwiper: true
-            })
+            });
           }
         });
       }
@@ -388,8 +404,8 @@ Component({
         }
       };
       manager.onRecognize = res => {
-         var text = res.result
-         console.log( '---------------------------------------' + text)
+        var text = res.result;
+        console.log("---------------------------------------" + text);
         //  if (text != '') {
         //    text = text.substr(0, text.length - 1)
         //    text = text.replace(/，/g, '')

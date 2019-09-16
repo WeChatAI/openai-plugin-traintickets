@@ -20,6 +20,8 @@
         <livingExpensesCard class="cardView" wx:if="{{item.cardType == 'expenses'}}"></livingExpensesCard>
         <newsCard  class="cardView newsCard" wx:if="{{item.cardType == 'news'}}" newsData="{{item}}"></newsCard>
         <voiceCard class="voiceCard" wx:if="{{item.cardType == 'voice'}}" voiceData="{{item}}" musicData="{{item.docs}}"></voiceCard>
+        <imageCard class="imageCard" wx:if="{{item.cardType == 'image'}}" voiceData="{{item.data}}"
+            imgData="{{item.data}}"></imageCard>
         <!-- <voiceNewCard class="cardView" wx:if="{{item.cardType == 'voice'}}" voiceData="{{item}}" musicData="{{item.docs}}"></voiceNewCard> -->
         <view style='clear: both;'></view>
       </view>

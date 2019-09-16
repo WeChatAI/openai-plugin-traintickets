@@ -4,6 +4,7 @@
     "voiceCard": "../../components/voiceCard/voiceCard",
     "newsCard": "../../components/newsCard/newsCard",
     "swiperContent": "../../components/swiperContent/swiperContent",
-    "weatherCard": "../../components/weatherCard/weatherCard"
+    "weatherCard": "../../components/weatherCard/weatherCard",
+    "imageCard": "../../components/imageCard/imageCard"
   }
 }
