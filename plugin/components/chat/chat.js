@@ -204,6 +204,22 @@ Component({
                   );
                 }
               }
+            } else if (/{\"image":{/.test(res.answer)) {
+              newData = {
+                cardType: "image",
+                data: JSON.parse(res.answer).image
+              };
+
+              listData.push(newData);
+              this.setData(
+                {
+                  listData: listData,
+                  value: ""
+                },
+                () => {
+                  that.scrollToNew();
+                }
+              );
             } else {
               newData = {
                 msg_type: "text",
