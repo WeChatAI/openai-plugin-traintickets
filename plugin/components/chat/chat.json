@@ -3,8 +3,17 @@
   "usingComponents": {
     "voiceCard": "../../components/voiceCard/voiceCard",
     "newsCard": "../../components/newsCard/newsCard",
-    "swiperContent": "../../components/swiperContent/swiperContent",
-    "weatherCard": "../../components/weatherCard/weatherCard",
-    "imageCard": "../../components/imageCard/imageCard"
+    "swiperContent": "../../components/swiperContent/swiperContent"
+  },
+  "componentGenerics": {
+    "textMessage": {
+      "default": "../../components/textCard/textCard"
+    },
+    "weatherMessage": {
+      "default": "../../components/weatherCard/weatherCard"
+    },
+    "imageMessage": {
+      "default": "../../components/imageCard/imageCard"
+    }
   }
 }

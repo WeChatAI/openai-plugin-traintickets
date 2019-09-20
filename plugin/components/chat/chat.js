@@ -75,8 +75,6 @@ Component({
         data.send({
           query: val,
           success: res => {
-            console.log("reeee", res);
-
             var listData = this.data.listData;
             var that = this;
             var answer_type = res.answer_type;
@@ -174,7 +172,8 @@ Component({
                     var newData = {
                       answer: res.answer,
                       cardType: "weather",
-                      docs: tempList
+                      docs: tempList,
+                      res: res
                     };
                     listData.push(newData);
                     that.setData(
@@ -207,7 +206,8 @@ Component({
             } else if (/{\"image":{/.test(res.answer)) {
               newData = {
                 cardType: "image",
-                data: JSON.parse(res.answer).image
+                data: JSON.parse(res.answer).image,
+                res: res
               };
 
               listData.push(newData);
@@ -223,7 +223,8 @@ Component({
             } else {
               newData = {
                 msg_type: "text",
-                content: res.answer
+                content: res.answer,
+                res: res
               };
               listData.push(newData);
               this.setData(
