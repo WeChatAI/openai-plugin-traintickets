@@ -1,0 +1,3 @@
+<view class='container'>
+   <image class="imgcard-img" src="{{imgData.url}}"></image>
+</view>
