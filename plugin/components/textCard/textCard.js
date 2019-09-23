@@ -3,9 +3,39 @@ Component({
     msg: Object
   },
 
-  data: {},
-  lifetimes: {
-    ready: function() {}
+  data: {
+    answer: "",
+    list: []
   },
-  methods: {}
+  lifetimes: {
+    ready: function() {
+      const clicklink = /<a.*href=["']weixin:\/\/bizmsgmenu.*msgmenucontent=([^&"'>]*).*msgmenuid=([^&"'>]*)["']>.*<\/a>/g;
+      const content = this.properties.msg.content;
+      console.log("content", content);
+
+      if (clicklink.test(content)) {
+        let answer = content.replace(clicklink, "");
+        let list = [];
+
+        content.replace(clicklink, (all, msgmenucontent, msgmenuid) => {
+          list.push({
+            all: all,
+            content: msgmenucontent,
+            id: msgmenuid
+          });
+        });
+
+        this.setData({
+          answer,
+          list
+        });
+      }
+      console.log(this.properties.msg, "---weather---");
+    }
+  },
+  methods: {
+    tap() {
+      console.log("tap");
+    }
+  }
 });
