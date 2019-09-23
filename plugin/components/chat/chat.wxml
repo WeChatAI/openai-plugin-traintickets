@@ -12,16 +12,21 @@
 
       <view wx:else>
         <textMessage wx:if="{{item.msg_type == 'text'}}" msg="{{item}}"></textMessage>
-        <currencyCard class="cardView" wx:if="{{item.cardType == 'currency'}}" cardPath="{{item.cardPath}}" bind:toSetting="toPageSetting"></currencyCard>
-        <setTextFont class="cardView" wx:if="{{item.cardType == 'fontSize'}}" bind:submitFontSize="submitPageFontSize"></setTextFont>
-        <setNearbyPerson class="cardView" wx:if="{{item.cardType == 'nearby'}}" isChecked="{{item.cardSwitch}}" bind:submitChecked="submitPageChecked"></setNearbyPerson>
-        <changeBgPicCard class="cardView" wx:if="{{item.cardType == 'changeBgImg'}}" bind:changBgPic="changPageBgPic"></changeBgPicCard>
-        <weatherMessage class="cardView" wx:if="{{item.cardType == 'weather'}}" msg="{{item}}"></weatherMessage>
-        <livingExpensesCard class="cardView" wx:if="{{item.cardType == 'expenses'}}"></livingExpensesCard>
-        <newsCard  class="cardView newsCard" wx:if="{{item.cardType == 'news'}}" newsData="{{item}}"></newsCard>
-        <voiceCard class="voiceCard" wx:if="{{item.cardType == 'voice'}}" voiceData="{{item}}" musicData="{{item.docs}}"></voiceCard>
-        <imageMessage wx:if="{{item.cardType == 'image'}}" imgData="{{item.data}}"></imageMessage>
+        <!-- <currencyCard class="cardView" wx:if="{{item.cardType == 'currency'}}" cardPath="{{item.cardPath}}"
+            bind:toSetting="toPageSetting"></currencyCard> -->
+        <!-- <setTextFont class="cardView" wx:if="{{item.cardType == 'fontSize'}}"
+            bind:submitFontSize="submitPageFontSize"></setTextFont> -->
+        <!-- <setNearbyPerson class="cardView" wx:if="{{item.cardType == 'nearby'}}" isChecked="{{item.cardSwitch}}"
+            bind:submitChecked="submitPageChecked"></setNearbyPerson> -->
+        <!-- <changeBgPicCard class="cardView" wx:if="{{item.cardType == 'changeBgImg'}}"
+            bind:changBgPic="changPageBgPic"></changeBgPicCard> -->
+        <!-- <livingExpensesCard class="cardView" wx:if="{{item.cardType == 'expenses'}}"></livingExpensesCard> -->
         <!-- <voiceNewCard class="cardView" wx:if="{{item.cardType == 'voice'}}" voiceData="{{item}}" musicData="{{item.docs}}"></voiceNewCard> -->
+        <weatherMessage class="cardView" wx:if="{{item.cardType == 'weather'}}" msg="{{item}}"></weatherMessage>
+        <newsMessage  class="cardView newsCard" wx:if="{{item.cardType == 'news'}}" msg="{{item}}"></newsMessage>
+        <musicMessage class="voiceCard" wx:if="{{item.cardType == 'voice'}}" msg="{{item}}"></musicMessage>
+        <imageMessage wx:if="{{item.cardType == 'image'}}" msg="{{item}}"></imageMessage>
+        <unsupportedMessage wx:if="{{item.cardType == 'unsupported'}}" msg="{{item}}"></unsupportedMessage>
         <view style='clear: both;'></view>
       </view>
     </view>

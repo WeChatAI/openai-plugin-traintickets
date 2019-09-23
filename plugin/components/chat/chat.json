@@ -14,6 +14,18 @@
     },
     "imageMessage": {
       "default": "../../components/imageCard/imageCard"
+    },
+    "musicMessage": {
+      "default": "../../components/voiceCard/voiceCard"
+    },
+    "newsMessage": {
+      "default": "../../components/newsCard/newsCard"
+    },
+    "unsupportedMessage": {
+      "default": "../../components/unsupportedCard/unsupportedCard"
+    },
+    "guideCard": {
+      "default": "../../components/swiperContent/swiperContent"
     }
   }
 }
