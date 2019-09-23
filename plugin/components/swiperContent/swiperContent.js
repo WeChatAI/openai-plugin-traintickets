@@ -2,19 +2,20 @@ var data = require("../../api/data.js");
 
 Component({
   properties: {
-    controlSwiper: Boolean
+    controlSwiper: Boolean,
+    guideList: Array
     // guideType: String
   },
   data: {
     guideIndex: -1,
-    guideList: data.getData().guideList,
+    // guideList: data.getData().guideList,
     noContinuousClick: false //禁止连续点击
   },
 
   attached: function() {
-    this.setData({
-      guideList: data.getData().guideList
-    });
+    // this.setData({
+    //   guideList: data.getData().guideList
+    // });
   },
   lifetimes: {
     ready: function() {
@@ -27,14 +28,15 @@ Component({
     //事件响应函数
     chooseGuide: function(e) {
       if (this.properties.controlSwiper) {
-        this.setData({
+        this.setData(
+          {
             guideIndex: e.currentTarget.dataset.id
           },
           () => {
             var that = this;
             that.setData({
               guideIndex: -1
-            })
+            });
           }
         );
         this.triggerEvent("chooseGuide", e.currentTarget.dataset.content);

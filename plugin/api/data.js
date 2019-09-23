@@ -83,9 +83,14 @@ function send({ query, success, fail }) {
   });
 }
 
+function setGuideList(guideList) {
+  setData("guideList", guideList);
+}
+
 module.exports = {
   getData: getData,
   setData: setData,
+  setGuideList: setGuideList,
   auth: auth,
   send: send
 };

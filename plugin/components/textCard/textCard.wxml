@@ -1,1 +1,3 @@
-<view class="leftView">{{msg.content}}</view>
+<view class="leftView">
+        <rich-text nodes="{{msg.content}}" bindtap="tap"></rich-text>
+</view>

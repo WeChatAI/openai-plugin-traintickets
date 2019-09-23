@@ -17,9 +17,13 @@ Component({
     inputing: false, //值为true时表示正在输入
     recordText: "嗯，你说..", //录音文字
     isShowSwiperView: true,
-    controlSwiper: true
+    controlSwiper: true,
+    guideList: []
   },
   attached: function() {
+    this.setData({
+      guideList: data.getData().guideList
+    });
     this.initRecord();
   },
   methods: {
@@ -75,6 +79,30 @@ Component({
         data.send({
           query: val,
           success: res => {
+            if (res.list_options && res.options && res.options.length) {
+              this.setData({
+                guideList: res.options.map(d => {
+                  console.log(d);
+                  return d.title;
+                })
+              });
+            } else {
+              const clicklink = /<a.*href=["']weixin:\/\/bizmsgmenu.*msgmenucontent=([^&"'>]*).*msgmenuid=([^&"'>]*)["']>.*<\/a>/g;
+              let list = [];
+              if (clicklink.test(res.answer)) {
+                res.answer.replace(
+                  clicklink,
+                  (all, msgmenucontent, msgmenuid) => {
+                    list.push(msgmenucontent);
+                  }
+                );
+              }
+
+              this.setData({
+                guideList: list.concat(data.getData().guideList)
+              });
+            }
+
             var listData = this.data.listData;
             var that = this;
             var answer_type = res.answer_type;
