@@ -1,10 +1,5 @@
 {
   "component": true,
-  "usingComponents": {
-    "voiceCard": "../../components/voiceCard/voiceCard",
-    "newsCard": "../../components/newsCard/newsCard",
-    "swiperContent": "../../components/swiperContent/swiperContent"
-  },
   "componentGenerics": {
     "textMessage": {
       "default": "../../components/textCard/textCard"
