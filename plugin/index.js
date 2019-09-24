@@ -4,5 +4,6 @@ module.exports = {
   getData: data.getData,
   setData: data.setData,
   init: data.auth,
-  send: data.send
+  send: data.send,
+  setGuideList: data.setGuideList
 };
