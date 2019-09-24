@@ -1,0 +1,9 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+ <view class="backImg"></view>
+ <view class="content" wx:for="{{list}}" wx:key="item">
+  <view bindtap="goChat" data-item="{{item}}">
+    <view>{{item.name}}</view>
+  </view>
+ </view>
+</view>

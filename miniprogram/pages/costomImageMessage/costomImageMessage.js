@@ -1,11 +1,12 @@
 Component({
   properties: {
-    imgData: Object
+    msg: Object
   },
 
   data: {},
   lifetimes: {
-    ready: function () { }
+    ready: function () {
+    }
   },
   methods: {}
 });

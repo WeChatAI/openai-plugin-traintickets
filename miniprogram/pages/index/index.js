@@ -1,6 +1,17 @@
 Page({
-  data: {},
-  onLoad: function() {},
+  data: {
+    list: [{
+      text: "对话"
+    },
+    {
+      text: "设置"
+    }]
+  },
+  onLoad: function() {
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+  },
   bindtapOpenSenior: function(e) {
     wx.navigateTo({
       url: "../senior/senior",

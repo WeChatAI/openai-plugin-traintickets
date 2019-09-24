@@ -1,12 +1,14 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/index/index",
+    "pages/about/about",
     "pages/newsPage/newsPage",
     "pages/common/common"
   ],
   "plugins": {
     "myPlugin": {
-      "version": "dev",
+      "version": "1.0.6",
       "provider": "wx8c631f7e9f2465e1"
     },
     "WechatSI": {
@@ -15,5 +17,21 @@
     }
   },
   "requiredBackgroundModes": ["audio"],
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "关于"
+      }
+    ]
+  }
 }
