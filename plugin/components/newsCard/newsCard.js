@@ -3,10 +3,10 @@ var app = require("../../api/music.js");
 
 Component({
   properties: {
-    newsData: Object
+    msg: Object
   },
   data: {
-    newsData: [],
+    newsData: {},
     picWidth: 0,
     picHeight: 200,
     newsPubtime: 0, //发布时间
@@ -20,7 +20,10 @@ Component({
   lifetimes: {
     ready: function() {
       var that = this;
-      // var newsData = this.properties.newsData
+      this.setData({
+        newsData: this.properties.msg
+      });
+      // var newsData = this.properties.msg
       // newsData.docs.forEach(function (v, i) {
       //   newsData.docs[i].pubtime = that.getDateDiff(newsData.docs[i].pubtime)
       //   that.setData({
@@ -66,7 +69,7 @@ Component({
     },
     playNews: function() {
       var that = this;
-      var newsData = that.properties.newsData;
+      var newsData = that.properties.msg;
       var newsIndex = that.data.newsIndex;
       console.log(newsData);
       app.data.voiceData = {

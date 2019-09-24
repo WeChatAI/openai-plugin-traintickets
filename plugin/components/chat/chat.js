@@ -153,7 +153,8 @@ Component({
               newData = {
                 answer: res.msg[0].ans_node_name,
                 cardType: "news",
-                docs: more_news
+                docs: more_news,
+                res: res
               };
               listData.push(newData);
               this.setData(
@@ -172,7 +173,8 @@ Component({
                 if (res.dialog_status === "START") {
                   var cardData = {
                     msg_type: "text",
-                    content: res.answer
+                    content: res.answer,
+                    res: res
                   };
                   listData.push(cardData);
                   that.setData(
@@ -235,6 +237,23 @@ Component({
               newData = {
                 cardType: "image",
                 data: JSON.parse(res.answer).image,
+                res: res
+              };
+
+              listData.push(newData);
+              this.setData(
+                {
+                  listData: listData,
+                  value: ""
+                },
+                () => {
+                  that.scrollToNew();
+                }
+              );
+            } else if (/{.*:{/.test(res.answer)) {
+              newData = {
+                cardType: "unsupported",
+                data: JSON.parse(res.answer),
                 res: res
               };
 

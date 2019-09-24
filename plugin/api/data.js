@@ -21,7 +21,7 @@ function setData(key, value) {
 const domain = "https://openai.weixin.qq.com";
 // const domain = "http://localhost:13563";
 
-function auth({ appid, success, fail, guideList, textToSpeech }) {
+function auth({ appid, openid, success, fail, guideList, textToSpeech }) {
   if (guideList) {
     setData("guideList", guideList);
   }
@@ -33,7 +33,8 @@ function auth({ appid, success, fail, guideList, textToSpeech }) {
     url: domain + "/auth/miniprogram/plugin/openai",
     method: "post",
     data: {
-      appid
+      appid,
+      openid
     },
     success: res => {
       wx.setStorageSync("authtoken", res.data.authtoken);
