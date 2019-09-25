@@ -26,7 +26,7 @@
   ],
   "plugins": {
     "chatbot": {
-      "version": "1.0.6",
+      "version": "1.0.8",
       "provider": "wx8c631f7e9f2465e1"
     }
   },
