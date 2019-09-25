@@ -3,8 +3,7 @@
     "pages/home/home",
     "pages/index/index",
     "pages/about/about",
-    "pages/newsPage/newsPage",
-    "pages/common/common"
+    "pages/noUI/noUI"
   ],
   "plugins": {
     "myPlugin": {

@@ -91,8 +91,8 @@ Page({
       guideList = ['进入成语接龙', '第一个成语: 一心一意']
     }
     plugin.setGuideList(guideList)
-    wx:wx.navigateTo({
-      url: '../senior/senior',
+    wx.navigateTo({
+      url: '../pluginChat/pluginChat',
       success: function(res) {
       },
       fail: function(res) {},
