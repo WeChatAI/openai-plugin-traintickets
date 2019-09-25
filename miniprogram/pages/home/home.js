@@ -1,4 +1,5 @@
 // pages/home/home.js
+var plugin = requirePlugin("myPlugin");
 Page({
 
   /**
@@ -77,10 +78,23 @@ Page({
 
   },
   goChat:function (e) {
-    console.log(e.currentTarget.dataset.item.name)
+    let guideList = []
+    if (e.currentTarget.dataset.item.name === '天气') {
+      guideList = ['北京天气怎么样', '上海今天有雨吗']
+    } else if (e.currentTarget.dataset.item.name === '聊天') {
+      guideList = ['中午吃啥呢', '你知道如何排解压吗?']
+    } else if (e.currentTarget.dataset.item.name === 'FM') {
+      guideList = ['我想听郭德纲的相声', '来一段评书']
+    } else if (e.currentTarget.dataset.item.name === '百科') {
+      guideList = ['法国国土面积是多少', '世界最高峰']
+    } else if (e.currentTarget.dataset.item.name === '成语接龙') {
+      guideList = ['进入成语接龙', '第一个成语: 一心一意']
+    }
+    plugin.setGuideList(guideList)
     wx:wx.navigateTo({
       url: '../senior/senior',
-      success: function(res) {},
+      success: function(res) {
+      },
       fail: function(res) {},
       complete: function(res) {},
     })
