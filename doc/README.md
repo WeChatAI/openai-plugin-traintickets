@@ -278,6 +278,52 @@ App({
   }
 ```
 
+### 3.4 复写组件(自定义插件内容的样式)
+
+```html
+<view style="height: 100vh">
+   <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome"
+      generic:textMessage="customTextMessage"
+      generic:weatherMessage="customWeatherMessage"
+      generic:imageMessage="customImageMessage"
+      generic:musicMessage="customMusicMessage"
+      generic:newsMessage="customNewsMessage"
+      generic:unsupportedMessage="customUnsupportedMessage"
+      generic:guideCard="customGuideCard">
+   </chat>
+</view>
+```
+
+```json
+{
+  "usingComponents": {
+    "chat": "plugin://myPlugin/chat",
+    "customTextMessage": "../customTextMessage/customTextMessage",
+    "customWeatherMessage": "../customWeatherMessage/customWeatherMessage",
+    "customImageMessage": "../customImageMessage/customImageMessage",
+    "customMusicMessage": "../customMusicMessage/customMusicMessage",
+    "customNewsMessage": "../customNewsMessage/customNewsMessage",
+    "customUnsupportedMessage": "../customUnsupportedMessage/customUnsupportedMessage",
+    "customGuideCard": "../customGuideCard/customGuideCard",
+  }
+}
+```
+
+`提示:`
+1. textMessage: 文字
+2. weatherMessage: 天气
+3. imageMessage: 图片
+4. musicMessage: 音乐
+5. newsMessage: 新闻
+6. unsupportedMessage: 暂不自定义类型
+7. guideCard: 滑动模块
+
+说明: 上述提示中1, 2, 3, 4, 5, 6 复写组件内部properties中msg接收插件返回的数据, 而7 复写组件内部properties中guideList接受插件返回的数据
+
+修改滑动模块显示内容:
+```
+plugin.setGuideList(['内容', '内容'])
+```
 
 ## 4. 初始化配置项
 
