@@ -88,10 +88,15 @@ function setGuideList(guideList) {
   setData("guideList", guideList);
 }
 
+function setTextToSpeech(textToSpeech) {
+  setData("textToSpeech", textToSpeech);
+}
+
 module.exports = {
   getData: getData,
   setData: setData,
   setGuideList: setGuideList,
+  setTextToSpeech: setTextToSpeech,
   auth: auth,
   send: send
 };

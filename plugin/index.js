@@ -5,5 +5,6 @@ module.exports = {
   setData: data.setData,
   init: data.auth,
   send: data.send,
-  setGuideList: data.setGuideList
+  setGuideList: data.setGuideList,
+  setTextToSpeech: data.setTextToSpeech
 };

@@ -6,8 +6,8 @@ App({
   onLaunch: function() {
     console.log(plugin, "+++");
     plugin.init({
-      // appid: "VEgbxLa9kYqzGOzstdeSF3xDbkS9zK",
-      appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja",
+      appid: "VEgbxLa9kYqzGOzstdeSF3xDbkS9zK",
+      // appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja",
       textToSpeech: true,
       // guideList: ["玩末日生存游戏"],
       success: () => {

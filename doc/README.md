@@ -119,7 +119,18 @@ plugin.send({
 ```
 
 
-### 2.4 NLU结果
+### 2.4 设置textToSpeech
+
+
+>从版本 1.0.7 开始，支持根据上下文,随时修改是否打开语音播报
+
+```
+    plugin.setTextToSpeech(false)
+```
+
+
+
+### 2.5 NLU结果
 
 ```json
 {
