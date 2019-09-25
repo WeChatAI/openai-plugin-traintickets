@@ -112,7 +112,7 @@ plugin.send({
 ### 2.3 设置guideList
 
 
->从版本 1.0.7 开始，支持根据上下文,随时修改用户提示语的方法
+>从版本 1.0.8 开始，支持根据上下文,随时修改用户提示语的方法
 
 ```
     plugin.setGuideList(['内容', '内容'])
@@ -122,7 +122,7 @@ plugin.send({
 ### 2.4 设置textToSpeech
 
 
->从版本 1.0.7 开始，支持根据上下文,随时修改是否打开语音播报
+>从版本 1.0.8 开始，支持根据上下文,随时修改是否打开语音播报
 
 ```
     plugin.setTextToSpeech(false)
@@ -420,7 +420,7 @@ App({
 ```
 
 
-#### 4.1.6 `imageMessage` 的 properties 参数 msg的数据结构：
+#### 4.1.6 `unsupportedMessage` 的 properties 参数 msg的数据结构：
 
 
 ```json
