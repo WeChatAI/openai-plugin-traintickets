@@ -5,7 +5,8 @@ Component({
 
   data: {
     answer: "",
-    list: []
+    list: [],
+    isRitch: false
   },
   lifetimes: {
     ready: function() {
@@ -13,23 +14,29 @@ Component({
       const content = this.properties.msg.content;
       console.log("content", content);
 
-      if (clicklink.test(content)) {
-        let answer = content.replace(clicklink, "");
-        let list = [];
-
-        content.replace(clicklink, (all, msgmenucontent, msgmenuid) => {
-          list.push({
-            all: all,
-            content: msgmenucontent,
-            id: msgmenuid
-          });
-        });
-
+      if (/<a.*>/.test(content)) {
         this.setData({
-          answer,
-          list
+          isRitch: true
         });
       }
+
+      // if (clicklink.test(content)) {
+      //   let answer = content.replace(clicklink, "");
+      //   let list = [];
+      //
+      //   content.replace(clicklink, (all, msgmenucontent, msgmenuid) => {
+      //     list.push({
+      //       all: all,
+      //       content: msgmenucontent,
+      //       id: msgmenuid
+      //     });
+      //   });
+      //
+      //   this.setData({
+      //     answer,
+      //     list
+      //   });
+      // }
       console.log(this.properties.msg, "---weather---");
     }
   },

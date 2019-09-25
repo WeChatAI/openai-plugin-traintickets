@@ -17,7 +17,7 @@
 
 > 请在 [微信对话开放平台](https://openai.weixin.qq.com) 上获得插件所需appid
 
-在小程序 `app.json` 中 配置, 小程序插件id是 `wx8c631f7e9f2465e1`, 当前稳定版本是1.0.6
+在小程序 `app.json` 中 配置, 小程序插件id是 `wx8c631f7e9f2465e1`, 请使用最新稳定版本
 
 ```js
 {
@@ -65,9 +65,7 @@
 
 
 
-## 2. 无UI, 直接调用插件接口
-
-
+## 2. 无UI(只获取NLU结果), 直接调用插件接口
 
 > 代码中所示appid：`P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja` 为示例账户，正式产品内使用请到
 > [微信对话开放平台](https://openai.weixin.qq.com) 申请账户，然后到
@@ -85,8 +83,9 @@ App({
     console.log(plugin, "+++");
     plugin.init({
         appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja", //小程序示例账户，仅供学习和参考
-        success: () => {},
-        fail: error => {}
+        openid: "",//用户的openid，非必填，建议传递该参数
+        success: () => {}, //非必填
+        fail: error => {} //非必填
     });
   }
 });
@@ -110,7 +109,28 @@ plugin.send({
 ```
 
 
-### 2.3 返回结果
+### 2.3 设置guideList
+
+
+>从版本 1.0.7 开始，支持根据上下文,随时修改用户提示语的方法
+
+```
+    plugin.setGuideList(['内容', '内容'])
+```
+
+
+### 2.4 设置textToSpeech
+
+
+>从版本 1.0.7 开始，支持根据上下文,随时修改是否打开语音播报
+
+```
+    plugin.setTextToSpeech(false)
+```
+
+
+
+### 2.5 NLU结果
 
 ```json
 {
@@ -209,6 +229,7 @@ App({
     console.log(plugin, "+++");
     plugin.init({
       appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja", //小程序示例账户，仅供学习和参考
+      openid: "", //小程序用户openid，非必填
       success: () => {},
       fail: error => {}
     });
@@ -278,13 +299,174 @@ App({
   }
 ```
 
+## 4 消息组件重写(自定义插件内容的样式)
 
-## 4. 初始化配置项
+从版本1.0.7开始支持对小程序内置插件的替换，包括文本消息，天气消息，图片消息，音乐消息，新闻消息和引导消息
+
+
+```html
+<view style="height: 100vh">
+   <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome"
+      generic:textMessage="customTextMessage"
+      generic:weatherMessage="customWeatherMessage"
+      generic:imageMessage="customImageMessage"
+      generic:musicMessage="customMusicMessage"
+      generic:newsMessage="customNewsMessage"
+      generic:unsupportedMessage="customUnsupportedMessage"
+      generic:guideCard="customGuideCard">
+   </chat>
+</view>
+```
+
+```json
+{
+  "usingComponents": {
+    "chat": "plugin://myPlugin/chat",
+    "customTextMessage": "../customTextMessage/customTextMessage",
+    "customWeatherMessage": "../customWeatherMessage/customWeatherMessage",
+    "customImageMessage": "../customImageMessage/customImageMessage",
+    "customMusicMessage": "../customMusicMessage/customMusicMessage",
+    "customNewsMessage": "../customNewsMessage/customNewsMessage",
+    "customUnsupportedMessage": "../customUnsupportedMessage/customUnsupportedMessage",
+    "customGuideCard": "../customGuideCard/customGuideCard",
+  }
+}
+```
+
+### 4.1支持覆盖的组件类别：
+
+1. textMessage: 文本类消息
+2. weatherMessage: 天气类消息
+3. imageMessage: 图片类消息
+4. musicMessage: 音乐类消息
+5. newsMessage: 新闻类消息
+6. unsupportedMessage: 暂未支持类消息
+7. guideCard: 引导消息
+
+> 以上七种消息中，组件 `1-6` 会在组件上收到一个properties参数 `msg`
+
+```js
+     <textMessage msg="{{item}}"></textMessage>
+    <weatherMessage msg="{{item}}"></weatherMessage>
+    <newsMessage   msg="{{item}}"></newsMessage>
+    <musicMessage  msg="{{item}}"></musicMessage>
+    <imageMessage  msg="{{item}}"></imageMessage>
+    <unsupportedMessage msg="{{item}}"></unsupportedMessage>
+
+```
+
+#### 4.1.1 `textMessage` 的 properties 参数 msg的数据结构：
+
+```json
+
+  {
+    msg_type: "text",
+    content: "机器人对话结果",
+    res: res //NLU结果
+  };
+
+```
+
+#### 4.1.2 `weatherMessage` 的 properties 参数 msg的数据结构：
+
+```json
+
+  {
+    cardType: "weather",
+    answer: "机器人对话结果",
+    docs: Array, //天气结果
+    res: res //NLU结果
+  };
+
+```
+
+
+#### 4.1.3 `newsMessage` 的 properties 参数 msg的数据结构：
+
+```json
+
+  {
+    cardType: "news",
+    answer: "机器人对话结果",
+    docs: Array, //新闻结果
+    res: res //NLU结果
+  };
+
+```
+
+#### 4.1.4 `musicMessage` 的 properties 参数 msg的数据结构：
+
+```json
+
+  {
+    cardType: "voice",
+    answer: "",
+    docs: Array, //音乐结果
+  };
+
+```
+
+#### 4.1.5 `imageMessage` 的 properties 参数 msg的数据结构：
+
+
+```json
+
+  {
+    cardType: "image",
+    data: Object,
+    res: res //NLU结果
+  };
+
+```
+
+
+#### 4.1.6 `imageMessage` 的 properties 参数 msg的数据结构：
+
+
+```json
+
+  {
+    cardType: "unsupported",
+    data: Object,//自定义的JSON结构
+    res: res //NLU结果
+  };
+
+```
+
+
+
+
+
+### 4.2 guideCard 的properties参数
+
+```js
+
+    <guideCard guideList="{{guideList}}" controlSwiper="{{controlSwiper}}"></guideCard>
+
+```
+
+
+properties 说明:
+
+字段|类型|描述
+--|--|--|--|--
+guideList|Array|[ "北京天气怎么样", "上海今天有雨吗", "中午吃啥呢", "你知道如何排解压力吗", "法国国土面积是多少", "世界最高峰" ] | 自定义提示语
+controlSwiper|Boolean|用来通知用户引导模块是否应当响应用户点击事件，防止误触发生
+bind:chooseGuide|Event|当用户点击菜单内选项时，通知机器人用户点击的菜单内容
+
+
+如果响应用户点击事件
+```
+   this.triggerEvent("chooseGuide", "用户点击了菜单的什么内容");
+```
+
+
+## 5. 初始化配置项
 
 ```
     plugin.init({
       ...options
-      appid: "PWj9xdSdGU3PPnqUUrTf7uGgQ9Jvn7",
+      appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja",
       success: () => {},
       fail: error => {},
       guideList: ["您好"],
@@ -295,16 +477,17 @@ App({
 
 options 说明:
 
-字段|类型|默认值|描述
---|--|--|--
-appid|string||微信对话开发平台申请的插件id
-success|function||初始化成功的回调
-fail|function||初始化失败的回调
-guideList|Array|[ "北京天气怎么样", "上海今天有雨吗", "中午吃啥呢", "你知道如何排解压力吗", "法国国土面积是多少", "世界最高峰" ] | 自定义提示语
-textToSpeech|Array|true|在有UI模式下，将文本回答朗读出来
+字段|类型|是否必填|默认值|描述
+--|--|--|--|--
+appid|string|是||微信对话开发平台申请的插件id
+openid|string|否||微信小程序用户的opened
+success|function|否||初始化成功的回调
+fail|function|否||初始化失败的回调
+guideList|Array|否|[ "北京天气怎么样", "上海今天有雨吗", "中午吃啥呢", "你知道如何排解压力吗", "法国国土面积是多少", "世界最高峰" ] | 自定义提示语
+textToSpeech|Array|否|true|在有UI模式下，将文本回答朗读出来
 
 
 
 
-## 5. 接入示例：
+## 6. 接入示例：
 ![demo](./demo.jpg)
