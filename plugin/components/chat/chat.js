@@ -255,13 +255,13 @@ Component({
               newData = {
                 answer: res.msg[0].ans_node_name,
                 cardType: "news",
-                docs: [
-                  {
-                    shortcut: tn.articles[0].picurl,
-                    title: tn.articles[0].title,
-                    abs_s: tn.articles[0].description
-                  }
-                ],
+                docs: tn.articles.map(item => {
+                  return {
+                    shortcut: item.picurl,
+                    title: item.title,
+                    abs_s: item.description
+                  };
+                }),
                 res: res
               };
               listData.push(newData);
