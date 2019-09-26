@@ -250,7 +250,7 @@ Component({
                   that.scrollToNew();
                 }
               );
-            } else if (/{.*:\s*{/.test(res.answer)) {
+            } else if (/{.*:\s*[{[]/.test(res.answer)) {
               console.log("kkkkkkkk");
               newData = {
                 cardType: "unsupported",
