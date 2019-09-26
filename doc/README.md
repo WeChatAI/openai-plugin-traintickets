@@ -257,7 +257,21 @@ App({
 
 > chat组件外部必须指定容器, 并设置容器高度, 如果全屏展示, 设置高度为100vh, 如果是自定义导航栏, 设置高度为(100vh - 导航栏的高度)即可.
 
+
 ```html
+<!-- 自定义导航 -->
+<view style="height: 100vh;">
+  <view class='nav-wrap' style='height: 100px;'>
+    <view class='nav-title' style='line-height: 100px'>自定义导航</view>
+  </view>
+  <view style="height: calc(100vh - 100px)">
+    <chat  bind:backHome="goBackHome" />
+  </view>
+</view>
+
+```
+```html
+<!-- 系统导航 -->
 <view style="height: 100vh">
     <chat bind:backHome="goBackHome" />
 </view>
