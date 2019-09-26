@@ -23,6 +23,8 @@ Component({
       this.setData({
         newsData: this.properties.msg
       });
+
+      console.log("newsData", this.properties.msg);
       // var newsData = this.properties.msg
       // newsData.docs.forEach(function (v, i) {
       //   newsData.docs[i].pubtime = that.getDateDiff(newsData.docs[i].pubtime)

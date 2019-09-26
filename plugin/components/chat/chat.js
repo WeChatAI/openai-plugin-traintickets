@@ -233,13 +233,37 @@ Component({
                   );
                 }
               }
-            } else if (/{\"image":{/.test(res.answer)) {
+            } else if (/\s*{\s*\"image"\s*:\s*{/.test(res.answer)) {
               newData = {
                 cardType: "image",
                 data: JSON.parse(res.answer).image,
                 res: res
               };
 
+              listData.push(newData);
+              this.setData(
+                {
+                  listData: listData,
+                  value: ""
+                },
+                () => {
+                  that.scrollToNew();
+                }
+              );
+            } else if (/\s*{\s*\"news"\s*:\s*{/.test(res.answer)) {
+              const tn = JSON.parse(res.answer).news;
+              newData = {
+                answer: res.msg[0].ans_node_name,
+                cardType: "news",
+                docs: [
+                  {
+                    shortcut: tn.articles[0].picurl,
+                    title: tn.articles[0].title,
+                    abs_s: tn.articles[0].description
+                  }
+                ],
+                res: res
+              };
               listData.push(newData);
               this.setData(
                 {
