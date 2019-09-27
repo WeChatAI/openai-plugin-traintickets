@@ -16,21 +16,5 @@
     }
   },
   "requiredBackgroundModes": ["audio"],
-  "sitemapLocation": "sitemap.json",
-  "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/home/home",
-        "text": "首页"
-      },
-      {
-        "pagePath": "pages/index/index",
-        "text": "我的"
-      },
-      {
-        "pagePath": "pages/about/about",
-        "text": "关于"
-      }
-    ]
-  }
+  "sitemapLocation": "sitemap.json"
 }

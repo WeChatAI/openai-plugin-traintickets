@@ -1,9 +1,77 @@
-<!--pages/home/home.wxml-->
-<view class="container">
+<!-- <view class="container">
  <view class="backImg"></view>
  <view class="content" wx:for="{{list}}" wx:key="item">
   <view bindtap="goChat" data-item="{{item}}">
     <view>{{item.name}}</view>
   </view>
  </view>
+</view> -->
+<view class="container">
+  <scroll-view class="scroll-view" scroll-y enable-back-to-top>
+    <view class="info" style="height: {{infoheight}}px">
+      <view class="info_title">{{title}}</view>
+      <view class="info_para">{{info}}</view>
+    </view>
+    <view class="blockingcontent">
+      <view class="blockingcontent_all" bindtap="goChat" data-item="{{item}}"  wx:for="{{cardList}}" wx:key="item">
+        <image class="blockingcontent_all_img" src="{{item.url}}"></image>
+        <view class="blockingcontent_all_content">
+          <view class="blockingcontent_all_content_title">{{item.title}}</view>
+          <view class="blockingcontent_all_content_word">{{item.content}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="weatherCard" style="height: {{weatherheight}}px">
+      <view class="weatherCardList" bindtap="goChat" data-item="{{item}}" wx:for="{{weatherCardList}}" wx:key="item">
+        {{item.title}}
+      </view>
+    </view>
+    <view class="experience">
+      <view class="experience_top">
+        <view class="experience_top_title">示例体验</view>
+      </view>
+      <view class="experience_bottom">
+        <view class="treeplanting">
+          <image  class="treeplanting_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/arrowIcon.png"></image>
+          <view class="treeplanting_title" bindtap="gotoChat">有UI插件展示</view>
+        </view>
+        <view class="todayWeather">
+          <image  class="todayWeather_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/weatherIcon.png"></image>
+          <view class="todayWeather_title" bindtap="gotoChatNoUI">无UI插件展示</view>
+        </view>
+        <view class="bowl">
+          <image  class="bowl_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/bowl.png"></image>
+          <view class="bowl_title" bindtap="gotoChatcloseVoice">语音开关</view>
+        </view>
+        <view class="flameIcon">
+          <image  class="flameIcon_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/flameIcon.png"></image>
+          <view class="flameIcon_title" bindtap="gotoChatCom">复写组件展示</view>
+        </view>
+        <view style="clear: both;"></view>
+      </view>
+    </view>
+    <view class="queryBMI">
+      <view class="queryBMI_top">
+        <view class="queryBMI_top_content">
+          <view class="queryBMI_top_content_title">BMI体质指数查询</view>
+          <view class="queryBMI_top_content_para">如果不运动就会长胖了哦</view>
+        </view>
+        <image class="queryBMI_top_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/Bodybuilding.png"></image>
+      </view>
+      <view class="queryBMI_bottom">
+        <view wx:for="{{queryBMIList}}" bindtap="goChat" data-item="{{item}}" wx:key="item" class="queryBMI_bottom_content">
+          <view class="queryBMI_bottom_content_img_view">
+            <image class="queryBMI_bottom_content_img{{index}}" src="{{item.url}}"></image>
+          </view>
+          <view class="queryBMI_bottom_content_description">{{item.description}}</view>
+        </view>
+      </view>
+    </view>
+    <view style='clear: both;height: 54px'></view>
+  </scroll-view>
+  <view class="footer">
+    <image class="keyboard" bindtap="gotoChat" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/keyboard.png"></image>
+    <image class="voiceCard" bindtap="gotoChat" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/voiceCard.png"></image>
+    <image class="questionIcon" bindtap="goWebview" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/questionIcon.png"></image>
+  </view>
 </view>

@@ -1,44 +1,17 @@
-var plugin = requirePlugin("myPlugin");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    listData: [],
-    show: false,
-    flag: false,
-    isActive: true
+    
   },
-  getQueryCallback: function (e) {
-    console.log(e.detail)
-  },
-  goBackHome: function () {
-    wx.navigateBack({
-      delta: 1
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    if (options && options.switch === 'switch') {
-      this.setData({
-        flag: true
-      })
-    }
-    wx.getSystemInfo({
-      success: (res) => {
-        this.setData({
-          windowWidth: res.windowWidth - 110
-        }, () => {
-          this.setData({
-            show: true
-          })
-        })
-      }
-    })
+    
   },
 
   /**
@@ -88,17 +61,5 @@ Page({
    */
   onShareAppMessage: function () {
     
-  },
-  open:function() {
-    plugin.setTextToSpeech(true)
-    this.setData({
-      isActive: true
-    })
-  },
-  close:function() {
-    plugin.setTextToSpeech(false)
-    this.setData({
-      isActive: false
-    })
   }
 })

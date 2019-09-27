@@ -18,7 +18,18 @@
   </chat>
 </view> -->
 
-<view style="height: 100vh">
+<view style="height: 100vh" wx:if="{{!flag}}">
   <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" >
   </chat>
+</view>
+
+<view style="height: 100vh;" wx:if="{{flag}}">
+  <movable-area style="position: absolute;height: 100vh;width: 100vw;" wx:if="{{show}}" scale-area >
+    <movable-view class="floatBtn"  x="{{windowWidth}}" y="{{30}}" direction="vertical" scale >
+      <view class="correct {{isActive ? 'active': ''}}" bindtap="open">开</view>
+      <view class="empty"></view>
+      <view class="clear {{isActive ? '': 'active'}}" bindtap="close">关</view>
+    </movable-view>
+  </movable-area>
+  <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" />
 </view>

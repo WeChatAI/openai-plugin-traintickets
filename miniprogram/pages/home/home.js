@@ -6,13 +6,89 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [
-      { name: '天气' },
-      { name: '聊天' },
-      { name: 'FM' },
-      { name: '百科' },
-      { name: '成语接龙' }
-    ]
+    title: '微信对话开放平台',
+    info: '微信对话开放平台是以对话交互为核心, 为有客服需求的个人、企业和组织提供智能业务服务与用户管理能力的技能配置平台, 技能开发者可利用我们提供的工具自主完成客服机器人的搭建。',
+    weatherCardList: [
+      { title: '北京天气' },
+      { title: '北京今日防晒指数' },
+      { title: '上海天气' },
+      { title: '北京今日空气质量' },
+      { title: '北京今日风向' },
+      { title: '北京今日防晒指数' },
+      { title: '上海今日防晒指数' }
+    ],
+    cardList: [
+      {
+        title: '聊天',
+        content: '中午吃啥呢 你知道如何排解压力吗',
+        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/chatIcon.png'
+      },
+      {
+        title: '天气',
+        content: '查询国内外主要城市的温度、风力、污染',
+        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/weatherIcon.png'
+      },
+      {
+        title: '百科',
+        content: '北京今天天气如何 今天有雨吗',
+        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/encyclopedias.png'
+      },
+      {
+        title: '成语接龙',
+        content: '陪你玩成语接龙游戏',
+        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/idiom.png'
+      }
+    ],
+    queryBMIList: [
+      { 
+        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconOne.png',
+        description: '“我想测体质指数”'
+      },
+      {
+        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/HealthyIcon.png',
+        description: '“算一下我的BMI体质指数是多少”'
+      },
+      {
+        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconTwo.png',
+        description: '“我的身高175BMI体质指数是多少”'
+      }
+    ],
+    weatherGuideList: [
+      '北京天气',
+      '上海天气',
+      '广州天气',
+      '深圳天气',
+      '沈阳天气',
+      '杭州天气'
+    ],
+    chatGuideList: [
+      "你早上吃什么",
+      "你在干嘛",
+      "想我了吗",
+      "你知道如何排解压力吗"
+    ],
+    encyclopediasGuideList: [
+      '珠穆朗玛峰',
+      "喜马拉雅山",
+      "长江",
+      "黄河",
+      "中国的面积"
+    ],
+    idiomGuideList: [
+      "一心一意",
+      "一了百了",
+      "四面八方",
+      "十全十美",
+      "九牛一毛"
+    ],
+    defaultGuideList: [
+      "北京天气怎么样",
+      "上海今天有雨吗",
+      "中午吃啥呢",
+      "你知道如何排解压力吗",
+      "法国国土面积是多少",
+      "世界最高峰"
+    ],
   },
 
   /**
@@ -21,9 +97,10 @@ Page({
   onLoad: function (options) {
     wx.getSystemInfo({
       success: (res) => {
-        console.log(res)
         this.setData({
-          windowHeight: res.windowHeight - 80
+          windowHeight: res.windowHeight,
+          infoheight: res.windowWidth * 277 / 375,
+          weatherheight: (res.windowWidth - 34) * 235 / 341
         })
       }
     })
@@ -78,25 +155,95 @@ Page({
 
   },
   goChat:function (e) {
-    let guideList = []
-    if (e.currentTarget.dataset.item.name === '天气') {
-      guideList = ['北京天气怎么样', '上海今天有雨吗']
-    } else if (e.currentTarget.dataset.item.name === '聊天') {
-      guideList = ['中午吃啥呢', '你知道如何排解压吗?']
-    } else if (e.currentTarget.dataset.item.name === 'FM') {
-      guideList = ['我想听郭德纲的相声', '来一段评书']
-    } else if (e.currentTarget.dataset.item.name === '百科') {
-      guideList = ['法国国土面积是多少', '世界最高峰']
-    } else if (e.currentTarget.dataset.item.name === '成语接龙') {
-      guideList = ['进入成语接龙', '第一个成语: 一心一意']
+    console.log(e)
+    if (e.currentTarget.dataset.item.title === '聊天') {
+      plugin.setGuideList(this.data.chatGuideList)
+    } else if (e.currentTarget.dataset.item.title === '百科') {
+      plugin.setGuideList(this.data.encyclopediasGuideList)
+    } else if (e.currentTarget.dataset.item.title === '成语接龙') {
+      plugin.setGuideList(this.data.idiomGuideList)
+    } else if (e.currentTarget.dataset.item.title === '天气') {
+      plugin.setGuideList(this.data.weatherGuideList)
+    } else if (this.data.weatherCardList.find(item => {
+      if (item.title === e.currentTarget.dataset.item.title){
+        return true
+      }
+    })) {
+      let weatherGuideList = [
+        "北京天气",
+        "北京今日防晒指数",
+        "上海天气",
+        "北京今日空气质量",
+        "北京今日风向",
+        "上海今日空气质量",
+        "上海今日防晒指数"
+      ]
+      plugin.setGuideList(weatherGuideList)
+    } else if (this.data.queryBMIList.find(item => {
+      if (item.description === e.currentTarget.dataset.item.description){
+        return true
+      }
+    })) {
+      let chatGuideList = ["我想测体质指数", "算一下我的BMI体质指数是多少", "我的身高175BMI体质指数是多少"]
+      plugin.setGuideList(chatGuideList)
     }
-    plugin.setGuideList(guideList)
+    plugin.setTextToSpeech(true)
+    this.jump()
+  },
+  gotoChat:function() {
+    plugin.setGuideList(this.data.defaultGuideList)
+    plugin.setTextToSpeech(true)
+    this.jump()
+  },
+  gotoChatNoUI: function () {
     wx.navigateTo({
-      url: '../pluginChat/pluginChat',
-      success: function(res) {
+      url: "../noUI/noUI",
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { }
+    });
+  },
+  gotoChatcloseVoice:function () {
+    plugin.setGuideList(this.data.defaultGuideList)
+    plugin.setTextToSpeech(true)
+    this.jump('switch')
+  },
+  goWebview:function() {
+    wx.navigateTo({
+      url: '../about/about',
+      success: function (res) {
       },
-      fail: function(res) {},
-      complete: function(res) {},
+      fail: function (res) { },
+      complete: function (res) { },
     })
+  },
+  gotoChatCom:function () {
+    plugin.setTextToSpeech(true)
+    wx.navigateTo({
+      url: '../rewriteChatComponents/rewriteChatComponents',
+      success: function (res) {
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  jump:function(val) {
+    if (val === 'switch') {
+      wx.navigateTo({
+        url: '../pluginChat/pluginChat?switch=' + val,
+        success: function (res) {
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    } else {
+      wx.navigateTo({
+        url: '../pluginChat/pluginChat',
+        success: function (res) {
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    }
   }
 })
