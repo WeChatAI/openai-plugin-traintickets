@@ -71,6 +71,13 @@ Component({
       }
     },
 
+    /**
+     * send
+     */
+    send: function(val) {
+      this.getData(val);
+    },
+
     getData: function(val) {
       const authtoken = wx.getStorageSync("authtoken") || "";
       if (!authtoken) {
