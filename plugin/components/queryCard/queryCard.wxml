@@ -1,5 +1,5 @@
 <view>
-    <image class="recordView" src="../../images/recording.gif" wx:if="{{recording && msg.content == ''}}"></image>
+    <image class="recordingView" src="../../images/recording.gif" wx:if="{{recording && msg.content == ''}}"></image>
     <view class="rightView" wx:if="{{msg.content != ''}}">{{msg.content}}</view>
     <view style='clear: both;'></view>
 </view>
