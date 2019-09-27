@@ -1,0 +1,15 @@
+.leftView {
+  float: left;
+  margin: 10px 0;
+  padding: 13px 20px;
+  background:rgba(255,255,255,1);
+  color: #000;
+  border-radius:8px;
+  max-width: calc(96vw - 120px);
+  font-size: 16px;
+  line-height: 22px;
+  overflow:hidden; word-wrap:break-word;
+  text-align: justify;
+  box-shadow:0px 1px 6px 0px rgba(0,0,0,0.07);
+}
+

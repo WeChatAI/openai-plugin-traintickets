@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/index/index",
-    "pages/newsPage/newsPage",
-    "pages/common/common"
+    "pages/about/about",
+    "pages/noUI/noUI"
   ],
   "plugins": {
     "myPlugin": {

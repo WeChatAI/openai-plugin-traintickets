@@ -1,0 +1,35 @@
+<!-- 自定义导航 -->
+<!-- <view style="height: 100vh;overflow: hidden;">
+  <view class='nav-wrap' style='height: 100px;'>
+    <view class='nav-title' style='line-height: 100px'>自定义导航</view>
+  </view>
+  <view style="height: calc(100vh - 100px)">
+    <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" />
+  </view>
+</view> -->
+
+<!-- 系统默认导航 -->
+<!-- <view style="height: 100vh">
+  <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" 
+    generic:textMessage="customTextMessage"
+    generic:weatherMessage="customWeatherMessage" 
+    generic:imageMessage="costomImageMessage"       
+    generic:guideCard="customGuideCard">
+  </chat>
+</view> -->
+
+<view style="height: 100vh" wx:if="{{!flag}}">
+  <chat id="component-id" bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" >
+  </chat>
+</view>
+
+<view style="height: 100vh;" wx:if="{{flag}}">
+  <movable-area style="position: absolute;height: 100vh;width: 100vw;" wx:if="{{show}}" scale-area >
+    <movable-view class="floatBtn"  x="{{windowWidth}}" y="{{30}}" direction="vertical" scale >
+      <view class="correct {{isActive ? 'active': ''}}" bindtap="open">开</view>
+      <view class="empty"></view>
+      <view class="clear {{isActive ? '': 'active'}}" bindtap="close">关</view>
+    </movable-view>
+  </movable-area>
+  <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" />
+</view>

@@ -26,6 +26,14 @@ Component({
     var that = this;
     return {
       send: function(val) {
+        let listData = that.data.listData;
+        var newData = {
+          content: val,
+          data_type: 1
+        };
+
+        listData.push(newData);
+
         that.getData(val);
       }
     };

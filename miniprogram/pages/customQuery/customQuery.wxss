@@ -3,10 +3,9 @@
   float: right;
   margin: 10px 0;
   padding: 13px 20px;
-  background-color: #0BBB09;
+  background-color: rgba(97, 169, 255, 1);
   color: #fff;
-  border-radius: 24px;
-  border-top-right-radius: 2px;
+  border-radius: 8px;
   max-width: calc(96vw - 120px);
   font-size: 16px;
   line-height: 22px;

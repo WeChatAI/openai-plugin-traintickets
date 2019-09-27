@@ -1,0 +1,2 @@
+<!--pages/about/about.wxml-->
+<web-view src="https://openai.weixin.qq.com/docs/"></web-view>
