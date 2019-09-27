@@ -5,9 +5,7 @@
   <scroll-view class="scroll-wrap"  scroll-y scroll-into-view="translate-{{toView}}">
     <view class="unit-view" wx:for="{{listData}}" wx:key="item">
       <view wx:if="{{item.data_type}}">
-        <image class="recordingView" src="../../images/recording.gif" wx:if="{{recording && item.content == ''}}"></image>
-        <view class="rightView" wx:if="{{item.content != ''}}">{{item.content}}</view>
-        <view style='clear: both;'></view>
+          <queryMessage recording="{{recording}}" msg="{{item}}"></queryMessage>
       </view>
 
       <view wx:else>
