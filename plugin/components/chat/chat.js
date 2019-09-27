@@ -233,7 +233,7 @@ Component({
                   );
                 }
               }
-            } else if (/{\"image":{/.test(res.answer)) {
+            } else if (/\s*{\s*\"image"\s*:\s*{/.test(res.answer)) {
               newData = {
                 cardType: "image",
                 data: JSON.parse(res.answer).image,
@@ -250,7 +250,31 @@ Component({
                   that.scrollToNew();
                 }
               );
-            } else if (/{.*:\s*{/.test(res.answer)) {
+            } else if (/\s*{\s*\"news"\s*:\s*{/.test(res.answer)) {
+              const tn = JSON.parse(res.answer).news;
+              newData = {
+                answer: res.msg[0].ans_node_name,
+                cardType: "news",
+                docs: tn.articles.map(item => {
+                  return {
+                    shortcut: item.picurl,
+                    title: item.title,
+                    abs_s: item.description
+                  };
+                }),
+                res: res
+              };
+              listData.push(newData);
+              this.setData(
+                {
+                  listData: listData,
+                  value: ""
+                },
+                () => {
+                  that.scrollToNew();
+                }
+              );
+            } else if (/{.*:\s*[{[]/.test(res.answer)) {
               console.log("kkkkkkkk");
               newData = {
                 cardType: "unsupported",

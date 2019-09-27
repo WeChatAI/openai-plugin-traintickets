@@ -1,6 +1,9 @@
 {
   "component": true,
   "componentGenerics": {
+    "queryMessage": {
+      "default": "../../components/queryCard/queryCard"
+    },
     "textMessage": {
       "default": "../../components/textCard/textCard"
     },
