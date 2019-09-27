@@ -20,6 +20,17 @@ Component({
     controlSwiper: true,
     guideList: []
   },
+
+  behaviors: ["wx://component-export"],
+  export() {
+    var that = this;
+    return {
+      send: function(val) {
+        that.getData(val);
+      }
+    };
+  },
+
   attached: function() {
     this.setData({
       guideList: data.getData().guideList
