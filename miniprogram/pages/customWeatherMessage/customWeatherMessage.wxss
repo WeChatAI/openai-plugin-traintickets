@@ -151,3 +151,88 @@
   opacity:0.9;
 }
 
+
+
+
+
+.queryBMI {
+  height:255px;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 1px 10px 0px rgba(227,231,237,1);
+  border-radius:12px;
+  margin: 20px auto 0px;
+  width: calc(100vw - 34px);
+}
+.queryBMI_top{
+  padding: 0 24px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 82px;
+  background:rgba(156,195,248,0.9);
+  border-radius:12px 12px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+.queryBMI_top_img{
+  width: 108px;
+  height: 100px;
+}
+.queryBMI_top_content {
+  margin-top: 25px;
+}
+.queryBMI_top_content_title {
+  font-size:17px;
+  font-family:MicrosoftYaHeiUI-Bold,MicrosoftYaHeiUI;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+}
+.queryBMI_top_content_para {
+  margin-top: 1px;
+  font-size:12px;
+  font-family:MicrosoftYaHeiUI;
+  color:rgba(255,255,255,1);
+}
+.queryBMI_bottom {
+  margin-top: 5px;
+  padding-left: 24px;
+  box-sizing: border-box;
+}
+.queryBMI_bottom_content {
+  display: flex;
+  align-items: center;
+  padding: 14px 0 12px 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(227, 231, 237, 0.8);
+}
+
+.queryBMI_bottom_content:last-child {
+  border-bottom: none;
+}
+.queryBMI_bottom_content_img_view {
+  width:25px;
+  height:25px;
+  background:rgba(166,200,248,1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+.queryBMI_bottom_content_img0 {
+  width: 7px;
+  height: 9px;
+}
+.queryBMI_bottom_content_img1 {
+  width: 8px;
+  height: 7px;
+}
+.queryBMI_bottom_content_img2 {
+  width: 7px;
+  height: 9px;
+}
+.queryBMI_bottom_content_description {
+  font-size:12px;
+  font-family:PingFangSC-Regular,PingFangSC;
+  font-weight:400;
+  color:rgba(48,49,51,1);
+}

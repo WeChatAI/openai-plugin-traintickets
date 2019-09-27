@@ -13,7 +13,21 @@ Component({
     mintp: 0, //最低温度
     maxtp: 0, //最高温度
     nowtp: 0, //当前温度
-    weatherName: "" //天气名称
+    weatherName: "", //天气名称
+    queryBMIList: [
+      {
+        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconOne.png',
+        description: '“我想测体质指数”'
+      },
+      {
+        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/HealthyIcon.png',
+        description: '“算一下我的BMI体质指数是多少”'
+      },
+      {
+        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconTwo.png',
+        description: '“我的身高175BMI体质指数是多少”'
+      }
+    ],
   },
   lifetimes: {
     ready: function () {

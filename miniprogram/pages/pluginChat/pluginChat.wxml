@@ -19,7 +19,7 @@
 </view> -->
 
 <view style="height: 100vh" wx:if="{{!flag}}">
-  <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" >
+  <chat  bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" >
   </chat>
 </view>
 
