@@ -7,7 +7,7 @@
   ],
   "plugins": {
     "myPlugin": {
-      "version": "1.0.8",
+      "version": "dev",
       "provider": "wx8c631f7e9f2465e1"
     },
     "WechatSI": {

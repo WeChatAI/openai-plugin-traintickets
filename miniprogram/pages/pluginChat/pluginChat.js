@@ -23,10 +23,13 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    const component = this.selectComponent('#component-id');
     if (options && options.switch === 'switch') {
       this.setData({
         flag: true
       })
+    } else if (options && options.data && options.data !== '') {
+      component.send(options.data)
     }
     wx.getSystemInfo({
       success: (res) => {

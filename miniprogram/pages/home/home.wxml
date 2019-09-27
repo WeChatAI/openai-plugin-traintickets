@@ -63,7 +63,7 @@
           <view class="queryBMI_bottom_content_img_view">
             <image class="queryBMI_bottom_content_img{{index}}" src="{{item.url}}"></image>
           </view>
-          <view class="queryBMI_bottom_content_description">{{item.description}}</view>
+          <view class="queryBMI_bottom_content_title">{{item.title}}</view>
         </view>
       </view>
     </view>

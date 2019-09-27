@@ -3,6 +3,7 @@
     generic:textMessage="customTextMessage"
     generic:weatherMessage="customWeatherMessage" 
     generic:imageMessage="costomImageMessage"       
-    generic:guideCard="customGuideCard">
+    generic:guideCard="customGuideCard"
+    generic:queryMessage="customQuery">
   </chat>
 </view>

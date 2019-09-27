@@ -42,15 +42,15 @@ Page({
     queryBMIList: [
       { 
         url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconOne.png',
-        description: '“我想测体质指数”'
+        title: '“我想测体质指数”'
       },
       {
         url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/HealthyIcon.png',
-        description: '“算一下我的BMI体质指数是多少”'
+        title: '“算一下我的BMI体质指数是多少”'
       },
       {
         url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconTwo.png',
-        description: '“我的身高175BMI体质指数是多少”'
+        title: '“我的身高175BMI体质指数是多少”'
       }
     ],
     weatherGuideList: [
@@ -158,12 +158,16 @@ Page({
     console.log(e)
     if (e.currentTarget.dataset.item.title === '聊天') {
       plugin.setGuideList(this.data.chatGuideList)
+      this.jump(e.currentTarget.dataset.item.title)
     } else if (e.currentTarget.dataset.item.title === '百科') {
       plugin.setGuideList(this.data.encyclopediasGuideList)
+      this.jump(e.currentTarget.dataset.item.title)
     } else if (e.currentTarget.dataset.item.title === '成语接龙') {
       plugin.setGuideList(this.data.idiomGuideList)
+      this.jump(e.currentTarget.dataset.item.title)
     } else if (e.currentTarget.dataset.item.title === '天气') {
       plugin.setGuideList(this.data.weatherGuideList)
+      this.jump(e.currentTarget.dataset.item.title)
     } else if (this.data.weatherCardList.find(item => {
       if (item.title === e.currentTarget.dataset.item.title){
         return true
@@ -179,16 +183,27 @@ Page({
         "上海今日防晒指数"
       ]
       plugin.setGuideList(weatherGuideList)
+      this.jump(e.currentTarget.dataset.item.title)
     } else if (this.data.queryBMIList.find(item => {
-      if (item.description === e.currentTarget.dataset.item.description){
+      if (item.title === e.currentTarget.dataset.item.title){
         return true
       }
     })) {
+      let title = ''
       let chatGuideList = ["我想测体质指数", "算一下我的BMI体质指数是多少", "我的身高175BMI体质指数是多少"]
       plugin.setGuideList(chatGuideList)
+      if (e.currentTarget.dataset.item.title === '“我想测体质指数”') {
+        title = "我想测体质指数"
+      }
+      if (e.currentTarget.dataset.item.title === '“算一下我的BMI体质指数是多少”') {
+        title = "算一下我的BMI体质指数是多少"
+      }
+      if (e.currentTarget.dataset.item.title === '“我的身高175BMI体质指数是多少”') {
+        title = "我的身高175BMI体质指数是多少"
+      } 
+      this.jump(title)
     }
     plugin.setTextToSpeech(true)
-    this.jump()
   },
   gotoChat:function() {
     plugin.setGuideList(this.data.defaultGuideList)
@@ -228,6 +243,7 @@ Page({
     })
   },
   jump:function(val) {
+    console.log(val)
     if (val === 'switch') {
       wx.navigateTo({
         url: '../pluginChat/pluginChat?switch=' + val,
@@ -236,9 +252,17 @@ Page({
         fail: function (res) { },
         complete: function (res) { },
       })
-    } else {
+    } else if (!val) {
       wx.navigateTo({
         url: '../pluginChat/pluginChat',
+        success: function (res) {
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    } else {
+      wx.navigateTo({
+        url: '../pluginChat/pluginChat?data=' + val,
         success: function (res) {
         },
         fail: function (res) { },

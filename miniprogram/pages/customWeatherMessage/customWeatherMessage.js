@@ -17,15 +17,15 @@ Component({
     queryBMIList: [
       {
         url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconOne.png',
-        description: '“我想测体质指数”'
+        description: '“北京今天空气质量”'
       },
       {
         url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/HealthyIcon.png',
-        description: '“算一下我的BMI体质指数是多少”'
+        description: '“北京今日防晒指数”'
       },
       {
         url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconTwo.png',
-        description: '“我的身高175BMI体质指数是多少”'
+        description: '“北京明天的天气”'
       }
     ],
   },

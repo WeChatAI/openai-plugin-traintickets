@@ -4,10 +4,10 @@
   <view class="queryBMI">
       <view class="queryBMI_top">
         <view class="queryBMI_top_content">
-          <view class="queryBMI_top_content_title"></view>
-          <view class="queryBMI_top_content_para">如果不运动就会长胖了哦</view>
+          <view class="queryBMI_top_content_title">天气查询</view>
+          <view class="queryBMI_top_content_para">可以查询空气质量哦</view>
         </view>
-        <image class="queryBMI_top_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/Bodybuilding.png"></image>
+        <!-- <image class="queryBMI_top_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/Bodybuilding.png"></image> -->
       </view>
       <view class="queryBMI_bottom">
         <view wx:for="{{queryBMIList}}" bindtap="goChat" data-item="{{item}}" wx:key="item" class="queryBMI_bottom_content">
