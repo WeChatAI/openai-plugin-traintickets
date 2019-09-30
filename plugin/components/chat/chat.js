@@ -194,7 +194,20 @@ Component({
               );
             } else if (res.ans_node_name === "天气服务") {
               var detail = res.msg;
-              let slot_info = JSON.parse(res.slot_info[0].date);
+              let date_slot = { date: new Date() };
+
+              if (res.slots_info) {
+                for (var i = 0, len = res.slots_info.length; i < len; i++) {
+                  const item = res.slots_info[i];
+                  if (item.slot_value) {
+                    const v = JSON.parse(item.slot_value);
+                    if (v.type === "datetime_point") {
+                      date_slot = v;
+                    }
+                  }
+                }
+              }
+
               if (detail != null && detail.length > 0) {
                 if (res.dialog_status === "START") {
                   var cardData = {
@@ -217,9 +230,9 @@ Component({
                     for (var i = 0; i < 6; i++) {
                       tempList.push(detail[0]);
                       tempList[i].dateTime = util.dateTimeFormat(
-                        slot_info.date
+                        date_slot.date
                       );
-                      tempList[i].week = util.date2Week(slot_info.date);
+                      tempList[i].week = util.date2Week(date_slot.date);
                       tempList[i].picture = "qing";
                     }
                     //  tempList[0].dateTime = util.dateTimeFormat(slot_info.date)
