@@ -1,23 +1,26 @@
 <view class='container'>
-  <view class="answer">{{weatherDis.answer}}</view>
+  <view class="answer">
+    <view>{{weatherDis.answer}}</view>
+    <view class="hrefWord" wx:for="{{queryBMIList}}" bindtap="send" wx:key="index" data-item="{{item}}">{{item.description}}</view>
+  </view>
   <view style='clear: both;'></view>
-  <view class="queryBMI">
+  <!-- <view class="queryBMI">
       <view class="queryBMI_top">
         <view class="queryBMI_top_content">
           <view class="queryBMI_top_content_title">天气查询</view>
           <view class="queryBMI_top_content_para">可以查询空气质量哦</view>
         </view>
-        <!-- <image class="queryBMI_top_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/Bodybuilding.png"></image> -->
+        <image class="queryBMI_top_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/Bodybuilding.png"></image>
       </view>
       <view class="queryBMI_bottom">
-        <view wx:for="{{queryBMIList}}" bindtap="goChat" data-item="{{item}}" wx:key="item" class="queryBMI_bottom_content">
+        <view wx:for="{{queryBMIList}}" bindtap="send" data-item="{{item}}" wx:key="item" class="queryBMI_bottom_content">
           <view class="queryBMI_bottom_content_img_view">
             <image class="queryBMI_bottom_content_img{{index}}" src="{{item.url}}"></image>
           </view>
           <view class="queryBMI_bottom_content_description">{{item.description}}</view>
         </view>
       </view>
-    </view>
+    </view> -->
   <!-- <view class="weather-view">
     <view class='top-view'>
     <view class='left-view'>

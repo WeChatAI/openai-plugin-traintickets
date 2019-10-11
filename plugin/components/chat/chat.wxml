@@ -53,7 +53,7 @@
       <image class='list-img' src='../../images/Microphone2.png'></image>
     </view>
     <view class='input-btn-inputView'>
-      <input class='input-view' placeholder="请输入" value='{{inputText}}' bindblur="changContentInput" bindblur="tuneDownInput" type='text' confirm-type='send' bindconfirm="bindconfirmInput" bindinput="bindInput" placeholder-style="color: #c4c5c7" cursor-spacing='10'></input>
+      <input class='input-view' focus="{{focus}}" placeholder="请输入" value='{{inputText}}' bindblur="changContentInput" bindblur="tuneDownInput" type='text' confirm-type='send' bindconfirm="bindconfirmInput" bindinput="bindInput" placeholder-style="color: #c4c5c7" cursor-spacing='10'></input>
     </view>
     <view class='voice-btn-inputView' catchtap='showGuideView'>
       <image class='voice-img2' src="{{isShowGuideView?'../../images/listsele.png':'../../images/list.png'}}"></image>

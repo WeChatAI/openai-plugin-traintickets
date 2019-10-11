@@ -1,5 +1,6 @@
 // pages/home/home.js
 var plugin = requirePlugin("myPlugin");
+const backgroundAudioManager = wx.getBackgroundAudioManager()
 Page({
 
   /**
@@ -75,11 +76,15 @@ Page({
       "中国的面积"
     ],
     idiomGuideList: [
-      "一心一意",
-      "一了百了",
-      "四面八方",
-      "十全十美",
-      "九牛一毛"
+      { title: "开怀畅饮" },
+      { title: "一了百了" },
+      { title: "李白桃红" },
+      { title: "热肠古道" },
+      { title: "道傍苦李" },
+      { title: "十全十美" },
+      { title: "事败垂成" },
+      { title: "成败得失" },
+      { title: "九牛一毛" }
     ],
     defaultGuideList: [
       "北京天气怎么样",
@@ -89,12 +94,43 @@ Page({
       "法国国土面积是多少",
       "世界最高峰"
     ],
+    garbageCardList: [
+      { title: '垃圾分类查询' },
+      { title: '苹果是什么垃圾' },
+      { title: '干垃圾' },
+      { title: '珍珠奶茶是什么垃圾' },
+      { title: '笔记本电脑是什么垃圾' },
+      { title: '秋裤是什么垃圾' },
+      { title: '水杯是什么垃圾' }
+    ],
+    gameList: [
+      {
+        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconOne.png',
+        title: '“玩末日生存游戏”'
+      },
+      {
+        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/HealthyIcon.png',
+        title: '“我想玩猜拳游戏”'
+      },
+      {
+        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconTwo.png',
+        title: '“我想写诗”'
+      }
+    ],
+    chatTitle: {
+      title: 'chat'
+    },
+    encyclopediasTitle: {
+      title: 'encyclopedias'
+    }
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     wx.getSystemInfo({
       success: (res) => {
         this.setData({
@@ -117,7 +153,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    backgroundAudioManager.stop()
   },
 
   /**
@@ -154,38 +190,145 @@ Page({
   onShareAppMessage: function () {
 
   },
+  // 四个模块
   goChat:function (e) {
     console.log(e)
-    if (e.currentTarget.dataset.item.title === '聊天') {
-      plugin.setGuideList(this.data.chatGuideList)
-      this.jump(e.currentTarget.dataset.item.title)
-    } else if (e.currentTarget.dataset.item.title === '百科') {
-      plugin.setGuideList(this.data.encyclopediasGuideList)
-      this.jump(e.currentTarget.dataset.item.title)
-    } else if (e.currentTarget.dataset.item.title === '成语接龙') {
-      plugin.setGuideList(this.data.idiomGuideList)
-      this.jump(e.currentTarget.dataset.item.title)
+    if (e.currentTarget.dataset.item.title === '聊天' || e.currentTarget.dataset.item.title === 'chat') {
+      this.goChatCard(e)
     } else if (e.currentTarget.dataset.item.title === '天气') {
-      plugin.setGuideList(this.data.weatherGuideList)
-      this.jump(e.currentTarget.dataset.item.title)
-    } else if (this.data.weatherCardList.find(item => {
-      if (item.title === e.currentTarget.dataset.item.title){
+      this.goWeatherCard(e)
+    } else if (e.currentTarget.dataset.item.title === '成语接龙') {
+      this.goIdiom(e)
+    } else if (e.currentTarget.dataset.item.title === '百科' || e.currentTarget.dataset.item.title === 'encyclopedias') {
+      this.goEncyclopedias(e)
+    }
+  },
+  // 默认展示
+  gotoChat:function(e) {
+    console.log(e)
+    if (e.currentTarget.dataset.item === 'keyboard') {
+      this.jump('keyboard')
+    } else  {
+      this.jump()
+    }
+    plugin.setGuideList(this.data.defaultGuideList)
+    plugin.setTextToSpeech(true)
+    
+  },
+  // 没有UI(NLU)展示
+  gotoChatNoUI: function () {
+    wx.navigateTo({
+      url: "../noUI/noUI",
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { }
+    });
+  },
+  // 关闭文本语音播报
+  gotoChatcloseVoice:function () {
+    plugin.setGuideList(this.data.defaultGuideList)
+    plugin.setTextToSpeech(true)
+    this.jump('switch')
+  },
+  // 关于
+  goWebview:function() {
+    wx.navigateTo({
+      url: '../about/about',
+      success: function (res) {
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  // 复写组件
+  gotoChatCom:function (val) {
+    if (val) {
+      wx.navigateTo({
+        url: '../rewriteChatComponents/rewriteChatComponents?data=' + val,
+        success: function (res) {
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    } else {
+      wx.navigateTo({
+        url: '../rewriteChatComponents/rewriteChatComponents',
+        success: function (res) {
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    }
+    plugin.setTextToSpeech(true)
+    plugin.setGuideList(this.data.defaultGuideList)
+  },
+  // 图片组件
+  goImageCom:function() {
+    this.gotoChatCom('image')
+  },
+  goweatherCom:function() {
+    this.gotoChatCom('weather')
+  },
+  // 跳转页面
+  jump:function(val1, val2) {
+    if (!val1) {
+      wx.navigateTo({
+        url: '../pluginChat/pluginChat',
+        success: function (res) {
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    } else {
+      let url = ''
+      if (val1 && !val2) {
+        url = '../pluginChat/pluginChat?data=' + val1
+      } else if (val1 && val2) {
+        url = '../pluginChat/pluginChat?data=' + val1 + '&data2=' + val2
+      }
+      wx.navigateTo({
+        url: url,
+        success: function (res) {
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    }
+  },
+  // 聊天
+  goChatCard:function (e) {
+    plugin.setGuideList(this.data.chatGuideList)
+    this.jump('聊天')
+    plugin.setTextToSpeech(true)
+  },
+  // 天气
+  goWeatherCard:function(e) {
+    let weatherGuideList = [
+      "北京天气",
+      "北京今日防晒指数",
+      "上海天气",
+      "北京今日空气质量",
+      "北京今日风向",
+      "上海今日空气质量",
+      "上海今日防晒指数"
+    ]
+    if (this.data.weatherCardList.find(item => {
+      if (item.title === e.currentTarget.dataset.item.title) {
         return true
       }
     })) {
-      let weatherGuideList = [
-        "北京天气",
-        "北京今日防晒指数",
-        "上海天气",
-        "北京今日空气质量",
-        "北京今日风向",
-        "上海今日空气质量",
-        "上海今日防晒指数"
-      ]
       plugin.setGuideList(weatherGuideList)
-      this.jump(e.currentTarget.dataset.item.title)
-    } else if (this.data.queryBMIList.find(item => {
-      if (item.title === e.currentTarget.dataset.item.title){
+      this.jump('天气', e.currentTarget.dataset.item.title)
+      plugin.setTextToSpeech(true)
+    } else {
+      plugin.setGuideList(weatherGuideList)
+      this.jump('天气')
+    }
+  },
+  // BMI
+  goBMI:function(e) {
+    if (this.data.queryBMIList.find(item => {
+      if (item.title === e.currentTarget.dataset.item.title) {
         return true
       }
     })) {
@@ -200,74 +343,88 @@ Page({
       }
       if (e.currentTarget.dataset.item.title === '“我的身高175BMI体质指数是多少”') {
         title = "我的身高175BMI体质指数是多少"
-      } 
+      }
       this.jump(title)
-    }
+      plugin.setTextToSpeech(true)
+    } 
+  },
+  // 垃圾分类
+  goGarbage:function(e) {
+    if (this.data.garbageCardList.find(item => {
+      if (item.title === e.currentTarget.dataset.item.title) {
+        return true
+      }
+    })) {
+      let garbageCardList = [
+        '垃圾分类查询',
+        '退出垃圾分类查询',
+        '苹果是什么垃圾',
+        '干垃圾',
+        '珍珠奶茶是什么垃圾',
+        '笔记本电脑是什么垃圾',
+        '秋裤是什么垃圾',
+        '水杯是什么垃圾',
+        '退出垃圾分类查询'
+      ]
+      plugin.setGuideList(garbageCardList)
+      this.jump('垃圾分类查询', e.currentTarget.dataset.item.title)
+      plugin.setTextToSpeech(true)
+    } 
+  },
+  // 游戏
+  goGame:function(e) {
+    if (this.data.gameList.find(item => {
+      if (item.title === e.currentTarget.dataset.item.title) {
+        return true
+      }
+    })) {
+      let title = ''
+      if (e.currentTarget.dataset.item.title === '“玩末日生存游戏”') {
+        title = "玩末日生存游戏"
+        plugin.setGuideList([])
+      }
+      if (e.currentTarget.dataset.item.title === '“我想玩猜拳游戏”') {
+        title = "猜拳"
+        plugin.setGuideList(['剪刀', '石头', '布', '不玩了', '猜拳'])
+      }
+      if (e.currentTarget.dataset.item.title === '“我想写诗”') {
+        title = "小微写诗"
+        plugin.setGuideList([])
+      }
+      this.jump(title)
+      plugin.setTextToSpeech(true)
+      
+    } 
+  },
+  // 成语接龙
+  goIdiom:function(e) {
+    if (this.data.idiomGuideList.find(item => {
+      if (item.title === e.currentTarget.dataset.item.title) {
+        return true
+      }
+    }) || e.currentTarget.dataset.item.title === '成语接龙') {
+      let idiomGuideList = [
+        "准备好了",
+        "退出游戏",
+        "开怀畅饮",
+        "一了百了",
+        "李白桃红",
+        "热肠古道",
+        "道傍苦李",
+        "十全十美",
+        "事败垂成",
+        "成败得失",
+        "九牛一毛"
+      ]
+      plugin.setGuideList(idiomGuideList)
+      this.jump('成语接龙')
+      plugin.setTextToSpeech(true)
+    } 
+  },
+  // 百科
+  goEncyclopedias:function(e) {
+    plugin.setGuideList(this.data.encyclopediasGuideList)
+    this.jump('百科')
     plugin.setTextToSpeech(true)
-  },
-  gotoChat:function() {
-    plugin.setGuideList(this.data.defaultGuideList)
-    plugin.setTextToSpeech(true)
-    this.jump()
-  },
-  gotoChatNoUI: function () {
-    wx.navigateTo({
-      url: "../noUI/noUI",
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { }
-    });
-  },
-  gotoChatcloseVoice:function () {
-    plugin.setGuideList(this.data.defaultGuideList)
-    plugin.setTextToSpeech(true)
-    this.jump('switch')
-  },
-  goWebview:function() {
-    wx.navigateTo({
-      url: '../about/about',
-      success: function (res) {
-      },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
-  gotoChatCom:function () {
-    plugin.setTextToSpeech(true)
-    wx.navigateTo({
-      url: '../rewriteChatComponents/rewriteChatComponents',
-      success: function (res) {
-      },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
-  jump:function(val) {
-    console.log(val)
-    if (val === 'switch') {
-      wx.navigateTo({
-        url: '../pluginChat/pluginChat?switch=' + val,
-        success: function (res) {
-        },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-    } else if (!val) {
-      wx.navigateTo({
-        url: '../pluginChat/pluginChat',
-        success: function (res) {
-        },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-    } else {
-      wx.navigateTo({
-        url: '../pluginChat/pluginChat?data=' + val,
-        success: function (res) {
-        },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-    }
   }
 })

@@ -5,7 +5,7 @@
   background-color: #fff;
   color: #000;
   border-radius: 24px;
-  border-top-left-radius: 2px;
+  /* border-top-left-radius: 2px; */
   font-size: 16px;
   line-height: 22px;
   overflow:hidden; word-wrap:break-word;
@@ -235,4 +235,9 @@
   font-family:PingFangSC-Regular,PingFangSC;
   font-weight:400;
   color:rgba(48,49,51,1);
+}
+
+.hrefWord {
+  font-size: 14px;
+  color:aqua;
 }

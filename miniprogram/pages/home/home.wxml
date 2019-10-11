@@ -1,11 +1,3 @@
-<!-- <view class="container">
- <view class="backImg"></view>
- <view class="content" wx:for="{{list}}" wx:key="item">
-  <view bindtap="goChat" data-item="{{item}}">
-    <view>{{item.name}}</view>
-  </view>
- </view>
-</view> -->
 <view class="container">
   <scroll-view class="scroll-view" scroll-y enable-back-to-top>
     <view class="info" style="height: {{infoheight}}px">
@@ -22,7 +14,7 @@
       </view>
     </view>
     <view class="weatherCard" style="height: {{weatherheight}}px">
-      <view class="weatherCardList" bindtap="goChat" data-item="{{item}}" wx:for="{{weatherCardList}}" wx:key="item">
+      <view class="weatherCardList" bindtap="goWeatherCard" data-item="{{item}}" wx:for="{{weatherCardList}}" wx:key="item">
         {{item.title}}
       </view>
     </view>
@@ -33,19 +25,27 @@
       <view class="experience_bottom">
         <view class="treeplanting">
           <image  class="treeplanting_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/arrowIcon.png"></image>
-          <view class="treeplanting_title" bindtap="gotoChat">有UI插件展示</view>
+          <view class="treeplanting_title" bindtap="gotoChat">默认展示</view>
         </view>
         <view class="todayWeather">
           <image  class="todayWeather_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/weatherIcon.png"></image>
-          <view class="todayWeather_title" bindtap="gotoChatNoUI">无UI插件展示</view>
+          <view class="todayWeather_title" bindtap="gotoChatNoUI">NLU展示</view>
         </view>
         <view class="bowl">
           <image  class="bowl_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/bowl.png"></image>
-          <view class="bowl_title" bindtap="gotoChatcloseVoice">语音开关</view>
+          <view class="bowl_title" bindtap="gotoChatcloseVoice">语音开关展示</view>
         </view>
         <view class="flameIcon">
           <image  class="flameIcon_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/flameIcon.png"></image>
           <view class="flameIcon_title" bindtap="gotoChatCom">复写组件展示</view>
+        </view>
+        <view class="imageCom">
+          <image  class="imageCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/flameIcon.png"></image>
+          <view class="imageCom_title" bindtap="goImageCom">复写图片组件展示</view>
+        </view>
+        <view class="weatherCom">
+          <image  class="weatherCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/flameIcon.png"></image>
+          <view class="weatherCom_title" bindtap="goweatherCom">复写天气组件展示</view>
         </view>
         <view style="clear: both;"></view>
       </view>
@@ -59,7 +59,7 @@
         <image class="queryBMI_top_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/Bodybuilding.png"></image>
       </view>
       <view class="queryBMI_bottom">
-        <view wx:for="{{queryBMIList}}" bindtap="goChat" data-item="{{item}}" wx:key="item" class="queryBMI_bottom_content">
+        <view wx:for="{{queryBMIList}}" bindtap="goBMI" data-item="{{item}}" wx:key="item" class="queryBMI_bottom_content">
           <view class="queryBMI_bottom_content_img_view">
             <image class="queryBMI_bottom_content_img{{index}}" src="{{item.url}}"></image>
           </view>
@@ -67,10 +67,79 @@
         </view>
       </view>
     </view>
+    <view class="garbageCard" style="height: {{weatherheight}}px">
+      <view class="garbageCardTop">
+        <view class="garbageCardTop_left">
+          <view class="garbageCardTop_left_word">垃圾分类</view>
+          <view class="garbageCardTop_left_english">REFUSE CLASSIFICATIONG</view>
+        </view>
+        <image src="../garbage.png" class="garbageCardTop_right"></image>
+      </view>
+      <view class="garbageCardList" bindtap="goGarbage" data-item="{{item}}" wx:for="{{garbageCardList}}" wx:key="item">
+        {{item.title}}
+      </view>
+    </view>
+    <view class="game">
+      <view class="game_top">
+        <view class="game_top_content">
+          <view class="game_top_content_title">游戏</view>
+          <view class="game_top_content_para">Game</view>
+        </view>
+        <image class="game_top_img" src="../game.png"></image>
+      </view>
+      <view class="game_bottom">
+        <view wx:for="{{gameList}}" bindtap="goGame" data-item="{{item}}" wx:key="item" class="game_bottom_content">
+          <view class="game_bottom_content_img_view">
+            <image class="game_bottom_content_img{{index}}" src="{{item.url}}"></image>
+          </view>
+          <view class="game_bottom_content_title">{{item.title}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="chatCard">
+      <view class="chatCard_top">
+        <image src="../chatCardImage.png" class="chatCard_top_image"></image>
+      </view>
+      <view class="chatCard_bottom">
+        <view class="chatCard_bottom_left">
+          <view class="chatCard_bottom_left_chat">聊天</view>
+          <view class="chatCard_bottom_left_info">可以和小微聊天，沟通感情</view>
+        </view>
+        <view class="chatCard_bottom_right" bindtap="goChat" data-item="{{chatTitle}}">
+          试试
+        </view> 
+      </view>
+    </view>
+    <view class="idiomsCard" style="height: {{weatherheight}}px">
+      <view class="idiomsCardTop">
+        <view class="idiomsCardTop_left">
+          <view class="idiomsCardTop_left_word">成语接龙</view>
+          <view class="idiomsCardTop_left_english">Idiom Salon Game</view>
+        </view>
+        <image src="../garbage.png" class="idiomsCardTop_right"></image>
+      </view>
+      <view class="idiomsCardList" bindtap="goIdiom" data-item="{{item}}" wx:for="{{idiomGuideList}}" wx:key="item">
+        {{item.title}}
+      </view>
+    </view>
+    <view class="encyclopediasCard">
+      <view class="encyclopediasCard_top">
+        <image src="../chatCardImage.png" class="encyclopediasCard_top_image"></image>
+      </view>
+      <view class="encyclopediasCard_bottom">
+        <view class="encyclopediasCard_bottom_left">
+          <view class="encyclopediasCard_bottom_left_chat">百科</view>
+          <view class="encyclopediasCard_bottom_left_info">不懂的知识点可以问小微</view>
+        </view>
+        <view class="encyclopediasCard_bottom_right" bindtap="goChat" data-item="{{encyclopediasTitle}}">
+          试试
+        </view> 
+      </view>
+    </view>
     <view style='clear: both;height: 54px'></view>
   </scroll-view>
   <view class="footer">
-    <image class="keyboard" bindtap="gotoChat" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/keyboard.png"></image>
+    <image class="keyboard" bindtap="gotoChat" data-item="keyboard" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/keyboard.png"></image>
     <image class="voiceCard" bindtap="gotoChat" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/voiceCard.png"></image>
     <image class="questionIcon" bindtap="goWebview" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/questionIcon.png"></image>
   </view>

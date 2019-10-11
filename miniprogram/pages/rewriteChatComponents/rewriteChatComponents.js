@@ -1,3 +1,5 @@
+var plugin = requirePlugin("myPlugin");
+var sendFun = require("../send/send.js");
 Page({
 
   /**
@@ -11,7 +13,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    const component = this.selectComponent('#component-id');
+    sendFun.send(component)
+    if (options.data === 'image') {
+      component.send('图片回复')
+    } else if (options.data === 'weather') {
+      component.send('北京天气')
+    }
   },
 
   /**

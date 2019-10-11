@@ -1,3 +1,4 @@
 .imgcard-img {
-  width: 310px;
+  width: 145px;
+  height: 145px;
 }
