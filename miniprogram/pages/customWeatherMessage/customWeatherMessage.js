@@ -1,3 +1,5 @@
+var sendFun = require("../send/send.js");
+
 Component({
   properties: {
     msg: Object
@@ -17,15 +19,15 @@ Component({
     queryBMIList: [
       {
         url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconOne.png',
-        description: '“北京今天空气质量”'
+        description: '北京今天空气质量'
       },
       {
         url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/HealthyIcon.png',
-        description: '“北京今日防晒指数”'
+        description: '北京今日防晒指数'
       },
       {
         url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconTwo.png',
-        description: '“北京明天的天气”'
+        description: '北京明天的天气'
       }
     ],
   },
@@ -56,5 +58,9 @@ Component({
       });
     }
   },
-  methods: {}
+  methods: {
+    send :function (e) {
+      sendFun.getData(e.currentTarget.dataset.item.description)
+    }
+  }
 });

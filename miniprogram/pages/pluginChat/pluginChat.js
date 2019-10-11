@@ -8,10 +8,19 @@ Page({
     listData: [],
     show: false,
     flag: false,
-    isActive: true
+    isActive: true,
+    getDataValue: false
   },
   getQueryCallback: function (e) {
-    console.log(e.detail)
+    let listData = this.data.listData
+    listData.push(e.detail)
+    this.setData({
+      listData: listData
+    }, () => {
+      if (this.data.listData.length == 1 && this.data.getDataValue === true) {
+        this.data.component.send(this.data.sendData)
+      }
+    })
   },
   goBackHome: function () {
     wx.navigateBack({
@@ -22,15 +31,35 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     const component = this.selectComponent('#component-id');
-    if (options && options.switch === 'switch') {
+    console.log(component)
+    if (options && options.data)  {
+      if (options && options.data === 'switch') {
+        this.setData({
+          flag: true
+        })
+      } else if (options && options.data === 'keyboard') {
+        component.editFoucs(true)
+      } else {
+        component.send(options.data)
+        if (options.data2) {
+          this.setData({
+            flag: false,
+            getDataValue: true,
+            component: component,
+            sendData: options.data2
+          })
+        } else {
+          this.setData({
+            flag: false
+          })
+        }
+      }
+    } else {
       this.setData({
-        flag: true
+        flag: false
       })
-    } else if (options && options.data && options.data !== '') {
-      component.send(options.data)
-    }
+    } 
     wx.getSystemInfo({
       success: (res) => {
         this.setData({

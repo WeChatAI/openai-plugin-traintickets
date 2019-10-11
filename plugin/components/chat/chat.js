@@ -18,7 +18,8 @@ Component({
     recordText: "嗯，你说..", //录音文字
     isShowSwiperView: true,
     controlSwiper: true,
-    guideList: []
+    guideList: [],
+    focus: false
   },
 
   behaviors: ["wx://component-export"],
@@ -35,6 +36,14 @@ Component({
         listData.push(newData);
 
         that.getData(val);
+      },
+      editFoucs: function(val) {
+        if (val) {
+          that.setData({
+            focus: val,
+            inputing: true
+          })
+        }
       }
     };
   },
