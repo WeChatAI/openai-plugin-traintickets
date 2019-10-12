@@ -1,5 +1,11 @@
 <view>
     <image class="recordingView" src="../../images/recording.gif" wx:if="{{recording && msg.content == ''}}"></image>
-    <view class="rightView" wx:if="{{msg.content != ''}}">{{msg.content}}</view>
+    <view class="query" wx:if="{{msg.content != ''}}">
+      <view class="rightView" >{{msg.content}}</view>
+      <!-- <image class="queryimage" src="../queryImage.png"></image> -->
+      <view class="queryimageview">
+        <open-data class="queryimage" type="userAvatarUrl"></open-data>
+      </view>
+    </view> 
     <view style='clear: both;'></view>
 </view>

@@ -242,32 +242,33 @@ Page({
   },
   // 复写组件
   gotoChatCom:function (val) {
-    if (val) {
-      wx.navigateTo({
-        url: '../rewriteChatComponents/rewriteChatComponents?data=' + val,
-        success: function (res) {
-        },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-    } else {
-      wx.navigateTo({
-        url: '../rewriteChatComponents/rewriteChatComponents',
-        success: function (res) {
-        },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-    }
+    this.jump()
+    // if (val) {
+    //   wx.navigateTo({
+    //     url: '../rewriteChatComponents/rewriteChatComponents?data=' + val,
+    //     success: function (res) {
+    //     },
+    //     fail: function (res) { },
+    //     complete: function (res) { },
+    //   })
+    // } else {
+    //   wx.navigateTo({
+    //     url: '../rewriteChatComponents/rewriteChatComponents',
+    //     success: function (res) {
+    //     },
+    //     fail: function (res) { },
+    //     complete: function (res) { },
+    //   })
+    // }
     plugin.setTextToSpeech(true)
     plugin.setGuideList(this.data.defaultGuideList)
   },
   // 图片组件
   goImageCom:function() {
-    this.gotoChatCom('image')
+    this.jump('image')
   },
   goweatherCom:function() {
-    this.gotoChatCom('weather')
+    this.jump('weather')
   },
   // 跳转页面
   jump:function(val1, val2) {
@@ -299,7 +300,6 @@ Page({
   goChatCard:function (e) {
     plugin.setGuideList(this.data.chatGuideList)
     this.jump('聊天')
-    // plugin.setWelcome('')
     plugin.setTextToSpeech(true)
   },
   // 天气

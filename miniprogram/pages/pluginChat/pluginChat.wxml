@@ -19,7 +19,11 @@
 </view> -->
 
 <view style="height: 100vh" wx:if="{{!flag}}">
-  <chat id="component-id" bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" >
+  <chat id="component-id" bind:queryCallback="getQueryCallback" bind:backHome="goBackHome"     generic:textMessage="customTextMessage"
+    generic:weatherMessage="customWeatherMessage" 
+    generic:imageMessage="costomImageMessage"       
+    generic:guideCard="customGuideCard"
+    generic:queryMessage="customQuery">
   </chat>
 </view>
 
@@ -31,5 +35,10 @@
       <view class="clear {{isActive ? '': 'active'}}" bindtap="close">关</view>
     </movable-view>
   </movable-area>
-  <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" />
+  <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" 
+    generic:textMessage="customTextMessage"
+    generic:weatherMessage="customWeatherMessage" 
+    generic:imageMessage="costomImageMessage"       
+    generic:guideCard="customGuideCard"
+    generic:queryMessage="customQuery"/>
 </view>

@@ -51,6 +51,7 @@ Component({
   },
 
   attached: function() {
+    console.log(data.getData().background)
     const chatReCord = wx.getStorageSync('chatRecord')
     if (chatReCord && chatReCord.length !== 0) {
       this.setData({
@@ -65,6 +66,11 @@ Component({
     } else {
       this.setData({
         welcomeVal: false
+      })
+    }
+    if (data.getData().background) {
+      this.setData({
+        background: data.getData().background
       })
     }
     this.setData({
