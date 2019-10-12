@@ -204,7 +204,7 @@
 .flameIcon {
   float: left;
   height:30px;
-  background:rgba(159,126,251,0.3);
+  background:rgba(159, 126, 251, 0.3);
   border-radius:19px;
   display: flex;
   align-items: center;
@@ -221,12 +221,12 @@
 .flameIcon_title{
   font-size:12px;
   font-family:MicrosoftYaHeiUI;
-  color:rgba(178,157,238,1);
+  color:rgba(178, 157, 238, 1);
 }
 .imageCom {
   float: left;
   height:30px;
-  background:rgba(159,126,251,0.3);
+  background:rgba(98, 141, 233, 0.3);
   border-radius:19px;
   display: flex;
   align-items: center;
@@ -245,12 +245,12 @@
 .imageCom_title{
   font-size:12px;
   font-family:MicrosoftYaHeiUI;
-  color:rgba(178,157,238,1);
+  color:rgba(134, 167, 239, 1);
 }
 .weatherCom {
   float: left;
   height:30px;
-  background:rgba(159,126,251,0.3);
+  background:rgba(253, 172, 74, 0.22);
   border-radius:19px;
   display: flex;
   align-items: center;
@@ -268,7 +268,7 @@
 .weatherCom_title{
   font-size:12px;
   font-family:MicrosoftYaHeiUI;
-  color:rgba(178,157,238,1);
+  color:rgba(253, 172, 74, 1);
 }
 .queryBMI {
   height:255px;

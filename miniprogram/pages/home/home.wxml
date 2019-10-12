@@ -36,7 +36,7 @@
           <view class="todayWeather_title" bindtap="gotoChatNoUI">NLU展示</view>
         </view>
         <view class="imageCom">
-          <image  class="imageCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/flameIcon.png"></image>
+          <image  class="imageCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/imageCom.png"></image>
           <view class="imageCom_title" bindtap="goImageCom">复写图片组件</view>
         </view>
         <view class="bowl">
@@ -44,7 +44,7 @@
           <view class="bowl_title" bindtap="gotoChatcloseVoice">语音开关展示</view>
         </view>
         <view class="weatherCom">
-          <image  class="weatherCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/flameIcon.png"></image>
+          <image  class="weatherCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/weatherSun.png"></image>
           <view class="weatherCom_title" bindtap="goweatherCom">复写天气组件</view>
         </view>
         <view style="clear: both;"></view>

@@ -1,1 +1,4 @@
-<view class="leftView">{{msg.content}}</view>
+<view class="answer">
+  <image class="answerimage" src="../answerImage.png"></image>
+  <view class="leftView">{{msg.content}}</view>
+</view>

@@ -16,5 +16,12 @@
     }
   },
   "requiredBackgroundModes": ["audio"],
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "openai",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light"
+  }
 }

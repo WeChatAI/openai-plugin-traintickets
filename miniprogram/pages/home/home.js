@@ -242,32 +242,37 @@ Page({
   },
   // 复写组件
   gotoChatCom:function (val) {
-    if (val) {
-      wx.navigateTo({
-        url: '../rewriteChatComponents/rewriteChatComponents?data=' + val,
-        success: function (res) {
-        },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-    } else {
-      wx.navigateTo({
-        url: '../rewriteChatComponents/rewriteChatComponents',
-        success: function (res) {
-        },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-    }
+    this.jump()
+    // if (val) {
+    //   wx.navigateTo({
+    //     url: '../rewriteChatComponents/rewriteChatComponents?data=' + val,
+    //     success: function (res) {
+    //     },
+    //     fail: function (res) { },
+    //     complete: function (res) { },
+    //   })
+    // } else {
+    //   wx.navigateTo({
+    //     url: '../rewriteChatComponents/rewriteChatComponents',
+    //     success: function (res) {
+    //     },
+    //     fail: function (res) { },
+    //     complete: function (res) { },
+    //   })
+    // }
     plugin.setTextToSpeech(true)
     plugin.setGuideList(this.data.defaultGuideList)
   },
   // 图片组件
   goImageCom:function() {
-    this.gotoChatCom('image')
+    this.jump('image')
+    plugin.setTextToSpeech(true)
+    plugin.setGuideList(this.data.defaultGuideList)
   },
   goweatherCom:function() {
-    this.gotoChatCom('weather')
+    this.jump('weather')
+    plugin.setTextToSpeech(true)
+    plugin.setGuideList(this.data.defaultGuideList)
   },
   // 跳转页面
   jump:function(val1, val2) {
@@ -297,9 +302,8 @@ Page({
   },
   // 聊天
   goChatCard:function (e) {
-    plugin.setGuideList(this.data.chatGuideList)
     this.jump('聊天')
-    // plugin.setWelcome('')
+    plugin.setGuideList(this.data.chatGuideList)
     plugin.setTextToSpeech(true)
   },
   // 天气
@@ -335,7 +339,6 @@ Page({
     })) {
       let title = ''
       let chatGuideList = ["我想测体质指数", "算一下我的BMI体质指数是多少", "我的身高175BMI体质指数是多少"]
-      plugin.setGuideList(chatGuideList)
       if (e.currentTarget.dataset.item.title === '“我想测体质指数”') {
         title = "我想测体质指数"
       }
@@ -346,6 +349,7 @@ Page({
         title = "我的身高175BMI体质指数是多少"
       }
       this.jump(title)
+      plugin.setGuideList(chatGuideList)
       plugin.setTextToSpeech(true)
     } 
   },

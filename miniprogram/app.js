@@ -10,7 +10,8 @@ App({
       // appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja",
       textToSpeech: true,
       // guideList: ["玩末日生存游戏"],
-      welcome: '请问需要什么帮助',
+      // welcome: '请问需要什么帮助',
+      // background: "url('https://openai.weixin.qq.com/mmspraiweb_node/dist/static/weather/qing.png')",
       success: () => {
         // plugin.send({
         //   query: "你好",

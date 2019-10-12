@@ -1,4 +1,5 @@
 var plugin = requirePlugin("myPlugin");
+var sendFun = require("../send/send.js");
 Page({
 
   /**
@@ -32,7 +33,7 @@ Page({
    */
   onLoad: function (options) {
     const component = this.selectComponent('#component-id');
-    console.log(component)
+    sendFun.send(component)
     if (options && options.data)  {
       if (options && options.data === 'switch') {
         this.setData({
@@ -40,6 +41,10 @@ Page({
         })
       } else if (options && options.data === 'keyboard') {
         component.editFoucs(true)
+      } else if (options.data === 'image') {
+        component.send('图片回复')
+      } else if (options.data === 'weather') {
+        component.send('北京天气')
       } else {
         component.send(options.data)
         if (options.data2) {

@@ -8,7 +8,8 @@ var data = {
     "世界最高峰"
   ],
   textToSpeech: true,
-  welcome: ''
+  welcome: '',
+  background: ''
 };
 
 function getData() {
@@ -22,7 +23,7 @@ function setData(key, value) {
 const domain = "https://openai.weixin.qq.com";
 // const domain = "http://localhost:13563";
 
-function auth({ appid, openid, success, fail, guideList, textToSpeech, welcome }) {
+function auth({ appid, openid, success, fail, guideList, textToSpeech, welcome, background }) {
   if (guideList) {
     setData("guideList", guideList);
   }
@@ -37,6 +38,11 @@ function auth({ appid, openid, success, fail, guideList, textToSpeech, welcome }
     }
   } else {
     setData('welcome', '请问需要什么帮助')
+  }
+  if (typeof background !== 'undefined') {
+    setData('background', background)
+  } else {
+    setData('background', 'rgba(247, 251, 252, 1)')
   }
 
   wx.request({
@@ -106,12 +112,17 @@ function setWelcome(setWelcome) {
   setData("welcome", setWelcome);
 }
 
+function setBackground (background) {
+  setData('background', background)
+}
+
 module.exports = {
   getData: getData,
   setData: setData,
   setGuideList: setGuideList,
   setTextToSpeech: setTextToSpeech,
   setWelcome: setWelcome,
+  setBackground: setBackground,
   auth: auth,
   send: send
 };
