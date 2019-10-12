@@ -7,7 +7,8 @@ var data = {
     "法国国土面积是多少",
     "世界最高峰"
   ],
-  textToSpeech: true
+  textToSpeech: true,
+  welcome: ''
 };
 
 function getData() {
@@ -21,12 +22,21 @@ function setData(key, value) {
 const domain = "https://openai.weixin.qq.com";
 // const domain = "http://localhost:13563";
 
-function auth({ appid, openid, success, fail, guideList, textToSpeech }) {
+function auth({ appid, openid, success, fail, guideList, textToSpeech, welcome }) {
   if (guideList) {
     setData("guideList", guideList);
   }
   if (typeof textToSpeech !== "undefined") {
     setData("textToSpeech", textToSpeech);
+  }
+  if (typeof welcome !== "undefined") {
+    if (welcome === '') {
+      setData('welcome', '')
+    } else {
+      setData('welcome', welcome)
+    }
+  } else {
+    setData('welcome', '请问需要什么帮助')
   }
 
   wx.request({
@@ -92,11 +102,16 @@ function setTextToSpeech(textToSpeech) {
   setData("textToSpeech", textToSpeech);
 }
 
+function setWelcome(setWelcome) {
+  setData("welcome", setWelcome);
+}
+
 module.exports = {
   getData: getData,
   setData: setData,
   setGuideList: setGuideList,
   setTextToSpeech: setTextToSpeech,
+  setWelcome: setWelcome,
   auth: auth,
   send: send
 };

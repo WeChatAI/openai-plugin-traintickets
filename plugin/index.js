@@ -6,5 +6,6 @@ module.exports = {
   init: data.auth,
   send: data.send,
   setGuideList: data.setGuideList,
-  setTextToSpeech: data.setTextToSpeech
+  setTextToSpeech: data.setTextToSpeech,
+  setWelcome: data.setWelcome
 };
