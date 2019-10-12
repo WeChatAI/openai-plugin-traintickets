@@ -161,6 +161,8 @@
   box-sizing: border-box;
   width: 131px;
   padding-left: 4px;
+  margin-top: 14px;
+  margin-right: 15px;
 }
 .todayWeather_img {
   margin-right: 7px;
@@ -184,8 +186,8 @@
   box-sizing: border-box;
   width: 130px;
   padding-left: 4px;
-  margin-top: 14px;
   margin-right: 15px;
+  margin-top: 14px;
 }
 .bowl_img {
   margin-right: 7px;
@@ -209,7 +211,6 @@
   box-sizing: border-box;
   width: 131px;
   padding-left: 4px;
-  margin-top: 14px;
 }
 .flameIcon_img {
   margin-right: 7px;
@@ -230,9 +231,10 @@
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  width: 148px;
+  width: 130px;
   padding-left: 4px;
   margin-top: 14px;
+  margin-right: 15px;
 }
 .imageCom_img {
   margin-right: 7px;
@@ -253,7 +255,7 @@
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  width: 148px;
+  width: 130px;
   padding-left: 4px;
   margin-top: 14px;
 }

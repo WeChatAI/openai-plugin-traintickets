@@ -27,25 +27,25 @@
           <image  class="treeplanting_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/arrowIcon.png"></image>
           <view class="treeplanting_title" bindtap="gotoChat">默认展示</view>
         </view>
+        <view class="flameIcon">
+          <image  class="flameIcon_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/flameIcon.png"></image>
+          <view class="flameIcon_title" bindtap="gotoChatCom">复写组件展示</view>
+        </view>
         <view class="todayWeather">
           <image  class="todayWeather_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/weatherIcon.png"></image>
           <view class="todayWeather_title" bindtap="gotoChatNoUI">NLU展示</view>
+        </view>
+        <view class="imageCom">
+          <image  class="imageCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/flameIcon.png"></image>
+          <view class="imageCom_title" bindtap="goImageCom">复写图片组件</view>
         </view>
         <view class="bowl">
           <image  class="bowl_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/bowl.png"></image>
           <view class="bowl_title" bindtap="gotoChatcloseVoice">语音开关展示</view>
         </view>
-        <view class="flameIcon">
-          <image  class="flameIcon_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/flameIcon.png"></image>
-          <view class="flameIcon_title" bindtap="gotoChatCom">复写组件展示</view>
-        </view>
-        <view class="imageCom">
-          <image  class="imageCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/flameIcon.png"></image>
-          <view class="imageCom_title" bindtap="goImageCom">复写图片组件展示</view>
-        </view>
         <view class="weatherCom">
           <image  class="weatherCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/flameIcon.png"></image>
-          <view class="weatherCom_title" bindtap="goweatherCom">复写天气组件展示</view>
+          <view class="weatherCom_title" bindtap="goweatherCom">复写天气组件</view>
         </view>
         <view style="clear: both;"></view>
       </view>

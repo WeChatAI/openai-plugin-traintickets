@@ -19,7 +19,9 @@ Component({
     isShowSwiperView: true,
     controlSwiper: true,
     guideList: [],
-    focus: false
+    focus: false,
+    welcome: '',
+    welcomeVal: false
   },
 
   behaviors: ["wx://component-export"],
@@ -49,9 +51,26 @@ Component({
   },
 
   attached: function() {
+    const chatReCord = wx.getStorageSync('chatRecord')
+    if (chatReCord && chatReCord.length !== 0) {
+      this.setData({
+        listData: chatReCord
+      })
+    }
+    if (data.getData().welcome && data.getData().welcome !== '') {
+      this.setData({
+        welcome: data.getData().welcome,
+        welcomeVal: false
+      })
+    } else {
+      this.setData({
+        welcomeVal: false
+      })
+    }
     this.setData({
       guideList: data.getData().guideList
     });
+    
     this.initRecord();
   },
   methods: {
@@ -230,7 +249,10 @@ Component({
                       listData: listData
                     },
                     () => {
-                      that.scrollToNew();
+                      setTimeout(() => {
+                        that.scrollToNew();
+                      }, 500)
+                      
                     }
                   );
                 } else {
@@ -259,7 +281,9 @@ Component({
                         listData: listData
                       },
                       () => {
-                        that.scrollToNew();
+                        setTimeout(() => {
+                          that.scrollToNew();
+                        }, 500)
                       }
                     );
                   }
@@ -285,7 +309,8 @@ Component({
               newData = {
                 cardType: "image",
                 data: JSON.parse(res.answer).image,
-                res: res
+                res: res,
+                query: val
               };
 
               listData.push(newData);
@@ -360,6 +385,7 @@ Component({
             }
             // 回调, 返回的数据
             this.triggerEvent("queryCallback", { query: val, data: res });
+            wx.setStorageSync('chatRecord', this.data.listData)
             this.setData({
               controlSwiper: true
             });

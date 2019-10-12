@@ -299,6 +299,7 @@ Page({
   goChatCard:function (e) {
     plugin.setGuideList(this.data.chatGuideList)
     this.jump('聊天')
+    // plugin.setWelcome('')
     plugin.setTextToSpeech(true)
   },
   // 天气

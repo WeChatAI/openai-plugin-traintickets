@@ -10,6 +10,7 @@ App({
       // appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja",
       textToSpeech: true,
       // guideList: ["玩末日生存游戏"],
+      welcome: '请问需要什么帮助',
       success: () => {
         // plugin.send({
         //   query: "你好",
