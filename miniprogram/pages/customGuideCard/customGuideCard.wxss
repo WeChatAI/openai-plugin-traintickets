@@ -16,3 +16,11 @@
   color: rgba(136,136,136,1);
   background-color: #fff
 }
+
+
+.swiperContentView {
+  height: 40px;
+  position: absolute;
+  left: 15px;
+  bottom: 145px;
+}
