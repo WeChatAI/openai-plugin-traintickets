@@ -1,6 +1,6 @@
 .guideScroll {
   width: calc(100vw - 30px);
-  height: 40px;
+  height: 80px;
   white-space: nowrap;
 }
 
@@ -15,4 +15,13 @@
   border-radius: 16px;
   color: rgba(136,136,136,1);
   background-color: #fff
+}
+
+
+.swiperContentView {
+  
+  height: 40px;
+  position: absolute;
+  left: 15px;
+  bottom: 145px;
 }
