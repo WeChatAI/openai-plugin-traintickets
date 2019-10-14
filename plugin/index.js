@@ -8,5 +8,6 @@ module.exports = {
   setGuideList: data.setGuideList,
   setTextToSpeech: data.setTextToSpeech,
   setWelcome: data.setWelcome,
-  setBackground: data.setBackground
+  setBackground: data.setBackground,
+  voiceStart: data.voiceStart
 };

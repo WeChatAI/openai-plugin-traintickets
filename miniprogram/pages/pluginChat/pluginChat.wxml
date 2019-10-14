@@ -23,7 +23,8 @@
     generic:weatherMessage="customWeatherMessage" 
     generic:imageMessage="costomImageMessage"       
     generic:guideCard="customGuideCard"
-    generic:queryMessage="customQuery">
+    generic:queryMessage="customQuery"
+    generic:operateCard="customoperateCard">
   </chat>
 </view>
 
@@ -40,5 +41,6 @@
     generic:weatherMessage="customWeatherMessage" 
     generic:imageMessage="costomImageMessage"       
     generic:guideCard="customGuideCard"
-    generic:queryMessage="customQuery"/>
+    generic:queryMessage="customQuery"
+    generic:operateCard="customoperateCard"/>
 </view>

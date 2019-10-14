@@ -9,7 +9,8 @@ var data = {
   ],
   textToSpeech: true,
   welcome: '',
-  background: ''
+  background: '',
+  voiceStart: ''
 };
 
 function getData() {
@@ -116,6 +117,10 @@ function setBackground (background) {
   setData('background', background)
 }
 
+function voiceStart (start) {
+  setData('voiceStart', start)
+}
+
 module.exports = {
   getData: getData,
   setData: setData,
@@ -123,6 +128,7 @@ module.exports = {
   setTextToSpeech: setTextToSpeech,
   setWelcome: setWelcome,
   setBackground: setBackground,
+  voiceStart: voiceStart,
   auth: auth,
   send: send
 };

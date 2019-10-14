@@ -1,5 +1,5 @@
 <view>
-    <image class="recordingView" src="../../images/recording.gif" wx:if="{{recording && msg.content == ''}}"></image>
+    <image class="recordingView" src="../recording.gif" wx:if="{{recording && msg.content == ''}}"></image>
     <view class="query" wx:if="{{msg.content != ''}}">
       <view class="rightView" >{{msg.content}}</view>
       <!-- <image class="queryimage" src="../queryImage.png"></image> -->

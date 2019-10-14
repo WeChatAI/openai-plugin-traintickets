@@ -14,7 +14,7 @@ Component({
     toView: "",
     recording: false, //值为true时表示正在录音
     onStart: false, //是否启动录音
-    inputing: false, //值为true时表示正在输入
+    // inputing: false, //值为true时表示正在输入
     recordText: "嗯，你说..", //录音文字
     isShowSwiperView: true,
     controlSwiper: true,
@@ -51,7 +51,6 @@ Component({
   },
 
   attached: function() {
-    console.log(data.getData().background)
     const chatReCord = wx.getStorageSync('chatRecord')
     if (chatReCord && chatReCord.length !== 0) {
       this.setData({
@@ -81,15 +80,15 @@ Component({
   },
   methods: {
     //--------------------------------------------键盘输入-----------------------------------
-    bindInput: function(e) {
-      this.setData({
-        inputText: e.detail.value
-      });
-    },
+    // bindInput: function(e) {
+    //   this.setData({
+    //     inputText: e.detail.value
+    //   });
+    // },
     //完成输入
     bindconfirmInput: function(e) {
       var that = this;
-      let text = e.detail.value;
+      let text = e.detail;
       if (text != "") {
         this.pauseVoice();
         let listData = this.data.listData;
@@ -116,6 +115,9 @@ Component({
         that.getData(text);
         that.scrollToNew();
       }
+    },
+    bindInutvalue:function (e) { 
+      this.bindconfirmInput(e)
     },
     //停止背景声音
     pauseVoice: function() {
@@ -433,34 +435,38 @@ Component({
         });
       }
     },
-    // 输入选择
-    chooseType: function(e) {
-      if (e.currentTarget.dataset.type == "voice") {
-        this.setData({
-          inputing: false
-        });
-      } else {
-        this.setData({
-          inputing: true
-        });
-      }
-    },
-    // 返回首页
-    showGuideView: function() {
+    // // 输入选择
+    // chooseType: function(e) {
+    //   if (e.currentTarget.dataset.type == "voice") {
+    //     this.setData({
+    //       inputing: false
+    //     });
+    //   } else {
+    //     this.setData({
+    //       inputing: true
+    //     });
+    //   }
+    // },
+    // // 返回首页
+    // showGuideView: function() {
+    //   this.pauseVoice();
+    //   this.triggerEvent("backHome");
+    //   //  this.setData({
+    //   //    isShowGuideView: true,
+    //   //    isShowSwiperView: false
+    //   //  })
+    //   //  this.animation
+    //   //    .translate(0, 0)
+    //   //    .scale(1)
+    //   //    .step()
+    //   //  this.setData({
+    //   //    animation: this.animation.export(),
+    //   //  })
+    // },
+    backHome:function () { 
       this.pauseVoice();
       this.triggerEvent("backHome");
-      //  this.setData({
-      //    isShowGuideView: true,
-      //    isShowSwiperView: false
-      //  })
-      //  this.animation
-      //    .translate(0, 0)
-      //    .scale(1)
-      //    .step()
-      //  this.setData({
-      //    animation: this.animation.export(),
-      //  })
-    },
+     },
     // 启动语音
     inputVoiceStart: function() {
       var that = this;

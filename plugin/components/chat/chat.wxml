@@ -39,7 +39,8 @@
   </guideCard>
 
   <!--底部语音输入和菜单栏-->
-  <view class='bottom-operate-view' wx:if="{{!inputing && !isShowGuideView}}">
+  <operateCard bind:bindInput="bindInutvalue" bind:inputVoiceStart="inputVoiceStart" bind:inputVoiceEnd="inputVoiceEnd" bind:back="backHome" focus="{{focus}}" inputing="{{inputing}}"></operateCard>
+  <!-- <view class='bottom-operate-view' wx:if="{{!inputing && !isShowGuideView}}">
     <view class='list-btn' catchtap='chooseType' data-type='input'>
       <image class='list-img' src='../../images/input.png'></image>
     </view>
@@ -60,10 +61,10 @@
     <view class='voice-btn-inputView' catchtap='showGuideView'>
       <image class='voice-img2' src="{{isShowGuideView?'../../images/listsele.png':'../../images/list.png'}}"></image>
     </view>
-  </view>
+  </view> -->
   <!-- //浮动录音按钮 -->
-  <view class="recordView" wx:if="{{isShowGuideView}}">
+  <!-- <view class="recordView" wx:if="{{isShowGuideView}}">
     <image class="recordImg" src="../../images/record.gif" catchtap="recordStart"></image>
     <view class="recordText" wx:if="{{recording}}">{{recordText}}</view>
-  </view>
+  </view> -->
 </view>
