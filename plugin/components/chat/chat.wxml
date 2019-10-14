@@ -2,7 +2,7 @@
 <view class="container">
   <!-- <statusBar style="width: 100%;height: {{statusBarHeight*2 + 20}}px;"></statusBar> -->
   <!-- <guideNewView wx:if="{{isShowGuideView}}" bind:chooseGuide="choosePageGuide" animation="{{animation}}" weatherData="{{kweatherData}}" newsData="{{knewsData}}" voiceData="{{kvoiceData}}"></guideNewView> -->
-  <scroll-view class="scroll-wrap" style="background: {{background}}" scroll-y scroll-into-view="translate-{{toView}}">
+  <scroll-view class="scroll-wrap" style="background: {{background}}; height: {{scrollHeight}}px" scroll-y scroll-into-view="translate-{{toView}}">
     <!-- <view class="unit-view">
       <view class="welcome"  wx:if="{{welcomeVal}}">{{welcome}}</view>
     </view> -->
@@ -34,12 +34,12 @@
 
     <view id="translate-fake" style='width:100%;height:5px;'></view>
   </scroll-view>
-  <guideCard class="swiperContent" guideList="{{guideList}}" controlSwiper="{{controlSwiper}}"
+  <guideCard id="guideCard" style="background: {{background}}; height: {{guideCardHeight}}px" class="swiperContent" guideList="{{guideList}}" controlSwiper="{{controlSwiper}}"
     bind:chooseGuide="choosePageGuide2">
   </guideCard>
 
   <!--底部语音输入和菜单栏-->
-  <operateCard bind:bindInput="bindInutvalue" bind:inputVoiceStart="inputVoiceStart" bind:inputVoiceEnd="inputVoiceEnd" bind:back="backHome" focus="{{focus}}" inputing="{{inputing}}"></operateCard>
+  <operateCard id="operateCard" style="height: {{operateCardHeight}}px" class="operateCard" bind:bindInput="bindInutvalue" bind:inputVoiceStart="inputVoiceStart" bind:inputVoiceEnd="inputVoiceEnd" bind:back="backHome" focus="{{focus}}" inputing="{{inputing}}"></operateCard>
   <!-- <view class='bottom-operate-view' wx:if="{{!inputing && !isShowGuideView}}">
     <view class='list-btn' catchtap='chooseType' data-type='input'>
       <image class='list-img' src='../../images/input.png'></image>

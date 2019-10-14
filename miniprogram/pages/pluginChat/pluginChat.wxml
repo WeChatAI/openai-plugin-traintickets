@@ -10,16 +10,13 @@
 
 <!-- 系统默认导航 -->
 <!-- <view style="height: 100vh">
-  <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" 
-    generic:textMessage="customTextMessage"
-    generic:weatherMessage="customWeatherMessage" 
-    generic:imageMessage="costomImageMessage"       
-    generic:guideCard="customGuideCard">
+  <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" >
   </chat>
 </view> -->
 
 <view style="height: 100vh" wx:if="{{!flag}}">
-  <chat id="component-id" bind:queryCallback="getQueryCallback" bind:backHome="goBackHome"     generic:textMessage="customTextMessage"
+  <chat id="component-id" bind:queryCallback="getQueryCallback" bind:backHome="goBackHome"     
+    generic:textMessage="customTextMessage"
     generic:weatherMessage="customWeatherMessage" 
     generic:imageMessage="costomImageMessage"       
     generic:guideCard="customGuideCard"

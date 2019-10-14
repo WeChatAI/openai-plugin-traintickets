@@ -14,7 +14,7 @@ Component({
     toView: "",
     recording: false, //值为true时表示正在录音
     onStart: false, //是否启动录音
-    // inputing: false, //值为true时表示正在输入
+    inputing: false, //值为true时表示正在输入
     recordText: "嗯，你说..", //录音文字
     isShowSwiperView: true,
     controlSwiper: true,
@@ -41,16 +41,35 @@ Component({
       },
       editFoucs: function(val) {
         if (val) {
-          that.setData({
-            focus: val,
-            inputing: true
-          })
+          setTimeout(() => {
+            that.setData({
+              focus: val,
+              inputing: true
+            })
+          }, 1000)
         }
       }
     };
   },
 
   attached: function() {
+    const operateCardHeight =  data.getData().operateCardHeight
+    const guideCardHeight =  data.getData().guideCardHeight
+    wx.getSystemInfo({
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          scrollHeight: res.windowHeight - operateCardHeight - guideCardHeight,
+          operateCardHeight: operateCardHeight,
+          guideCardHeight: guideCardHeight
+        })
+      }
+    })
+    
+    console.log(operateCardHeight)
+    console.log(guideCardHeight)
+    console.log(this.data.scrollHeight)
+    
     const chatReCord = wx.getStorageSync('chatRecord')
     if (chatReCord && chatReCord.length !== 0) {
       this.setData({
@@ -77,6 +96,8 @@ Component({
     });
     
     this.initRecord();
+  },
+  ready:function() {
   },
   methods: {
     //--------------------------------------------键盘输入-----------------------------------

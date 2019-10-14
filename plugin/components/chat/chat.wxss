@@ -1,6 +1,8 @@
 .container {
   background-color: #f6f6f6;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .welcome {
   margin: 10px 0;

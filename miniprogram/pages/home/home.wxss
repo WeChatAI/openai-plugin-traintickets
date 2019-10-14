@@ -365,8 +365,8 @@
   height:18px;
 }
 .voiceCard {
-  width: 44px;
-  height: 44px;
+  width: 75px;
+  height: 75px;
 }
 .questionIcon {
   width: 22px;

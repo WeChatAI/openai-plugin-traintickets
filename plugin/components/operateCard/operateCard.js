@@ -1,11 +1,12 @@
 var music = require("../../api/music.js");
+var data = require("../../api/data.js")
 let plugin;
 Component({
   properties: {
-    focus: Boolean,
     recording: Boolean,
     inputText: String,
-    inputing: Boolean
+    inputing: Boolean,
+    focus: Boolean
   },
 
   data: {
@@ -14,10 +15,12 @@ Component({
   },
   lifetimes: {
     ready: function() {
-      this.setData({
-        focus: this.properties.focus,
-        inputing: this.properties.inputing
-      })
+      // this.setData({
+      //   focus: data.getData().focus,
+      //   inputing: true
+      // })
+      console.log(this.properties.focus)
+      console.log("====")
     },
     attached:function () {
     }

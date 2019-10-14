@@ -10,7 +10,9 @@ var data = {
   textToSpeech: true,
   welcome: '',
   background: '',
-  voiceStart: ''
+  voiceStart: '',
+  guideCardHeight: '',
+  operateCardHeight: ''
 };
 
 function getData() {
@@ -24,7 +26,7 @@ function setData(key, value) {
 const domain = "https://openai.weixin.qq.com";
 // const domain = "http://localhost:13563";
 
-function auth({ appid, openid, success, fail, guideList, textToSpeech, welcome, background }) {
+function auth({ appid, openid, success, fail, guideList, textToSpeech, welcome, background, guideCardHeight, operateCardHeight }) {
   if (guideList) {
     setData("guideList", guideList);
   }
@@ -46,6 +48,17 @@ function auth({ appid, openid, success, fail, guideList, textToSpeech, welcome, 
     setData('background', 'rgba(247, 251, 252, 1)')
   }
 
+  if (typeof guideCardHeight !== 'undefined') {
+    setData("guideCardHeight", guideCardHeight)
+  } else {
+    setData("guideCardHeight", 40)
+  }
+
+  if (typeof operateCardHeight !== 'undefined') {
+    setData("operateCardHeight", operateCardHeight)
+  } else {
+    setData("operateCardHeight", 145)
+  }
   wx.request({
     url: domain + "/auth/miniprogram/plugin/openai",
     method: "post",

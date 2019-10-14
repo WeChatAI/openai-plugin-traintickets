@@ -12,6 +12,8 @@ App({
       // guideList: ["玩末日生存游戏"],
       // welcome: '请问需要什么帮助',
       // background: "url('https://openai.weixin.qq.com/mmspraiweb_node/dist/static/weather/qing.png')",
+      guideCardHeight: 60,
+      operateCardHeight: 100,
       success: () => {
         // plugin.send({
         //   query: "你好",

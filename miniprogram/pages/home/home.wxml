@@ -140,7 +140,7 @@
   </scroll-view>
   <view class="footer">
     <image class="keyboard" bindtap="gotoChat" data-item="keyboard" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/keyboard.png"></image>
-    <image class="voiceCard" bindtap="gotoChat" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/voiceCard.png"></image>
+    <image class="voiceCard" bindtap="gotoChat" src="../customVoiceBtn.png"></image>
     <image class="questionIcon" bindtap="goWebview" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/questionIcon.png"></image>
   </view>
 </view>
