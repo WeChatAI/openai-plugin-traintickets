@@ -9,5 +9,6 @@ module.exports = {
   setTextToSpeech: data.setTextToSpeech,
   setWelcome: data.setWelcome,
   setBackground: data.setBackground,
-  voiceStart: data.voiceStart
+  voiceStart: data.voiceStart,
+  getChatComponent: data.getChatComponent
 };

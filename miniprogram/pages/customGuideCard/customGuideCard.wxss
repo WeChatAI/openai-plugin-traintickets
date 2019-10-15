@@ -1,6 +1,6 @@
 .guideScroll {
   width: calc(100vw - 30px);
-  height: 60px;
+  height: 40px;
   white-space: nowrap;
 }
 
@@ -18,8 +18,9 @@
 }
 
 .swiperContentView {
-  height: 60px;
-  margin-top: 20px;
+  height: 40px;
+  margin-top: 10px;
+  margin-left: 10px;
   /* position: absolute;
   left: 15px;
   bottom: 145px; */

@@ -1,4 +1,3 @@
-var sendFun = require("../send/send.js");
 var plugin = requirePlugin("myPlugin");
 
 Component({
@@ -37,8 +36,7 @@ Component({
   },
   lifetimes: {
     ready: function() {
-      const chat = plugin.getChatComponent();
-
+     
       // chat.send("asdf");
       //日期转化为星期
       console.log(this.properties.msg, "---weather---");
@@ -67,7 +65,8 @@ Component({
   },
   methods: {
     send: function(e) {
-      sendFun.getData(e.currentTarget.dataset.item.description);
+      const chat = plugin.getChatComponent();
+      chat.send(e.currentTarget.dataset.item.description)
     }
   }
 });

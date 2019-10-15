@@ -55,12 +55,16 @@ Component({
     },
     // 启动语音
     inputVoiceStart: function() {
-      this.triggerEvent('inputVoiceStart')
+      const chat = plugin.getChatComponent();
+      chat.inputVoiceStart()
+      // this.triggerEvent('inputVoiceStart')
       // plugin.voiceStart(true)
     },
     // 停止语音
     inputVoiceEnd: function() {
-      this.triggerEvent('inputVoiceEnd')
+      const chat = plugin.getChatComponent();
+      chat.inputVoiceEnd()
+      // this.triggerEvent('inputVoiceEnd')
     },
   }
 });

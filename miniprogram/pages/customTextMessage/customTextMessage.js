@@ -1,4 +1,4 @@
-var sendFun = require("../send/send.js");
+var plugin = requirePlugin("myPlugin");
 Component({
   properties: {
     msg: Object
@@ -25,6 +25,7 @@ Component({
     ready: function () { 
       let that = this
       const result = this.properties.msg
+      console.log(result)
       if (result.content.indexOf('评分') !== -1) {
         if (result.content.indexOf('100') !== -1) {
           that.setData({
@@ -50,12 +51,12 @@ Component({
           list: result.res.options
         })
       }
-      
     }
   },
   methods: {
     choose:function(e) {
-      sendFun.getData(e.currentTarget.dataset.title)
+      const chat = plugin.getChatComponent()
+      chat.send(e.currentTarget.dataset.title)
     }
   }
 });

@@ -19,7 +19,8 @@ Page({
       listData: listData
     }, () => {
       if (this.data.listData.length == 1 && this.data.getDataValue === true) {
-        this.data.component.send(this.data.sendData)
+        const chat = plugin.getChatComponent()
+        chat.send(this.data.sendData)
       }
     })
   },
@@ -32,26 +33,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const component = this.selectComponent('#component-id');
-    sendFun.send(component)
+    const chat = plugin.getChatComponent()
     if (options && options.data)  {
       if (options && options.data === 'switch') {
         this.setData({
           flag: true
         })
       } else if (options && options.data === 'keyboard') {
-        component.editFoucs(true)
+        chat.editFoucs(true)
       } else if (options.data === 'image') {
-        component.send('图片回复')
+        chat.send('图片回复')
       } else if (options.data === 'weather') {
-        component.send('北京天气')
+        chat.send('北京天气')
       } else {
-        component.send(options.data)
+        chat.send(options.data)
         if (options.data2) {
           this.setData({
             flag: false,
             getDataValue: true,
-            component: component,
             sendData: options.data2
           })
         } else {

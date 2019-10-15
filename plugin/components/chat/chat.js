@@ -91,7 +91,7 @@ Component({
 
     this.initRecord();
 
-    data.setComponent(this);
+    data.setChatComponent(this);
   },
   ready: function() {},
   methods: {
@@ -146,9 +146,27 @@ Component({
      * send
      */
     send: function(val) {
-      this.getData(val);
+      var that = this
+      let listData = that.data.listData;
+      var newData = {
+        content: val,
+        data_type: 1
+      };
+      listData.push(newData);
+      that.getData(val);
     },
-
+    editFoucs: function(val) {
+      if (val) {
+        this.setData({
+          focus: val
+        });
+      }
+    },
+    setCurrentGuideList: function (val) {
+      this.setData({
+        guideList: val
+      });
+    },
     getData: function(val) {
       const authtoken = wx.getStorageSync("authtoken") || "";
       if (!authtoken) {

@@ -141,15 +141,12 @@ function setBackground(background) {
   setData("background", background);
 }
 
-function voiceStart(start) {
-  setData("voiceStart", start);
-}
-
 function setChatComponent(ui) {
   setData("chatComponent", ui);
 }
 function getChatComponent() {
-  getData("chatComponent");
+  return getData().chatComponent;
+  
 }
 
 module.exports = {
@@ -159,7 +156,6 @@ module.exports = {
   setTextToSpeech: setTextToSpeech,
   setWelcome: setWelcome,
   setBackground: setBackground,
-  voiceStart: voiceStart,
   auth: auth,
   send: send,
   getChatComponent,
