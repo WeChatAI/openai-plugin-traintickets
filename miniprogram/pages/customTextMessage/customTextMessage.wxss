@@ -24,3 +24,81 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.imageView {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 340px;
+  height: 192px;
+}
+.bg_img {
+  width: 340px;
+  height: 192px;
+}
+.bg_img_sim {
+  width: 89px;
+  height: 21px;
+}
+.first0 {
+  width: 89px;
+  height: 21px;
+  position: absolute;
+  top: 44px;
+  left: 125px;
+}
+.first1 {
+  width: 89px;
+  height: 21px;
+  position: absolute;
+  top: 85px;
+  left: 125px;
+}
+.first2 {
+  width: 89px;
+  height: 21px;
+  position: absolute;
+  top: 127px;
+  left: 125px;
+}
+.first_word0{
+  width: 89px;
+  height: 21px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 10px;
+}
+
+.first_word1{
+  width: 89px;
+  height: 21px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 10px;
+}
+
+.first_word2{
+  width: 89px;
+  height: 21px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.simple_word {
+  text-align: center;
+  line-height: 21px;
+  font-size: 10px;
+  color: #ffffff;
+}

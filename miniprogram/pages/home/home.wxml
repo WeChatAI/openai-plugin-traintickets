@@ -36,7 +36,7 @@
           <view class="todayWeather_title" bindtap="gotoChatNoUI">NLU展示</view>
         </view>
         <view class="imageCom">
-          <image  class="imageCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/imageCom.png"></image>
+          <image  class="imageCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/imageCom.png"></image>
           <view class="imageCom_title" bindtap="goImageCom">复写图片组件</view>
         </view>
         <view class="bowl">
@@ -44,7 +44,7 @@
           <view class="bowl_title" bindtap="gotoChatcloseVoice">语音开关展示</view>
         </view>
         <view class="weatherCom">
-          <image  class="weatherCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/weatherSun.png"></image>
+          <image  class="weatherCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/weatherSun.png"></image>
           <view class="weatherCom_title" bindtap="goweatherCom">复写天气组件</view>
         </view>
         <view style="clear: both;"></view>
@@ -73,7 +73,7 @@
           <view class="garbageCardTop_left_word">垃圾分类</view>
           <view class="garbageCardTop_left_english">REFUSE CLASSIFICATIONG</view>
         </view>
-        <image src="../garbage.png" class="garbageCardTop_right"></image>
+        <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/garbage.png" class="garbageCardTop_right"></image>
       </view>
       <view class="garbageCardList" bindtap="goGarbage" data-item="{{item}}" wx:for="{{garbageCardList}}" wx:key="item">
         {{item.title}}
@@ -85,7 +85,7 @@
           <view class="game_top_content_title">游戏</view>
           <view class="game_top_content_para">Game</view>
         </view>
-        <image class="game_top_img" src="../game.png"></image>
+        <image class="game_top_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/game.png"></image>
       </view>
       <view class="game_bottom">
         <view wx:for="{{gameList}}" bindtap="goGame" data-item="{{item}}" wx:key="item" class="game_bottom_content">
@@ -98,7 +98,7 @@
     </view>
     <view class="chatCard">
       <view class="chatCard_top">
-        <image src="../chatCardImage.png" class="chatCard_top_image"></image>
+        <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/chatCardImage.png" class="chatCard_top_image"></image>
       </view>
       <view class="chatCard_bottom">
         <view class="chatCard_bottom_left">
@@ -116,7 +116,7 @@
           <view class="idiomsCardTop_left_word">成语接龙</view>
           <view class="idiomsCardTop_left_english">Idiom Salon Game</view>
         </view>
-        <image src="../garbage.png" class="idiomsCardTop_right"></image>
+        <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/chengyu.png" class="idiomsCardTop_right"></image>
       </view>
       <view class="idiomsCardList" bindtap="goIdiom" data-item="{{item}}" wx:for="{{idiomGuideList}}" wx:key="item">
         {{item.title}}
@@ -124,7 +124,7 @@
     </view>
     <view class="encyclopediasCard">
       <view class="encyclopediasCard_top">
-        <image src="../chatCardImage.png" class="encyclopediasCard_top_image"></image>
+        <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/baike.png" class="encyclopediasCard_top_image"></image>
       </view>
       <view class="encyclopediasCard_bottom">
         <view class="encyclopediasCard_bottom_left">
@@ -140,7 +140,7 @@
   </scroll-view>
   <view class="footer">
     <image class="keyboard" bindtap="gotoChat" data-item="keyboard" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/keyboard.png"></image>
-    <image class="voiceCard" bindtap="gotoChat" src="../customVoiceBtn.png"></image>
+    <image class="voiceCard" bindtap="gotoChat" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/customVoiceBtn.png"></image>
     <image class="questionIcon" bindtap="goWebview" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/questionIcon.png"></image>
   </view>
 </view>

@@ -39,7 +39,7 @@
   </guideCard>
 
   <!--底部语音输入和菜单栏-->
-  <operateCard id="operateCard" style="height: {{operateCardHeight}}px" class="operateCard" bind:bindInput="bindInutvalue" bind:inputVoiceStart="inputVoiceStart" bind:inputVoiceEnd="inputVoiceEnd" bind:back="backHome" focus="{{focus}}" inputing="{{inputing}}"></operateCard>
+  <operateCard id="operateCard" style="height: {{operateCardHeight}}px" class="operateCard" bind:bindInput="bindInutvalue" bind:inputVoiceStart="inputVoiceStart" bind:inputVoiceEnd="inputVoiceEnd" bind:back="backHome" focus="{{focus}}" ></operateCard>
   <!-- <view class='bottom-operate-view' wx:if="{{!inputing && !isShowGuideView}}">
     <view class='list-btn' catchtap='chooseType' data-type='input'>
       <image class='list-img' src='../../images/input.png'></image>

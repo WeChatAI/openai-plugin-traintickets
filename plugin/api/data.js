@@ -10,7 +10,7 @@ var data = {
   textToSpeech: true,
   welcome: '',
   background: '',
-  voiceStart: '',
+  voiceStart: false,
   guideCardHeight: '',
   operateCardHeight: ''
 };

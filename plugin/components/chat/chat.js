@@ -41,18 +41,16 @@ Component({
       },
       editFoucs: function(val) {
         if (val) {
-          setTimeout(() => {
-            that.setData({
-              focus: val,
-              inputing: true
-            })
-          }, 1000)
+          that.setData({
+            focus: val
+          })
         }
       }
     };
   },
 
   attached: function() {
+    console.log(1)
     const operateCardHeight =  data.getData().operateCardHeight
     const guideCardHeight =  data.getData().guideCardHeight
     wx.getSystemInfo({
@@ -65,10 +63,6 @@ Component({
         })
       }
     })
-    
-    console.log(operateCardHeight)
-    console.log(guideCardHeight)
-    console.log(this.data.scrollHeight)
     
     const chatReCord = wx.getStorageSync('chatRecord')
     if (chatReCord && chatReCord.length !== 0) {
@@ -98,6 +92,7 @@ Component({
     this.initRecord();
   },
   ready:function() {
+    
   },
   methods: {
     //--------------------------------------------键盘输入-----------------------------------
@@ -196,7 +191,9 @@ Component({
                   answer: "",
                   cardType: "voice",
                   docs: JSON.parse(res.more_info.music_ans_detail).play_command
-                    .play_list
+                    .play_list,
+                  res: res,
+                  query: val
                 };
                 listData.push(newData);
                 this.setData(
@@ -217,7 +214,9 @@ Component({
                   answer: "",
                   cardType: "voice",
                   docs: JSON.parse(res.more_info.fm_ans_detail)
-                    .audio_play_command.play_list
+                    .audio_play_command.play_list,
+                  res: res,
+                  query: val
                 };
                 listData.push(newData);
                 this.setData(
@@ -237,7 +236,8 @@ Component({
                 answer: res.msg[0].ans_node_name,
                 cardType: "news",
                 docs: more_news,
-                res: res
+                res: res,
+                query: val
               };
               listData.push(newData);
               this.setData(
@@ -270,7 +270,8 @@ Component({
                   var cardData = {
                     msg_type: "text",
                     content: res.answer,
-                    res: res
+                    res: res,
+                    query: val
                   };
                   listData.push(cardData);
                   that.setData(
@@ -302,7 +303,8 @@ Component({
                       answer: res.answer,
                       cardType: "weather",
                       docs: tempList,
-                      res: res
+                      res: res,
+                      query: val
                     };
                     listData.push(newData);
                     that.setData(
@@ -364,7 +366,8 @@ Component({
                     abs_s: item.description
                   };
                 }),
-                res: res
+                res: res,
+                query: val
               };
               listData.push(newData);
               this.setData(
@@ -381,7 +384,8 @@ Component({
               newData = {
                 cardType: "unsupported",
                 data: JSON.parse(res.answer),
-                res: res
+                res: res,
+                query: val
               };
 
               listData.push(newData);
@@ -399,7 +403,8 @@ Component({
               newData = {
                 msg_type: "text",
                 content: res.answer,
-                res: res
+                res: res,
+                query: val
               };
               listData.push(newData);
               this.setData(

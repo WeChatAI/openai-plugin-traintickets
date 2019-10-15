@@ -1,4 +1,4 @@
-let plugin;
+var plugin = requirePlugin("myPlugin");
 Component({
   properties: {
     focus: Boolean,
@@ -13,10 +13,12 @@ Component({
   },
   lifetimes: {
     ready: function() {
-      this.setData({
-        focus: this.properties.focus,
-        inputing: this.properties.inputing
-      })
+      if (this.properties.focus) {
+        this.setData({
+          focus: this.properties.focus,
+          inputing: true
+        })
+      }
     },
     attached:function () {
     }
@@ -54,6 +56,7 @@ Component({
     // 启动语音
     inputVoiceStart: function() {
       this.triggerEvent('inputVoiceStart')
+      // plugin.voiceStart(true)
     },
     // 停止语音
     inputVoiceEnd: function() {

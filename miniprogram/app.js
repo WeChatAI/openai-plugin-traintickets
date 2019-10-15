@@ -25,5 +25,14 @@ App({
       },
       fail: error => {}
     });
-  }
+  },
+  onHide:function () { 
+    console.log(123)
+    wx.removeStorage({
+      key: 'chatRecord',
+      success (res) {
+        console.log(res)
+      }
+    })
+   }
 });
