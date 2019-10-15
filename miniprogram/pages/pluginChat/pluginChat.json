@@ -1,4 +1,5 @@
 {
+  "disableScroll": true,
   "usingComponents": {
     "chat": "plugin://myPlugin/chat",
     "customTextMessage": "../customTextMessage/customTextMessage",

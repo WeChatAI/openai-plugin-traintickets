@@ -188,7 +188,7 @@ Component({
                   }
                 );
               }
-
+              
               this.setData({
                 guideList: list.concat(data.getData().guideList)
               });

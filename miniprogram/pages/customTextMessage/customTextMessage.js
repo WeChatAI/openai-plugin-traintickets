@@ -51,7 +51,7 @@ Component({
     ready: function() {
       let that = this;
       const result = this.properties.msg;
-      console.log(result)
+      const chat = plugin.getChatComponent()
       const score = result.content.replace(/.*评分\s*[:：]\s*(\d*)/, "$1");
       if (result.content.indexOf("评分") !== -1) {
         if (result.content.indexOf("100") !== -1) {
@@ -70,6 +70,7 @@ Component({
           });
           
         }
+        chat.scrollToNew()
         return;
       }
       // const clicklink = /<a.*href=["']weixin:\/\/bizmsgmenu.*msgmenucontent=([^&"'>]*).*msgmenuid=([^&"'>]*)["']>.*<\/a>/g;
@@ -86,6 +87,7 @@ Component({
           list: result.res.options
         });
       }
+      chat.scrollToNew()
     }
   },
   methods: {
