@@ -8,11 +8,11 @@ var data = {
     "世界最高峰"
   ],
   textToSpeech: true,
-  welcome: '',
-  background: '',
+  welcome: "",
+  background: "",
   voiceStart: false,
-  guideCardHeight: '',
-  operateCardHeight: ''
+  guideCardHeight: "",
+  operateCardHeight: ""
 };
 
 function getData() {
@@ -26,7 +26,18 @@ function setData(key, value) {
 const domain = "https://openai.weixin.qq.com";
 // const domain = "http://localhost:13563";
 
-function auth({ appid, openid, success, fail, guideList, textToSpeech, welcome, background, guideCardHeight, operateCardHeight }) {
+function auth({
+  appid,
+  openid,
+  success,
+  fail,
+  guideList,
+  textToSpeech,
+  welcome,
+  background,
+  guideCardHeight,
+  operateCardHeight
+}) {
   if (guideList) {
     setData("guideList", guideList);
   }
@@ -34,30 +45,30 @@ function auth({ appid, openid, success, fail, guideList, textToSpeech, welcome, 
     setData("textToSpeech", textToSpeech);
   }
   if (typeof welcome !== "undefined") {
-    if (welcome === '') {
-      setData('welcome', '')
+    if (welcome === "") {
+      setData("welcome", "");
     } else {
-      setData('welcome', welcome)
+      setData("welcome", welcome);
     }
   } else {
-    setData('welcome', '请问需要什么帮助')
+    setData("welcome", "请问需要什么帮助");
   }
-  if (typeof background !== 'undefined') {
-    setData('background', background)
+  if (typeof background !== "undefined") {
+    setData("background", background);
   } else {
-    setData('background', 'rgba(247, 251, 252, 1)')
-  }
-
-  if (typeof guideCardHeight !== 'undefined') {
-    setData("guideCardHeight", guideCardHeight)
-  } else {
-    setData("guideCardHeight", 40)
+    setData("background", "rgba(247, 251, 252, 1)");
   }
 
-  if (typeof operateCardHeight !== 'undefined') {
-    setData("operateCardHeight", operateCardHeight)
+  if (typeof guideCardHeight !== "undefined") {
+    setData("guideCardHeight", guideCardHeight);
   } else {
-    setData("operateCardHeight", 145)
+    setData("guideCardHeight", 40);
+  }
+
+  if (typeof operateCardHeight !== "undefined") {
+    setData("operateCardHeight", operateCardHeight);
+  } else {
+    setData("operateCardHeight", 145);
   }
   wx.request({
     url: domain + "/auth/miniprogram/plugin/openai",
@@ -126,12 +137,19 @@ function setWelcome(setWelcome) {
   setData("welcome", setWelcome);
 }
 
-function setBackground (background) {
-  setData('background', background)
+function setBackground(background) {
+  setData("background", background);
 }
 
-function voiceStart (start) {
-  setData('voiceStart', start)
+function voiceStart(start) {
+  setData("voiceStart", start);
+}
+
+function setChatComponent(ui) {
+  setData("chatComponent", ui);
+}
+function getChatComponent() {
+  getData("chatComponent");
 }
 
 module.exports = {
@@ -143,5 +161,7 @@ module.exports = {
   setBackground: setBackground,
   voiceStart: voiceStart,
   auth: auth,
-  send: send
+  send: send,
+  getChatComponent,
+  setChatComponent
 };

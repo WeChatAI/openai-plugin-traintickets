@@ -20,7 +20,7 @@ Component({
     controlSwiper: true,
     guideList: [],
     focus: false,
-    welcome: '',
+    welcome: "",
     welcomeVal: false
   },
 
@@ -43,57 +43,57 @@ Component({
         if (val) {
           that.setData({
             focus: val
-          })
+          });
         }
       }
     };
   },
 
   attached: function() {
-    console.log(1)
-    const operateCardHeight =  data.getData().operateCardHeight
-    const guideCardHeight =  data.getData().guideCardHeight
+    console.log(1);
+    const operateCardHeight = data.getData().operateCardHeight;
+    const guideCardHeight = data.getData().guideCardHeight;
     wx.getSystemInfo({
-      success: (res) => {
-        console.log(res)
+      success: res => {
+        console.log(res);
         this.setData({
           scrollHeight: res.windowHeight - operateCardHeight - guideCardHeight,
           operateCardHeight: operateCardHeight,
           guideCardHeight: guideCardHeight
-        })
+        });
       }
-    })
-    
-    const chatReCord = wx.getStorageSync('chatRecord')
+    });
+
+    const chatReCord = wx.getStorageSync("chatRecord");
     if (chatReCord && chatReCord.length !== 0) {
       this.setData({
         listData: chatReCord
-      })
+      });
     }
-    if (data.getData().welcome && data.getData().welcome !== '') {
+    if (data.getData().welcome && data.getData().welcome !== "") {
       this.setData({
         welcome: data.getData().welcome,
         welcomeVal: false
-      })
+      });
     } else {
       this.setData({
         welcomeVal: false
-      })
+      });
     }
     if (data.getData().background) {
       this.setData({
         background: data.getData().background
-      })
+      });
     }
     this.setData({
       guideList: data.getData().guideList
     });
-    
+
     this.initRecord();
+
+    data.setComponent(this);
   },
-  ready:function() {
-    
-  },
+  ready: function() {},
   methods: {
     //--------------------------------------------键盘输入-----------------------------------
     // bindInput: function(e) {
@@ -132,8 +132,8 @@ Component({
         that.scrollToNew();
       }
     },
-    bindInutvalue:function (e) { 
-      this.bindconfirmInput(e)
+    bindInutvalue: function(e) {
+      this.bindconfirmInput(e);
     },
     //停止背景声音
     pauseVoice: function() {
@@ -281,8 +281,7 @@ Component({
                     () => {
                       setTimeout(() => {
                         that.scrollToNew();
-                      }, 500)
-                      
+                      }, 500);
                     }
                   );
                 } else {
@@ -314,7 +313,7 @@ Component({
                       () => {
                         setTimeout(() => {
                           that.scrollToNew();
-                        }, 500)
+                        }, 500);
                       }
                     );
                   }
@@ -419,7 +418,7 @@ Component({
             }
             // 回调, 返回的数据
             this.triggerEvent("queryCallback", { query: val, data: res });
-            wx.setStorageSync('chatRecord', this.data.listData)
+            wx.setStorageSync("chatRecord", this.data.listData);
             this.setData({
               controlSwiper: true
             });
@@ -489,10 +488,10 @@ Component({
     //   //    animation: this.animation.export(),
     //   //  })
     // },
-    backHome:function () { 
+    backHome: function() {
       this.pauseVoice();
       this.triggerEvent("backHome");
-     },
+    },
     // 启动语音
     inputVoiceStart: function() {
       var that = this;
