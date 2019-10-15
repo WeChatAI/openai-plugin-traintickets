@@ -6,8 +6,8 @@ App({
   onLaunch: function() {
     console.log(plugin, "+++");
     plugin.init({
-      appid: "VEgbxLa9kYqzGOzstdeSF3xDbkS9zK",
-      // appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja",
+      // appid: "VEgbxLa9kYqzGOzstdeSF3xDbkS9zK",
+      appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja",
       textToSpeech: true,
       // guideList: ["玩末日生存游戏"],
       // welcome: '请问需要什么帮助',
@@ -26,7 +26,7 @@ App({
       fail: error => {}
     });
   },
-  onHide:function () { 
-    console.log(123)
-   }
+  onHide: function() {
+    console.log(123);
+  }
 });
