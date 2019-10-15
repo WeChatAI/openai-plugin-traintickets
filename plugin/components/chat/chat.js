@@ -20,7 +20,7 @@ Component({
     controlSwiper: true,
     guideList: [],
     focus: false,
-    welcome: '',
+    welcome: "",
     welcomeVal: false
   },
 
@@ -42,54 +42,69 @@ Component({
       editFoucs: function(val) {
         if (val) {
           that.setData({
-            focus: val,
-            inputing: true
-          })
+            focus: val
+          });
         }
       }
     };
   },
 
   attached: function() {
-    console.log(data.getData().background)
-    const chatReCord = wx.getStorageSync('chatRecord')
+    console.log(1);
+    const operateCardHeight = data.getData().operateCardHeight;
+    const guideCardHeight = data.getData().guideCardHeight;
+    wx.getSystemInfo({
+      success: res => {
+        console.log(res);
+        this.setData({
+          scrollHeight: res.windowHeight - operateCardHeight - guideCardHeight,
+          operateCardHeight: operateCardHeight,
+          guideCardHeight: guideCardHeight
+        });
+      }
+    });
+
+    const chatReCord = wx.getStorageSync("chatRecord");
     if (chatReCord && chatReCord.length !== 0) {
       this.setData({
         listData: chatReCord
-      })
+      });
     }
-    if (data.getData().welcome && data.getData().welcome !== '') {
+    if (data.getData().welcome && data.getData().welcome !== "") {
       this.setData({
         welcome: data.getData().welcome,
         welcomeVal: false
-      })
+      });
     } else {
       this.setData({
         welcomeVal: false
-      })
+      });
     }
     if (data.getData().background) {
       this.setData({
         background: data.getData().background
-      })
+      });
     }
     this.setData({
       guideList: data.getData().guideList
     });
-    
+
     this.initRecord();
+
+    data.setChatComponent(this);
   },
+  ready: function() {},
   methods: {
     //--------------------------------------------键盘输入-----------------------------------
-    bindInput: function(e) {
-      this.setData({
-        inputText: e.detail.value
-      });
-    },
+    // bindInput: function(e) {
+    //   this.setData({
+    //     inputText: e.detail.value
+    //   });
+    // },
     //完成输入
     bindconfirmInput: function(e) {
       var that = this;
-      let text = e.detail.value;
+      let text = e.detail;
       if (text != "") {
         this.pauseVoice();
         let listData = this.data.listData;
@@ -117,6 +132,9 @@ Component({
         that.scrollToNew();
       }
     },
+    bindInutvalue: function(e) {
+      this.bindconfirmInput(e);
+    },
     //停止背景声音
     pauseVoice: function() {
       if (music.data.isPlaying) {
@@ -128,9 +146,22 @@ Component({
      * send
      */
     send: function(val) {
-      this.getData(val);
+      var that = this
+      let listData = that.data.listData;
+      var newData = {
+        content: val,
+        data_type: 1
+      };
+      listData.push(newData);
+      that.getData(val);
     },
-
+    editFoucs: function(val) {
+      if (val) {
+        this.setData({
+          focus: val
+        });
+      }
+    },
     getData: function(val) {
       const authtoken = wx.getStorageSync("authtoken") || "";
       if (!authtoken) {
@@ -173,7 +204,9 @@ Component({
                   answer: "",
                   cardType: "voice",
                   docs: JSON.parse(res.more_info.music_ans_detail).play_command
-                    .play_list
+                    .play_list,
+                  res: res,
+                  query: val
                 };
                 listData.push(newData);
                 this.setData(
@@ -194,7 +227,9 @@ Component({
                   answer: "",
                   cardType: "voice",
                   docs: JSON.parse(res.more_info.fm_ans_detail)
-                    .audio_play_command.play_list
+                    .audio_play_command.play_list,
+                  res: res,
+                  query: val
                 };
                 listData.push(newData);
                 this.setData(
@@ -214,7 +249,8 @@ Component({
                 answer: res.msg[0].ans_node_name,
                 cardType: "news",
                 docs: more_news,
-                res: res
+                res: res,
+                query: val
               };
               listData.push(newData);
               this.setData(
@@ -247,7 +283,8 @@ Component({
                   var cardData = {
                     msg_type: "text",
                     content: res.answer,
-                    res: res
+                    res: res,
+                    query: val
                   };
                   listData.push(cardData);
                   that.setData(
@@ -257,8 +294,7 @@ Component({
                     () => {
                       setTimeout(() => {
                         that.scrollToNew();
-                      }, 500)
-                      
+                      }, 500);
                     }
                   );
                 } else {
@@ -279,7 +315,8 @@ Component({
                       answer: res.answer,
                       cardType: "weather",
                       docs: tempList,
-                      res: res
+                      res: res,
+                      query: val
                     };
                     listData.push(newData);
                     that.setData(
@@ -289,7 +326,7 @@ Component({
                       () => {
                         setTimeout(() => {
                           that.scrollToNew();
-                        }, 500)
+                        }, 500);
                       }
                     );
                   }
@@ -341,7 +378,8 @@ Component({
                     abs_s: item.description
                   };
                 }),
-                res: res
+                res: res,
+                query: val
               };
               listData.push(newData);
               this.setData(
@@ -358,7 +396,8 @@ Component({
               newData = {
                 cardType: "unsupported",
                 data: JSON.parse(res.answer),
-                res: res
+                res: res,
+                query: val
               };
 
               listData.push(newData);
@@ -376,7 +415,8 @@ Component({
               newData = {
                 msg_type: "text",
                 content: res.answer,
-                res: res
+                res: res,
+                query: val
               };
               listData.push(newData);
               this.setData(
@@ -391,7 +431,7 @@ Component({
             }
             // 回调, 返回的数据
             this.triggerEvent("queryCallback", { query: val, data: res });
-            wx.setStorageSync('chatRecord', this.data.listData)
+            wx.setStorageSync("chatRecord", this.data.listData);
             this.setData({
               controlSwiper: true
             });
@@ -433,33 +473,37 @@ Component({
         });
       }
     },
-    // 输入选择
-    chooseType: function(e) {
-      if (e.currentTarget.dataset.type == "voice") {
-        this.setData({
-          inputing: false
-        });
-      } else {
-        this.setData({
-          inputing: true
-        });
-      }
-    },
-    // 返回首页
-    showGuideView: function() {
+    // // 输入选择
+    // chooseType: function(e) {
+    //   if (e.currentTarget.dataset.type == "voice") {
+    //     this.setData({
+    //       inputing: false
+    //     });
+    //   } else {
+    //     this.setData({
+    //       inputing: true
+    //     });
+    //   }
+    // },
+    // // 返回首页
+    // showGuideView: function() {
+    //   this.pauseVoice();
+    //   this.triggerEvent("backHome");
+    //   //  this.setData({
+    //   //    isShowGuideView: true,
+    //   //    isShowSwiperView: false
+    //   //  })
+    //   //  this.animation
+    //   //    .translate(0, 0)
+    //   //    .scale(1)
+    //   //    .step()
+    //   //  this.setData({
+    //   //    animation: this.animation.export(),
+    //   //  })
+    // },
+    backHome: function() {
       this.pauseVoice();
       this.triggerEvent("backHome");
-      //  this.setData({
-      //    isShowGuideView: true,
-      //    isShowSwiperView: false
-      //  })
-      //  this.animation
-      //    .translate(0, 0)
-      //    .scale(1)
-      //    .step()
-      //  this.setData({
-      //    animation: this.animation.export(),
-      //  })
     },
     // 启动语音
     inputVoiceStart: function() {

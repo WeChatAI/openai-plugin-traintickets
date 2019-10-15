@@ -1,4 +1,4 @@
-var sendFun = require("../send/send.js");
+var plugin = requirePlugin("myPlugin");
 
 Component({
   properties: {
@@ -18,21 +18,26 @@ Component({
     weatherName: "", //天气名称
     queryBMIList: [
       {
-        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconOne.png',
-        description: '北京今天空气质量'
+        url:
+          "https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconOne.png",
+        description: "北京今天空气质量"
       },
       {
-        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/HealthyIcon.png',
-        description: '北京今日防晒指数'
+        url:
+          "https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/HealthyIcon.png",
+        description: "北京今日防晒指数"
       },
       {
-        url: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconTwo.png',
-        description: '北京明天的天气'
+        url:
+          "https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconTwo.png",
+        description: "北京明天的天气"
       }
-    ],
+    ]
   },
   lifetimes: {
-    ready: function () {
+    ready: function() {
+     
+      // chat.send("asdf");
       //日期转化为星期
       console.log(this.properties.msg, "---weather---");
       let weatherDis = this.properties.msg;
@@ -59,8 +64,9 @@ Component({
     }
   },
   methods: {
-    send :function (e) {
-      sendFun.getData(e.currentTarget.dataset.item.description)
+    send: function(e) {
+      const chat = plugin.getChatComponent();
+      chat.send(e.currentTarget.dataset.item.description)
     }
   }
 });

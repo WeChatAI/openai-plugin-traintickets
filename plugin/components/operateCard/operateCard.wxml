@@ -1,0 +1,22 @@
+<view class='bottom-operate-view' wx:if="{{!inputing && !isShowGuideView}}">
+    <view class='list-btn' catchtap='chooseType' data-type='input'>
+      <image class='list-img' src='../../images/input.png'></image>
+    </view>
+    <view class='voice-btn' bindtouchstart='inputVoiceStart' bindtouchcancel="inputVoiceEnd" bindtouchend='inputVoiceEnd' style="{{recording?'background-color: #168216':'background-color: #46C844'}}">
+      <image class='voice-img' src='../../images/Microphone.png'></image>
+    </view>
+    <view class='input-btn' catchtap='showGuideView'>
+      <image class='input-img' src="{{isShowGuideView?'../../images/listsele.png':'../../images/list.png'}}"></image>
+    </view>
+  </view>
+  <view class='bottom-operate-view' wx:if="{{inputing && !isShowGuideView}}">
+    <view class='list-btn-inputView' catchtap='chooseType' data-type='voice'>
+      <image class='list-img' src='../../images/Microphone2.png'></image>
+    </view>
+    <view class='input-btn-inputView'>
+      <input class='input-view' focus="{{focus}}" placeholder="请输入" value='{{inputText}}' bindblur="changContentInput" bindblur="tuneDownInput" type='text' confirm-type='send' bindconfirm="bindconfirmInput" bindinput="bindInput" placeholder-style="color: #c4c5c7" cursor-spacing='10'></input>
+    </view>
+    <view class='voice-btn-inputView' catchtap='showGuideView'>
+      <image class='voice-img2' src="{{isShowGuideView?'../../images/listsele.png':'../../images/list.png'}}"></image>
+    </view>
+  </view>

@@ -5,6 +5,7 @@
     "customWeatherMessage": "../customWeatherMessage/customWeatherMessage",
     "costomImageMessage": "../costomImageMessage/costomImageMessage",
     "customGuideCard": "../customGuideCard/customGuideCard",
-    "customQuery": "../customQuery/customQuery"
+    "customQuery": "../customQuery/customQuery",
+    "customoperateCard": "../customoperateCard/customoperateCard"
   }
 }

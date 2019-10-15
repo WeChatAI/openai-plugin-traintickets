@@ -252,4 +252,5 @@
 .hrefWord {
   font-size: 14px;
   color:#61A9FF;
+  margin-top: 5px;
 }

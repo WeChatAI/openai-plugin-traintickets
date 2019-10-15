@@ -24,6 +24,9 @@
     },
     "guideCard": {
       "default": "../../components/swiperContent/swiperContent"
+    },
+    "operateCard": {
+      "default": "../../components/operateCard/operateCard"
     }
   }
 }
