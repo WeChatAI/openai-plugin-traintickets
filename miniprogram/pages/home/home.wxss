@@ -353,7 +353,7 @@
 }
 .footer {
   width: 100vw;
-  height: 150px;
+  height: 100px;
   background:rgba(255,255,255,1);
   box-shadow:0px 0px 10px 0px rgba(227,231,237,1);
   display: flex;

@@ -162,11 +162,6 @@ Component({
         });
       }
     },
-    setCurrentGuideList: function (val) {
-      this.setData({
-        guideList: val
-      });
-    },
     getData: function(val) {
       const authtoken = wx.getStorageSync("authtoken") || "";
       if (!authtoken) {
