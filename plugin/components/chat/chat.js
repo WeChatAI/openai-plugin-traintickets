@@ -54,7 +54,8 @@ Component({
   },
 
   attached: function() {
-    console.log(1);
+    console.log(data.getData().history);
+    console.log(data.getData().historySize);
     const operateCardHeight = data.getData().operateCardHeight;
     const guideCardHeight = data.getData().guideCardHeight;
     wx.getSystemInfo({
@@ -116,6 +117,7 @@ Component({
     scrolltoupper: function(e) {
       // 向上滑动到最顶端时，page+1
       const chatReCord = wx.getStorageSync("chatRecord");
+      
       let { page, pageSize } = this.data;
       if (chatReCord.length === 0) {
         return;
@@ -128,7 +130,6 @@ Component({
         listData: arr,
         page
       });
-      console.log(this.data.listData);
     },
     //完成输入
     bindconfirmInput: function(e) {
@@ -143,6 +144,7 @@ Component({
         };
 
         listData.push(newData);
+        this.getRecord(newData, data.getData().history, data.getData().historySize)
         that.setData(
           {
             isShowGuideView: false,
@@ -164,6 +166,16 @@ Component({
     bindInutvalue: function(e) {
       this.bindconfirmInput(e);
     },
+    getRecord:function(newData, history, historySize) {
+      if (history) {
+        const chatReCord = wx.getStorageSync("chatRecord") || [];
+        chatReCord.push(newData);
+        if(chatReCord &&chatReCord.length > historySize) {
+          chatReCord.shift();
+        }
+        wx.setStorageSync("chatRecord", chatReCord);
+      }
+    },
     //停止背景声音
     pauseVoice: function() {
       if (music.data.isPlaying) {
@@ -182,6 +194,7 @@ Component({
         data_type: 1
       };
       listData.push(newData);
+      this.getRecord(newData, data.getData().history, data.getData().historySize)
       that.getData(val);
     },
     editFoucs: function(val) {
@@ -461,9 +474,7 @@ Component({
             // 回调, 返回的数据
             this.triggerEvent("queryCallback", { query: val, data: res });
 
-            const chatReCord = wx.getStorageSync("chatRecord") || [];
-            chatReCord.push(newData);
-            wx.setStorageSync("chatRecord", chatReCord);
+            this.getRecord(newData, data.getData().history, data.getData().historySize)
 
             this.setData({
               controlSwiper: true
@@ -644,6 +655,7 @@ Component({
           };
           // listData[listData.length -1] = newData
           listData.push(newData);
+          this.getRecord(newData, data.getData().history, data.getData().historySize)
           that.setData(
             {
               isShowGuideView: false,
@@ -717,6 +729,7 @@ Component({
         data_type: 1
       };
       listData.push(newData);
+      this.getRecord(newData, data.getData().history, data.getData().historySize)
       that.setData(
         {
           isShowGuideView: false,
