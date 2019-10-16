@@ -26,7 +26,8 @@ App({
       fail: error => {}
     });
   },
+  onShow:function () {
+  },
   onHide:function () { 
-    console.log(123)
-   }
+  }
 });

@@ -129,7 +129,7 @@ Page({
     return {
       title: '自定义',
       path: '/pages/home/home',
-      imageUrl: '../forward.png'
+      imageUrl: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/forward.png'
     }
   },
   open:function() {
