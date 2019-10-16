@@ -23,7 +23,8 @@ Component({
     welcome: "",
     welcomeVal: false,
     page: 1,
-    cordFlag: true,
+    totalPage: 1,
+    pageSize: 20,
     chatReCord: []
   },
 
@@ -67,19 +68,20 @@ Component({
       }
     });
 
+    //取第一页
     const chatReCord = wx.getStorageSync("chatRecord");
-    this.setData({
-      chatReCord: chatReCord
-    })
-    console.log(chatReCord)
-    if (chatReCord && chatReCord.length !== 0) {
-      var ceil = Math.ceil(chatReCord.length / 20)
+    console.log(chatReCord, "111");
+    const { pageSize, page } = this.data;
+    if (chatReCord && chatReCord.length > 0) {
+      var totalPage = Math.ceil(chatReCord.length / pageSize);
+
+      const index = chatReCord.length - page * pageSize;
       this.setData({
-        // listData: chatReCord.slice(20 * (ceil -1)),
-        listData: ceil <= 1 ?chatReCord :  chatReCord.slice(chatReCord.length - 20),
-        ceil: ceil
+        listData: chatReCord.slice(index < 0 ? 0 : index),
+        totalPage
       });
     }
+
     if (data.getData().welcome && data.getData().welcome !== "") {
       this.setData({
         welcome: data.getData().welcome,
@@ -111,31 +113,22 @@ Component({
     //     inputText: e.detail.value
     //   });
     // },
-    scrolltoupper:function (e) {
-      if (this.data.chatReCord.length === 0) {
-        return 
+    scrolltoupper: function(e) {
+      // 向上滑动到最顶端时，page+1
+      const chatReCord = wx.getStorageSync("chatRecord");
+      let { page, pageSize } = this.data;
+      if (chatReCord.length === 0) {
+        return;
       }
-      if (this.data.cordFlag) {
-        if (this.data.ceil <= 1) {
-          this.setData({
-            listData: this.data.listData
-          })
-        } else {
-          let list = this.data.listData
-          // let chat = this.data.chatReCord.slice(0, 20 * (this.data.ceil -1))
-          let chat = this.data.chatReCord.slice(0, this.data.chatReCord.length - 20)
-          let arr = chat.concat(list)
-          this.setData({
-            listData: arr,
-            cordFlag: false
-          })
-        }
-      } else {
-        // this.setData({
-        //   listData: this.data.chatReCord
-        // })
-      }
-      console.log(this.data.listData)
+      page += 1;
+      console.log(page, chatReCord.length);
+      const index = chatReCord.length - page * pageSize;
+      const arr = chatReCord.slice(index < 0 ? 0 : index);
+      this.setData({
+        listData: arr,
+        page
+      });
+      console.log(this.data.listData);
     },
     //完成输入
     bindconfirmInput: function(e) {
@@ -182,7 +175,7 @@ Component({
      * send
      */
     send: function(val) {
-      var that = this
+      var that = this;
       let listData = that.data.listData;
       var newData = {
         content: val,
@@ -224,7 +217,7 @@ Component({
                   }
                 );
               }
-              
+
               this.setData({
                 guideList: list.concat(data.getData().guideList)
               });
@@ -467,7 +460,11 @@ Component({
             }
             // 回调, 返回的数据
             this.triggerEvent("queryCallback", { query: val, data: res });
-            wx.setStorageSync("chatRecord", this.data.listData);
+
+            const chatReCord = wx.getStorageSync("chatRecord") || [];
+            chatReCord.push(newData);
+            wx.setStorageSync("chatRecord", chatReCord);
+
             this.setData({
               controlSwiper: true
             });
