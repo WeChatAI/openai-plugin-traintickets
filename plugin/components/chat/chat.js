@@ -21,7 +21,10 @@ Component({
     guideList: [],
     focus: false,
     welcome: "",
-    welcomeVal: false
+    welcomeVal: false,
+    page: 1,
+    cordFlag: true,
+    chatReCord: []
   },
 
   behaviors: ["wx://component-export"],
@@ -65,9 +68,16 @@ Component({
     });
 
     const chatReCord = wx.getStorageSync("chatRecord");
+    this.setData({
+      chatReCord: chatReCord
+    })
+    console.log(chatReCord)
     if (chatReCord && chatReCord.length !== 0) {
+      var ceil = Math.ceil(chatReCord.length / 20)
       this.setData({
-        listData: chatReCord
+        // listData: chatReCord.slice(20 * (ceil -1)),
+        listData: ceil <= 1 ?chatReCord :  chatReCord.slice(chatReCord.length - 20),
+        ceil: ceil
       });
     }
     if (data.getData().welcome && data.getData().welcome !== "") {
@@ -101,6 +111,32 @@ Component({
     //     inputText: e.detail.value
     //   });
     // },
+    scrolltoupper:function (e) {
+      if (this.data.chatReCord.length === 0) {
+        return 
+      }
+      if (this.data.cordFlag) {
+        if (this.data.ceil <= 1) {
+          this.setData({
+            listData: this.data.listData
+          })
+        } else {
+          let list = this.data.listData
+          // let chat = this.data.chatReCord.slice(0, 20 * (this.data.ceil -1))
+          let chat = this.data.chatReCord.slice(0, this.data.chatReCord.length - 20)
+          let arr = chat.concat(list)
+          this.setData({
+            listData: arr,
+            cordFlag: false
+          })
+        }
+      } else {
+        // this.setData({
+        //   listData: this.data.chatReCord
+        // })
+      }
+      console.log(this.data.listData)
+    },
     //完成输入
     bindconfirmInput: function(e) {
       var that = this;
