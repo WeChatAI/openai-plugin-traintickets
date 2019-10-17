@@ -204,8 +204,6 @@ Component({
               "https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/dead.png",
             score: score
           });
-
-          plugin.setGuideList(["玩末日生存游戏"]);
         }
         chat.scrollToNew();
         return;

@@ -430,7 +430,7 @@ Page({
       let title = "";
       if (e.currentTarget.dataset.item.title === "“玩末日生存游戏”") {
         title = "玩末日生存游戏";
-        plugin.setGuideList([]);
+        plugin.setGuideList(["玩末日生存游戏"]);
       }
       if (e.currentTarget.dataset.item.title === "“我想玩猜拳游戏”") {
         title = "猜拳";

@@ -86,10 +86,10 @@
           <image  class="imageCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/imageCom.png"></image>
           <view class="imageCom_title" bindtap="goImageCom">复写图片组件</view>
         </view>
-        <view class="bowl">
+        <!--<view class="bowl">
           <image  class="bowl_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/bowl.png"></image>
           <view class="bowl_title" bindtap="gotoChatcloseVoice">语音开关展示</view>
-        </view>
+      </view> -->
         <view class="weatherCom">
           <image  class="weatherCom_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/weatherSun.png"></image>
           <view class="weatherCom_title" bindtap="goweatherCom">复写天气组件</view>
@@ -126,7 +126,7 @@
         {{item.title}}
       </view>
     </view>
-    
+
     <view class="chatCard">
       <view class="chatCard_top">
         <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/chatCardImage.png" class="chatCard_top_image"></image>
@@ -138,7 +138,7 @@
         </view>
         <view class="chatCard_bottom_right" bindtap="goChat" data-item="{{chatTitle}}">
           试试
-        </view> 
+        </view>
       </view>
     </view>
     <view class="idiomsCard" style="height: {{weatherheight}}px">
@@ -164,7 +164,7 @@
         </view>
         <view class="encyclopediasCard_bottom_right" bindtap="goChat" data-item="{{encyclopediasTitle}}">
           试试
-        </view> 
+        </view>
       </view>
     </view>
     <view style='clear: both;height: 54px'></view>
