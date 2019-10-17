@@ -316,6 +316,7 @@ App({
 ## 4 消息组件重写(自定义插件内容的样式)
 
 从版本1.0.7开始支持对小程序内置插件的替换，包括文本消息，天气消息，图片消息，音乐消息，新闻消息和引导消息
+从版本1.1.0开始支持`generic:operateCard` 参数，底部文字和语音输入增加 `customoperateCard` 自定义复写的功能
 
 
 ```html
@@ -327,7 +328,9 @@ App({
       generic:musicMessage="customMusicMessage"
       generic:newsMessage="customNewsMessage"
       generic:unsupportedMessage="customUnsupportedMessage"
-      generic:guideCard="customGuideCard">
+      generic:guideCard="customGuideCard"
+      generic:operateCard="customoperateCard"
+      >
    </chat>
 </view>
 ```
@@ -343,6 +346,7 @@ App({
     "customNewsMessage": "../customNewsMessage/customNewsMessage",
     "customUnsupportedMessage": "../customUnsupportedMessage/customUnsupportedMessage",
     "customGuideCard": "../customGuideCard/customGuideCard",
+    "customoperateCard": "../customoperateCard/customoperateCard"
   }
 }
 ```
@@ -356,6 +360,7 @@ App({
 5. newsMessage: 新闻类消息
 6. unsupportedMessage: 暂未支持类消息
 7. guideCard: 引导消息
+8. operateCard: 底部操作区域(从版本1.1.0开始支持)
 
 > 以上七种消息中，组件 `1-6` 会在组件上收到一个properties参数 `msg`
 
