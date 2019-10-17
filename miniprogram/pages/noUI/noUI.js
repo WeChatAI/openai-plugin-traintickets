@@ -94,5 +94,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  back:function(e) {
+    wx.navigateBack({
+      delta: 1
+    })
   }
 })

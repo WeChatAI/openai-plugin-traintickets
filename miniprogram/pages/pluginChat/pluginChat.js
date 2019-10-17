@@ -56,6 +56,11 @@ Page({
         this.setData({
           title: '天气'
         })
+      } else if (options.data === '我想测体质指数' || options.data === '算一下我的BMI体质指数是多少' || options.data === '我的身高175BMI体质指数是多少') {
+        this.setData({
+          title: 'BMI'
+        })
+        chat.send(options.data)
       } else {
         chat.send(options.data)
         if (options.data2) {
