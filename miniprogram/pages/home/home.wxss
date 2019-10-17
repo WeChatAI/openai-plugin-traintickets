@@ -5,15 +5,34 @@
   background:rgba(177,184,195,0.1);
 }
 .scroll-view {
-  height: calc(100vh - 120px);
+  
 }
 .info {
-  background-image: url(https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/bannerCard.png);
-  background-size: 100% 100%;
+  /* background-image: url(https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/bannerCard.png); */
+  /* background-size: 100% 100%; */
   width: 100vw;
   /* height: 274px; */
   padding: 52px 0 0 27px;
   box-sizing: border-box;
+  /* position: relative; */
+}
+.circle {
+  position: absolute;
+  bottom: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.white {
+  background:#ffffff;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.grey {
+  background: rgba(0, 0, 0, 0.6);
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
 }
 .info_title {
   font-size:24px;

@@ -122,7 +122,11 @@ Page({
     },
     encyclopediasTitle: {
       title: 'encyclopedias'
-    }
+    },
+    background: [
+      { bgUrl: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/bannerCard.png' },
+      {bgUrl: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconTwo.png'}
+    ]
 
   },
 
@@ -130,13 +134,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     wx.getSystemInfo({
       success: (res) => {
+        console.log(res)
+        let isIOS = res.system.indexOf('iOS') > -1
+        let navHeight = 0
+        if (!isIOS) {
+          navHeight = 48
+        } else {
+          navHeight = 44
+        }
         this.setData({
           windowHeight: res.windowHeight,
           infoheight: res.windowWidth * 277 / 375,
-          weatherheight: (res.windowWidth - 34) * 235 / 341
+          weatherheight: (res.windowWidth - 34) * 235 / 341,
+          status: res.statusBarHeight,
+          navHeight: navHeight,
+          statusBarHeight: res.statusBarHeight + navHeight
         })
       }
     })
@@ -192,7 +206,7 @@ Page({
       
     }
     return {
-      title: '自定义',
+      title: '示例小程序',
       path: '/pages/home/home',
       imageUrl: 'https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/forward.png'
     }
@@ -437,6 +451,13 @@ Page({
   goEncyclopedias:function(e) {
     plugin.setGuideList(this.data.encyclopediasGuideList)
     this.jump('百科')
+    plugin.setTextToSpeech(true)
+  },
+  catchtap:function(e) {
+    console.log("---------------------")
+    let title = "玩末日生存游戏"
+    plugin.setGuideList([])
+    this.jump(title)
     plugin.setTextToSpeech(true)
   }
 })

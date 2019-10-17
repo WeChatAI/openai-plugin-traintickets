@@ -2,7 +2,8 @@
   <view class="answer" >
     <image class="answerimage" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/answerImage.png"></image>
     <view class="leftView">
-      {{msg.content}}
+      <rich-text wx:if="{{isRitch}}" nodes="{{answer}}" bindtap="tap"></rich-text>
+      <view wx:else>{{msg.content}}</view>
       <view class="imageView" wx:if="{{flag}}">
         <image src="{{url}}" class="bg_img" alt=""></image>
         <view class="scoreview" wx:if="{{score !== 0}}">
