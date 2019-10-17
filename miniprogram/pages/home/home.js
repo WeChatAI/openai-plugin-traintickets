@@ -487,7 +487,7 @@ Page({
   catchtap: function(e) {
     console.log("---------------------");
     let title = "玩末日生存游戏";
-    plugin.setGuideList([]);
+    plugin.setGuideList(["玩末日生存游戏"]);
     this.jump(title);
     plugin.setTextToSpeech(true);
   }
