@@ -18,6 +18,7 @@
   "requiredBackgroundModes": ["audio"],
   "sitemapLocation": "sitemap.json",
   "window": {
+    "navigationStyle": "custom",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "openai",

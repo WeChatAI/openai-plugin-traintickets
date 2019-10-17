@@ -123,3 +123,16 @@
   color: #ffffff;
   font-size: 14px;
 }
+
+.ai-qqemoji {
+  background: url("https://res.wx.qq.com/mmspraiweb_node/dist/static/img/qqface2.7582741.png") no-repeat;
+  width: 20px;
+  height: 20px;
+  text-indent: -999em;
+  display: inline-block;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  background-size: 360px 192px;
+  /* background-size: 434px 202px; */
+}

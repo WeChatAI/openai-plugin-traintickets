@@ -1,2 +1,2 @@
 <!--pages/about/about.wxml-->
-<web-view src="https://openai.weixin.qq.com/docs/"></web-view>
+<web-view src="https://developers.weixin.qq.com/doc/aispeech/INTRODUCTION.html"></web-view>

@@ -1,9 +1,39 @@
 <view class="container">
-  <scroll-view class="scroll-view" scroll-y enable-back-to-top>
-    <view class="info" style="height: {{infoheight}}px">
+  <view class='nav-wrap' style='width: 100vw;height: {{statusBarHeight}}px;'>
+    <view class="" style="height: {{status}}px"></view>
+    <view class='nav-title' style='width: 100vw; text-align: center; line-height: {{navHeight}}px'>示例小程序</view>
+  </view>
+  <scroll-view class="scroll-view" style="height: calc(100vh - 120px - {{statusBarHeight}}px);" scroll-y enable-back-to-top>
+    <!-- <view class="info" style="height: {{infoheight}}px">
       <view class="info_title">{{title}}</view>
       <view class="info_para">{{info}}</view>
-    </view>
+    </view> -->
+    <swiper style="width: 100vw; height: {{infoheight}}px;" circular autoplay indicator-dots interval="{{2000}}">
+      <block >
+        <swiper-item>
+          <view class="info" style="height: {{infoheight}}px; background-image: url(https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/bannerCard.png);background-size: 100% 100%;">
+            <view class="info_title">{{title}}</view>
+            <view class="info_para">{{info}}</view>
+            <!-- <view class="circle">
+              <view class="white" style="float: left;margin-right: 10px; ">
+              </view>
+              <view class="grey" style="float: right;">
+              </view>
+            </view> -->
+          </view>
+        </swiper-item>
+        <swiper-item>
+          <view class="info" catchtap="catchtap" style="height: {{infoheight}}px; background-image: url(https://res.wx.qq.com/mmspraiweb_node/dist/static/game/banner2.png);background-size: 100% 100%;">
+            <!-- <view class="circle">
+              <view class="grey" style="float: left;margin-right: 10px; ">
+              </view>
+              <view class="white" style="float: right;">
+              </view>
+            </view> -->
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
     <view class="blockingcontent">
       <view class="blockingcontent_all" bindtap="goChat" data-item="{{item}}"  wx:for="{{cardList}}" wx:key="item">
         <image class="blockingcontent_all_img" src="{{item.url}}"></image>

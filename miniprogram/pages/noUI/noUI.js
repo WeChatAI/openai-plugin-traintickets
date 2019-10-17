@@ -29,7 +29,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.getSystemInfo({
+      success: (res) => {
+        let isIOS = res.system.indexOf('iOS') > -1
+        let navHeight = 0
+        if (!isIOS) {
+          navHeight = 48
+        } else {
+          navHeight = 44
+        }
+        this.setData({
+          status: res.statusBarHeight,
+          navHeight: navHeight,
+          statusBarHeight: res.statusBarHeight + navHeight
+        })
+      }
+    })
   },
 
   /**
