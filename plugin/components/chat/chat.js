@@ -21,7 +21,11 @@ Component({
     guideList: [],
     focus: false,
     welcome: "",
-    welcomeVal: false
+    welcomeVal: false,
+    page: 1,
+    totalPage: 1,
+    pageSize: 20,
+    chatReCord: []
   },
 
   behaviors: ["wx://component-export"],
@@ -50,7 +54,8 @@ Component({
   },
 
   attached: function() {
-    console.log(1);
+    console.log(data.getData().history);
+    console.log(data.getData().historySize);
     const operateCardHeight = data.getData().operateCardHeight;
     const guideCardHeight = data.getData().guideCardHeight;
     wx.getSystemInfo({
@@ -64,12 +69,20 @@ Component({
       }
     });
 
+    //取第一页
     const chatReCord = wx.getStorageSync("chatRecord");
-    if (chatReCord && chatReCord.length !== 0) {
+    console.log(chatReCord, "111");
+    const { pageSize, page } = this.data;
+    if (chatReCord && chatReCord.length > 0) {
+      var totalPage = Math.ceil(chatReCord.length / pageSize);
+
+      const index = chatReCord.length - page * pageSize;
       this.setData({
-        listData: chatReCord
+        listData: chatReCord.slice(index < 0 ? 0 : index),
+        totalPage
       });
     }
+
     if (data.getData().welcome && data.getData().welcome !== "") {
       this.setData({
         welcome: data.getData().welcome,
@@ -101,6 +114,23 @@ Component({
     //     inputText: e.detail.value
     //   });
     // },
+    scrolltoupper: function(e) {
+      // 向上滑动到最顶端时，page+1
+      const chatReCord = wx.getStorageSync("chatRecord");
+      
+      let { page, pageSize } = this.data;
+      if (chatReCord.length === 0) {
+        return;
+      }
+      page += 1;
+      console.log(page, chatReCord.length);
+      const index = chatReCord.length - page * pageSize;
+      const arr = chatReCord.slice(index < 0 ? 0 : index);
+      this.setData({
+        listData: arr,
+        page
+      });
+    },
     //完成输入
     bindconfirmInput: function(e) {
       var that = this;
@@ -114,6 +144,7 @@ Component({
         };
 
         listData.push(newData);
+        this.getRecord(newData, data.getData().history, data.getData().historySize)
         that.setData(
           {
             isShowGuideView: false,
@@ -135,6 +166,16 @@ Component({
     bindInutvalue: function(e) {
       this.bindconfirmInput(e);
     },
+    getRecord:function(newData, history, historySize) {
+      if (history) {
+        const chatReCord = wx.getStorageSync("chatRecord") || [];
+        chatReCord.push(newData);
+        if(chatReCord &&chatReCord.length > historySize) {
+          chatReCord.shift();
+        }
+        wx.setStorageSync("chatRecord", chatReCord);
+      }
+    },
     //停止背景声音
     pauseVoice: function() {
       if (music.data.isPlaying) {
@@ -146,13 +187,14 @@ Component({
      * send
      */
     send: function(val) {
-      var that = this
+      var that = this;
       let listData = that.data.listData;
       var newData = {
         content: val,
         data_type: 1
       };
       listData.push(newData);
+      this.getRecord(newData, data.getData().history, data.getData().historySize)
       that.getData(val);
     },
     editFoucs: function(val) {
@@ -188,7 +230,7 @@ Component({
                   }
                 );
               }
-              
+
               this.setData({
                 guideList: list.concat(data.getData().guideList)
               });
@@ -431,7 +473,9 @@ Component({
             }
             // 回调, 返回的数据
             this.triggerEvent("queryCallback", { query: val, data: res });
-            wx.setStorageSync("chatRecord", this.data.listData);
+
+            this.getRecord(newData, data.getData().history, data.getData().historySize)
+
             this.setData({
               controlSwiper: true
             });
@@ -611,6 +655,7 @@ Component({
           };
           // listData[listData.length -1] = newData
           listData.push(newData);
+          this.getRecord(newData, data.getData().history, data.getData().historySize)
           that.setData(
             {
               isShowGuideView: false,
@@ -684,6 +729,7 @@ Component({
         data_type: 1
       };
       listData.push(newData);
+      this.getRecord(newData, data.getData().history, data.getData().historySize)
       that.setData(
         {
           isShowGuideView: false,

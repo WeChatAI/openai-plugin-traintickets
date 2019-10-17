@@ -67,7 +67,6 @@ Component({
     send: function(e) {
       const chat = plugin.getChatComponent();
       chat.send(e.currentTarget.dataset.item.description)
-      plugin.setGuideList(['123'])
     }
   }
 });

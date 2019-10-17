@@ -12,7 +12,9 @@ var data = {
   background: "",
   voiceStart: false,
   guideCardHeight: "",
-  operateCardHeight: ""
+  operateCardHeight: "",
+  history: true,
+  historySize: 60
 };
 
 function getData() {
@@ -36,7 +38,9 @@ function auth({
   welcome,
   background,
   guideCardHeight,
-  operateCardHeight
+  operateCardHeight,
+  history,
+  historySize
 }) {
   if (guideList) {
     setData("guideList", guideList);
@@ -69,6 +73,16 @@ function auth({
     setData("operateCardHeight", operateCardHeight);
   } else {
     setData("operateCardHeight", 145);
+  }
+  if (typeof history !== 'undefined') {
+    setData("history", history)
+  } else {
+    setData("history", true)
+  }
+  if (typeof historySize !== "undefined") {
+    setData("historySize", historySize)
+  } else {
+    setData("historySize", 60)
   }
   wx.request({
     url: domain + "/auth/miniprogram/plugin/openai",
