@@ -28,7 +28,6 @@ App({
       fail: error => {}
     });
   },
-  onHide: function() {
-    console.log(123);
-  }
+  onShow: function() {},
+  onHide: function() {}
 });

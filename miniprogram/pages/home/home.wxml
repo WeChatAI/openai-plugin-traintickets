@@ -13,6 +13,23 @@
         </view>
       </view>
     </view>
+    <view class="game">
+      <view class="game_top">
+        <view class="game_top_content">
+          <view class="game_top_content_title">游戏</view>
+          <view class="game_top_content_para">Game</view>
+        </view>
+        <image class="game_top_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/game.png"></image>
+      </view>
+      <view class="game_bottom">
+        <view wx:for="{{gameList}}" bindtap="goGame" data-item="{{item}}" wx:key="item" class="game_bottom_content">
+          <view class="game_bottom_content_img_view">
+            <image class="game_bottom_content_img{{index}}" src="{{item.url}}"></image>
+          </view>
+          <view class="game_bottom_content_title">{{item.title}}</view>
+        </view>
+      </view>
+    </view>
     <view class="weatherCard" style="height: {{weatherheight}}px">
       <view class="weatherCardList" bindtap="goWeatherCard" data-item="{{item}}" wx:for="{{weatherCardList}}" wx:key="item">
         {{item.title}}
@@ -79,23 +96,7 @@
         {{item.title}}
       </view>
     </view>
-    <view class="game">
-      <view class="game_top">
-        <view class="game_top_content">
-          <view class="game_top_content_title">游戏</view>
-          <view class="game_top_content_para">Game</view>
-        </view>
-        <image class="game_top_img" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/game.png"></image>
-      </view>
-      <view class="game_bottom">
-        <view wx:for="{{gameList}}" bindtap="goGame" data-item="{{item}}" wx:key="item" class="game_bottom_content">
-          <view class="game_bottom_content_img_view">
-            <image class="game_bottom_content_img{{index}}" src="{{item.url}}"></image>
-          </view>
-          <view class="game_bottom_content_title">{{item.title}}</view>
-        </view>
-      </view>
-    </view>
+    
     <view class="chatCard">
       <view class="chatCard_top">
         <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/chatCardImage.png" class="chatCard_top_image"></image>
