@@ -47,10 +47,9 @@ Component({
     score: 0
   },
   lifetimes: {
-
     ready: function() {
       let that = this;
-      
+
       const facejson = {
         qqface: [
           "微笑",
@@ -188,7 +187,7 @@ Component({
       }
 
       const result = this.properties.msg;
-      const chat = plugin.getChatComponent()
+      const chat = plugin.getChatComponent();
       const score = result.content.replace(/.*评分\s*[:：]\s*(\d*)/, "$1");
       if (result.content.indexOf("评分") !== -1) {
         if (result.content.indexOf("100") !== -1) {
@@ -196,7 +195,7 @@ Component({
             flag: true,
             url:
               "https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/win.png",
-              score: 100
+            score: 100
           });
         } else {
           that.setData({
@@ -205,9 +204,10 @@ Component({
               "https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/dead.png",
             score: score
           });
-          
+
+          plugin.setGuideList(["玩末日生存游戏"]);
         }
-        chat.scrollToNew()
+        chat.scrollToNew();
         return;
       }
 
@@ -224,14 +224,13 @@ Component({
           list: result.res.options
         });
       }
-      chat.scrollToNew()
-      
+      chat.scrollToNew();
     }
   },
   methods: {
-    choose:function(e) {
-      const chat = plugin.getChatComponent()
-      chat.send(e.currentTarget.dataset.title)
+    choose: function(e) {
+      const chat = plugin.getChatComponent();
+      chat.send(e.currentTarget.dataset.title);
     },
     getFacePosition(index) {
       const row = 15;
@@ -241,6 +240,6 @@ Component({
       const y = Math.floor(index / row);
       const x = index - y * row;
       return -(x * width) + "px " + -(y * height) + "px";
-    },
+    }
   }
 });
