@@ -147,10 +147,9 @@ plugin.send({
 ```
 
 ### 2.7 动态控制UI组件，发送消息、开始录音、结束录音
+>从版本 1.1.0 开始，支持获取对话UI组件, 获取ui组件后可以访问到`inputVoiceStart`、 `inputVoiceEnd` 、`send` 三个UI方法
 
 
->从版本 1.1.0 开始，支持获取对话UI组件, 获取ui组件后可以访问到
-`inputVoiceStart`、 `inputVoiceEnd` 、`send` 三个UI方法
 ```
     const chat = plugin.getChatComponent();
 
