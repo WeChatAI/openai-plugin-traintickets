@@ -19,8 +19,9 @@
 
 .swiperContentView {
   height: 40px;
-  margin-top: 10px;
-  margin-left: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  box-sizing: border-box;
   /* position: absolute;
   left: 15px;
   bottom: 145px; */

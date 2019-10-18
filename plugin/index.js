@@ -10,5 +10,6 @@ module.exports = {
   setWelcome: data.setWelcome,
   setBackground: data.setBackground,
   voiceStart: data.voiceStart,
-  getChatComponent: data.getChatComponent
+  getChatComponent: data.getChatComponent,
+  setNavHeight: data.setNavHeight
 };
