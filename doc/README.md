@@ -594,14 +594,14 @@ focus|Boolean|输入框是否获得焦点
 ```
    this.triggerEvent("inputVoiceEnd");
 ```
-
-
 > 发送消息、开启录音、结束录音、也可以通过 `plugin.getChatComponent()` 方法获取到UI最后，
 通过组件方法来实现
 
-```
-    const chat = plugin.getChatComponent();
 
+
+
+```js
+    const chat = plugin.getChatComponent();
 
     //用户需要开始语音输入的时候需要触发的事件
     chat.inputVoiceStart();
@@ -611,14 +611,14 @@ focus|Boolean|输入框是否获得焦点
 
     //用户需要发送消息时需要触发的事件
     chat.send("你好！");
-
 ```
+
 
 
 
 ## 5. 初始化配置项
 
-```
+```js
     plugin.init({
       appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja",
       success: () => {},
