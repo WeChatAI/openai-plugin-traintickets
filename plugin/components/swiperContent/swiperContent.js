@@ -3,7 +3,9 @@ var data = require("../../api/data.js");
 Component({
   properties: {
     controlSwiper: Boolean,
-    guideList: Array
+    guideList: Array,
+    height: Number,
+    background: String
     // guideType: String
   },
   data: {
@@ -13,6 +15,7 @@ Component({
   },
 
   attached: function() {
+    console.log(this.properties.height)
     // this.setData({
     //   guideList: data.getData().guideList
     // });

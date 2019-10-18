@@ -3,7 +3,8 @@ Component({
     recording: Boolean,
     inputText: String,
     inputing: Boolean,
-    focus: Boolean
+    focus: Boolean,
+    height: Number
   },
 
   data: {

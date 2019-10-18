@@ -1,7 +1,9 @@
 Component({
   properties: {
     controlSwiper: Boolean,
-    guideList: Array
+    guideList: Array,
+    height: Number,
+    background: String
     // guideType: String
   },
   data: {

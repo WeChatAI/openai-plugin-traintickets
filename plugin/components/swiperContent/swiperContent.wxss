@@ -19,9 +19,18 @@
 
 
 .swiperContentView {
-  
+  /* animation: lineAnimation 1s linear; */
+  padding-left: 15px;
+  box-sizing: border-box;
   height: 40px;
-  position: absolute;
+  /* position: absolute;
   left: 15px;
-  bottom: 145px;
+  bottom: 145px; */
 }
+/* 
+@keyframes lineAnimation {
+  from
+    {transform: translate(100vw, 0)}
+  to
+    {transform: translate(0, 0)}
+} */

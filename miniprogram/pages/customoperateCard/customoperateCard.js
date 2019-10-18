@@ -4,7 +4,8 @@ Component({
     focus: Boolean,
     recording: Boolean,
     inputText: String,
-    inputing: Boolean
+    inputing: Boolean,
+    height: Number
   },
 
   data: {

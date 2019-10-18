@@ -40,7 +40,8 @@ function auth({
   guideCardHeight,
   operateCardHeight,
   history,
-  historySize
+  historySize,
+  navHeight
 }) {
   if (guideList) {
     setData("guideList", guideList);
@@ -83,6 +84,11 @@ function auth({
     setData("historySize", historySize)
   } else {
     setData("historySize", 60)
+  }
+  if (typeof navHeight !== "undefined") {
+    setData("navHeight", navHeight)
+  } else {
+    setData("navHeight", 0)
   }
   wx.request({
     url: domain + "/auth/miniprogram/plugin/openai",
@@ -163,6 +169,10 @@ function getChatComponent() {
   
 }
 
+function setNavHeight (navHeight) {
+  setData('navHeight', navHeight)
+}
+
 module.exports = {
   getData: getData,
   setData: setData,
@@ -173,5 +183,6 @@ module.exports = {
   auth: auth,
   send: send,
   getChatComponent,
-  setChatComponent
+  setChatComponent,
+  setNavHeight
 };

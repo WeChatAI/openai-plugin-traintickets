@@ -1,4 +1,4 @@
-<view class='bottom-operate-view' wx:if="{{!inputing && !isShowGuideView}}">
+<view class='bottom-operate-view' style="height: {{height}}px" wx:if="{{!inputing && !isShowGuideView}}">
     <view class='list-btn' catchtap='chooseType' data-type='input'>
       <image class='list-img' src='../../images/input.png'></image>
     </view>

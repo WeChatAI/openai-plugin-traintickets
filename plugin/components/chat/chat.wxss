@@ -1,8 +1,8 @@
 .container {
   background-color: #f6f6f6;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
 }
 .welcome {
   margin: 10px 0;
@@ -162,7 +162,7 @@
 .cardView{
   width: 100%;
 }
-.swiperContentView {
+/* .swiperContentView {
   height: 40px;
   position: absolute;
   left: 15px;
@@ -179,7 +179,7 @@
     {transform: translate(100vw, 0)}
   to
     {transform: translate(0, 0)}
-}
+} */
 
 ::-webkit-scrollbar {
   width: 0;

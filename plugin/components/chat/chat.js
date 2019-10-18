@@ -58,14 +58,18 @@ Component({
     console.log(data.getData().historySize);
     const operateCardHeight = data.getData().operateCardHeight;
     const guideCardHeight = data.getData().guideCardHeight;
+    const navHeight = data.getData().navHeight
     wx.getSystemInfo({
       success: res => {
         console.log(res);
         this.setData({
-          scrollHeight: res.windowHeight - operateCardHeight - guideCardHeight,
           operateCardHeight: operateCardHeight,
-          guideCardHeight: guideCardHeight
+          guideCardHeight: guideCardHeight,
+          scrollHeight: res.windowHeight - operateCardHeight - guideCardHeight - navHeight,
         });
+        console.log(operateCardHeight)
+        console.log(guideCardHeight)
+        console.log(this.data.scrollHeight)
       }
     });
 
@@ -168,6 +172,8 @@ Component({
     },
     getRecord:function(newData, history, historySize) {
       if (history) {
+        console.log("======================================================")
+        console.log(newData)
         const chatReCord = wx.getStorageSync("chatRecord") || [];
         chatReCord.push(newData);
         if(chatReCord &&chatReCord.length > historySize) {
@@ -322,13 +328,13 @@ Component({
 
               if (detail != null && detail.length > 0) {
                 if (res.dialog_status === "START") {
-                  var cardData = {
+                  newData = {
                     msg_type: "text",
                     content: res.answer,
                     res: res,
                     query: val
                   };
-                  listData.push(cardData);
+                  listData.push(newData);
                   that.setData(
                     {
                       listData: listData
@@ -353,7 +359,7 @@ Component({
                     //  tempList[0].dateTime = util.dateTimeFormat(slot_info.date)
                     //  tempList[0].week = util.date2Week(slot_info.date)
                     console.log(tempList);
-                    var newData = {
+                    newData = {
                       answer: res.answer,
                       cardType: "weather",
                       docs: tempList,
@@ -375,11 +381,11 @@ Component({
                 }
               } else {
                 if (data.wxbot_res.answer != "") {
-                  var cardData = {
+                  newData = {
                     msg_type: "text",
                     content: data.wxbot_res.answer
                   };
-                  listData.push(cardData);
+                  listData.push(newData);
                   that.setData(
                     {
                       listData: listData
