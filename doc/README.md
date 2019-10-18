@@ -26,7 +26,7 @@
   ],
   "plugins": {
     "chatbot": {
-      "version": "1.0.8",
+      "version": "1.1.0",
       "provider": "wx8c631f7e9f2465e1"
     }
   },
@@ -48,7 +48,7 @@
   ],
   "plugins": {
     "myPlugin": {
-      "version": "1.0.8",
+      "version": "1.1.0",
       "provider": "wx8c631f7e9f2465e1"
     },
     "WechatSI": {
@@ -109,24 +109,64 @@ plugin.send({
 ```
 
 
-### 2.3 设置guideList
+### 2.3 动态设置guideList
 
 
->从版本 1.0.8 开始，支持根据上下文,随时修改用户提示语的方法
+>从版本 1.1.0 开始，支持根据上下文,随时修改用户提示语的方法
 
 ```
     plugin.setGuideList(['内容', '内容'])
 ```
 
 
-### 2.4 设置textToSpeech
+### 2.4 动态设置textToSpeech
 
 
->从版本 1.0.8 开始，支持根据上下文,随时修改是否打开语音播报
+>从版本 1.1.0 开始，支持根据上下文,随时修改是否打开语音播报
 
 ```
     plugin.setTextToSpeech(false)
 ```
+
+### 2.5 动态设置欢迎语
+
+
+>从版本 1.1.0 开始，支持动态修改欢迎语
+
+```
+    plugin.setWelcome("您好，请问需要什么帮助？")
+```
+
+### 2.6 动态设置聊天背景
+
+
+>从版本 1.1.0 开始，支持动态设置聊天背景
+
+```
+    plugin.setBackground("rgba(247,251,252,1)")
+```
+
+### 2.7 动态控制UI组件，发送消息、开始录音、结束录音
+
+
+>从版本 1.1.0 开始，支持获取对话UI组件, 获取ui组件后可以访问到
+`inputVoiceStart`、 `inputVoiceEnd` 、`send` 三个UI方法
+```
+    const chat = plugin.getChatComponent();
+
+
+    //用户需要开始语音输入的时候需要触发的事件
+    chat.inputVoiceStart();
+
+    //用户需要结束语音输入的时候需要触发的事件
+    chat.inputVoiceEnd();
+
+    //用户需要发送消息时需要触发的事件
+    chat.send("你好！");
+```
+
+
+
 
 
 
@@ -556,6 +596,23 @@ focus|Boolean|输入框是否获得焦点
 ```
 
 
+> 发送消息、开启录音、结束录音、也可以通过 `plugin.getChatComponent()` 方法获取到UI最后，
+通过组件方法来实现
+
+```
+    const chat = plugin.getChatComponent();
+
+
+    //用户需要开始语音输入的时候需要触发的事件
+    chat.inputVoiceStart();
+
+    //用户需要结束语音输入的时候需要触发的事件
+    chat.inputVoiceEnd();
+
+    //用户需要发送消息时需要触发的事件
+    chat.send("你好！");
+
+```
 
 
 
@@ -563,12 +620,17 @@ focus|Boolean|输入框是否获得焦点
 
 ```
     plugin.init({
-      ...options
       appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja",
       success: () => {},
       fail: error => {},
       guideList: ["您好"],
-      textToSpeech: true //默认为ture打开状态
+      textToSpeech: true, //默认为ture打开状态
+      welcome: "请问有什么需要帮助？"
+      background: "rgba(247,251,252,1)",
+      guideCardHeight: 40,
+      operateCardHeight: 145,
+      history: true,
+      historySize: 60
     });
 ```
 
