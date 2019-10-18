@@ -629,7 +629,8 @@ focus|Boolean|输入框是否获得焦点
       guideCardHeight: 40,
       operateCardHeight: 145,
       history: true,
-      historySize: 60
+      historySize: 60,
+      navHeight: 0
     });
 ```
 
@@ -650,6 +651,7 @@ guideCardHeight|number|否|40|用户提示区域的高度
 operateCardHeight|number|否|145|用户操作区域的高度
 history|Boolean|否|true|是否开启聊天记录
 historySize|number|否|60|聊天记录的最大条数
+navHeight|number|否|0|自定义导航栏高度
 
 
 
