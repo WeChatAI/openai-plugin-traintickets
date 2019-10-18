@@ -322,6 +322,7 @@ App({
 ```html
 <view style="height: 100vh">
    <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome"
+      generic:queryMessage="queryMessage"
       generic:textMessage="customTextMessage"
       generic:weatherMessage="customWeatherMessage"
       generic:imageMessage="customImageMessage"
@@ -339,6 +340,7 @@ App({
 {
   "usingComponents": {
     "chat": "plugin://myPlugin/chat",
+    "customQueryMessage": "../customQueryMessage/customQueryMessage",
     "customTextMessage": "../customTextMessage/customTextMessage",
     "customWeatherMessage": "../customWeatherMessage/customWeatherMessage",
     "customImageMessage": "../customImageMessage/customImageMessage",
@@ -353,19 +355,21 @@ App({
 
 ### 4.1支持覆盖的组件类别：
 
-1. textMessage: 文本类消息
-2. weatherMessage: 天气类消息
-3. imageMessage: 图片类消息
-4. musicMessage: 音乐类消息
-5. newsMessage: 新闻类消息
-6. unsupportedMessage: 暂未支持类消息
-7. guideCard: 引导消息
-8. operateCard: 底部操作区域(从版本1.1.0开始支持)
+1. queryMessage: 用户发出的消息
+2. textMessage: 文本类消息
+3. weatherMessage: 天气类消息
+4. imageMessage: 图片类消息
+5. musicMessage: 音乐类消息
+6. newsMessage: 新闻类消息
+7. unsupportedMessage: 暂未支持类消息
+8. guideCard: 引导消息
+9. operateCard: 底部操作区域(从版本1.1.0开始支持)
 
-> 以上七种消息中，组件 `1-6` 会在组件上收到一个properties参数 `msg`
+> 以上七种消息中，组件 `1-7` 会在组件上收到一个properties参数 `msg`
 
 ```js
-     <textMessage msg="{{item}}"></textMessage>
+    <queryMessage msg="{{item}}" recording="{{recording}}"></queryMessage>
+    <textMessage msg="{{item}}"></textMessage>
     <weatherMessage msg="{{item}}"></weatherMessage>
     <newsMessage   msg="{{item}}"></newsMessage>
     <musicMessage  msg="{{item}}"></musicMessage>
@@ -374,7 +378,28 @@ App({
 
 ```
 
-#### 4.1.1 `textMessage` 的 properties 参数 msg的数据结构：
+#### 4.1.1 `queryMessage` 的 properties 参数 msg的数据结构：
+
+```json
+
+  {
+    content: "用户输入的对话内容",
+  };
+
+```
+
+`queryMessage` properties 参数 recording 的数据类型为 `Boolean`
+
+```json
+  properties: {
+    msg: Object,
+    recording: Boolean
+  }
+
+```
+
+
+#### 4.1.2 `textMessage` 的 properties 参数 msg的数据结构：
 
 ```json
 
@@ -386,7 +411,7 @@ App({
 
 ```
 
-#### 4.1.2 `weatherMessage` 的 properties 参数 msg的数据结构：
+#### 4.1.3 `weatherMessage` 的 properties 参数 msg的数据结构：
 
 ```json
 
@@ -400,7 +425,7 @@ App({
 ```
 
 
-#### 4.1.3 `newsMessage` 的 properties 参数 msg的数据结构：
+#### 4.1.4 `newsMessage` 的 properties 参数 msg的数据结构：
 
 ```json
 
@@ -413,7 +438,7 @@ App({
 
 ```
 
-#### 4.1.4 `musicMessage` 的 properties 参数 msg的数据结构：
+#### 4.1.5 `musicMessage` 的 properties 参数 msg的数据结构：
 
 ```json
 
@@ -425,7 +450,7 @@ App({
 
 ```
 
-#### 4.1.5 `imageMessage` 的 properties 参数 msg的数据结构：
+#### 4.1.6 `imageMessage` 的 properties 参数 msg的数据结构：
 
 
 ```json
@@ -439,7 +464,7 @@ App({
 ```
 
 
-#### 4.1.6 `unsupportedMessage` 的 properties 参数 msg的数据结构：
+#### 4.1.7 `unsupportedMessage` 的 properties 参数 msg的数据结构：
 
 
 ```json
