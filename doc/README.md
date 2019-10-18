@@ -348,7 +348,7 @@ App({
     "customNewsMessage": "../customNewsMessage/customNewsMessage",
     "customUnsupportedMessage": "../customUnsupportedMessage/customUnsupportedMessage",
     "customGuideCard": "../customGuideCard/customGuideCard",
-    "customoperateCard": "../customoperateCard/customoperateCard"
+    "customOperateCard": "../customOperateCard/customOperateCard"
   }
 }
 ```
@@ -375,7 +375,8 @@ App({
     <musicMessage  msg="{{item}}"></musicMessage>
     <imageMessage  msg="{{item}}"></imageMessage>
     <unsupportedMessage msg="{{item}}"></unsupportedMessage>
-
+    <guideCard guideList="{{guideList}}" controlSwiper="{{controlSwiper}}" bind:chooseGuide="choosePageGuide"> </guideCard>
+    <operateCard bind:bindInput="bindInutvalue" bind:inputVoiceStart="inputVoiceStart" bind:inputVoiceEnd="inputVoiceEnd" bind:back="backHome" focus="{{focus}}" ></operateCard>
 ```
 
 #### 4.1.1 `queryMessage` 的 properties 参数 msg的数据结构：
@@ -388,7 +389,8 @@ App({
 
 ```
 
-`queryMessage` properties 参数 recording 的数据类型为 `Boolean`
+properties 说明:
+
 
 ```json
   properties: {
@@ -397,6 +399,13 @@ App({
   }
 
 ```
+
+字段|类型|描述
+--|--|--|--|--
+msg|Object|| 自定义提示语
+recording|Boolean|用户按住语音按钮，开始输入时为true，松开时结束语音输入时为false
+
+
 
 
 #### 4.1.2 `textMessage` 的 properties 参数 msg的数据结构：
@@ -505,6 +514,51 @@ bind:chooseGuide|Event|当用户点击菜单内选项时，通知机器人用户
 ```
 
 
+### 4.3 operateCard 的properties参数
+
+```js
+    <operateCard bind:bindInput="bindInutvalue"
+                 bind:inputVoiceStart="inputVoiceStart"
+                 bind:inputVoiceEnd="inputVoiceEnd"
+                 bind:back="backHome"
+                 focus="{{focus}}" ></operateCard>
+```
+
+
+properties 说明:
+
+字段|类型|描述
+--|--|--|--|--
+bind:bindInput|Event|用户需要发送消息时需要触发的事件
+bind:inputVoiceStart|Event|用户需要开始语音输入的时候需要触发的事件
+bind:inputVoiceEnd|Event|用户需要结束语音输入的时候需要触发的事件
+bind:backHome|Event|用户需要返回首页时需要触发的事件
+focus|Boolean|输入框是否获得焦点
+
+
+响应用发送消息事件
+```
+   this.triggerEvent("bindInput", "用户要发送的消息");
+```
+用户按住某一个按钮，需要触发开始录音的事件
+```
+   this.triggerEvent("inputVoiceStart");
+```
+
+用户送开某一个按钮，需要触发结束录音的事件
+```
+   this.triggerEvent("inputVoiceEnd");
+```
+
+用户点击某一个按钮，需要触发返回首页的事件
+```
+   this.triggerEvent("inputVoiceEnd");
+```
+
+
+
+
+
 ## 5. 初始化配置项
 
 ```
@@ -529,6 +583,12 @@ success|function|否||初始化成功的回调
 fail|function|否||初始化失败的回调
 guideList|Array|否|[ "北京天气怎么样", "上海今天有雨吗", "中午吃啥呢", "你知道如何排解压力吗", "法国国土面积是多少", "世界最高峰" ] | 自定义提示语
 textToSpeech|Array|否|true|在有UI模式下，将文本回答朗读出来
+welcome|string|否||用户欢迎语
+background|string|否|"rgba(247, 251, 252, 1)"|聊天背景的style
+guideCardHeight|number|否|40|用户提示区域的高度
+operateCardHeight|number|否|145|用户操作区域的高度
+history|Boolean|否|true|是否开启聊天记录
+historySize|number|否|60|聊天记录的最大条数
 
 
 
