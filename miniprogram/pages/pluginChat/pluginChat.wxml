@@ -14,6 +14,7 @@
   <view style="height: calc(100vh - {{statusBarHeight}}px);" wx:if="{{!flag}}">
     <chat id="component-id" bind:queryCallback="getQueryCallback" bind:backHome="goBackHome"
       generic:textMessage="customTextMessage"
+      generic:weatherMessage="customWeatherMessage"
       generic:imageMessage="costomImageMessage"
       generic:guideCard="customGuideCard"
       generic:queryMessage="customQuery"

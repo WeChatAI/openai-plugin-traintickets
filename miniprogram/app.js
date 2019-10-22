@@ -24,7 +24,7 @@ App({
       textToSpeech: true,
       // guideList: ["玩末日生存游戏"],
       // welcome: '请问需要什么帮助',
-      // background: "#eee",
+      background: "rgba(247, 251, 252, 1)",
       guideCardHeight: 50,
       operateCardHeight: 120,
       // history: true,
@@ -43,5 +43,7 @@ App({
     });
   },
   onShow: function() {},
-  onHide: function() {}
+  onHide: function() {
+    plugin.clearChatRecord()
+  }
 });

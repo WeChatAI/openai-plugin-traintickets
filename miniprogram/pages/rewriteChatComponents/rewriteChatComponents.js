@@ -1,5 +1,4 @@
 var plugin = requirePlugin("myPlugin");
-var sendFun = require("../send/send.js");
 Page({
 
   /**

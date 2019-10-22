@@ -56,12 +56,12 @@ function auth({
       setData("welcome", welcome);
     }
   } else {
-    setData("welcome", "请问需要什么帮助");
+    setData("welcome", "");
   }
   if (typeof background !== "undefined") {
     setData("background", background);
   } else {
-    setData("background", "rgba(247, 251, 252, 1)");
+    setData("background", "#f6f6f6");
   }
 
   if (typeof guideCardHeight !== "undefined") {
@@ -173,6 +173,14 @@ function setNavHeight (navHeight) {
   setData('navHeight', navHeight)
 }
 
+function clearChatRecord() {
+  wx.removeStorage({
+    key: 'chatRecord',
+    success (res) {
+    }
+  })
+}
+
 module.exports = {
   getData: getData,
   setData: setData,
@@ -184,5 +192,6 @@ module.exports = {
   send: send,
   getChatComponent,
   setChatComponent,
-  setNavHeight
+  setNavHeight,
+  clearChatRecord
 };

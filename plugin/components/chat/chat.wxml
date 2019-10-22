@@ -3,9 +3,10 @@
   <!-- <statusBar style="width: 100%;height: {{statusBarHeight*2 + 20}}px;"></statusBar> -->
   <!-- <guideNewView wx:if="{{isShowGuideView}}" bind:chooseGuide="choosePageGuide" animation="{{animation}}" weatherData="{{kweatherData}}" newsData="{{knewsData}}" voiceData="{{kvoiceData}}"></guideNewView> -->
   <scroll-view bindscrolltoupper="scrolltoupper" upper-threshold class="scroll-wrap" style="background: {{background}}; height: {{scrollHeight}}px" scroll-y scroll-into-view="translate-{{toView}}">
-    <!-- <view class="unit-view">
-      <view class="welcome"  wx:if="{{welcomeVal}}">{{welcome}}</view>
-    </view> -->
+    <view class="unit-view" wx:if="{{welcomeVal}}" >
+      <textMessage  msg="{{welcome}}"></textMessage>
+      <view style='clear: both;'></view>
+    </view>
     <view class="unit-view" wx:for="{{listData}}" wx:key="item">
       <view wx:if="{{item.data_type}}">
           <queryMessage recording="{{recording}}" msg="{{item}}"></queryMessage>

@@ -143,9 +143,9 @@
 .other-temperature{
   margin-top: 10px;
   width: 100%;
-  line-height: 13px;
+  line-height: 12px;
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
   font-family:PingFangSC-Regular;
   font-weight:400;
   color:rgba(51,51,51,1);
