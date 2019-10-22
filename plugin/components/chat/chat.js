@@ -311,10 +311,14 @@ Component({
                 }
               );
             } else if (res.ans_node_name === "天气服务") {
+              console.log("///////////////////////////////////////")
+              console.log(res)
+              
+              
               var detail = res.msg;
               let date_slot = { date: new Date() };
 
-              if (res.slots_info) {
+              if (res.slots_info) { 
                 for (var i = 0, len = res.slots_info.length; i < len; i++) {
                   const item = res.slots_info[i];
                   if (item.slot_value) {
@@ -326,7 +330,40 @@ Component({
                 }
               }
 
-              if (detail != null && detail.length > 0) {
+              if (res.more_info && res.more_info.weather_ans_detail) {
+                let weatherArr = {}
+                // let tempList = []
+                weatherArr = JSON.parse(res.more_info.weather_ans_detail)
+                console.log(weatherArr)
+                if (weatherArr.data.length > 0) {
+                  // for(let i = 1; i <= 5; i++) {
+                  //   tempList.push(weatherArr.data[i])
+                  // }
+                  // for(let j = 0; j < tempList.length; j++) {
+                  //   tempList[j].dateTime = util.dateTimeFormat(tempList[j].date)
+                  //   tempList[j].week = util.date2Week(tempList[j].date)
+                  //   tempList[i].picture = tempList[j].condition
+                  // }
+                  newData = {
+                    answer: res.answer,
+                    cardType: "weather",
+                    docs: weatherArr,
+                    res: res,
+                    query: val
+                  };
+                  listData.push(newData);
+                  that.setData(
+                    {
+                      listData: listData
+                    },
+                    () => {
+                      setTimeout(() => {
+                        that.scrollToNew();
+                      }, 500);
+                    }
+                  );
+                } 
+              } else {
                 if (res.dialog_status === "START") {
                   newData = {
                     msg_type: "text",
@@ -345,57 +382,79 @@ Component({
                       }, 500);
                     }
                   );
-                } else {
-                  if (detail.length > 0) {
-                    let tempList = detail;
-                    for (var i = 0; i < 6; i++) {
-                      tempList.push(detail[0]);
-                      tempList[i].dateTime = util.dateTimeFormat(
-                        date_slot.date
-                      );
-                      tempList[i].week = util.date2Week(date_slot.date);
-                      tempList[i].picture = "qing";
-                    }
-                    //  tempList[0].dateTime = util.dateTimeFormat(slot_info.date)
-                    //  tempList[0].week = util.date2Week(slot_info.date)
-                    console.log(tempList);
-                    newData = {
-                      answer: res.answer,
-                      cardType: "weather",
-                      docs: tempList,
-                      res: res,
-                      query: val
-                    };
-                    listData.push(newData);
-                    that.setData(
-                      {
-                        listData: listData
-                      },
-                      () => {
-                        setTimeout(() => {
-                          that.scrollToNew();
-                        }, 500);
-                      }
-                    );
-                  }
-                }
-              } else {
-                if (data.wxbot_res.answer != "") {
-                  newData = {
-                    msg_type: "text",
-                    content: data.wxbot_res.answer
-                  };
-                  listData.push(newData);
-                  that.setData(
-                    {
-                      listData: listData
-                    },
-                    () => {
-                      that.scrollToNew();
-                    }
-                  );
-                }
+                } 
               }
+
+              // if (detail != null && detail.length > 0) {
+              //   if (res.dialog_status === "START") {
+              //     newData = {
+              //       msg_type: "text",
+              //       content: res.answer,
+              //       res: res,
+              //       query: val
+              //     };
+              //     listData.push(newData);
+              //     that.setData(
+              //       {
+              //         listData: listData
+              //       },
+              //       () => {
+              //         setTimeout(() => {
+              //           that.scrollToNew();
+              //         }, 500);
+              //       }
+              //     );
+              //   } else {
+              //     if (detail.length > 0) {
+              //       let tempList = detail;
+              //       for (var i = 0; i < 6; i++) {
+              //         tempList.push(detail[0]);
+              //         tempList[i].dateTime = util.dateTimeFormat(
+              //           date_slot.date
+              //         );
+              //         tempList[i].week = util.date2Week(date_slot.date);
+              //         tempList[i].picture = "qing";
+              //       }
+              //       //  tempList[0].dateTime = util.dateTimeFormat(slot_info.date)
+              //       //  tempList[0].week = util.date2Week(slot_info.date)
+              //       console.log(tempList);
+              //       newData = {
+              //         answer: res.answer,
+              //         cardType: "weather",
+              //         docs: tempList,
+              //         res: res,
+              //         query: val
+              //       };
+              //       listData.push(newData);
+              //       that.setData(
+              //         {
+              //           listData: listData
+              //         },
+              //         () => {
+              //           setTimeout(() => {
+              //             that.scrollToNew();
+              //           }, 500);
+              //         }
+              //       );
+              //     }
+              //   }
+              // } else {
+              //   if (data.wxbot_res.answer != "") {
+              //     newData = {
+              //       msg_type: "text",
+              //       content: data.wxbot_res.answer
+              //     };
+              //     listData.push(newData);
+              //     that.setData(
+              //       {
+              //         listData: listData
+              //       },
+              //       () => {
+              //         that.scrollToNew();
+              //       }
+              //     );
+              //   }
+              // }
             } else if (/\s*{\s*\"image"\s*:\s*{/.test(res.answer)) {
               newData = {
                 cardType: "image",
