@@ -54,8 +54,6 @@ Component({
   },
 
   attached: function() {
-    console.log(data.getData().history);
-    console.log(data.getData().historySize);
     const operateCardHeight = data.getData().operateCardHeight;
     const guideCardHeight = data.getData().guideCardHeight;
     const navHeight = data.getData().navHeight
@@ -67,19 +65,14 @@ Component({
           guideCardHeight: guideCardHeight,
           scrollHeight: res.windowHeight - operateCardHeight - guideCardHeight - navHeight,
         });
-        console.log(operateCardHeight)
-        console.log(guideCardHeight)
-        console.log(this.data.scrollHeight)
       }
     });
 
     //取第一页
     const chatReCord = wx.getStorageSync("chatRecord");
-    console.log(chatReCord, "111");
     const { pageSize, page } = this.data;
     if (chatReCord && chatReCord.length > 0) {
       var totalPage = Math.ceil(chatReCord.length / pageSize);
-
       const index = chatReCord.length - page * pageSize;
       this.setData({
         listData: chatReCord.slice(index < 0 ? 0 : index),
@@ -88,9 +81,12 @@ Component({
     }
 
     if (data.getData().welcome && data.getData().welcome !== "") {
+      let newData = {
+        content: data.getData().welcome
+      };
       this.setData({
-        welcome: data.getData().welcome,
-        welcomeVal: false
+        welcome: newData,
+        welcomeVal: true,
       });
     } else {
       this.setData({
@@ -172,8 +168,6 @@ Component({
     },
     getRecord:function(newData, history, historySize) {
       if (history) {
-        console.log("======================================================")
-        console.log(newData)
         const chatReCord = wx.getStorageSync("chatRecord") || [];
         chatReCord.push(newData);
         if(chatReCord &&chatReCord.length > historySize) {
@@ -209,6 +203,20 @@ Component({
           focus: val
         });
       }
+    },
+    setWelcome:function(val) {
+      let newData = {
+        content: val
+      };
+      this.setData({
+        welcome: newData,
+        welcomeVal: true,
+      });
+    },
+    setBackground:function(val) {
+      this.setData({
+        background: val
+      })
     },
     getData: function(val) {
       const authtoken = wx.getStorageSync("authtoken") || "";
@@ -311,10 +319,6 @@ Component({
                 }
               );
             } else if (res.ans_node_name === "天气服务") {
-              console.log("///////////////////////////////////////")
-              console.log(res)
-              
-              
               var detail = res.msg;
               let date_slot = { date: new Date() };
 
@@ -332,18 +336,8 @@ Component({
 
               if (res.more_info && res.more_info.weather_ans_detail) {
                 let weatherArr = {}
-                // let tempList = []
                 weatherArr = JSON.parse(res.more_info.weather_ans_detail)
-                console.log(weatherArr)
                 if (weatherArr.data.length > 0) {
-                  // for(let i = 1; i <= 5; i++) {
-                  //   tempList.push(weatherArr.data[i])
-                  // }
-                  // for(let j = 0; j < tempList.length; j++) {
-                  //   tempList[j].dateTime = util.dateTimeFormat(tempList[j].date)
-                  //   tempList[j].week = util.date2Week(tempList[j].date)
-                  //   tempList[i].picture = tempList[j].condition
-                  // }
                   newData = {
                     answer: res.answer,
                     cardType: "weather",
@@ -384,77 +378,6 @@ Component({
                   );
                 } 
               }
-
-              // if (detail != null && detail.length > 0) {
-              //   if (res.dialog_status === "START") {
-              //     newData = {
-              //       msg_type: "text",
-              //       content: res.answer,
-              //       res: res,
-              //       query: val
-              //     };
-              //     listData.push(newData);
-              //     that.setData(
-              //       {
-              //         listData: listData
-              //       },
-              //       () => {
-              //         setTimeout(() => {
-              //           that.scrollToNew();
-              //         }, 500);
-              //       }
-              //     );
-              //   } else {
-              //     if (detail.length > 0) {
-              //       let tempList = detail;
-              //       for (var i = 0; i < 6; i++) {
-              //         tempList.push(detail[0]);
-              //         tempList[i].dateTime = util.dateTimeFormat(
-              //           date_slot.date
-              //         );
-              //         tempList[i].week = util.date2Week(date_slot.date);
-              //         tempList[i].picture = "qing";
-              //       }
-              //       //  tempList[0].dateTime = util.dateTimeFormat(slot_info.date)
-              //       //  tempList[0].week = util.date2Week(slot_info.date)
-              //       console.log(tempList);
-              //       newData = {
-              //         answer: res.answer,
-              //         cardType: "weather",
-              //         docs: tempList,
-              //         res: res,
-              //         query: val
-              //       };
-              //       listData.push(newData);
-              //       that.setData(
-              //         {
-              //           listData: listData
-              //         },
-              //         () => {
-              //           setTimeout(() => {
-              //             that.scrollToNew();
-              //           }, 500);
-              //         }
-              //       );
-              //     }
-              //   }
-              // } else {
-              //   if (data.wxbot_res.answer != "") {
-              //     newData = {
-              //       msg_type: "text",
-              //       content: data.wxbot_res.answer
-              //     };
-              //     listData.push(newData);
-              //     that.setData(
-              //       {
-              //         listData: listData
-              //       },
-              //       () => {
-              //         that.scrollToNew();
-              //       }
-              //     );
-              //   }
-              // }
             } else if (/\s*{\s*\"image"\s*:\s*{/.test(res.answer)) {
               newData = {
                 cardType: "image",

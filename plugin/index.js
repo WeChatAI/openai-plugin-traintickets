@@ -7,7 +7,6 @@ module.exports = {
   send: data.send,
   setGuideList: data.setGuideList,
   setTextToSpeech: data.setTextToSpeech,
-  setWelcome: data.setWelcome,
-  setBackground: data.setBackground,
-  getChatComponent: data.getChatComponent
+  getChatComponent: data.getChatComponent,
+  clearChatRecord: data.clearChatRecord
 };

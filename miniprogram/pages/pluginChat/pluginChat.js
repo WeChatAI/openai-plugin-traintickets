@@ -1,5 +1,4 @@
 var plugin = requirePlugin("myPlugin");
-var sendFun = require("../send/send.js");
 Page({
 
   /**
@@ -61,6 +60,7 @@ Page({
           title: 'BMI'
         })
         chat.send(options.data)
+       
       } else {
         chat.send(options.data)
         if (options.data2) {
@@ -75,6 +75,8 @@ Page({
             flag: false,
             title: options.data
           })
+          // chat.setWelcome('你好')
+          // chat.setBackground('#eee')
         }
       }
     } else {
@@ -125,7 +127,6 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
   },
 
   /**
@@ -176,5 +177,6 @@ Page({
   },
   back:function(e) {
     this.goBackHome()
+    // plugin.clearChatRecord()
   }
 })

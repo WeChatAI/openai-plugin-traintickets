@@ -49,7 +49,6 @@ Component({
   lifetimes: {
     ready: function() {
       let that = this;
-
       const facejson = {
         qqface: [
           "微笑",
@@ -208,8 +207,7 @@ Component({
         chat.scrollToNew();
         return;
       }
-
-      if (result.res.options && result.res.options.length !== 0) {
+      if (result.res && result.res.options && result.res.options.length !== 0) {
         result.res.options.forEach((item, index) => {
           item.url = that.data.imgArr[index].url;
         });
