@@ -1,7 +1,7 @@
 <view class='container'>
   <view class="answer">{{weatherDis.answer}}</view>
   <view style='clear: both;'></view>
-  <!-- <view class="weather-view">
+  <view class="weather-view">
     <view class='top-view'>
     <view class='left-view'>
       <view class='nowTp-txt'>{{nowtp}}</view>
@@ -22,13 +22,14 @@
 
   <view class='bottom-view'>
     <view class='other-weather' wx:for="{{weatherArray}}" wx:if="{{index != 0}}" wx:key="item">
+      <view class="other-date">{{item.dateTime}}</view>
       <view class='other-time'>{{item.week}}</view>
-      <view class='other-weather-txt'>晴</view>
+      <view class='other-weather-txt'>{{item.condition}}</view>
       <view class='other-icon'>
         <image class='other-weather-icon' src='https://openai.weixin.qq.com/mmspraiweb_node/dist/static/weather/{{item.picture}}.png'></image>
       </view>
-      <view class='other-temperature'>17° / 35°</view>
+      <view class='other-temperature'>{{item.min_tp}}° / {{item.max_tp}}°</view>
     </view>
   </view>
-  </view> -->
+  </view>
 </view>

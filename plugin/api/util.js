@@ -55,7 +55,8 @@ function recordTime(date) {
 }
 //由日期格式2018-11-20转换为2018年11月20日
 function dateTimeFormat(date) {
-  var date = date.replace(/^(\d{4})-(\d{1,2})-(\d{1,2})$/, "$1年$2月$3日");
+  // var date = date.replace(/^(\d{4})-(\d{1,2})-(\d{1,2})$/, "$1年$2月$3日");
+  var date = date.replace(/^(\d{4})-(\d{1,2})-(\d{1,2})$/, "$2/$3");
   return date
 }
 
