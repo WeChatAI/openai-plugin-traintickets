@@ -4,8 +4,7 @@ Component({
   properties: {
     controlSwiper: Boolean,
     guideList: Array,
-    height: Number,
-    background: String
+    height: Number
     // guideType: String
   },
   data: {
