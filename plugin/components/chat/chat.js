@@ -218,6 +218,17 @@ Component({
         background: val
       })
     },
+    clearChatRecord:function(e) {
+      backgroundAudioManager.stop()
+      wx.removeStorage({
+        key: 'chatRecord',
+        success (res) {
+        }
+      })
+      this.setData({
+        listData: []
+      })
+    },
     getData: function(val) {
       const authtoken = wx.getStorageSync("authtoken") || "";
       if (!authtoken) {
