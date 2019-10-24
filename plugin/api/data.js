@@ -75,20 +75,20 @@ function auth({
   } else {
     setData("operateCardHeight", 145);
   }
-  if (typeof history !== 'undefined') {
-    setData("history", history)
+  if (typeof history !== "undefined") {
+    setData("history", history);
   } else {
-    setData("history", true)
+    setData("history", true);
   }
   if (typeof historySize !== "undefined") {
-    setData("historySize", historySize)
+    setData("historySize", historySize);
   } else {
-    setData("historySize", 60)
+    setData("historySize", 60);
   }
   if (typeof navHeight !== "undefined") {
-    setData("navHeight", navHeight)
+    setData("navHeight", navHeight);
   } else {
-    setData("navHeight", 0)
+    setData("navHeight", 0);
   }
   wx.request({
     url: domain + "/auth/miniprogram/plugin/openai",
@@ -145,6 +145,39 @@ function send({ query, success, fail }) {
   });
 }
 
+function api(apiname, query) {
+  return new Promise((resolve, reject) => {
+    request({
+      url: "/miniprogram/openai/api/" + apiname,
+      method: "post",
+      data: {
+        ...query
+      },
+      success: function(res) {
+        resolve(res.data);
+      },
+      fail: error => {
+        reject(error);
+      }
+    });
+  });
+}
+
+const nlp = {
+  tokenize: q => api("tokenize", { q }),
+  ner: q => api("ner", { q }),
+  sentenceSim: (q1, q2) => {
+    return api("sentenceSim", { q1, q2 });
+  },
+  gec: q => api("gec", { q }),
+  findSimilarWords: w => api("findSimilarWords", { w }),
+  wordSim: (w1, w2) => {
+    return api("wordSim", { w1, w2 });
+  },
+  cityService: q => api("cityService", { q }),
+  lm: q => api("lm", { q })
+};
+
 function setGuideList(guideList) {
   setData("guideList", guideList);
 }
@@ -166,19 +199,17 @@ function setChatComponent(ui) {
 }
 function getChatComponent() {
   return getData().chatComponent;
-  
 }
 
-function setNavHeight (navHeight) {
-  setData('navHeight', navHeight)
+function setNavHeight(navHeight) {
+  setData("navHeight", navHeight);
 }
 
 function clearChatRecord() {
   wx.removeStorage({
-    key: 'chatRecord',
-    success (res) {
-    }
-  })
+    key: "chatRecord",
+    success(res) {}
+  });
 }
 
 module.exports = {
@@ -190,6 +221,7 @@ module.exports = {
   setBackground: setBackground,
   auth: auth,
   send: send,
+  nlp: nlp,
   getChatComponent,
   setChatComponent,
   setNavHeight,

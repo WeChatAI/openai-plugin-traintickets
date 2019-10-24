@@ -8,5 +8,6 @@ module.exports = {
   setGuideList: data.setGuideList,
   setTextToSpeech: data.setTextToSpeech,
   getChatComponent: data.getChatComponent,
-  clearChatRecord: data.clearChatRecord
+  clearChatRecord: data.clearChatRecord,
+  api: data.nlp
 };
