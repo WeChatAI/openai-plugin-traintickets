@@ -48,6 +48,20 @@ Component({
   },
   lifetimes: {
     ready: function() {
+      console.log(this.properties.msg)
+      if (this.properties.msg && this.properties.msg.res && this.properties.msg.res.dialog_status === 'CONTINUE') {
+        let arr = this.properties.msg.content.split('\n')
+        let newArr = []
+        newArr.push(this.properties.msg.query)
+        arr.forEach(item => {
+          newArr.push(item)
+        })
+        console.log(newArr)
+        this.setData({
+          xiaoweiValue: true,
+          arr: newArr
+        })
+      }
       let that = this;
       const facejson = {
         qqface: [

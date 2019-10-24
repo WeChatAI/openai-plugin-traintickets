@@ -1,5 +1,5 @@
 <!-- 自定义导航 -->
-<view style="width: 100vw; height: 100vh;overflow: hidden;">
+<view style="width: 100vw; height: 100vh;overflow: hidden;position: relative;">
   <view class='nav-wrap' style='width: 100vw; height: {{statusBarHeight}}px;'>
     <view class="" style="height: {{status}}px"></view>
     <view class='nav-title' style='position: relative;width: 100vw;text-align: center;height: {{navHeight}}px;line-height: {{navHeight}}px'>
@@ -21,7 +21,18 @@
       generic:operateCard="customoperateCard">
     </chat>
   </view>
-
+  <!-- <view class="animation" style="height: calc(100vh - {{(statusBarHeight + 120)}}px); width: 100vw; top: {{statusBarHeight}}px;" wx:if="{{showBackground}}">
+    <view class="animation_top">
+      <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/poet/img/xiaoweileftcloud.png" class="xiaoweileftcloud"></image>
+      <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/poet/img/xiaoweirightcloud.png" class="xiaoweirightcloud"></image>
+    </view>
+    <view class="animation_bottom">
+      <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/poet/img/xiaoweigrass.png" class="grass"></image>
+      <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/poet/img/xiaoweispike1.png" class="spike1"></image>
+      <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/poet/img/xiaoweispike2.png" class="spike2"></image>
+      <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/poet/img/xiaoweispike3.png" class="spike3"></image>
+    </view>
+  </view> -->
   <view style="height:  calc(100vh - {{statusBarHeight}}px);" wx:if="{{flag}}">
     <movable-area style="position: absolute;height: 100%;width: 100vw;" wx:if="{{show}}" scale-area >
       <movable-view class="floatBtn"  x="{{windowWidth}}" y="{{30}}" direction="vertical" scale >

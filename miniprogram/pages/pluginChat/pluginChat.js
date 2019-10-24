@@ -33,6 +33,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.getSystemInfo({
+      success: (res) => {
+        console.log(res.statusBarHeight)
+        let isIOS = res.system.indexOf('iOS') > -1
+        let navHeight = 0
+        if (!isIOS) {
+          navHeight = 48
+        } else {
+          navHeight = 44
+        }
+        this.setData({
+          windowWidth: res.windowWidth - 110,
+          backgroundHeight: res.windowHeight,
+          status: res.statusBarHeight,
+          navHeight: navHeight,
+          statusBarHeight: res.statusBarHeight + navHeight
+        }, () => {
+          this.setData({
+            show: true
+          })
+        })
+      }
+    })
     const chat = plugin.getChatComponent()
     if (options && options.data)  {
       if (options && options.data === 'switch') {
@@ -61,6 +84,15 @@ Page({
         })
         chat.send(options.data)
        
+      } else if (options.data === '小微写诗') {
+        let address = (this.data.backgroundHeight - 120) + "px" 
+        let url = "url('https://res.wx.qq.com/mmspraiweb_node/dist/static/poet/img/xiaoweixieshibgyuantu.png')" + " " +"no-repeat" +  " " + "scroll" + " "  + "0px" + " " + "0px" + "/" + "100%"+ " "+ address
+        this.setData({
+          title: '小微写诗',
+          showBackground: true
+        })
+        chat.send(options.data)
+        chat.setBackground(url)
       } else {
         chat.send(options.data)
         if (options.data2) {
@@ -85,28 +117,6 @@ Page({
         title: '默认展示'
       })
     } 
-    wx.getSystemInfo({
-      success: (res) => {
-        console.log(res.statusBarHeight)
-        let isIOS = res.system.indexOf('iOS') > -1
-        let navHeight = 0
-        if (!isIOS) {
-          navHeight = 48
-        } else {
-          navHeight = 44
-        }
-        this.setData({
-          windowWidth: res.windowWidth - 110,
-          status: res.statusBarHeight,
-          navHeight: navHeight,
-          statusBarHeight: res.statusBarHeight + navHeight
-        }, () => {
-          this.setData({
-            show: true
-          })
-        })
-      }
-    })
   },
 
   /**

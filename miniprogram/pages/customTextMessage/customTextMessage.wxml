@@ -1,7 +1,7 @@
 <view class="container">
   <view class="answer" >
     <image class="answerimage" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/answerImage.png"></image>
-    <view class="leftView">
+    <view class="leftView" wx:if="{{!xiaoweiValue}}">
       <rich-text wx:if="{{isRitch}}" nodes="{{answer}}" bindtap="tap"></rich-text>
       <text wx:else>{{msg.content}}</text>
       <view class="imageView" wx:if="{{flag}}">
@@ -20,6 +20,18 @@
           </view>
         </view>
       </view>
+    </view>
+    <view class="xiaoweiview" wx:if="{{xiaoweiValue}}">
+      <view class="empty" style="width: calc(100% - 31px); height: 16.5px;"></view>
+      <view class="xiaowei">
+        <view class="arr" wx:for="{{arr}}" wx:key="item">
+          {{item}}
+        </view>
+      </view>
+      <image src="../left_top.png" class="left_top"></image>
+      <image src="../left_bottom.png" class="left_bottom"></image>
+      <image src="../right_top.png" class="right_top"></image>
+      <image src="../right_bottom.png" class="right_bottom"></image>
     </view>
   </view>
 </view>

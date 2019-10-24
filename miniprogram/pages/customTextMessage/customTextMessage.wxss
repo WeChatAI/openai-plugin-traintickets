@@ -136,3 +136,70 @@
   background-size: 360px 192px;
   /* background-size: 434px 202px; */
 }
+
+.xiaoweiview {
+  max-width: calc(96vw - 120px);
+  position: relative;
+  padding: 11px 9px;
+  border: 1px solid #000;
+}
+
+.xiaowei {
+  padding: 28.5px 0 ;
+  box-sizing: border-box;
+  background: pink;
+  min-height: 100px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.arr {
+  padding: 0 12.5px;
+  box-sizing: border-box;
+  border-right:1px solid rgba(150, 139, 125, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size:13px;
+  font-family:HYa5gj;
+  color:rgba(58,26,0,1);
+}
+.arr:nth-child(1) {
+  border-right: 0;
+  font-size:16px;
+  font-family:HYa5gj;
+  color:rgba(58,26,0,1);
+}
+.left_top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16.5px;
+  height: 15.5px;
+}
+.left_bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 16.5px;
+  height: 15.5px;
+}
+.right_top {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16.5px;
+  height: 15.5px;
+}
+.right_bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16.5px;
+  height: 15.5px;
+}
+.empty {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+}

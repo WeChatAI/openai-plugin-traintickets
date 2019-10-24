@@ -167,6 +167,20 @@
         </view>
       </view>
     </view>
+    <view class="xiaowei">
+      <view class="xiaowei_top">
+        <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/poet/img/xiaoweixieshi.png" class="xiaowei_top_image"></image>
+      </view>
+      <view class="xiaowei_bottom">
+        <view class="xiaowei_bottom_left">
+          <view class="xiaowei_bottom_left_chat">小微写诗</view>
+          <view class="xiaowei_bottom_left_info">一起畅游诗歌的海洋</view>
+        </view>
+        <view class="xiaowei_bottom_right" bindtap="goChat" data-item="{{xiaoweixieshiTitle}}">
+          试试
+        </view>
+      </view>
+    </view>
     <view style='clear: both;height: 54px'></view>
   </scroll-view>
   <view class="footer">

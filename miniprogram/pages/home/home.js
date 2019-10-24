@@ -142,7 +142,10 @@ Page({
         bgUrl:
           "https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconTwo.png"
       }
-    ]
+    ],
+    xiaoweixieshiTitle: {
+      title: 'xiaoweixieshi'
+    }
   },
 
   /**
@@ -233,6 +236,8 @@ Page({
       e.currentTarget.dataset.item.title === "encyclopedias"
     ) {
       this.goEncyclopedias(e);
+    } else if (e.currentTarget.dataset.item.title === 'xiaoweixieshi') {
+      this.goXiaoWeiXieShi(e)
     }
   },
   // 默认展示
@@ -490,5 +495,17 @@ Page({
     plugin.setGuideList(["玩末日生存游戏"]);
     this.jump(title);
     plugin.setTextToSpeech(true);
+  },
+  // 小微写诗
+  goXiaoWeiXieShi:function(e) {
+    plugin.setGuideList([
+      "一江春水连海平",
+      "朋友",
+      "故乡",
+      "谢谢",
+      "小微写诗"
+    ])
+    this.jump('小微写诗')
+    plugin.setTextToSpeech(true)
   }
 });
