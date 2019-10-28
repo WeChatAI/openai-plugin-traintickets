@@ -650,7 +650,7 @@
   box-sizing: border-box;
   height: 25px;
 }
-.idiomsCardList:nth-child(2) {
+/* .idiomsCardList:nth-child(2) {
   margin-top: 5px;
 }
 .idiomsCardList:nth-child(3) {
@@ -658,7 +658,7 @@
 }
 .idiomsCardList:nth-child(4) {
   margin-top: 5px;
-}
+} */
 
 
 .encyclopediasCard {

@@ -1,4 +1,5 @@
 var plugin = requirePlugin("myPlugin");
+const app = getApp()
 Component({
   properties: {
     focus: Boolean,
@@ -52,6 +53,7 @@ Component({
     },
     // 返回首页
     showGuideView: function() {
+      app.setData('difference', '')
       this.triggerEvent("back");
     },
     // 启动语音

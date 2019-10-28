@@ -1,6 +1,7 @@
 // pages/home/home.js
 var plugin = requirePlugin("myPlugin");
 const backgroundAudioManager = wx.getBackgroundAudioManager();
+let app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -450,6 +451,7 @@ Page({
           "谢谢",
           "小微写诗"
         ]);
+        app.setData('difference', '小微写诗')
       }
       this.jump(title);
       plugin.setTextToSpeech(true);
@@ -505,6 +507,7 @@ Page({
       "谢谢",
       "小微写诗"
     ])
+    app.setData('difference', '小微写诗')
     this.jump('小微写诗')
     plugin.setTextToSpeech(true)
   }

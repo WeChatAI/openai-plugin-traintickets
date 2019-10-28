@@ -1,4 +1,5 @@
 var plugin = requirePlugin("myPlugin");
+const app = getApp()
 Page({
 
   /**
@@ -91,6 +92,7 @@ Page({
           title: '小微写诗',
           showBackground: true
         })
+        
         chat.send(options.data)
         chat.setBackground(url)
       } else {
@@ -186,6 +188,7 @@ Page({
     })
   },
   back:function(e) {
+    app.setData('difference', '')
     this.goBackHome()
     // plugin.clearChatRecord()
   }
