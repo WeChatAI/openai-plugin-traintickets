@@ -22,7 +22,17 @@
       </view>
     </view>
     <view class="xiaoweiview" wx:if="{{xiaoweiValue}}">
-      <view class="text" wx:for="{{arr}}" wx:key="item">{{item}}</view>
+      <view class="content">
+        <view class="text" wx:for="{{arr}}" wx:key="item">
+          <rich-text class="" nodes="{{item}}"></rich-text>
+        </view>
+      </view>
+      <view class="titleView">
+        <view class="empty"></view>
+        <view class="title">
+          {{query}}
+        </view>
+      </view>
     </view>
   </view>
 </view>

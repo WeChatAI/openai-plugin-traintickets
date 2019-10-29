@@ -1,19 +1,12 @@
 <view>
     <image class="recordingView" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/recording.gif" wx:if="{{recording && msg.content == ''}}"></image>
     <view class="query" wx:if="{{msg.content != ''}}">
-      <view class="rightView" >{{msg.content}}</view>
-      <!-- <view id="bubble" style=" position: relative; width: {{(49+ width)}}px; height: {{(24+ height)}}" wx:if="{{flag}}" >
-        <view id="content" style="height:{{height}}px; width: {{width}}px; line-height: {{height}}px">{{msg.content}}</view>
-        <view class="emptyHeight1" style="height: {{height}}px; width: 24.5px;"></view>
-        <view class="emptyHeight2" style="height: {{height}}px; width: 24.5px;"></view>
-        <view class="emptyWidth1" style="height: 12px;width: {{(width + 26)}}px"></view>
-        <view class="emptyWidth2" style="height: 12px;width: {{(width + 26)}}px"></view>
-        <image src="../left_top.png" class="left_top"></image>
-        <image src="../left_bottom.png" class="left_bottom"></image>
-        <image src="../right_top.png" class="right_top"></image>
-        <image src="../right_bottom.png" class="right_bottom"></image>
-      </view> -->
-      <!-- <image class="queryimage" src="../queryImage.png"></image> -->
+      <view class="rightView" wx:if="{{!flag}}">{{msg.content}}</view>
+      <view class="xiaoweiQuery" wx:if="{{flag}}">
+        <view class="rightView2">{{msg.content}}</view>
+        <image src="http://res.wx.qq.com/mmspraiweb_node/dist/static/xieshi/bird.png" class="bird"></image>
+        <image src="http://res.wx.qq.com/mmspraiweb_node/dist/static/xieshi/mountain.png" class="mountain"></image>
+      </view>
       <view class="queryimageview">
         <open-data class="queryimage" type="userAvatarUrl"></open-data>
       </view>

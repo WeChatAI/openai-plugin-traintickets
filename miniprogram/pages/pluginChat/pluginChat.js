@@ -87,7 +87,7 @@ Page({
        
       } else if (options.data === '小微写诗') {
         let address = (this.data.backgroundHeight - 120) + "px" 
-        let url = "url('https://res.wx.qq.com/mmspraiweb_node/dist/static/poet/img/xiaoweixieshibgyuantu.png')" + " " +"no-repeat" +  " " + "scroll" + " "  + "0px" + " " + "0px" + "/" + "100%"+ " "+ address
+        let url = "url('http://res.wx.qq.com/mmspraiweb_node/dist/static/xieshi/xiaoweiBackground.png')" + " " +"no-repeat" +  " " + "scroll" + " "  + "0px" + " " + "0px" + "/" + "100%"+ " "+ address
         this.setData({
           title: '小微写诗',
           showBackground: true

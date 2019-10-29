@@ -49,11 +49,16 @@ Component({
   },
   lifetimes: {
     ready: function() {
-      console.log(this.properties.msg)
       if (this.properties.msg && this.properties.msg.res && this.properties.msg.res.ans_node_name === '现代诗歌生成' && this.properties.msg.res.dialog_status === 'CONTINUE' && app.getData() === '小微写诗') {
         let arr = this.properties.msg.content.split('\n')
         let newArr = []
-        arr.forEach(item => {
+        arr.forEach((item, index) => {
+          if (index === 0) {
+            item = "<img class='marks1' src='http://res.wx.qq.com/mmspraiweb_node/dist/static/xieshi/symbol_left.png'></img>" + item
+          }
+          if (index === arr.length -1) {
+            item = item + "<img class='marks2' src='http://res.wx.qq.com/mmspraiweb_node/dist/static/xieshi/symbol_right.png'></img>" 
+          }
           newArr.push(item)
         })
         this.setData({
