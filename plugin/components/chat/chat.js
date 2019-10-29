@@ -586,6 +586,9 @@ Component({
         data_type: 1
       };
       listData.push(newData);
+      if (listData[music.data.cardId] && listData[music.data.cardId].isPlaying) {
+        listData[music.data.cardId].isPlaying = false
+      }
       this.setData(
         {
           listData: listData,
@@ -682,9 +685,7 @@ Component({
           };
           // listData[listData.length -1] = newData
           listData.push(newData);
-          if (listData[music.data.cardId] && listData[music.data.cardId].isPlaying) {
-            listData[music.data.cardId].isPlaying = false
-          }
+          
           this.getRecord(newData, data.getData().history, data.getData().historySize)
           that.setData(
             {
