@@ -175,7 +175,19 @@ const nlp = {
     return api("wordSim", { w1, w2 });
   },
   cityService: q => api("cityService", { q }),
-  lm: q => api("lm", { q })
+  lm: q => api("lm", { q }),
+  musicrec: ({ query, openid, singer, song, tag, album, type, sub_type }) => {
+    return api("musicrec", {
+      query,
+      openid,
+      singer,
+      song,
+      tag,
+      album,
+      type,
+      sub_type
+    });
+  }
 };
 
 function setGuideList(guideList) {
