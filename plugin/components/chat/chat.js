@@ -54,6 +54,7 @@ Component({
   },
 
   attached: function() {
+    music.data.isPlaying = false
     const operateCardHeight = data.getData().operateCardHeight;
     const guideCardHeight = data.getData().guideCardHeight;
     const navHeight = data.getData().navHeight
@@ -117,7 +118,6 @@ Component({
     scrolltoupper: function(e) {
       // 向上滑动到最顶端时，page+1
       const chatReCord = wx.getStorageSync("chatRecord");
-      
       let { page, pageSize } = this.data;
       if (chatReCord.length === 0) {
         return;
@@ -126,13 +126,23 @@ Component({
       console.log(page, chatReCord.length);
       const index = chatReCord.length - page * pageSize;
       const arr = chatReCord.slice(index < 0 ? 0 : index);
+     
       this.setData({
         listData: arr,
         page
+      }, () => {
+        if (music.data.isPlaying && this.data.isPlaying) {
+          let listData = this.data.listData
+          listData[music.data.cardId].isPlaying = true
+          this.setData({
+            listData: listData
+          })
+        }
       });
     },
     //完成输入
     bindconfirmInput: function(e) {
+     
       var that = this;
       let text = e.detail;
       if (text != "") {
@@ -144,6 +154,9 @@ Component({
         };
 
         listData.push(newData);
+        if (listData[music.data.cardId] && listData[music.data.cardId].isPlaying) {
+          listData[music.data.cardId].isPlaying = false
+        }
         this.getRecord(newData, data.getData().history, data.getData().historySize)
         that.setData(
           {
@@ -270,6 +283,7 @@ Component({
                 newData = {
                   answer: "",
                   cardType: "voice",
+                  isPlaying: true,
                   docs: JSON.parse(res.more_info.music_ans_detail).play_command
                     .play_list,
                   res: res,
@@ -293,6 +307,7 @@ Component({
                 newData = {
                   answer: "",
                   cardType: "voice",
+                  isPlaying: true,
                   docs: JSON.parse(res.more_info.fm_ans_detail)
                     .audio_play_command.play_list,
                   res: res,
@@ -473,6 +488,10 @@ Component({
             // 回调, 返回的数据
             this.triggerEvent("queryCallback", { query: val, data: res });
 
+            if (newData && newData.isPlaying) {
+              newData.isPlaying = false
+            }
+
             this.getRecord(newData, data.getData().history, data.getData().historySize)
 
             this.setData({
@@ -502,10 +521,19 @@ Component({
                       console.log("onEnded");
                     }
                   );
-
-                  backgroundAudioManager.src = res.filename;
-                  backgroundAudioManager.title = "voic";
-                  backgroundAudioManager.play(() => {});
+                  let voiceData = {
+                    url: res.filename,
+                    name: 'voic'
+                  }
+                  music.data.voiceData = voiceData
+                  music.play((isPlaying)=>{
+                    that.setData({
+                      isPlaying:  false
+                    })
+                  })
+                  // backgroundAudioManager.src = res.filename;
+                  // backgroundAudioManager.title = "voic";
+                  // backgroundAudioManager.play(() => {});
                 },
                 fail: function(res) {
                   console.log("fail tts", res);
@@ -558,6 +586,9 @@ Component({
         data_type: 1
       };
       listData.push(newData);
+      if (listData[music.data.cardId] && listData[music.data.cardId].isPlaying) {
+        listData[music.data.cardId].isPlaying = false
+      }
       this.setData(
         {
           listData: listData,
@@ -654,6 +685,7 @@ Component({
           };
           // listData[listData.length -1] = newData
           listData.push(newData);
+          
           this.getRecord(newData, data.getData().history, data.getData().historySize)
           that.setData(
             {
@@ -729,6 +761,9 @@ Component({
       };
       listData.push(newData);
       this.getRecord(newData, data.getData().history, data.getData().historySize)
+      if (listData[music.data.cardId] && listData[music.data.cardId].isPlaying) {
+        listData[music.data.cardId].isPlaying = false
+      }
       that.setData(
         {
           isShowGuideView: false,
@@ -744,6 +779,14 @@ Component({
           that.getData(newData.content);
         }
       );
+    },
+    changeCardMId:function (e) { 
+      let listData = this.data.listData
+      listData[e.detail.cardId].isPlaying = e.detail.flag
+      this.setData({
+        listData: listData,
+        isPlaying: true
+      })
     }
   }
 });

@@ -26,7 +26,7 @@
         <!-- <voiceNewCard class="cardView" wx:if="{{item.cardType == 'voice'}}" voiceData="{{item}}" musicData="{{item.docs}}"></voiceNewCard> -->
         <weatherMessage class="cardView" wx:if="{{item.cardType == 'weather'}}" msg="{{item}}"></weatherMessage>
         <newsMessage  class="cardView newsCard" wx:if="{{item.cardType == 'news'}}" msg="{{item}}"></newsMessage>
-        <musicMessage class="voiceCard" wx:if="{{item.cardType == 'voice'}}" msg="{{item}}"></musicMessage>
+        <musicMessage class="voiceCard" wx:if="{{item.cardType == 'voice'}}" bind:changeCardID="changeCardMId" cardId="{{index}}" msg="{{item}}"></musicMessage>
         <imageMessage wx:if="{{item.cardType == 'image'}}" msg="{{item}}"></imageMessage>
         <unsupportedMessage wx:if="{{item.cardType == 'unsupported'}}" msg="{{item}}"></unsupportedMessage>
         <view style='clear: both;'></view>
