@@ -1,6 +1,7 @@
 // pages/home/home.js
 var plugin = requirePlugin("myPlugin");
 const backgroundAudioManager = wx.getBackgroundAudioManager();
+let app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -142,13 +143,17 @@ Page({
         bgUrl:
           "https://res.wx.qq.com/mmspraiweb_node/dist/static/pluginimage/iconTwo.png"
       }
-    ]
+    ],
+    xiaoweixieshiTitle: {
+      title: 'xiaoweixieshi'
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    app.setData('difference', '')
     wx.getSystemInfo({
       success: res => {
         console.log(res);
@@ -233,6 +238,8 @@ Page({
       e.currentTarget.dataset.item.title === "encyclopedias"
     ) {
       this.goEncyclopedias(e);
+    } else if (e.currentTarget.dataset.item.title === 'xiaoweixieshi') {
+      this.goXiaoWeiXieShi(e)
     }
   },
   // 默认展示
@@ -445,6 +452,7 @@ Page({
           "谢谢",
           "小微写诗"
         ]);
+        app.setData('difference', '小微写诗')
       }
       this.jump(title);
       plugin.setTextToSpeech(true);
@@ -490,5 +498,18 @@ Page({
     plugin.setGuideList(["玩末日生存游戏"]);
     this.jump(title);
     plugin.setTextToSpeech(true);
+  },
+  // 小微写诗
+  goXiaoWeiXieShi:function(e) {
+    plugin.setGuideList([
+      "一江春水连海平",
+      "朋友",
+      "故乡",
+      "谢谢",
+      "小微写诗"
+    ])
+    app.setData('difference', '小微写诗')
+    this.jump('小微写诗')
+    plugin.setTextToSpeech(true)
   }
 });

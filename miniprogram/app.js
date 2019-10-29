@@ -45,5 +45,14 @@ App({
   onShow: function() {},
   onHide: function() {
     plugin.clearChatRecord()
+  },
+  setData:function(key, val) {
+    this.globalData[key] = val
+  },
+  getData:function() {
+    return this.globalData.difference
+  },
+  globalData: {
+    difference: ''
   }
 });

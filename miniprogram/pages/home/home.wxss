@@ -650,7 +650,7 @@
   box-sizing: border-box;
   height: 25px;
 }
-.idiomsCardList:nth-child(2) {
+/* .idiomsCardList:nth-child(2) {
   margin-top: 5px;
 }
 .idiomsCardList:nth-child(3) {
@@ -658,7 +658,7 @@
 }
 .idiomsCardList:nth-child(4) {
   margin-top: 5px;
-}
+} */
 
 
 .encyclopediasCard {
@@ -706,6 +706,63 @@
   color:rgba(141,141,141,1);
 }
 .encyclopediasCard_bottom_right {
+  width:65px;
+  height:27px;
+  background:rgba(61,118,208,1);
+  box-shadow:0px 1px 4px 0px rgba(61,118,208,0.5);
+  border-radius: 14px;
+  font-size:13px;
+  font-family:PingFangSC-Medium,PingFangSC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height: 27px;
+  text-align: center;
+}
+
+.xiaowei {
+  margin: 20px auto 0px;
+  width: calc(100vw - 34px);
+  height: 308px;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 1px 17px 0px rgba(61,118,208,0.3);
+  border-radius: 20px 20px 12px 12px;
+}
+.xiaowei_top {
+  width: 100%;
+  height: 207px;
+  /* background:rgba(61, 118, 208, 1); */
+  box-shadow:0px 1px 1px 0px rgba(61,118,208,0.3);
+  border-radius: 12px 12px 0px 0px;
+  display: flex;
+  justify-content: center;
+}
+.xiaowei_top_image {
+  width: 100%;
+  height: 100%;
+}
+.xiaowei_bottom {
+  width: calc(100% - 48px);
+  height: 101px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.xiaowei_bottom_left_chat {
+  font-size:17px;
+  font-family:PingFangSC-Medium,PingFangSC;
+  font-weight:500;
+  color:rgba(0,0,0,1);
+}
+.xiaowei_bottom_left_info {
+  margin-top: 3px;
+  font-size:12px;
+  font-family:PingFangSC-Regular,PingFangSC;
+  font-weight:400;
+  color:rgba(141,141,141,1);
+}
+.xiaowei_bottom_right {
   width:65px;
   height:27px;
   background:rgba(61,118,208,1);

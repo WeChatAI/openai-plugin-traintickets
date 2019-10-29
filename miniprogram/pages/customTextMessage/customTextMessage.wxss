@@ -136,3 +136,71 @@
   background-size: 360px 192px;
   /* background-size: 434px 202px; */
 }
+
+.xiaoweiview {
+  position: relative;
+  margin: 10px 0;
+  min-width: 236px;
+  min-height: 208px;
+  background-image: url(http://res.wx.qq.com/mmspraiweb_node/dist/static/xieshi/poetry.png);
+  background-size: 100% 100%;
+}
+
+.text {
+  text-align: center;
+  font-size:12px;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(89,111,139,1);
+  line-height: 18px;
+}
+.content {
+  margin-top: 45px;
+}
+
+.titleView {
+  position: absolute;
+  bottom: 16px;
+  right: 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.empty {
+  width: 24.5px;
+  height: 1px;
+  background: rgba(66, 90, 119, 1);
+}
+
+.title {
+  margin-left: 8px;
+  background:url(http://res.wx.qq.com/mmspraiweb_node/dist/static/xieshi/xiaowei_left.png) top left/4.5px 8px no-repeat,
+  url(http://res.wx.qq.com/mmspraiweb_node/dist/static/xieshi/xiaowei_right.png) bottom right/4.5px 8px no-repeat;
+  padding: 0 10px;
+  box-sizing: border-box;
+  font-size:12px;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(66,90,119,1);
+}
+
+.marks1 {
+  width: 8.5px;
+  height: 7.5px;
+  margin-bottom: 7.5px;
+  margin-left: -8.5px;
+  margin-right: 3px;
+  font-family:HYQiHei-GZS,HYQiHei;
+  font-weight:normal;
+  color:rgba(136,170,210,1);
+}
+
+.marks2 {
+  width: 8.5px;
+  height: 7.5px;
+  margin-bottom: -7.5px;
+  margin-left: 3px;
+  font-family:HYQiHei-GZS,HYQiHei;
+  font-weight:normal;
+  color:rgba(136,170,210,1);
+}
