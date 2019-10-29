@@ -1,7 +1,15 @@
-const app = require("../../api/music.js");
+const music = require("../../api/music.js");
 Component({
   properties: {
-    msg: Object
+    msg: {
+      type: Object,
+      observer: function(newVal, oldVal) {
+        this.setData({
+          isPlaying: newVal.isPlaying
+        })
+      }
+    },
+    cardId: Number
   },
   data: {
     isPlaying: false,
@@ -17,15 +25,29 @@ Component({
 
   lifetimes: {
     ready: function() {
-      console.log(this.properties.msg.docs);
       var musicData = this.properties.msg.docs;
       var swiperMusicAry = [];
-      app.data.voiceData = musicData[0];
-      app.play(isPlaying => {
-        this.setData({
-          isPlaying: true
+      music.data.voiceData = musicData[0];
+      if (this.properties.msg.isPlaying) {
+        if (music.data.cardId !== -1) {
+          let params = {
+            cardId: music.data.cardId,
+            flag: false
+          }
+          this.triggerEvent('changeCardID', params)
+        } 
+        let params = {
+          cardId: this.properties.cardId,
+          flag : true
+        }
+        this.triggerEvent('changeCardID', params)
+        music.data.cardId = this.properties.cardId
+        music.play(isPlaying => {
+          this.setData({
+            isPlaying: true
+          });
         });
-      });
+      }
       this.getBackgroundAudio();
 
       for (var i = 0; i < musicData.length; i++) {
@@ -36,7 +58,8 @@ Component({
       this.setData({
         // 更新属性和数据的方法\更新页面数据的方法
         swiperMusicAry: swiperMusicAry,
-        musicData
+        musicData,
+        isPlaying: this.properties.msg.isPlaying
       });
       console.log("swiperItem", swiperMusicAry);
     }
@@ -44,7 +67,7 @@ Component({
   methods: {
     //获取背景资源
     getBackgroundAudio: function() {
-      app.getBackgroundAudio(
+      music.getBackgroundAudio(
         (currentTime, duration) => {
           if (!this.data.sliderchange) {
             this.setData({
@@ -76,8 +99,8 @@ Component({
                 nowMusicCurrent: nowMusicCurrent
               },
               () => {
-                app.data.voiceData = that.data.musicData[that.data.chooseId];
-                app.play(isPlaying => {
+                music.data.voiceData = that.data.musicData[that.data.chooseId];
+                music.play(isPlaying => {
                   that.setData({
                     isPlaying: true
                   });
@@ -127,15 +150,33 @@ Component({
       var chooseId = this.data.chooseId;
       if (chooseId == index && this.data.isPlaying) {
         //暂停
-        app.pause(isPlaying => {
+        music.pause(isPlaying => {
           this.setData({
             isPlaying: false
           });
         });
+        let params = {
+          cardId: this.properties.cardId,
+          flag : false
+        }
+        this.triggerEvent('changeCardID', params)
       } else {
+        if (music.data.cardId !== -1) {
+          let params = {
+            cardId: music.data.cardId,
+            flag: false
+          }
+          this.triggerEvent('changeCardID', params)
+        } 
+        let params = {
+          cardId: this.properties.cardId,
+          flag : true
+        }
+        this.triggerEvent('changeCardID', params)
+        music.data.cardId = this.properties.cardId
         //播放
-        app.data.voiceData = musicData[index];
-        app.play(isPlaying => {
+        music.data.voiceData = musicData[index];
+        music.play(isPlaying => {
           that.setData({
             isPlaying: true,
             chooseId: index
@@ -146,13 +187,32 @@ Component({
     },
     playSong: function() {
       if (this.data.isPlaying) {
-        app.pause(isPlaying => {
+        music.pause(isPlaying => {
           this.setData({
             isPlaying: isPlaying
           });
         });
+        let params = {
+          cardId: this.properties.cardId,
+          flag : false
+        }
+        this.triggerEvent('changeCardID', params)
       } else {
-        app.play(isPlaying => {
+        if (music.data.cardId !== -1) {
+          let params = {
+            cardId: music.data.cardId,
+            flag: false
+          }
+          this.triggerEvent('changeCardID', params)
+        } 
+        let params = {
+          cardId: this.properties.cardId,
+          flag : true
+        }
+        this.triggerEvent('changeCardID', params)
+        music.data.cardId = this.properties.cardId
+        music.data.voiceData = this.data.musicData[this.data.chooseId]
+        music.play(isPlaying => {
           this.setData({
             isPlaying: isPlaying
           });

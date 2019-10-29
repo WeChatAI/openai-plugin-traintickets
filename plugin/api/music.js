@@ -6,6 +6,7 @@ var data = {
   voiceData: {}, //媒体数据
   playTime: 0, //播放进度
   loopTpye: false, //循环设置
+  cardId: -1 // 当前播放的card的id
 }
 
 //播放
