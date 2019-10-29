@@ -22,22 +22,7 @@
       </view>
     </view>
     <view class="xiaoweiview" wx:if="{{xiaoweiValue}}">
-      <view class="xiaowei">
-        <view class="arr">{{arr[0]}}</view>
-        <view class="arr">{{arr[1]}}</view>
-        <view class="arr">{{arr[2]}}</view>
-        <view class="arr">{{arr[3]}}</view>
-        <view class="arr">{{arr[4]}}</view>
-        <view class="arr">{{arr[5]}}</view>
-      </view>
-      <view class="emptyHeight1"></view>
-      <view class="emptyHeight2"></view>
-      <view class="emptyWidth1"></view>
-      <view class="emptyWidth2"></view>
-      <image src="../left_top.png" class="left_top"></image>
-      <image src="../left_bottom.png" class="left_bottom"></image>
-      <image src="../right_top.png" class="right_top"></image>
-      <image src="../right_bottom.png" class="right_bottom"></image>
+      <view class="text" wx:for="{{arr}}" wx:key="item">{{item}}</view>
     </view>
   </view>
 </view>

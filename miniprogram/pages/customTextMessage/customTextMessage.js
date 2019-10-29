@@ -53,13 +53,13 @@ Component({
       if (this.properties.msg && this.properties.msg.res && this.properties.msg.res.ans_node_name === '现代诗歌生成' && this.properties.msg.res.dialog_status === 'CONTINUE' && app.getData() === '小微写诗') {
         let arr = this.properties.msg.content.split('\n')
         let newArr = []
-        newArr.push(this.properties.msg.query)
         arr.forEach(item => {
           newArr.push(item)
         })
         this.setData({
-          xiaoweiValue: true,
-          arr: newArr
+          arr: newArr,
+          query: this.properties.msg.query,
+          xiaoweiValue: true
         })
       }
       let that = this;
