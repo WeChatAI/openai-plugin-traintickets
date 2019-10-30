@@ -1,45 +1,50 @@
-var plugin = requirePlugin("myPlugin");
+var app = getApp();
 Page({
-  data: {
-    list: [{
-      text: "对话"
+    data: {
+        motto: '',
+        userInfo: {},
+        hasUserInfo: false,
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
     },
-    {
-      text: "设置"
-    }],
-    guideList : [
-      '北京天气怎么样',
-      "上海今天有雨吗",
-      "中午吃啥呢",
-      "你知道如何排解压力吗",
-      "法国国土面积是多少",
-      "世界最高峰"
-    ]
-  },
-  onLoad: function() {
-    // wx.showShareMenu({
-    //   withShareTicket: true
-    // })
-    
-  },
-  onShareAppMessage: function () {
-    console.log('onShareAppMessage')
-  },
-  bindtapOpenHaveUI: function(e) {
-    plugin.setGuideList(this.data.guideList)
-    wx.navigateTo({
-      url: "../pluginChat/pluginChat",
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {}
-    });
-  },
-  bindtapOpenNoUI: function(e) {
-    wx.navigateTo({
-      url: "../noUI/noUI",
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {}
-    });
-  }
+    bindViewTap: function () {
+        wx.navigateTo({
+            url: '../logs/logs'
+        });
+    },
+    onLoad: function () {
+        var _this = this;
+        if (app.globalData.userInfo) {
+            this.setData({
+                userInfo: app.globalData.userInfo,
+                hasUserInfo: true,
+            });
+        }
+        else if (this.data.canIUse) {
+            app.userInfoReadyCallback = function (res) {
+                _this.setData({
+                    userInfo: res,
+                    hasUserInfo: true
+                });
+            };
+        }
+        else {
+            wx.getUserInfo({
+                success: function (res) {
+                    app.globalData.userInfo = res.userInfo;
+                    _this.setData({
+                        userInfo: res.userInfo,
+                        hasUserInfo: true
+                    });
+                }
+            });
+        }
+    },
+    getUserInfo: function (e) {
+        console.log(e);
+        app.globalData.userInfo = e.detail.userInfo;
+        this.setData({
+            userInfo: e.detail.userInfo,
+            hasUserInfo: true
+        });
+    }
 });

@@ -1,0 +1,83 @@
+<view class="container">
+    <rich-text wx:if="{{isRich}}" nodes="{{answer}}" bindtap="tap" class="text"></rich-text>
+    <view wx:elif="{{showSlot}}" class="slot-box">
+        <view class="slot-title">为您查到以下车次</view>
+        <view class="slot-value-list">
+            <radio-group class="radio-group" bindchange="">
+                <view wx:for="{{candidates}}" wx:key="index" wx:item="item">
+                    <label>
+                        
+                        <view bindtap="sendMsg" data-msg="wechat" data-index="{{index}}" class="info-box">
+                            <radio class="radio" value="{{index}}" disabled="{{disabled}}">
+                            </radio>
+                            <view class="left info">
+                                <view class="time">
+                                    {{item.from_time}}
+                                </view>
+                                <view class="location">
+                                    {{item.from}}
+                                </view>
+                            </view>
+                            <view class="center">
+                                <view class="icon">
+                                    <image src="../../../images/train.png" />
+                                </view>
+                                <view class="line"></view>
+                                <view class="tips">{{item.tips}}</view>
+                            </view>
+                            <view class="right info">
+                                <view class="time">
+                                    {{item.to_time}}
+                                </view>
+                                <view class="location">
+                                    {{item.to}}
+                                </view>
+                            </view>
+                        </view>
+                    </label>
+                </view>
+            </radio-group>
+        </view>
+    </view>
+    <view wx:elif="{{showFromLocation}}" class="slot-box slot-picker">
+        <view class="slot-title">选择出发地</view>
+        <view class="slot-selector">
+            <picker bindchange="bindFromPickerChange" value="{{index}}" range="{{fromArray}}">
+                <view class="picker">
+                    <view class="icon">
+                        <image src="../../../images/train.png" style="width:26px;height: 10px" />
+                    </view>
+                    <view class="select-text">
+                        <block wx:if="{{fromIndex >= 0}}">{{fromArray[fromIndex]}}</block>
+                        <block wx:else>请选择</block>
+                    </view>
+                    <view class="arrow">
+                        <image src="../../../images/arrow.png" style="width:12px;height: 12px" />
+                    </view>
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view wx:elif="{{showToLocation}}" class="slot-box slot-picker">
+        <view class="slot-title">选择目的地</view>
+        <view class="slot-selector">
+            <picker bindchange="bindToPickerChange" value="{{index}}" range="{{toArray}}">
+                <view class="picker">
+                    <view class="icon">
+                        <image src="../../../images/train.png" style="width:26px;height: 10px" />
+                    </view>
+                    <view class="select-text">
+                        <block wx:if="{{toIndex >= 0}}">{{toArray[toIndex]}}</block>
+                        <block wx:else>请选择</block>
+                    </view>
+                    <view class="arrow">
+                        <image src="../../../images/arrow.png" style="width:12px;height: 12px" />
+                    </view>
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view wx:else>
+        <text class="text" wx:if="{{msg.content}}">{{msg.content}}</text>
+    </view>
+</view>

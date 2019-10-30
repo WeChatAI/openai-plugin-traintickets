@@ -1,108 +1,25 @@
-.container {
-  width: 100vw;
-  height: 100vh;
-  padding: 0px 79px;
-  box-sizing:border-box;
+.container{
 }
-.top {
+.userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 14vh;
-  box-sizing: border-box;
-  width: 100%;
-}
-.bottom {
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.empty {
-  width: 100%;
-  height: 0.5px;
-  opacity: 0.3;
-  background-color: #979797;
-  margin: 7.5vh 0; 
-}
-.homeLogo {
-  width: 80px;
-  height: 80px;
-  display: block;
-}
-.title {
-  font-size: 18px;
-  color: #303133;
-  font-family:HYQiHei;
-  font-weight:600;
-  margin: 9px 0 5px;
-}
-.plugin {
-  font-size: 18px;
-  color: #606266;
-  font-family:HYQiHei;
-  font-weight:normal;
-}
-.bottom_UI {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.UI {
-  font-size:14px;
-  font-family:HYQiHei;
-  font-weight:600;
-  color:rgba(48,49,51,1);
-}
-.UI_info {
-  font-size:12px;
-  font-family:HYQiHei;
-  font-weight:normal;
-  color:rgba(96,98,102,1);
-  margin: 5px 0 18px;
-}
-.UI_go {
-  width:159px;
-  height:33px;
-  text-align: center;
-  line-height: 33px;
-  background:rgba(7,192,95,1);
-  border-radius:33px;
-  font-size:14px;
-  font-family:HYQiHei;
-  font-weight:normal;
-  color:rgba(255,255,255,1);
 }
 
-.bottom_noUI {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
 }
-.noUI {
-  font-size:14px;
-  font-family:HYQiHei;
-  font-weight:600;
-  color:rgba(48,49,51,1);
+
+.userinfo-nickname {
+  color: #aaa;
 }
-.noUI_info {
-  font-size:12px;
-  font-family:HYQiHei;
-  font-weight:normal;
-  color:rgba(96,98,102,1);
-  margin: 5px 0 18px;
+
+.usermotto {
+  margin-top: 200px;
 }
-.noUI_go {
-  width:159px;
-  height:33px;
-  text-align: center;
-  line-height: 33px;
-  background:rgba(7,192,95,1);
-  border-radius:33px;
-  font-size:14px;
-  font-family:HYQiHei;
-  font-weight:normal;
-  color:rgba(255,255,255,1);
+.navigator{
+  margin-top: 20px;
 }

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "chat": "plugin://myPlugin/chat",
+    "customTextMessage": "../components/customTextMessage/customTextMessage",
+    "customQueryMessage": "../components/customQueryMessage/customQueryMessage"
+  }
+}

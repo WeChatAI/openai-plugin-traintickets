@@ -1,20 +1,14 @@
 <view class="container">
-  <view class="top">
-    <image src="../../images/homeLogo.png" class="homeLogo"></image>
-    <view class="title">微信对话开放平台</view>
-    <view class="plugin">小程序</view>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <navigator class="navigator" url="/pages/slot-demo/slot-demo"> 预定火车票 </navigator>
+      <webview  class="navigator" src=""  >查看技能配置详情</webview>
+    </block>
   </view>
-  <view class="empty"></view>
-  <view class="bottom">
-    <view class="bottom_UI">
-      <view class="UI">有UI语音助手</view>
-      <view class="UI_info">有UI，直接使用标记组件，无需接口调用</view>
-      <view class="UI_go" bindtap="bindtapOpenHaveUI">进入</view>
-    </view>
-    <view class="bottom_noUI">
-      <view class="noUI">无UI语音助手</view>
-      <view class="noUI_info">无UI，调用Api即可使用</view>
-      <view class="noUI_go" bindtap="bindtapOpenNoUI">进入</view>
-    </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
   </view>
 </view>

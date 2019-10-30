@@ -54,17 +54,18 @@ Component({
   },
 
   attached: function() {
-    music.data.isPlaying = false
+    music.data.isPlaying = false;
     const operateCardHeight = data.getData().operateCardHeight;
     const guideCardHeight = data.getData().guideCardHeight;
-    const navHeight = data.getData().navHeight
+    const navHeight = data.getData().navHeight;
     wx.getSystemInfo({
       success: res => {
         console.log(res);
         this.setData({
           operateCardHeight: operateCardHeight,
           guideCardHeight: guideCardHeight,
-          scrollHeight: res.windowHeight - operateCardHeight - guideCardHeight - navHeight,
+          scrollHeight:
+            res.windowHeight - operateCardHeight - guideCardHeight - navHeight
         });
       }
     });
@@ -87,7 +88,7 @@ Component({
       };
       this.setData({
         welcome: newData,
-        welcomeVal: true,
+        welcomeVal: true
       });
     } else {
       this.setData({
@@ -126,23 +127,25 @@ Component({
       console.log(page, chatReCord.length);
       const index = chatReCord.length - page * pageSize;
       const arr = chatReCord.slice(index < 0 ? 0 : index);
-     
-      this.setData({
-        listData: arr,
-        page
-      }, () => {
-        if (music.data.isPlaying && this.data.isPlaying) {
-          let listData = this.data.listData
-          listData[music.data.cardId].isPlaying = true
-          this.setData({
-            listData: listData
-          })
+
+      this.setData(
+        {
+          listData: arr,
+          page
+        },
+        () => {
+          if (music.data.isPlaying && this.data.isPlaying) {
+            let listData = this.data.listData;
+            listData[music.data.cardId].isPlaying = true;
+            this.setData({
+              listData: listData
+            });
+          }
         }
-      });
+      );
     },
     //完成输入
     bindconfirmInput: function(e) {
-     
       var that = this;
       let text = e.detail;
       if (text != "") {
@@ -154,10 +157,17 @@ Component({
         };
 
         listData.push(newData);
-        if (listData[music.data.cardId] && listData[music.data.cardId].isPlaying) {
-          listData[music.data.cardId].isPlaying = false
+        if (
+          listData[music.data.cardId] &&
+          listData[music.data.cardId].isPlaying
+        ) {
+          listData[music.data.cardId].isPlaying = false;
         }
-        this.getRecord(newData, data.getData().history, data.getData().historySize)
+        this.getRecord(
+          newData,
+          data.getData().history,
+          data.getData().historySize
+        );
         that.setData(
           {
             isShowGuideView: false,
@@ -179,11 +189,11 @@ Component({
     bindInutvalue: function(e) {
       this.bindconfirmInput(e);
     },
-    getRecord:function(newData, history, historySize) {
+    getRecord: function(newData, history, historySize) {
       if (history) {
         const chatReCord = wx.getStorageSync("chatRecord") || [];
         chatReCord.push(newData);
-        if(chatReCord &&chatReCord.length > historySize) {
+        if (chatReCord && chatReCord.length > historySize) {
           chatReCord.shift();
         }
         wx.setStorageSync("chatRecord", chatReCord);
@@ -199,15 +209,21 @@ Component({
     /**
      * send
      */
-    send: function(val) {
+    send: function(val, opt) {
       var that = this;
-      let listData = that.data.listData;
-      var newData = {
-        content: val,
-        data_type: 1
-      };
-      listData.push(newData);
-      this.getRecord(newData, data.getData().history, data.getData().historySize)
+      if (!opt || !opt.silence) {
+        let listData = that.data.listData;
+        var newData = {
+          content: val,
+          data_type: 1
+        };
+        listData.push(newData);
+        this.getRecord(
+          newData,
+          data.getData().history,
+          data.getData().historySize
+        );
+      }
       that.getData(val);
     },
     editFoucs: function(val) {
@@ -217,30 +233,29 @@ Component({
         });
       }
     },
-    setWelcome:function(val) {
+    setWelcome: function(val) {
       let newData = {
         content: val
       };
       this.setData({
         welcome: newData,
-        welcomeVal: true,
+        welcomeVal: true
       });
     },
-    setBackground:function(val) {
+    setBackground: function(val) {
       this.setData({
         background: val
-      })
+      });
     },
-    clearChatRecord:function(e) {
-      backgroundAudioManager.stop()
+    clearChatRecord: function(e) {
+      backgroundAudioManager.stop();
       wx.removeStorage({
-        key: 'chatRecord',
-        success (res) {
-        }
-      })
+        key: "chatRecord",
+        success(res) {}
+      });
       this.setData({
         listData: []
-      })
+      });
     },
     getData: function(val) {
       const authtoken = wx.getStorageSync("authtoken") || "";
@@ -348,7 +363,7 @@ Component({
               var detail = res.msg;
               let date_slot = { date: new Date() };
 
-              if (res.slots_info) { 
+              if (res.slots_info) {
                 for (var i = 0, len = res.slots_info.length; i < len; i++) {
                   const item = res.slots_info[i];
                   if (item.slot_value) {
@@ -361,8 +376,8 @@ Component({
               }
 
               if (res.more_info && res.more_info.weather_ans_detail) {
-                let weatherArr = {}
-                weatherArr = JSON.parse(res.more_info.weather_ans_detail)
+                let weatherArr = {};
+                weatherArr = JSON.parse(res.more_info.weather_ans_detail);
                 if (weatherArr.data.length > 0) {
                   newData = {
                     answer: res.answer,
@@ -382,7 +397,7 @@ Component({
                       }, 500);
                     }
                   );
-                } 
+                }
               } else {
                 if (res.dialog_status === "START") {
                   newData = {
@@ -402,7 +417,7 @@ Component({
                       }, 500);
                     }
                   );
-                } 
+                }
               }
             } else if (/\s*{\s*\"image"\s*:\s*{/.test(res.answer)) {
               newData = {
@@ -481,7 +496,9 @@ Component({
                   value: ""
                 },
                 () => {
-                  that.scrollToNew();
+                    setTimeout(() => {
+                        that.scrollToNew();
+                    }, 300)
                 }
               );
             }
@@ -489,10 +506,14 @@ Component({
             this.triggerEvent("queryCallback", { query: val, data: res });
 
             if (newData && newData.isPlaying) {
-              newData.isPlaying = false
+              newData.isPlaying = false;
             }
 
-            this.getRecord(newData, data.getData().history, data.getData().historySize)
+            this.getRecord(
+              newData,
+              data.getData().history,
+              data.getData().historySize
+            );
 
             this.setData({
               controlSwiper: true
@@ -506,7 +527,7 @@ Component({
               plugin.textToSpeech({
                 lang: "zh_CN",
                 tts: true,
-                content: res.answer,
+                content: res.answer.replace(/<a.*href.*>(.*)<\/a>/g, "$1"),
                 success: res => {
                   // console.log("succ tts", res.filename);
                   // wx.playBackgroundAudio({
@@ -523,14 +544,14 @@ Component({
                   );
                   let voiceData = {
                     url: res.filename,
-                    name: 'voic'
-                  }
-                  music.data.voiceData = voiceData
-                  music.play((isPlaying)=>{
+                    name: "voic"
+                  };
+                  music.data.voiceData = voiceData;
+                  music.play(isPlaying => {
                     that.setData({
-                      isPlaying:  false
-                    })
-                  })
+                      isPlaying: false
+                    });
+                  });
                   // backgroundAudioManager.src = res.filename;
                   // backgroundAudioManager.title = "voic";
                   // backgroundAudioManager.play(() => {});
@@ -586,8 +607,11 @@ Component({
         data_type: 1
       };
       listData.push(newData);
-      if (listData[music.data.cardId] && listData[music.data.cardId].isPlaying) {
-        listData[music.data.cardId].isPlaying = false
+      if (
+        listData[music.data.cardId] &&
+        listData[music.data.cardId].isPlaying
+      ) {
+        listData[music.data.cardId].isPlaying = false;
       }
       this.setData(
         {
@@ -685,8 +709,12 @@ Component({
           };
           // listData[listData.length -1] = newData
           listData.push(newData);
-          
-          this.getRecord(newData, data.getData().history, data.getData().historySize)
+
+          this.getRecord(
+            newData,
+            data.getData().history,
+            data.getData().historySize
+          );
           that.setData(
             {
               isShowGuideView: false,
@@ -760,9 +788,16 @@ Component({
         data_type: 1
       };
       listData.push(newData);
-      this.getRecord(newData, data.getData().history, data.getData().historySize)
-      if (listData[music.data.cardId] && listData[music.data.cardId].isPlaying) {
-        listData[music.data.cardId].isPlaying = false
+      this.getRecord(
+        newData,
+        data.getData().history,
+        data.getData().historySize
+      );
+      if (
+        listData[music.data.cardId] &&
+        listData[music.data.cardId].isPlaying
+      ) {
+        listData[music.data.cardId].isPlaying = false;
       }
       that.setData(
         {
@@ -780,13 +815,13 @@ Component({
         }
       );
     },
-    changeCardMId:function (e) { 
-      let listData = this.data.listData
-      listData[e.detail.cardId].isPlaying = e.detail.flag
+    changeCardMId: function(e) {
+      let listData = this.data.listData;
+      listData[e.detail.cardId].isPlaying = e.detail.flag;
       this.setData({
         listData: listData,
         isPlaying: true
-      })
+      });
     }
   }
 });

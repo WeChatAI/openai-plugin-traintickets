@@ -1,0 +1,135 @@
+.container{
+  /* position: relative;
+  overflow: hidden; */
+}
+.text{
+  background-color: #fff;
+  padding: 13px 20px;
+  margin: 10px 0;
+  float: left;
+  color: #000;
+  border-radius: 24px;
+  border-top-left-radius: 2px;
+  font-size: 16px;
+  line-height: 22px;
+  overflow: hidden;
+  word-wrap: break-word;
+  text-align: justify;
+  box-shadow: 0px 2px 4px rgba(212,212,212,0.5);
+}
+
+.ai-qqemoji {
+    background: url("https://res.wx.qq.com/mmspraiweb_node/dist/static/img/qqface2.7582741.png") no-repeat;
+    width: 20px;
+    height: 20px;
+    text-indent: -999em;
+    display: inline-block;
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: top;
+    background-size: 360px 192px;
+    /* background-size: 434px 202px; */
+}
+.slot-box{
+  clear: both
+}
+.slot-picker{
+  width: 60%;
+}
+.slot-title{
+  height: 42px;
+  background-color: #E7F4FF;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  width: 100%;
+  font-size: 14px;
+  color: #303133;
+  line-height: 42px;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+.slot-selector{
+  height: 48px;
+  background-color: #fff;
+}
+.slot-selector picker {
+  height: 100%;
+}
+
+.slot-selector .picker {
+  display: flex;
+  justify-content: middle;
+  align-items: center;
+  padding: 0 18px;
+  color: #606266;
+  font-size: 12px;
+  height: 48px;
+}
+.slot-selector .picker .icon{
+  flex:2;
+}
+.slot-selector .picker .select-text{
+  text-align: left;
+  flex:8;
+}
+.slot-selector .picker .arrow{
+  text-align: right;
+  flex:2;
+}
+.slot-value-list{
+  background-color: #fff;
+  padding:10px 32px 10px 20px;
+}
+.info-box{
+  width: 100%;
+  display: flex;
+  justify-content: middle;
+  align-items: center;
+  height: 62px;
+  border-bottom: 0.5px solid rgba(216, 216, 216, 0.5);
+}
+
+.info{
+  flex: 2;
+}
+.right, .left, .right{
+  float: left;
+}
+.right{
+  text-align: right;
+}
+.info .time{
+  color: #303133;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.info .location{
+  color: #606266;
+  font-size: 9px;
+  text-align: center;
+}
+.center {
+  flex: 4;
+  text-align: center;
+}
+.center .icon{
+}
+.center .icon image{
+  width: 26px;
+  height: 10px;
+}
+.center .line {
+  width: 100%;
+  height: 1px;
+  background-color: #EAEAEA;
+}
+.center .tips {
+  font-size: 9px;
+  color: #07C05F;
+  margin-top: 5px
+}
+.radio{
+  margin-right: 5px;
+}
+

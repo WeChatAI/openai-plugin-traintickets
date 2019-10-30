@@ -1,58 +1,37 @@
-//app.js
-
-var plugin = requirePlugin("myPlugin");
-
 App({
-  onLaunch: function() {
-    let height = 0
-    wx.getSystemInfo({
-      success: res => {
-        console.log(res);
-        let isIOS = res.system.indexOf("iOS") > -1;
-        let navHeight = 0;
-        if (!isIOS) {
-          navHeight = 48;
-        } else {
-          navHeight = 44;
-        }
-        height = navHeight + res.statusBarHeight
-      }
-    });
-    plugin.init({
-      appid: "VEgbxLa9kYqzGOzstdeSF3xDbkS9zK",
-      // appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja",
-      textToSpeech: true,
-      // guideList: ["玩末日生存游戏"],
-      // welcome: '请问需要什么帮助',
-      background: "rgba(247, 251, 252, 1)",
-      guideCardHeight: 50,
-      operateCardHeight: 120,
-      // history: true,
-      // historySize: 60,
-      navHeight: height,
-      success: () => {
-        // plugin.send({
-        //   query: "你好",
-        //   success: res => {
-        //     console.log(res);
-        //   },
-        //   fail: error => {}
-        // });
-      },
-      fail: error => {}
-    });
-  },
-  onShow: function() {},
-  onHide: function() {
-    plugin.clearChatRecord()
-  },
-  setData:function(key, val) {
-    this.globalData[key] = val
-  },
-  getData:function() {
-    return this.globalData.difference
-  },
-  globalData: {
-    difference: ''
-  }
+    onLaunch: function () {
+        var _this = this;
+        var logs = wx.getStorageSync('logs') || [];
+        logs.unshift(Date.now());
+        wx.setStorageSync('logs', logs);
+        wx.login({
+            success: function (_res) {
+            }
+        });
+        wx.getSetting({
+            success: function (res) {
+                if (res.authSetting['scope.userInfo']) {
+                    wx.getUserInfo({
+                        success: function (res) {
+                            console.log('res', res)
+                            _this.globalData.userInfo = res.userInfo;
+                            if (_this.userInfoReadyCallback) {
+                                _this.userInfoReadyCallback(res.userInfo);
+                            }
+                        }
+                    });
+                }
+            }
+        });
+        var plugin = requirePlugin("myPlugin");
+        plugin.init({
+            appid: "PWj9xdSdGU3PPnqUUrTf7uGgQ9Jvn7",
+            openid: "", // 建议业务方将openid传入
+            guideList: ["预订火车票"],
+            success: function () {
+            },
+            fail: function (error) { }
+        });
+    },
+    globalData: {}
 });

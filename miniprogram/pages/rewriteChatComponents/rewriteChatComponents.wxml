@@ -1,9 +1,0 @@
-<view style="height: 100vh">
-  <chat id="component-id"  bind:queryCallback="getQueryCallback" bind:backHome="goBackHome" 
-    generic:textMessage="customTextMessage"
-    generic:weatherMessage="customWeatherMessage" 
-    generic:imageMessage="costomImageMessage"       
-    generic:guideCard="customGuideCard"
-    generic:queryMessage="customQuery">
-  </chat>
-</view>

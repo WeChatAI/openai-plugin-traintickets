@@ -1,0 +1,31 @@
+
+.rightView{
+  float: right;
+  margin: 10px 0;
+  padding: 13px 20px;
+  background-color: #E7F4FF;
+  color: #303133;
+  border-top-right-radius: 2px;
+  max-width: calc(96vw - 120px);
+  font-size: 16px;
+  line-height: 22px;
+  border-radius: 5px;
+  overflow:hidden; word-wrap:break-word;
+  text-align: justify;
+}
+
+.recordingView{
+  float: right;
+  margin: 10px 0;
+  padding: 16px 20px;
+  background-color: #0BBB09;
+  width: 41px;
+  height: 16px;
+  border-top-right-radius: 2px;
+}
+
+.recordView{
+  position: absolute;
+  bottom: 50px;
+  right: 15px;
+}
