@@ -27,11 +27,6 @@ Component({
             var showFromLocationTmp = false;
             var showToLocationTmp = false;
             let chat = plugin.getChatComponent();
-            if (this.properties.msg.res.title === '预订火车票') {
-                if (this.properties.msg.res && this.properties.msg.res.options) {
-                   chat.setGuideList([])
-                }    
-            }
             if (!!this.properties.msg.res.slots_info) {
                 var firstSlotInfo = this.properties.msg.res.slots_info[0];
                 if (!!firstSlotInfo) {
@@ -39,24 +34,12 @@ Component({
                         var tmp = JSON.parse(firstSlotInfo['slot_value']);
                         candidates = tmp.data_list_candidates;
                         showSlotTmp = !!candidates.length;
-                    }
-                    else if ((firstSlotInfo.slot_name == '_stoask_') && (firstSlotInfo.slot_value == '目的地')) {
+                    } else if ((firstSlotInfo.slot_name == '_stoask_') && (firstSlotInfo.slot_value == '目的地')) {
                         showToLocationTmp = true;
-                    }
-                    else if ((firstSlotInfo.slot_name == '_stoask_') && (firstSlotInfo.slot_value == '出发地')) {
+                    } else if ((firstSlotInfo.slot_name == '_stoask_') && (firstSlotInfo.slot_value == '出发地')) {
                         showFromLocationTmp = true;
                     } 
-                    if(/^已为您预/.test(this.properties.msg.content)){
-                        showToLocationTmp = false;
-                        showFromLocationTmp = false;
-                    }
-                   
-                } else {
-                    if(/^已为您预/.test(this.properties.msg.content)){
-                        showToLocationTmp = false;
-                        showFromLocationTmp = false;
-                    }
-                }
+                } 
             } 
             var facejson = {
                 qqface: [
@@ -78,54 +61,18 @@ Component({
                     return txt;
                 });
             }
+            let isRich = false
             if (/<a.*>|<span.*>/.test(content)) {
-
-                this.setData({
-                    isRich: true,
-                    answer: content,
-                    showSlot: showSlotTmp,
-                    candidates: candidates,
-                    showToLocation: showToLocationTmp,
-                    showFromLocation: showFromLocationTmp
-                });
+                isRich = true
             }
-            else if (showSlotTmp) {
-                let chat = plugin.getChatComponent();
-                // chat.setGuideList([])
-                this.setData({
-                    isRich: false,
-                    showSlot: showSlotTmp,
-                    candidates: candidates,
-                    showToLocation: false,
-                    showFromLocation: false
-                });
-            }
-            else if (showFromLocationTmp) {
-                this.setData({
-                    isRich: false,
-                    showSlot: false,
-                    showToLocation: false,
-                    showFromLocation: true
-                });
-            }
-            else if (showToLocationTmp) {
-                this.setData({
-                    isRich: false,
-                    showSlot: false,
-                    showToLocation: true,
-                    showFromLocation: false
-                });
-            }
-            else {
-                this.setData({
-                    isRich: false,
-                    answer: content,
-                    showSlot: showSlotTmp,
-                    candidates: candidates,
-                    showToLocation: showToLocationTmp,
-                    showFromLocation: showFromLocationTmp
-                });
-            }
+            this.setData({
+                isRich: isRich,
+                answer: content,
+                showSlot: showSlotTmp,
+                candidates: candidates,
+                showToLocation: showToLocationTmp,
+                showFromLocation: showFromLocationTmp
+            });
         }
     },
     methods: {
@@ -141,7 +88,6 @@ Component({
             console.log("tap");
         },
         sendMsg: function (event) {
-            console.log('aaa', event);
             if(this.data.disabled) return
             var index = event.currentTarget.dataset.index;
             var chat = plugin.getChatComponent();
@@ -153,7 +99,6 @@ Component({
             })
         },
         bindFromPickerChange: function (e) {
-            console.log('picker发送选择改变，携带值为', e.detail.value);
             var chat = plugin.getChatComponent();
             chat.send(this.data.fromArray[e.detail.value]);
             this.setData({
@@ -161,7 +106,6 @@ Component({
             });
         },
         bindToPickerChange: function (e) {
-            console.log('picker发送选择改变，携带值为', e.detail.value);
             var chat = plugin.getChatComponent();
             chat.send(this.data.toArray[e.detail.value]);
             this.setData({

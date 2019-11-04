@@ -4,8 +4,7 @@
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <navigator class="navigator" url="/pages/slot-demo/slot-demo"> 预定火车票 </navigator>
-      <webview  class="navigator" src=""  >查看技能配置详情</webview>
+      <navigator class="navigator" url="/pages/slot-demo/slot-demo?query=预订火车票"> 预订火车票demo入口 </navigator>
     </block>
   </view>
   <view class="usermotto">

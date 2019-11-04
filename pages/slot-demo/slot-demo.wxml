@@ -1,6 +1,6 @@
 <!--index.wxml-->
   <view class="userinfo" style="height: 100vh">
-    <chat  bind:backHome="goBackHome" 
+    <chat bind:backHome="goBackHome" 
       generic:queryMessage="customQueryMessage"
       generic:textMessage="customTextMessage"
       generic:miniprogramMessage="customMiniprogramMessage"
