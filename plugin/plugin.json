@@ -1,6 +1,0 @@
-{
-  "publicComponents": {
-    "chat": "components/chat/chat"
-  },
-  "main": "index.js"
-}

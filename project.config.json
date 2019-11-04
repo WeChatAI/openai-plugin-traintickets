@@ -1,9 +1,7 @@
 {
-	"miniprogramRoot": "miniprogram/",
-	"pluginRoot": "plugin/",
 	"compileType": "miniprogram",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,

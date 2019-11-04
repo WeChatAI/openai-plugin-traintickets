@@ -1,3 +1,0 @@
-<view class="leftView">
-    <text>暂未支持消息类型，请查看开发文档复写unsupportedMessage组件</text>
-</view>

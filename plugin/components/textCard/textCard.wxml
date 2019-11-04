@@ -1,4 +1,0 @@
-<view class="leftView">
-    <rich-text wx:if="{{isRitch}}" nodes="{{answer}}" bindtap="tap"></rich-text>
-    <text wx:else>{{msg.content}}</text>
-</view>
