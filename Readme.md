@@ -12,7 +12,7 @@
 
 https://mp.weixin.qq.com/wxopen/plugindevdoc?appid=wx8c631f7e9f2465e1
 
-微信对话开放平台小程序插件复写示例提供了对插件的开放能力， 可以随意定制化。
+微信对话开放平台小程序插件火车票查询示例是一个智能对话系统中槽位全可点的demo，通过槽位全可点，提升对话的效率和流畅度，让产品有更好的用户体验，可以根据业务需要定制化。
 
 > 请在 `project.config.json` 中配置自己小程序的appid或测试ID
 > 此示例代码仅做为接入微信对话开放平台小程序插件的示例供开发者参考
@@ -23,7 +23,8 @@ https://mp.weixin.qq.com/wxopen/plugindevdoc?appid=wx8c631f7e9f2465e1
 ![链接](./doc/3.png)
 ![链接](./doc/4.png)
 
-## 1.参考https://github.com/WeChatAI/openai-plugin-overwrite 复写小程序插件的customTextMessage/customQueryMessage/customMiniprogramMessage组件
+### 1. 组件复写
+demo中，参考https://github.com/WeChatAI/openai-plugin-overwrite 复写小程序插件的customTextMessage/customQueryMessage/customMiniprogramMessage组件
 
 ```json
 
@@ -37,8 +38,9 @@ https://mp.weixin.qq.com/wxopen/plugindevdoc?appid=wx8c631f7e9f2465e1
 }
 
 ```
-## 2. msg对象上的res.slots_info数组中的第一个值是当前要追问的槽位内容，可以根据自己的业务需求进行逻辑处理。
-在火车票的示例中，我们通过判断msg.res.slots_info[0]当中slot_name来判断槽位类型，当slot_name为_stoask_且slot_value为出发地时，我们在页面上触发出发地选择逻辑，当slot_name为_stoask_且slot_value为目的地时，我们在页面上触发目的地选择逻辑，当slot_name为_data_list_candidates_时，我们触发车次选择逻辑。
+### 2.判断msg对象中的槽位类型，进行全可点逻辑处理。 
+msg对象上的res.slots_info数组中的第一个值是当前要追问的槽位内容，可以根据自己的业务需求进行逻辑处理。
+在火车票的示例中，我们通过判断msg.res.slots_info[0]当中slot_name来判断槽位类型，当slot_name为'_stoask_'且slot_value为'出发地'时，我们在页面上触发出发地选择逻辑，当slot_name为'_stoask_'且slot_value为'目的地'时，我们在页面上触发目的地选择逻辑，当slot_name为'_data_list_candidates_'时，我们触发车次选择逻辑。
 
 
 
