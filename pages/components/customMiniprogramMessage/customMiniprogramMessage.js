@@ -13,7 +13,7 @@ Component({
       // 唤起其他小程序
       wx.navigateToMiniProgram({
         appId: this.properties.msg.data.appid,
-        path: '',
+        path: this.properties.msg.data.pagepath,
         extraData: {
         },
         envVersion: '',
