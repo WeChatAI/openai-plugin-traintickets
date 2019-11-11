@@ -1,4 +1,3 @@
-var pro = require("../../../project.config.json")
 Component({
   properties: {
     msg: Object
@@ -7,7 +6,6 @@ Component({
   data: {},
   lifetimes: {
     ready: function() {
-      console.log(pro)
     }
   },
   methods: {
