@@ -1,3 +1,4 @@
+var pro = require("../../../project.config.json")
 Component({
   properties: {
     msg: Object
@@ -5,11 +6,13 @@ Component({
 
   data: {},
   lifetimes: {
-    ready: function() {}
+    ready: function() {
+      console.log(pro)
+    }
   },
   methods: {
     reserve:function() {
-      console.log(123)
+      // 唤起其他小程序
       wx.navigateToMiniProgram({
         appId: this.properties.msg.data.appid,
         path: '',
@@ -20,6 +23,10 @@ Component({
           // 打开成功
         }
       })
+      // 当前小程序页面跳转
+      // wx.navigateTo({
+      //   url: this.properties.msg.data.pagepath
+      // })
     }
   }
 });
