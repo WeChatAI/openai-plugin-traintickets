@@ -40,7 +40,7 @@ demo中，参考https://github.com/WeChatAI/openai-plugin-overwrite 复写小程
 ```
 ### 2.判断msg对象中的槽位类型，进行全可点逻辑处理。 
 msg对象上的res.slots_info数组中的第一个值是当前要追问的槽位内容，可以根据自己的业务需求进行逻辑处理。
-在火车票的示例中，我们通过判断msg.res.slots_info[0]当中slot_name来判断槽位类型，当slot_name为'_stoask_'且slot_value为'出发地'时，我们在页面上触发出发地选择逻辑，当slot_name为'_stoask_'且slot_value为'目的地'时，我们在页面上触发目的地选择逻辑，当slot_name为'_data_list_candidates_'时，我们触发车次选择逻辑。
+在火车票的示例中，我们通过判断msg.res.slots_info[0]当中slot_name来判断槽位类型，当slot_name为'_call_back_'且slot_value通过冒号分隔后的第一个数为'SlotAsk'表示槽位追问，然后判断msg.res.slots_info[1]中的值,当slot_name为'_stoask_'且slot_value为'出发地'时，我们在页面上触发出发地选择逻辑，当slot_name为'_stoask_'且slot_value为'目的地'时，我们在页面上触发目的地选择逻辑，当slot_name为'_data_list_candidates_'时，我们触发车次选择逻辑。
 
 
 
