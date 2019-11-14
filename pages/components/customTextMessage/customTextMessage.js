@@ -29,17 +29,34 @@ Component({
             let chat = plugin.getChatComponent();
             if (!!this.properties.msg.res.slots_info) {
                 var firstSlotInfo = this.properties.msg.res.slots_info[0];
-                if (!!firstSlotInfo) {
-                    if (firstSlotInfo.slot_name == '_data_list_candidates_') {
-                        var tmp = JSON.parse(firstSlotInfo['slot_value']);
-                        candidates = tmp.data_list_candidates;
-                        showSlotTmp = !!candidates.length;
-                    } else if ((firstSlotInfo.slot_name == '_stoask_') && (firstSlotInfo.slot_value == '目的地')) {
+               if (!!firstSlotInfo) {
+                  let fSlotName = firstSlotInfo['slot_name']
+                  let fSlotValue = firstSlotInfo['slot_value'].split(':')[0]
+                  if(fSlotName == '_call_back_' && fSlotValue == 'SlotAsk'){
+                    let secondSlotInfo = this.properties.msg.res.slots_info[1]
+                     if ((secondSlotInfo.slot_name == '_stoask_') && (secondSlotInfo.slot_value == '目的地')) {
                         showToLocationTmp = true;
-                    } else if ((firstSlotInfo.slot_name == '_stoask_') && (firstSlotInfo.slot_value == '出发地')) {
+                    }
+                    else if ((secondSlotInfo.slot_name == '_stoask_') && (secondSlotInfo.slot_value == '出发地')) {
                         showFromLocationTmp = true;
                     } 
-                } 
+                    if(/^已为您预/.test(this.properties.msg.content)){
+                        showToLocationTmp = false;
+                        showFromLocationTmp = false;
+                    }
+                      
+                  } else if(fSlotName == '_call_back_' && fSlotValue == 'DynamicListSelection'){
+                    let secondSlotInfo = this.properties.msg.res.slots_info[1]
+                    var tmp = JSON.parse(secondSlotInfo['slot_value']);
+                    candidates = tmp.data_list_candidates;
+                    showSlotTmp = !!candidates.length;
+                  } else {
+                      if(/^已为您预/.test(this.properties.msg.content)){
+                          showToLocationTmp = false;
+                          showFromLocationTmp = false;
+                      }
+                  }
+                }
             } 
             var facejson = {
                 qqface: [
